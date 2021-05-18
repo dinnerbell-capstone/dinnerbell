@@ -20,6 +20,9 @@ public class User {
   @Column(nullable = false)
   private String password;
 
+  @Column(nullable = false)
+  private boolean isBusiness;
+
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
     name = "favorite_restaurants",
@@ -28,22 +31,52 @@ public class User {
   )
   private List<FavoriteRestaurant> restaurants;
 
+  @OneToOne
+  private FavoriteRestaurant restaurant;
+
   public User() {
   }
 
-  public User(long id, String username, String email, String password, List<FavoriteRestaurant> restaurants) {
+  public User(long id, String username, String email, String password, boolean isBusiness, List<FavoriteRestaurant> restaurants, FavoriteRestaurant restaurant) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
+    this.isBusiness = isBusiness;
     this.restaurants = restaurants;
+    this.restaurant = restaurant;
   }
 
-  public User(String username, String email, String password, List<FavoriteRestaurant> restaurants) {
+  public User(String username, String email, String password, boolean isBusiness, List<FavoriteRestaurant> restaurants, FavoriteRestaurant restaurant) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.isBusiness = isBusiness;
     this.restaurants = restaurants;
+    this.restaurant = restaurant;
+  }
+
+  public User(long id, String username, String email, String password) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
+
+  public boolean getIsBusiness() {
+    return isBusiness;
+  }
+
+  public void setIsBusiness(boolean business) {
+    isBusiness = business;
+  }
+
+  public FavoriteRestaurant getRestaurant() {
+    return restaurant;
+  }
+
+  public void setRestaurant(FavoriteRestaurant restaurant) {
+    this.restaurant = restaurant;
   }
 
   public long getId() {
