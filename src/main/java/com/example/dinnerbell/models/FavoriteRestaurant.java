@@ -45,6 +45,9 @@ public class FavoriteRestaurant {
   @ManyToMany(mappedBy = "restaurants")
   private List<User> favorites;
 
+  @ManyToMany(mappedBy = "restaurants")
+  private List<RestaurantCategory> categories;
+
   public FavoriteRestaurant() {
   }
 
