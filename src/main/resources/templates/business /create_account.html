@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -16,25 +16,19 @@
     <form th:action="@{restaurants/create}" th:method="post" th:object="${restaurant}">
         <div class="form-group">
             <label>Restaurant name</label>
-            <input name="rest-name" type="text"  class="form-control" placeholder="What is the name of your Restaurant?" required th:field="*{}">
+            <input name="rest-name" type="text"  class="form-control" placeholder="What is the name of your Restaurant?" required th:field="*{restaurant_name}">
         </div>
 
 
-        <form th:action="@{/ads/create}" th:method="post" th:object="${ad}">
-            Title:
-            <input th:field="*{title}" />
-            <br />
-            Description:
-            <input th:field="*{description}" />
-            <br />
-            <input type="submit" />
-        </form>
-
-
-
-
-
-
+<!--        <form th:action="@{/ads/create}" th:method="post" th:object="${ad}">-->
+<!--            Title:-->
+<!--            <input th:field="*{title}" />-->
+<!--            <br />-->
+<!--            Description:-->
+<!--            <input th:field="*{description}" />-->
+<!--            <br />-->
+<!--            <input type="submit" />-->
+<!--        </form>-->
 
 
 
