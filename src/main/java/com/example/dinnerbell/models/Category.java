@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class RestaurantCategory {
+public class Category {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,22 +20,22 @@ public class RestaurantCategory {
     joinColumns = {@JoinColumn(name = "categories_id")},
     inverseJoinColumns = {@JoinColumn(name = "restaurant_id")}
   )
-  private List<FavoriteRestaurant> restaurants;
+  private List<Restaurant> restaurants;
 
-  public RestaurantCategory() {
+  public Category() {
   }
 
-  public RestaurantCategory(long id, String name, List<FavoriteRestaurant> restaurants) {
+  public Category(long id, String name, List<Restaurant> restaurants) {
     this.id = id;
     this.name = name;
     this.restaurants = restaurants;
   }
 
-  public RestaurantCategory(String name) {
+  public Category(String name) {
     this.name = name;
   }
 
-  public RestaurantCategory(long id, String name) {
+  public Category(long id, String name) {
     this.id = id;
     this.name = name;
   }
@@ -56,11 +56,11 @@ public class RestaurantCategory {
     this.name = name;
   }
 
-  public List<FavoriteRestaurant> getRestaurants() {
+  public List<Restaurant> getRestaurants() {
     return restaurants;
   }
 
-  public void setRestaurants(List<FavoriteRestaurant> restaurants) {
+  public void setRestaurants(List<Restaurant> restaurants) {
     this.restaurants = restaurants;
   }
 }

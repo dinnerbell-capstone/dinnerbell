@@ -2,11 +2,10 @@ package com.example.dinnerbell.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "restaurants")
-public class FavoriteRestaurant {
+public class Restaurant {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,12 +45,12 @@ public class FavoriteRestaurant {
   private List<User> favorites;
 
   @ManyToMany(mappedBy = "restaurants")
-  private List<RestaurantCategory> categories;
+  private List<Category> categories;
 
-  public FavoriteRestaurant() {
+  public Restaurant() {
   }
 
-  public FavoriteRestaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
+  public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
     this.id = id;
     this.restaurant_name = restaurant_name;
     this.phone_number = phone_number;
@@ -67,7 +66,7 @@ public class FavoriteRestaurant {
     this.favorites = favorites;
   }
 
-  public FavoriteRestaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price) {
+  public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price) {
     this.id = id;
     this.restaurant_name = restaurant_name;
     this.phone_number = phone_number;
@@ -82,7 +81,7 @@ public class FavoriteRestaurant {
     this.price = price;
   }
 
-  public FavoriteRestaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
+  public Restaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
     this.restaurant_name = restaurant_name;
     this.phone_number = phone_number;
     this.hours = hours;

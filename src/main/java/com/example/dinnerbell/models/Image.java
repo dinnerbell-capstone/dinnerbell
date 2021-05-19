@@ -15,31 +15,31 @@ public class Image {
   private String url;
 
   @OneToOne
-  private FavoriteRestaurant restaurant;
+  private Restaurant restaurant;
 
   @ManyToMany(mappedBy = "images")
-  private List<RestaurantReview> restaurantReviews;
+  private List<Review> reviews;
 
   public Image() {
   }
 
-  public Image(long id, String url, FavoriteRestaurant restaurant) {
+  public Image(long id, String url, Restaurant restaurant) {
     this.id = id;
     this.url = url;
     this.restaurant = restaurant;
   }
 
-  public Image(String url, FavoriteRestaurant restaurant) {
+  public Image(String url, Restaurant restaurant) {
     this.url = url;
     this.restaurant = restaurant;
   }
 
-  public List<RestaurantReview> getRestaurantReviews() {
-    return restaurantReviews;
+  public List<Review> getRestaurantReviews() {
+    return reviews;
   }
 
-  public void setRestaurantReviews(List<RestaurantReview> restaurantReviews) {
-    this.restaurantReviews = restaurantReviews;
+  public void setRestaurantReviews(List<Review> reviews) {
+    this.reviews = reviews;
   }
 
   public long getId() {
@@ -58,11 +58,11 @@ public class Image {
     this.url = url;
   }
 
-  public FavoriteRestaurant getRestaurant() {
+  public Restaurant getRestaurant() {
     return restaurant;
   }
 
-  public void setRestaurant(FavoriteRestaurant restaurant) {
+  public void setRestaurant(Restaurant restaurant) {
     this.restaurant = restaurant;
   }
 }
