@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: head('Profile')"></head>
 <body>
-
+<nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container">
     <h1>User Dashboard </h1>
     <div class="card">
@@ -21,7 +21,7 @@
                                 <legend>Profile Information</legend>
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" id="username" class="form-control" placeholder="pull username from database">
+                                    <input type="text" id="username"  class="form-control" placeholder="pull username from database">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
