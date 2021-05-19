@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurant_reviews")
-public class RestaurantReview {
+public class Review {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class RestaurantReview {
   private User user;
 
   @OneToOne
-  private FavoriteRestaurant restaurant;
+  private Restaurant restaurant;
 
   @Column(columnDefinition = "TEXT NOT NULL")
   private String content;
@@ -36,10 +36,10 @@ public class RestaurantReview {
   )
   private List<Image> images;
 
-  public RestaurantReview() {
+  public Review() {
   }
 
-  public RestaurantReview(long id, User user, FavoriteRestaurant restaurant, String content, Timestamp createdAt, List<Image> images) {
+  public Review(long id, User user, Restaurant restaurant, String content, Timestamp createdAt, List<Image> images) {
     this.id = id;
     this.user = user;
     this.restaurant = restaurant;
@@ -48,7 +48,7 @@ public class RestaurantReview {
     this.images = images;
   }
 
-  public RestaurantReview(User user, FavoriteRestaurant restaurant, String content, Timestamp createdAt) {
+  public Review(User user, Restaurant restaurant, String content, Timestamp createdAt) {
     this.user = user;
     this.restaurant = restaurant;
     this.content = content;
@@ -71,11 +71,11 @@ public class RestaurantReview {
     this.user = user;
   }
 
-  public FavoriteRestaurant getRestaurant() {
+  public Restaurant getRestaurant() {
     return restaurant;
   }
 
-  public void setRestaurant(FavoriteRestaurant restaurant) {
+  public void setRestaurant(Restaurant restaurant) {
     this.restaurant = restaurant;
   }
 
