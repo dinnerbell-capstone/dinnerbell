@@ -2,7 +2,6 @@ package com.example.dinnerbell.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "restaurants")
@@ -46,7 +45,7 @@ public class Restaurant {
   private List<User> favorites;
 
   @ManyToMany(mappedBy = "restaurants")
-  private List<RestaurantCategory> categories;
+  private List<Category> categories;
 
   public Restaurant() {
   }
