@@ -1,6 +1,7 @@
 package com.example.dinnerbell.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "images")
@@ -16,6 +17,9 @@ public class Image {
   @OneToOne
   private FavoriteRestaurant restaurant;
 
+  @ManyToMany(mappedBy = "images")
+  private List<RestaurantReview> restaurantReviews;
+
   public Image() {
   }
 
@@ -28,6 +32,14 @@ public class Image {
   public Image(String url, FavoriteRestaurant restaurant) {
     this.url = url;
     this.restaurant = restaurant;
+  }
+
+  public List<RestaurantReview> getRestaurantReviews() {
+    return restaurantReviews;
+  }
+
+  public void setRestaurantReviews(List<RestaurantReview> restaurantReviews) {
+    this.restaurantReviews = restaurantReviews;
   }
 
   public long getId() {
