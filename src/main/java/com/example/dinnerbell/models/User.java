@@ -29,15 +29,15 @@ public class User {
     joinColumns = {@JoinColumn(name = "user_id")},
     inverseJoinColumns = {@JoinColumn(name = "restaurant_id")}
   )
-  private List<FavoriteRestaurant> restaurants;
+  private List<Restaurant> restaurants;
 
   @OneToOne
-  private FavoriteRestaurant restaurant;
+  private Restaurant restaurant;
 
   public User() {
   }
 
-  public User(long id, String username, String email, String password, boolean isBusiness, List<FavoriteRestaurant> restaurants, FavoriteRestaurant restaurant) {
+  public User(long id, String username, String email, String password, boolean isBusiness, List<Restaurant> restaurants, Restaurant restaurant) {
     this.id = id;
     this.username = username;
     this.email = email;
@@ -47,7 +47,7 @@ public class User {
     this.restaurant = restaurant;
   }
 
-  public User(String username, String email, String password, boolean isBusiness, List<FavoriteRestaurant> restaurants, FavoriteRestaurant restaurant) {
+  public User(String username, String email, String password, boolean isBusiness, List<Restaurant> restaurants, Restaurant restaurant) {
     this.username = username;
     this.email = email;
     this.password = password;
@@ -71,11 +71,11 @@ public class User {
     isBusiness = business;
   }
 
-  public FavoriteRestaurant getRestaurant() {
+  public Restaurant getRestaurant() {
     return restaurant;
   }
 
-  public void setRestaurant(FavoriteRestaurant restaurant) {
+  public void setRestaurant(Restaurant restaurant) {
     this.restaurant = restaurant;
   }
 
@@ -111,11 +111,11 @@ public class User {
     this.password = password;
   }
 
-  public List<FavoriteRestaurant> getRestaurants() {
+  public List<Restaurant> getRestaurants() {
     return restaurants;
   }
 
-  public void setRestaurants(List<FavoriteRestaurant> favorites) {
+  public void setRestaurants(List<Restaurant> favorites) {
     this.restaurants = favorites;
   }
 }
