@@ -45,6 +45,17 @@
         <label for="price">What is the price range?</label>
         <input id="price" name="price" type="text"/>
 
+       <div class="checkbox">
+            <label for="categories"></label>
+            <input id="categories"th:field="*{categories}" name="cat" type="text"/>
+
+            <label><input type="checkbox" value="Italian"> Italian </label>
+           <label><input type="checkbox" value="Steakhouse"> Steakhouse </label>
+           <label><input type="checkbox" value="Buffet"> Buffet </label>
+           <label><input type="checkbox" value="Pizza"> Pizza </label>
+        </div>
+
+
         <button name="submit" type="submit" class="btn btn-primary"></button>
     </form>
 </div>
