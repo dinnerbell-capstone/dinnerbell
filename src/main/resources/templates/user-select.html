@@ -1,10 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://wwww.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Select your restaurants</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<style>
+    body {
+        background: #fbf4cb;
+        font-family: 'Ubuntu', sans-serif;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    img {
+        width: 150px;
+    }
+
+    /*#card_1 {*/
+    /*    background: #fff3f3;*/
+    /*    position: absolute;*/
+    /*    top: 50%;*/
+    /*    left: 35%;*/
+    /*    transform: translate(-50%, -50%)*/
+    /*}*/
+
+    /*#card_2 {*/
+    /*    background: #fff3f3;*/
+    /*    position: absolute;*/
+
+    /*    top: 50%;*/
+    /*    left: 65%;*/
+    /*    transform: translate(-50%, -50%)*/
+    /*}*/
+
+    /*#card_3 {*/
+    /*    background: #fff3f3;*/
+    /*    position: absolute;*/
+
+    /*    !*top: 50%;*!*/
+    /*    !*left: 65%;*!*/
+    /*    !*transform: translate(-50%, -50%)*!*/
+    /*}*/
+
+    h6 {
+        font-family: 'Poppins', sans-serif;
+        top: -35px;
+        left: -10px;
+        box-sizing: border-box;
+        width: 70px;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+        background: black;
+        color: white;
+        font-size: x-large;
+        position: absolute;
+    }
+
+    div h5 {
+        color: white;
+        font-size: small;
+        float: right;
+        margin: 3px 14px 0px 0px;
+    }
+
+    /*.Buffet_rating {*/
+    /*    background: #2cc913;*/
+    /*    padding: 5px 10px;*/
+    /*    border: 1px solid #2cc913;*/
+    /*    border-radius: 7px;*/
+    /*}*/
+
+    .restaurant_rating {
+        background: #7a16d0;
+        padding: 5px 10px;
+        border: 1px solid #7a16d0;
+        border-radius: 7px;
+    }
+
+    section h1 {
+        font-size: large;
+        margin: 10px 0px 0px 12px;
+    }
+
+    section h2 {
+        font-size: small;
+        color: #a9a9a9;
+        margin: 2px 0px 0px 12px;
+    }
+
+    section h4 img {
+        width: 12px;
+        margin-right: 3px;
+    }
+
+    section h4 {
+        font-size: x-small;
+        color: #454545;
+        margin: 8px 0px 0px 12px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #454545;
+    }
+
+    section h3 {
+        font-size: medium;
+        text-align: center;
+        border-top: 1px solid #a9a9a9;
+        padding-top: 8px;
+    }
+</style>
+
+
 </head>
 <body>
+<!--<section class="mx-auto my-5" style="max-width: 23rem;">-->
+<div></div>
+<section id="card_1">
+    <h6>$$$</h6>
+    <img src="https://image.ibb.co/c8KhMG/Chinese_Restaurant.png" alt="Chinese Restaurant" border="0">
+    <div>
+        <h5 class="restaurant_rating">4.2</h5>
+        <h1>Buffet</h1>
+        <h2>Casual Dining</h2>
+        <h4><img src="https://image.ibb.co/kFvTvb/Location_Pin.png" alt="Location Pin">San Antonio, Texas</h4>
+        <h3><a href="#Add1"class="btn btn-primary">Add to spinner</a></h3>
+    </div>
+</section>
 
+<section id="card_2">
+    <h6>$$</h6>
+    <img src="https://image.ibb.co/n75dvb/Hotel_Restaurant.png" alt="Hotel Restaurant">
+    <div>
+        <h5 class="restaurant_rating">3.8</h5>
+        <h1>Italian</h1>
+        <h2>Casual Dining</h2>
+        <h4><img src="https://image.ibb.co/kFvTvb/Location_Pin.png" alt="Location Pin">San Antonio, Texas</h4>
+        <h3><a href="#Add2"class="btn btn-primary">Add to spinner</a></h3>
+    </div>
+</section>
+
+<section id="card_3">
+    <h6>$$</h6>
+    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" class="img-fluid" />
+    <div>
+        <h5 class="restaurant_rating">4.5</h5>
+        <h1>Steak House</h1>
+        <h2>Casual Dining</h2>
+        <h4><img src="https://image.ibb.co/kFvTvb/Location_Pin.png" alt="Location Pin">San Antonio, Texas</h4>
+        <h3><a href="#Add3" class="btn btn-primary">Add to spinner</a></h3>
+    </div>
+
+
+<!--</section>-->
+</section>
 </body>
 </html>
