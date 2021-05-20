@@ -6,23 +6,41 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <header class="container my-3">
-    <h1 class="my-5 text-center display-4">Home Page</h1>
+    <h1 class="my-5 text-center display-4">DinnerBell</h1>
 </header>
-
-
-<!--<button name="About Us" type="submit" class="btn btn-primary">About Us</button>-->
-<!--<a href="users/sign-up.html">-->
-<!--    <button>Sign Up</button>-->
-<!--</a>-->
-<!--<a href="business /business">-->
-<!--    <button>Restaurant Owners</button>-->
-<!--</a>-->
-
-<div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button">About Us</button>
-  <button class="btn btn-primary" type="button">Sign up</button>
-  <button class="btn btn-primary" type="button">Sign up</button>
+<div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
+    <a href="/login" class="d-block btn btn-outline-dark"><i class="fas fa-sign-in-alt"></i>Log In</a>
+    <a href="/sign-up" class="d-block btn btn-outline-dark"><i class="fas fa-user-plus"></i>  Sign up</a>
 </div>
+<img style="width:500px;display: block;margin-left: auto;margin-right: auto;" src="static/img/ElderEatsBanner.jpg">
+
+
+
+
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
 
 <th:block th:replace="partials/scripts :: scripts" />
 
