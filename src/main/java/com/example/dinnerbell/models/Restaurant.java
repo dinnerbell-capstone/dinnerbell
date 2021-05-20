@@ -5,15 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
+
 public class Restaurant {
-  public List<Category> getCategories() {
-    return categories;
-  }
-
-  public void setCategories(List<Category> categories) {
-    this.categories = categories;
-  }
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -55,6 +48,22 @@ public class Restaurant {
   private List<Category> categories;
 
   public Restaurant() {
+  }
+
+  public Restaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites, List<Category> categories) {
+    this.restaurant_name = restaurant_name;
+    this.phone_number = phone_number;
+    this.hours = hours;
+    this.description = description;
+    this.website_link = website_link;
+    this.menu_link = menu_link;
+    this.elder_eats_link = elder_eats_link;
+    this.street_address = street_address;
+    this.zip_code = zip_code;
+    this.state = state;
+    this.price = price;
+    this.favorites = favorites;
+    this.categories = categories;
   }
 
   public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
@@ -113,6 +122,14 @@ public class Restaurant {
 
   public String getRestaurant_name() {
     return restaurant_name;
+  }
+
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
   }
 
   public void setRestaurant_name(String restaurant_name) {

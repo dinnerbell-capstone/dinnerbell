@@ -45,18 +45,27 @@
         <label for="price">What is the price range?</label>
         <input id="price" name="price" type="text"/>
 
-       <div class="checkbox">
-            <label for="categories"></label>
-            <input id="categories"th:field="*{categories}" name="cat" type="text"/>
+<!--       <div class="checkbox">-->
+<!--         <label for="italian"> Italian </label>-->
+<!--         <input id="italian" th:field="*{categories}" type="checkbox" value="1">-->
+<!--         <label for="steakhouse">Steakhouse</label>-->
+<!--         <input id="steakhouse" type="checkbox" th:field="*{categories}" value="2">-->
+<!--         <label for="buffet">Buffet</label>-->
+<!--         <input id="buffet" type="checkbox" th:field="*{categories}" value="3">-->
+<!--         <label for="pizza">Pizza</label>-->
+<!--         <input id="pizza" type="checkbox" th:field="*{categories}" value="4">-->
+<!--        </div>-->
 
-            <label><input type="checkbox" value="Italian"> Italian </label>
-           <label><input type="checkbox" value="Steakhouse"> Steakhouse </label>
-           <label><input type="checkbox" value="Buffet"> Buffet </label>
-           <label><input type="checkbox" value="Pizza"> Pizza </label>
-        </div>
+      <div class="container">
+        <select class="form-select" multiple aria-label="multiple select example" name="categories" id="categories" th:object="${categories}">
+          <option value="" disabled="disabled" selected="selected">Cuisine type</option>
+
+          <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}" th:selected="${category.id}"></option>
+        </select>
+      </div>
 
 
-        <button name="submit" type="submit" class="btn btn-primary"></button>
+        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
