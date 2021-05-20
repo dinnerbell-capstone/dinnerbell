@@ -21,8 +21,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 <script>
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-restaurant&location=sanantonio";
-
+    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-restaurant&location=sanantonio&limit5";
+//https://cors-anywhere.herokuapp.com/corsdemo          <---------------- IF WEBPAGE DOES NOT POP UP GO TO THIS LINK AND ENABLE DEMO SERVER
     $.ajax({
         url: myurl,
         headers: {
@@ -51,7 +51,13 @@
                     var state = item.location.state;
                     var zipcode = item.location.zip_code;
                   // APPENDS RESULTS
-                    $('#results').append('<div id="' + id + '" style="margin-top:50px;margin-bottom:50px;"><img src="' + image + '" style="width:200px;height:150px;"><br>We found <b>' + name + '</b> (' + alias + ')<br>Business ID: ' + id + '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '<br>The phone number for this business is: ' + phone + '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>');
+                    $('#results').append('<div id="' + id + '" style="margin-top:50px;margin-bottom:50px;"><img src="' + image + '" style="width:200px;height:150px;"><br>' +
+                        'We found <b>' + name + '' +
+                        '</b> (' + alias + ')' +
+                        '<br>Business ID: ' + id + '' +
+                        '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '' +
+                        '<br>The phone number for this business is: ' + phone + '' +
+                        '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>');
                 });
             } else {
                 // IF NO RESULTS
