@@ -6,6 +6,13 @@ import java.util.List;
 @Entity
 @Table(name = "restaurants")
 public class Restaurant {
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
