@@ -14,7 +14,7 @@
     <br>
     <h2>Tell us about your restaurant...</h2><br>
 
-    <form th:action="@{restaurant/create}" th:method="post" th:object="${restaurant}">
+    <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
         <label for="restaurant_name">Name</label>
         <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text"/>
 

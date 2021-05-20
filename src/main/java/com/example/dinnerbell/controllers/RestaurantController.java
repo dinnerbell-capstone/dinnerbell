@@ -6,10 +6,7 @@ import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RestaurantController {
@@ -27,7 +24,7 @@ public class RestaurantController {
 
 
     @GetMapping("/restaurant/create")
-    public String showCreateForm(Model model) {
+    public String showCreateRestaurantForm(Model model) {
         model.addAttribute("restaurant", new Restaurant());
         return "business/create_account";
     }
@@ -35,11 +32,21 @@ public class RestaurantController {
     @PostMapping("/restaurant/create")
     public String createRestaurant(@ModelAttribute Restaurant restaurant){
         restaurantsdao.save(restaurant);
-        return "redirect:/profile";
+        return "redirect:/restaurant";
     }
-//
-//    @GetMapping("/restaurant")
-//    public String restaurantProfile(Model model) {
-//        return "business/restaurant-profile";
+
+
+
+//    @GetMapping("/restaurant/{id}")
+//    public String showRestaurant(@PathVariable long id, Model model) {
+//        model.addAttribute("restaurant", restaurantsdao.getOne(id));
+//        return "retaurant/details";
 //    }
+
+
+    @GetMapping("/restaurant")
+    public String restaurantProfile(Model model) {
+        return "business/restaurant-profile";
+    }
+
 }
