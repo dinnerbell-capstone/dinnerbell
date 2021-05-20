@@ -1,5 +1,6 @@
 package com.example.dinnerbell.controllers;
 
+import com.example.dinnerbell.models.Category;
 import com.example.dinnerbell.models.Restaurant;
 import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
@@ -7,6 +8,8 @@ import com.example.dinnerbell.repositories.UserRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class RestaurantController {
@@ -25,12 +28,15 @@ public class RestaurantController {
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
-        model.addAttribute("restaurant", new Restaurant());
+      model.addAttribute("restaurant", new Restaurant());
+      model.addAttribute("categories", categoriesdao.findAll());
         return "business/create_account";
     }
 
     @PostMapping("/restaurant/create")
-    public String createRestaurant(@ModelAttribute Restaurant restaurant){
+    public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
+      restaurant.setCategories(categories);
+      System.out.println();
         restaurantsdao.save(restaurant);
         return "redirect:/restaurant";
     }
