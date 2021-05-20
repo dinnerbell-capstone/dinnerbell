@@ -6,13 +6,13 @@ function setup()  {
     foodWheel = new wheel(400);
 
     foodWheel.addSegment("Pizza Place Place");
-    foodWheel.addSegment("Taco House");
+    foodWheel.addSegment("Taco Bell");
     foodWheel.addSegment("Waffle House");
     foodWheel.addSegment("Yum yum");
     foodWheel.addSegment("Lui's");
     foodWheel.addSegment("Acai Express");
     foodWheel.addSegment("Tropical Smoothie");
-    foodWheel.addSegment("Pizza Place");
+    foodWheel.addSegment("Hangry Hanks");
 
     textFont('Helvetica');
 }
