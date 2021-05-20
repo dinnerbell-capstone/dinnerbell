@@ -2,12 +2,12 @@ package com.example.dinnerbell.controllers;
 
 import com.example.dinnerbell.models.Restaurant;
 import com.example.dinnerbell.repositories.CategoryRepo;
-import com.example.dinnerbell.repositories.FavoriteRestaurantRepo;
-import com.example.dinnerbell.repositories.RestaurantCategoryRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,27 +27,19 @@ public class RestaurantController {
 
 
     @GetMapping("/restaurant/create")
-    public String showCreateForm() {
-        return "restaurant/create";
+    public String showCreateForm(Model model) {
+        model.addAttribute("restaurant", new Restaurant());
+        return "business/create_account";
     }
 
     @PostMapping("/restaurant/create")
-    public String create(
-            @RequestParam(name = "restaurant_name") String restaurant_name,
-            @RequestParam(name = "restaurant_description") String restaurant_description,
-            @RequestParam(name = "restaurant_hours") String restaurant_hours,
-            @RequestParam(name = "restaurant_street_address") String restaurant_street_address,
-            @RequestParam(name = "restaurant_state") String restaurant_state
-    ) {
-
-        Restaurant restaurant = new Restaurant();
-        restaurant.setRestaurant_name(restaurant_name);
-        restaurant.setDescription(restaurant_description);
-        restaurant.setHours(restaurant_hours);
-        restaurant.setStreet_address(restaurant_street_address);
-        restaurant.setState(restaurant_state);
-
-        return "redirect: /restaurant/login";
-
+    public String createRestaurant(@ModelAttribute Restaurant restaurant){
+        restaurantsdao.save(restaurant);
+        return "redirect:/profile";
     }
+//
+//    @GetMapping("/restaurant")
+//    public String restaurantProfile(Model model) {
+//        return "business/restaurant-profile";
+//    }
 }
