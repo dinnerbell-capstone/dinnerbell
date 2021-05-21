@@ -1,5 +1,6 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class Review {
     joinColumns = {@JoinColumn(name = "restaurant_review_id")},
     inverseJoinColumns = {@JoinColumn(name = "images_id")}
   )
+  @JsonManagedReference
   private List<Image> images;
 
   public Review() {

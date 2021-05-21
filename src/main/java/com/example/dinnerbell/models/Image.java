@@ -1,5 +1,7 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Image {
   private Restaurant restaurant;
 
   @ManyToMany(mappedBy = "images")
+  @JsonBackReference
   private List<Review> reviews;
 
   public Image() {
