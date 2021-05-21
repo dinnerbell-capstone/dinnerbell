@@ -32,7 +32,7 @@ $("#submit").on("click", function() {
     $.ajax({
         url: myurl,
         headers: {
-            // 'Authorization': 'Bearer TA-VoasuDX6VFC343Qx46wtx-KCwoUlhH3aOcZevcHB4ZwML7zw_wjpogFPwUy_-_Jpnq8O0_3MA7e0CWEiR3NKL-v_uUqsckvpXMwGzK68Q3u-Y8cJF3mfzyz-dYHYx',
+            'Authorization': YELP_TOKEN,
         },
         method: 'GET',
         dataType: 'json',
@@ -99,7 +99,7 @@ $("#submit").on("click", function() {
 
 
 // let yelpAPI = require('yelp-api');
-// const YELP_TOKEN = "TA-VoasuDX6VFC343Qx46wtx-KCwoUlhH3aOcZevcHB4ZwML7zw_wjpogFPwUy_-_Jpnq8O0_3MA7e0CWEiR3NKL-v_uUqsckvpXMwGzK68Q3u-Y8cJF3mfzyz-dYHYx";
+
 // // Create a new yelpAPI object with your API key
 // let apiKey = YELP_TOKEN;
 // let yelp = new yelpAPI(apiKey);
