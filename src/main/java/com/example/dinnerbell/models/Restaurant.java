@@ -1,5 +1,6 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -44,6 +45,7 @@ public class Restaurant {
   private String price;
 
   @ManyToMany(mappedBy = "restaurants")
+  @JsonBackReference
   private List<User> favorites;
 
   @ManyToMany(cascade = CascadeType.ALL)
