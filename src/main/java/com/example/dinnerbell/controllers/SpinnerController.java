@@ -21,7 +21,7 @@ public class SpinnerController {
 
 
 
-//    Questionable code to discuss...
+//    Questionable code to discuss... Not sure whether to use javascript or java to generate the result
 //    @GetMapping("/scratch")
 //    public String showRoll() {
 //        return "scratch";
