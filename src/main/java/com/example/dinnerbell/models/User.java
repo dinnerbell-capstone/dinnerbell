@@ -1,5 +1,7 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class User {
     joinColumns = {@JoinColumn(name = "user_id")},
     inverseJoinColumns = {@JoinColumn(name = "restaurant_id")}
   )
+  @JsonManagedReference
   private List<Restaurant> restaurants;
 
   @OneToOne
