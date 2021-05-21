@@ -1,5 +1,7 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,12 +16,8 @@ public class Category {
   @Column(nullable = false)
   private String name;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(
-    name = "categories_restaurants",
-    joinColumns = {@JoinColumn(name = "categories_id")},
-    inverseJoinColumns = {@JoinColumn(name = "restaurant_id")}
-  )
+  @ManyToMany(mappedBy = "categories")
+  @JsonBackReference
   private List<Restaurant> restaurants;
 
   public Category() {
