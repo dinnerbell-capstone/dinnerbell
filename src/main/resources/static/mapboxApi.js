@@ -2,7 +2,7 @@
 
 //---------------- MAPBOX ----------------------//>
 
-mapboxgl.accessToken = '<bd3ec46a553181ff8da235a51eb233fd>';
+mapboxgl.accessToken = MAPBOX_TOKEN;
 var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL

@@ -5,7 +5,7 @@ var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/busines
 $.ajax({
     url: myurl,
     headers: {
-        'Authorization':'Bearer TA-VoasuDX6VFC343Qx46wtx-KCwoUlhH3aOcZevcHB4ZwML7zw_wjpogFPwUy_-_Jpnq8O0_3MA7e0CWEiR3NKL-v_uUqsckvpXMwGzK68Q3u-Y8cJF3mfzyz-dYHYx',
+        'Authorization':'Bearer ' + YELP_TOKEN,
     },
     method: 'GET',
     dataType: 'json',
