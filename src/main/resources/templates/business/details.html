@@ -3,9 +3,9 @@
   <head th:replace="partials/header :: head('Restaruant Details')"></head>
   <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
+      <div th:text="${restaurants.restaurant_name}"></div>
 
 
-
-    <th:block th:replace="partials/script"></th:block>
+    <th:block th:replace="partials/scripts :: scripts"></th:block>
   </body>
 </html>
