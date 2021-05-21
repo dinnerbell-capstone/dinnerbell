@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SpinnerController {
 
     @GetMapping("/spinner")
-    public String spinnerpage() {
+    public String spinnerPage() {
         return "spinner";
+    }
+
+    @GetMapping("/spinner-results")
+    public String spinnerResult() {
+        return "user-select";
     }
 
 
