@@ -9,20 +9,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SpinnerController {
 
-    @GetMapping("/scratch")
-    public String showRoll() {
-        return "scratch";
+    @GetMapping("/spinner")
+    public String spinnerpage() {
+        return "spinner";
     }
 
-    @GetMapping("/scratch/{n}")
-    public String guess(@PathVariable int n, Model model) {
-        int randomNum = (int) (Math.random() * (7 - 1) + 1);
-        if (randomNum == 1) {
-            return "Taco Bell";
-        }
-        model.addAttribute("randomNum", "Congratulations! You will go eat at: " + randomNum + " tonight!");
-        model.addAttribute("randomRestaurant", "Your guess was: " + n);
 
-        return "/scratch";
-    }
+
+//    Questionable code to discuss...
+//    @GetMapping("/scratch")
+//    public String showRoll() {
+//        return "scratch";
+//    }
+//
+//    @GetMapping("/scratch/{n}")
+//    public String guess(@PathVariable int n, Model model) {
+//        int randomNum = (int) (Math.random() * (7 - 1) + 1);
+//        if (randomNum == 1) {
+//            return "Taco Bell";
+//        }
+//        model.addAttribute("randomNum", "Congratulations! You will go eat at: " + randomNum + " tonight!");
+//        model.addAttribute("randomRestaurant", "Your guess was: " + n);
+//
+//        return "/scratch";
+//    }
 }
