@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="mainbox" class="mainbox">
+    <div id="box" class="box">
+        <div class="box1">
+            <span class ="span1"><b>Taco Bell</b></span>
+            <span class ="span2"><b>Acai Express</b></span>
+            <span class ="span3"><b>Thai House</b></span>
+            <span class ="span4"><b>Pizza Mio</b></span>
+        </div>
+        <div class="box2">
+            <span class ="span1"><b>Yum Yum</b></span>
+            <span class ="span2"><b>Steak</b></span>
+            <span class ="span3"><b>Brazilian</b></span>
+            <span class ="span4"><b>Lui's</b></span>
+        </div>
+    </div>
+<!--    <button class="spin" onclick="myfunction()" >SPIN</button>-->
+</div>
+
+<h1>Spin the wheel</h1>
+
+<a href="/scratch/1">SPIN ME!</a>
+
+
+<h1 th:text="${randomNum}"></h1>
+
+</body>
+</html>
