@@ -52,7 +52,16 @@ public class RestaurantController {
 
     @GetMapping("/restaurant")
     public String restaurantProfile(Model model) {
-        return "business/restaurant-profile";
+      model.addAttribute("restaurants",restaurantsdao.findAll());
+      return "business/restaurant-profile";
     }
+
+
+
+  @GetMapping("/restaurant/details/{id}")
+  public String restaurants(@PathVariable long id, Model model){
+    model.addAttribute("restaurants", restaurantsdao.getOne(id));
+    return "business/details";
+  }
 
 }
