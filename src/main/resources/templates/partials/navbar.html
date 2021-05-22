@@ -1,64 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> <!-- xmlns:sec="http://www.thymeleaf.org/extras/spring-security added inside html tag for spring security-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <title>navbar</title>
 </head>
 <body>
 
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">DinnerBell</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">DinnerBell</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">profile</a>  <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in-->
+                  </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/restaurant/create">Create</a> <!-- attempt one of only seen by business owner account -->
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" href="/profile">profile</a>  <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in-->
+                  <a class="nav-link" href="#">Restaurants</a> <!-- for restaurant index page? -->
                 </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/restaurant/create">Create</a> <!-- for restaurant list page? -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Restaurants</a> <!-- for restaurant list page? -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/spinner-results">Generator</a> <!-- sec:authorize="isAuthenticated()" added inside anchor only view when logged in-->
-              </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                <li class="nav-item">
+                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/spinner-results">Generator</a> <!-- only view when logged in-->
                 </li>
-              <li class="nav-item">
-                <a  class="nav-link" href="/login">Login</a>  <!-- sec:authorize="!isAuthenticated()" you see when you are not logged in -->
-              </li>
-<!--              <div sec:authorize="isAuthenticated()">--> <!-- for when we implement spring security. won't work now  -->
-<!--                <form th:action="@{/logout}" th:method="post">-->
-<!--                  <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--                </form>-->
-<!--              </div>-->
-            </ul>
-            <form class="d-flex"> <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in? -->
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </li>
+                <li class="nav-item">
+                  <a  sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>  <!--  you see when you are not logged in -->
+                </li>
+                <div sec:authorize="isAuthenticated()">  for when we implement spring security. won't work now
+                  <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                  </form>
+                </div>
+              </ul>
+              <form class="d-flex"> <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in? -->
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+          </div>
+      </div>
+  </nav>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
