@@ -25,10 +25,10 @@
 <!--                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/restaurant/create">Submit your Restaurant</a> &lt;!&ndash; attempt one of only seen by business owner account &ndash;&gt;-->
 <!--                </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Restaurants</a> <!-- for restaurant index page? -->
+                  <a class="nav-link" href="/spinner-results">Restaurants</a> <!-- for restaurant index page? -->
                 </li>
                 <li class="nav-item">
-                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/spinner-results">Spin the Wheel</a> <!-- only view when logged in-->
+                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/spinner">Spin the Wheel</a> <!-- only view when logged in-->
                 </li>
 
 <!--                  DropDown Menu Selection-->
@@ -39,6 +39,8 @@
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li><a sec:authorize="isAuthenticated()" class="nav-link" href="#">Submit a Restaurant</a></li>
+<!--                          <li><a sec: authorize="isAclass="nav-link" href="/restaurant">Restaurants</a>-->
+                          <li><a class="dropdown-item" href="/restaurant">Restaurant Dashboard</a></li>
                           <li><a class="dropdown-item" href="/restaurant/create">Submit your Restaurant </a></li>
                           <li>
                               <hr class="dropdown-divider">
