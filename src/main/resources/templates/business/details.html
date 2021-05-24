@@ -3,9 +3,17 @@
   <head th:replace="partials/header :: head('Restaruant Details')"></head>
   <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
-      <div th:text="${restaurants.restaurant_name}"></div>
 
+      <form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">
+          <h1 th:text="${restaurants.restaurant_name}"></h1>
+          <h3 th:text="${restaurants.description}"></h3>
+          <div th:if="${restaurants.favorites.isEmpty()}">
+          <button type="submit" class="btn btn-info">Add to Favorites</button>
+          </div>
+        <div th:unless="${restaurants.favorites.isEmpty()}">
+            <button id="favoriteBtn" type="submit" class="btn btn-secondary" disabled>Saved to Favorites</button>
+        </div>
 
-    <th:block th:replace="partials/scripts :: scripts"></th:block>
+      </form>
   </body>
 </html>
