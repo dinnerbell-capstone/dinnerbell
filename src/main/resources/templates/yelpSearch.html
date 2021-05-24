@@ -4,22 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="../static/css/mapbox.css">-->
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
+    <!-- GOOGLE MAPS SCRIPTS -->
+<!--    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
+<!--    <script src="../static/js/googleMaps.js"></script>-->
+<!--    <link rel="stylesheet" type="text/css" href="../static/css/googleMaps.css" />-->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- MAPBOX SCRIPTS -->
+<!--    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">-->
+<!--    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>-->
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="../static/css/weather_map.css">-->
 
 
     <title>Yelp API pull and Search Functionality</title>
 </head>
 <body>
 
+
 <input type="text" name="name" id="searchbox" onkeydown="getTerm(this.value);">
 <input type="button" id="submit" value="search"><input type="button" id="clearButton" value="clear">
+<!--<input-->
+<!--        id="pac-input"-->
+<!--        class="controls"-->
+<!--        type="text"-->
+<!--        placeholder="Search Box"-->
+<!--/>-->
+
+
+<!-- MAPBOX SEARCH -->
+<div class="mx-sm-3 mb-2">
+    <label for="input-place" class="sr-only">Submit</label>
+    <input type="text" class="form-control" id="input-place">
+</div>
+<!--<button type="submit" id="submit" class="btn-dark btn-outline-light my-2 my-sm-0">Search</button>-->
+<!--</div>-->
+
+
+
 
 <select class="form-select form-select-sm w-25 p-3" id="numberOfResults" aria-label=".form-select-sm example">
     <option selected value="1"> # of results, 1</option>
@@ -27,6 +59,123 @@
     <option value="10">10</option>
     <option value="20">20</option>
 </select>
+
+
+
+<div class="wrapper">
+    <h2 class="text-center">CATEGORIES</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+<!------------ INDICATORS  ----------->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+
+
+<!------------ CATEGORY SLIDES ----------->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="american">
+                        <p class="text-center text-white">RANDOM</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="burger">
+                        <p class="text-center text-white">Burgers</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="chinese">
+                        <p class="text-center text-white">Chinese</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="indian">
+                        <p class="text-center text-white">Indian</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="vegitarian">
+                        <p class="text-center text-white">Vegitarian</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="steak">
+                        <p class="text-center text-white">Steak</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="fish">
+                        <p class="text-center text-white">Fish</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="salad">
+                        <p class="text-center text-white">Salad</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="breakfast">
+                        <p class="text-center text-white">Breakfast</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="wraps">
+                        <p class="text-center text-white">Wraps</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="bbq">
+                        <p class="text-center text-white">BBQ</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="healthy food">
+                        <p class="text-center text-white">Healthy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="deserts">
+                        <p class="text-center text-white">Deserts</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="ice cream">
+                        <p class="text-center text-white">Ice Cream</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="doughnuts">
+                        <p class="text-center text-white">Doughnuts</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="food-image" src="" class="rounded" alt="vegan">
+                        <p class="text-center text-white">Vegan</p>
+                    </div>
+                </div>
+            </div>
+
+
+<!------------ LEFT AND RIGHT CONTROLS  ----------->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
 
 <!------------ API DATA APPENDED  ----------->
 
@@ -50,7 +199,7 @@
             <div class="modal-body">
 
             <!--------------- MODAL MAP -------->
-                <div id='map' style='width: 100px; height: 100px;'></div>
+
 
             </div>
             <div class="modal-footer">
@@ -61,17 +210,40 @@
     </div>
 </div>
 
+<!---------------- MAP ----------------------->
+
+
+<!--<div id="map"></div>-->
+
+<!--&lt;!&ndash; Async script executes immediately and must be after any DOM elements used in callback. &ndash;&gt;-->
+<!--<script-->
+<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqN0XHbXfA9LviSq2L1XhqZivdBGYJ6xU&callback=initAutocomplete&libraries=places&v=weekly"-->
+<!--        async-->
+<!--&gt;</script>-->
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+<div id="map"></div>
+
+<div id="geocoder" class="geocoder"></div>
 
 
 <script src="../static/js/keys.js"></script>
+<!--<script src="../static/js/weather_map.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<!--<script src="yelpSearch.js"></script>-->
+<!--<script src="../static/js/mapboxApi.js"></script>-->
 <script src="../static/js/yelpPull.js"></script>
-<!--<script src="../static/mapboxApi.js/mapboxApi.js"></script>-->
+
 
 
 

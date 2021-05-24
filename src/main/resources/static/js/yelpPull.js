@@ -12,9 +12,10 @@ function getTerm(term) {
 
 
 $("#submit").on("click", function() {
-
+    // event.preventDefault();
     searchterms = $("#searchbox").val();
     console.log(searchterms);
+    // $(submit).val("");
 
     var numberOfResults = parseInt($("#numberOfResults").val());
     console.log(numberOfResults);
@@ -26,13 +27,13 @@ $("#submit").on("click", function() {
 
     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    //https://cors-anywhere.herokuapp.com/corsdemo
+    // https://cors-anywhere.herokuapp.com/corsdemo
 
 
     $.ajax({
         url: myurl,
         headers: {
-            'Authorization':'Bearer nAJMSkonF3S3hyYd3Y8e2JKz0MTfEbG5n9196L1SSqel5Pyxf0WXLdwy05EYRvRf8OLQauK7AdQuPy7N8EpqZUJugTU3Cp-Kw5RVnZ3B5m-SjBf8C9W7zHPl8geoYHYx'
+            'Authorization':'Bearer ' + YELP_TOKEN
         },
         method: 'GET',
         dataType: 'json',
