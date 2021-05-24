@@ -7,6 +7,8 @@
 <body>
 
 <div class="container">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+
     <br><h2>Sign Up</h2><br>
     <form th:action="@{/sign-up}" th:method="POST" th:object="${user}">
         <div class="form-group">

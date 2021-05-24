@@ -3,6 +3,7 @@
       lang="en">
 <head th:replace="partials/header :: head('login in')"></head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 <h1>Log In</h1>
 <div th:if="${param.error}">
@@ -15,9 +16,12 @@
 <form th:action="@{/login}" th:method="post">
   <label for="username">Username</label>
   <input id="username" name="username" type="text" />
+  <br>
 
   <label for="password">Password</label>
   <input id="password" name="password" type="password" />
+  <br>
+
   <input type="submit" value="Submit" />
 </form>
 

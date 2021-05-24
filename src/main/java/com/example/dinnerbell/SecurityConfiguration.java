@@ -46,9 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
           .permitAll()
         .and()
           .authorizeRequests()
-          .antMatchers("/spinner",
-            "/restaurant/create",
-            "/spinner-results"
+          .antMatchers(
+            "/restaurant/create"
           )
         .authenticated();
 
