@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "yelp-api": "^1.0.3",
+    "yelp-fusion": "^3.0.0"
+  }
+}

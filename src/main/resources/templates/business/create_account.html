@@ -7,43 +7,99 @@
 
 
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 <h1>Tell us about your restaurant...</h1>
 
 <div class="container">
     <br>
-    <h2>Tell us about your restaurant...</h2><br>
 
     <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
         <label for="restaurant_name">Name</label>
         <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text"/>
+        <br>
 
         <label for="street_address">Address</label>
         <input id="street_address" th:field="*{street_address}" name="street_address" type="text"/>
+        <br>
 
         <label for="state">State</label>
         <input id="state" th:field="*{state}" name="state" type="text"/>
+        <br>
 
         <label for="zip_code">Zipcode</label>
         <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text"/>
+        <br>
 
         <label for="phone_number">Phone Number</label>
         <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text"/>
+        <br>
 
         <label for="website_link">Link to Website</label>
         <input id="website_link" th:field="*{website_link}" name="website_link" type="text"/>
+        <br>
 
         <label for="menu_link">Link to Menu</label>
         <input id="menu_link" th:field="*{menu_link}" name="menu_link" type="text"/>
+        <br>
 
         <label for="hours">Hours of Operation</label>
         <input id="hours" th:field="*{hours}" name="hours" type="text"/>
+        <br>
 
         <label for="description">Please write a brief description about your cuisine</label>
         <input id="description" name="description" type="text"/>
+        <br>
 
         <label for="price">What is the price range?</label>
         <input id="price" name="price" type="text"/>
+
+        <h1>Custom Checkboxes</h1>
+        <label class="container">One
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Two
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Three
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Four
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <!-- Surround the select box within a "custom-select" DIV element.
+Remember to set the width: -->
+        <div class="custom-select" style="width:200px;">
+            <select>
+                <option value="0">Price Range:</option>
+                <option value="1">$</option>
+                <option value="2">$$</option>
+                <option value="3">$$$</option>
+                <option value="3">$$$$</option>
+            </select>
+        </div>
+        <br>
+        <h1>Custom Radio Buttons</h1>
+        <label class="container">One
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Two
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Three
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Four
+            <input type="radio" name="radio">
+            <span class="checkmark"></span>
+        </label>
 
 <!--       <div class="checkbox">-->
 <!--         <label for="italian"> Italian </label>-->
