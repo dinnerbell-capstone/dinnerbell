@@ -21,7 +21,7 @@ public class SpinnerController {
 
 
 
-//    Questionable code to discuss...
+//    Questionable code to discuss... Not sure whether to use javascript or java to generate the result
 //    @GetMapping("/scratch")
 //    public String showRoll() {
 //        return "scratch";
@@ -30,12 +30,14 @@ public class SpinnerController {
 //    @GetMapping("/scratch/{n}")
 //    public String guess(@PathVariable int n, Model model) {
 //        int randomNum = (int) (Math.random() * (7 - 1) + 1);
-//        if (randomNum == 1) {
-//            return "Taco Bell";
-//        }
 //        model.addAttribute("randomNum", "Congratulations! You will go eat at: " + randomNum + " tonight!");
 //        model.addAttribute("randomRestaurant", "Your guess was: " + n);
 //
 //        return "/scratch";
 //    }
+
+
+    //        if (randomNum == 1) {
+//            return "Taco Bell";
+//        }
 }
