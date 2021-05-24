@@ -2,14 +2,17 @@ package com.example.dinnerbell.controllers;
 
 import com.example.dinnerbell.models.Category;
 import com.example.dinnerbell.models.Restaurant;
+import com.example.dinnerbell.models.User;
 import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @Controller
 public class RestaurantController {
@@ -60,8 +63,33 @@ public class RestaurantController {
 
   @GetMapping("/restaurant/details/{id}")
   public String restaurants(@PathVariable long id, Model model){
-    model.addAttribute("restaurants", restaurantsdao.getOne(id));
+    Restaurant restaurant = restaurantsdao.getOne(id);
+      model.addAttribute("restaurants", restaurant);
+
     return "business/details";
   }
 
+  @PostMapping("/restaurant/details/{id}")
+  public String favoriteForm(@PathVariable("id") long id){
+      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      Restaurant restaurant = restaurantsdao.getOne(id);
+      List<User> favorites = restaurant.getFavorites();
+      if (favorites.isEmpty()){
+        favorites.add(user);
+        restaurant.setFavorites(favorites);
+        restaurantsdao.save(restaurant);
+      }
+
+      return "redirect:/restaurant/details/{id}";
+  }
+
+//  @PostMapping("/restaurant/details/{id}")
+//  public String removeFromFavorites(@RequestParam("id") long restIdToRemove){
+//    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//      Restaurant restaurant = restaurantsdao.getOne(restIdToRemove);
+//      List<User> favorites = restaurant.getFavorites();
+//      favorites.remove(user);
+//      restaurantsdao.save(restaurant);
+//      return "redirect:/restaurant/details/{id}";
+//  }
 }
