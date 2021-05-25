@@ -33,9 +33,10 @@ var requestObj= {
     'data': {term: 'restaurants', location: '78247', limit: 50, offset: offsetRandomNumber},
     headers: {
         'Authorization':'Bearer ' + YELP_TOKEN,
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+        // 'Cache-Control': 'no-cache, no-store, must-revalidate',
+        // 'Pragma': 'no-cache',
+        // 'Expires': '0'
+
     },
 
 
@@ -45,11 +46,10 @@ var requestObj= {
 }
 
 
-$("button").click(function(e) {
-    e.preventDefault();
-    // var randomRestaurantName = ""
-
+$("button").click(function() {
+    location.reload();
     $('#results').empty()
+});
 
 $.ajax(requestObj)
     .done(function(data) {
@@ -62,13 +62,13 @@ $.ajax(requestObj)
 
         $('#results').append(data.businesses[arrayRandomNumber].name + "");
 
+
         // console.log(offsetRandomNumber)
         // console.log(arrayRandomNumber)
-        // var aliasB = data.businesses.alias;
-        // $('#results').append('<br>Business ID: ' + id + '');
+
         //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
     })
 
-});
+
 
 

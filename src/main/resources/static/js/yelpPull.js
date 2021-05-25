@@ -71,7 +71,7 @@ $("#submit").on("click", function() {
 
                         // REDIRECT TO VIEW MORE DETAILS OF RESTAURANT PAGE
 
-                        '<a href="restaurant info page"><input type="button" value="Visit More Details" /></a>');
+                        '<a href="http://www.google.com/"><input type="button" value="Visit More Details" /></a>');
 
 
                 });
