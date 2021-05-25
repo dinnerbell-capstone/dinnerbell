@@ -64,18 +64,22 @@ public class RestaurantController {
   @GetMapping("/restaurant/details/{id}")
   public String restaurants(@PathVariable long id, Model model){
     Restaurant restaurant = restaurantsdao.getOne(id);
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       model.addAttribute("restaurants", restaurant);
+      model.addAttribute("user",usersdao.getOne(user.getId()));
 
     return "business/details";
   }
 
   @PostMapping("/restaurant/details/{id}")
-  public String favoriteForm(@PathVariable("id") long id){
+  public String favoriteForm(@PathVariable("id") long id, Model model){
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      User user1 = usersdao.getOne(user.getId());
       Restaurant restaurant = restaurantsdao.getOne(id);
       List<User> favorites = restaurant.getFavorites();
-      if (favorites.isEmpty()){
-        favorites.add(user);
+      model.addAttribute("currentUserHasntFavorited", !favorites.contains(user1));
+      if (!favorites.contains(user1)){
+        favorites.add(user1);
         restaurant.setFavorites(favorites);
         restaurantsdao.save(restaurant);
       }
