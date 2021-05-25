@@ -79,6 +79,10 @@ public class RestaurantController {
         restaurant.setFavorites(favorites);
         restaurantsdao.save(restaurant);
       }
+      else{
+        restaurant.setFavorites(null);
+        restaurantsdao.save(restaurant);
+      }
 
       return "redirect:/restaurant/details/{id}";
   }
