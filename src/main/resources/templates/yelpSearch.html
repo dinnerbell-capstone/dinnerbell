@@ -4,28 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="../static/css/mapbox.css">-->
-
-
-    <!-- GOOGLE MAPS SCRIPTS -->
-<!--    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
-<!--    <script src="../static/js/googleMaps.js"></script>-->
-<!--    <link rel="stylesheet" type="text/css" href="../static/css/googleMaps.css" />-->
-
-    <!-- MAPBOX SCRIPTS -->
-<!--    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">-->
-<!--    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>-->
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet'/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="../static/css/weather_map.css">-->
-
 
     <title>Yelp API pull and Search Functionality</title>
 </head>
@@ -34,23 +19,6 @@
 
 <input type="text" name="name" id="searchbox" onkeydown="getTerm(this.value);">
 <input type="button" id="submit" value="search"><input type="button" id="clearButton" value="clear">
-<!--<input-->
-<!--        id="pac-input"-->
-<!--        class="controls"-->
-<!--        type="text"-->
-<!--        placeholder="Search Box"-->
-<!--/>-->
-
-
-<!-- MAPBOX SEARCH -->
-<div class="mx-sm-3 mb-2">
-    <label for="input-place" class="sr-only">Submit</label>
-    <input type="text" class="form-control" id="input-place">
-</div>
-<!--<button type="submit" id="submit" class="btn-dark btn-outline-light my-2 my-sm-0">Search</button>-->
-<!--</div>-->
-
-
 
 
 <select class="form-select form-select-sm w-25 p-3" id="numberOfResults" aria-label=".form-select-sm example">
@@ -59,8 +27,6 @@
     <option value="10">10</option>
     <option value="20">20</option>
 </select>
-
-
 
 <div class="wrapper">
     <h2 class="text-center">CATEGORIES</h2>
@@ -188,60 +154,19 @@
     </div>
 </div>
 
-<!------------ MODAL  ----------->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Additional Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            <!--------------- MODAL MAP -------->
 
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!---------------- MAP ----------------------->
 
 
-<!--<div id="map"></div>-->
-
-<!--&lt;!&ndash; Async script executes immediately and must be after any DOM elements used in callback. &ndash;&gt;-->
-<!--<script-->
-<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqN0XHbXfA9LviSq2L1XhqZivdBGYJ6xU&callback=initAutocomplete&libraries=places&v=weekly"-->
-<!--        async-->
-<!--&gt;</script>-->
-
-
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
-<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-
-<div id="map"></div>
-
-<div id="geocoder" class="geocoder"></div>
 
 
 <script src="../static/js/keys.js"></script>
-<!--<script src="../static/js/weather_map.js"></script>-->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"-->
-<!--        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"-->
-<!--        crossorigin="anonymous"></script>-->
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<!--<script src="../static/js/mapboxApi.js"></script>-->
+
 <script src="../static/js/yelpPull.js"></script>
 
 
