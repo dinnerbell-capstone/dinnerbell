@@ -39,18 +39,9 @@ public class RestaurantController {
     @PostMapping("/restaurant/create")
     public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
       restaurant.setCategories(categories);
-      System.out.println();
         restaurantsdao.save(restaurant);
         return "redirect:/restaurant";
     }
-
-
-
-//    @GetMapping("/restaurant/{id}")
-//    public String showRestaurant(@PathVariable long id, Model model) {
-//        model.addAttribute("restaurant", restaurantsdao.getOne(id));
-//        return "retaurant/details";
-//    }
 
 
     @GetMapping("/restaurant")
@@ -65,21 +56,20 @@ public class RestaurantController {
   public String restaurants(@PathVariable long id, Model model){
     Restaurant restaurant = restaurantsdao.getOne(id);
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User currentUser = usersdao.getOne(user.getId());
       model.addAttribute("restaurants", restaurant);
-      model.addAttribute("user",usersdao.getOne(user.getId()));
-
+      model.addAttribute("user",currentUser);
     return "business/details";
   }
 
   @PostMapping("/restaurant/details/{id}")
-  public String favoriteForm(@PathVariable("id") long id, Model model){
+  public String addToFavorites(@PathVariable("id") long id){
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      User user1 = usersdao.getOne(user.getId());
+      User currentUser = usersdao.getOne(user.getId());
       Restaurant restaurant = restaurantsdao.getOne(id);
       List<User> favorites = restaurant.getFavorites();
-      model.addAttribute("currentUserHasntFavorited", !favorites.contains(user1));
-      if (!favorites.contains(user1)){
-        favorites.add(user1);
+      if (!favorites.contains(currentUser)){
+        favorites.add(currentUser);
         restaurant.setFavorites(favorites);
         restaurantsdao.save(restaurant);
       }
@@ -87,17 +77,7 @@ public class RestaurantController {
         restaurant.setFavorites(null);
         restaurantsdao.save(restaurant);
       }
-
       return "redirect:/restaurant/details/{id}";
   }
 
-//  @PostMapping("/restaurant/details/{id}")
-//  public String removeFromFavorites(@RequestParam("id") long restIdToRemove){
-//    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//      Restaurant restaurant = restaurantsdao.getOne(restIdToRemove);
-//      List<User> favorites = restaurant.getFavorites();
-//      favorites.remove(user);
-//      restaurantsdao.save(restaurant);
-//      return "redirect:/restaurant/details/{id}";
-//  }
 }
