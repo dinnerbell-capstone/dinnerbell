@@ -7,6 +7,17 @@ function clientCallback() {
     console.log('IT WORKS')
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+$.ajaxSetup({ cache: false });
+
+var offsetRandomNumber = getRandomInt(0, 20)
+var arrayRandomNumber = getRandomInt(0,50)
 
 //<!---- TERM: TYPE OF BUSINESS BEING SEARCHED
 
@@ -19,18 +30,45 @@ function clientCallback() {
 
 var requestObj= {
     'url': cors_url + '/' + yelp_search_url,
-    'data': {term: 'restaurants', location: '78247', limit: 5},
+    'data': {term: 'restaurants', location: '78247', limit: 50, offset: offsetRandomNumber},
     headers: {
-        'Authorization':'Bearer ' + YELP_TOKEN},
+        'Authorization':'Bearer ' + YELP_TOKEN,
+        // 'Cache-Control': 'no-cache, no-store, must-revalidate',
+        // 'Pragma': 'no-cache',
+        // 'Expires': '0'
+
+    },
+
 
     error: function(jqXHR, textStatus, errorThrown) {
         console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ', textStatus, ', errorThrown =', errorthrown)
     }
 }
 
+
+$("button").click(function() {
+    location.reload();
+    $('#results').empty()
+});
+
 $.ajax(requestObj)
     .done(function(data) {
+
         console.log('typeof data = ' + typeof data)
         console.log('data = ', data)
-        console.log(data.businesses[0])   //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
+
+         // randomRestaurantName = data.businesses[arrayRandomNumber].name
+        console.log(data.businesses[arrayRandomNumber].name);
+
+        $('#results').append(data.businesses[arrayRandomNumber].name + "");
+
+
+        // console.log(offsetRandomNumber)
+        // console.log(arrayRandomNumber)
+
+        //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
     })
+
+
+
+
