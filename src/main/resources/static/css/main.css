@@ -5,9 +5,17 @@
 /*    background-color: #7fb8b8;*/
 /*}*/
 
-/*body {*/
-/*    margin: 0;*/
-/*    display: flex;*/
+body{
+    color:black;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+body > .container {
+    padding: 10px 0 0 0;
+}
+
 
 /*    !* This centers our sketch horizontally. *!*/
 /*    justify-content: center;*/
