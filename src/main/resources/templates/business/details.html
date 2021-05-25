@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: head('Restaruant Details')"></head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
       <form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">
@@ -21,7 +21,7 @@
           <button type="submit" class="btn btn-info">Add to Favorites</button>
           </div>
         <div th:unless="${restaurants.favorites.isEmpty()}">
-            <button id="favoriteBtn" type="submit" class="btn btn-secondary" disabled>Saved to Favorites</button>
+            <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
         </div>
 
 
