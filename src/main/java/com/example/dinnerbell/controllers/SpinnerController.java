@@ -8,12 +8,12 @@ public class SpinnerController {
 
     @GetMapping("/spinner")
     public String spinnerPage() {
-        return "spinner";
+        return "app/spinner";
     }
 
     @GetMapping("/spinner-results")
     public String spinnerResult() {
-        return "user-select";
+        return "app/user-select";
     }
 
 
