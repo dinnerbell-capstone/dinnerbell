@@ -44,8 +44,13 @@ public class Restaurant {
   @Column(length = 5)
   private String price;
 
-  @ManyToMany(mappedBy = "restaurants")
-  @JsonBackReference
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+    name = "favorite_restaurants",
+    joinColumns = {@JoinColumn(name = "restaurant_id")},
+    inverseJoinColumns = {@JoinColumn(name = "user_id")}
+  )
+  @JsonManagedReference
   private List<User> favorites;
 
   @ManyToMany(cascade = CascadeType.ALL)
