@@ -9,9 +9,13 @@
 </head>
 <body>
 
-<!--<header th:fragment="header(content)" class="container my-3">-->
-<!--    <h1 class="my-5 text-center display-4" th:text="${content}"></h1>-->
-<!--</header>-->
+<nav th:replace="partials/navbar :: navbar"></nav>
 
+<div class="mb-3">
+    <label for="formFile" class="form-label">Default file input example</label>
+    <input class="form-control" type="file" id="formFile">
+</div>
+
+<footer th:
 </body>
 </html>

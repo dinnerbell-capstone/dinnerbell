@@ -8,7 +8,7 @@
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #9a1b2e">
       <div class="container-fluid">
-          <a class="navbar-brand" href="#">DinnerBell</a>
+          <a class="navbar-brand" href="/home">DinnerBell</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -16,32 +16,36 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="/">Home</a>
+<!--                      <a class="nav-link active" aria-current="page" href="/home">Home</a>-->
                   </li>
                   <li class="nav-item">
-                      <a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">profile</a>  <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in-->
+                      <a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">Profile</a>  <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in-->
                   </li>
+<!--                <li class="nav-item">-->
+<!--                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/restaurant/create">Submit your Restaurant</a> &lt;!&ndash; attempt one of only seen by business owner account &ndash;&gt;-->
+<!--                </li>-->
                 <li class="nav-item">
-                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/restaurant/create">Create</a> <!-- attempt one of only seen by business owner account -->
+                  <a class="nav-link" href="/spinner-results">Restaurants</a> <!-- for restaurant index page? -->
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Restaurants</a> <!-- for restaurant index page? -->
+                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/spinner">Spin the Wheel</a> <!-- only view when logged in-->
                 </li>
-                <li class="nav-item">
-                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/spinner-results">Generator</a> <!-- only view when logged in-->
-                </li>
+
+<!--                  DropDown Menu Selection-->
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown
+                          Owner Menu
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a sec:authorize="isAuthenticated()" class="nav-link" href="#">Submit a Restaurant</a></li>
+<!--                          <li><a sec: authorize="isAclass="nav-link" href="/restaurant">Restaurants</a>-->
+                          <li><a class="dropdown-item" href="/restaurant">Restaurant Dashboard</a></li>
+                          <li><a class="dropdown-item" href="/restaurant/create">Submit your Restaurant </a></li>
                           <li>
                               <hr class="dropdown-divider">
                           </li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          <li><a class="dropdown-item" href="#"></a></li>
                       </ul>
                   </li>
                 <li class="nav-item">
