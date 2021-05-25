@@ -51,7 +51,7 @@
                 <li class="nav-item">
                   <a  sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>  <!--  you see when you are not logged in -->
                 </li>
-                <div sec:authorize="isAuthenticated()">  for when we implement spring security. won't work now
+                <div sec:authorize="isAuthenticated()">
                   <form th:action="@{/logout}" th:method="post">
                     <button class="btn-link btn" style="margin-top: 8px">Logout</button>
                   </form>

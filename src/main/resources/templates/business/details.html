@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="partials/header :: head('Restaruant Details')"></head>
-  <body>
-    <nav th:replace="partials/navbar :: navbar"></nav>
+<head th:replace="partials/header :: head('Restaruant Details')"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
       <form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">
+
           <h1 th:text="${restaurants.restaurant_name}"></h1>
           <h3 th:text="${restaurants.description}"></h3>
+          <h3 th:text="${restaurants.hours}"></h3>
+          <h3 th:text="${restaurants.phone_number}"></h3>
+          <h3 th:text="${restaurants.street_address}"></h3>
+          <h3 th:text="${restaurants.state}"></h3>
+          <h3 th:text="${restaurants.zip_code}"></h3>
+          <h3 th:text="${restaurants.menu_link}"></h3>
+          <h3 th:text="${restaurants.elder_eats_link}"></h3>
+          <h3 th:text="${restaurants.website_link}"></h3>
+
           <div th:if="${restaurants.favorites.isEmpty()}">
           <button type="submit" class="btn btn-info">Add to Favorites</button>
           </div>
         <div th:unless="${restaurants.favorites.isEmpty()}">
-            <button id="favoriteBtn" type="submit" class="btn btn-secondary" disabled>Saved to Favorites</button>
+            <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
         </div>
 
-      </form>
-  </body>
+
+<!--<div class="container">-->
+
+
+
+<!--    <h1>Restaurant Name</h1>-->
+<!--    <p>about restaurant</p>-->
+
+
+
+
+
+
+<!--</div>-->
+
+
+
+
+</form>
+</body>
 </html>
