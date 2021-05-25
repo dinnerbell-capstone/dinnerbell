@@ -69,9 +69,9 @@ $("#submit").on("click", function() {
                         '<br>The phone number for this business is: ' + phone + '' +
                         '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>' +
 
-                        // LAUNCH MODAL WITH MAP AND ADDITIONAL DATA
+                        // REDIRECT TO VIEW MORE DETAILS OF RESTAURANT PAGE
 
-                        '<button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop"> View More Details </button>');
+                        '<a href="restaurant info page"><input type="button" value="Visit More Details" /></a>');
 
 
                 });
