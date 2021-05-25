@@ -1,22 +1,19 @@
 package com.example.dinnerbell.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SpinnerController {
 
     @GetMapping("/spinner")
     public String spinnerPage() {
-        return "spinner";
+        return "app/spinner";
     }
 
     @GetMapping("/spinner-results")
     public String spinnerResult() {
-        return "user-select";
+        return "app/user-select";
     }
 
 

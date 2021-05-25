@@ -19,22 +19,27 @@
             align-content: center;
             height: 100vh;
             overflow: hidden;
-            background: #fff6c4;
+            background: #ffde68;
             background-size: cover;
 
+        }
+
+        .wrapper-grid{
+            padding-top: 80px;
         }
 
         .mainbox{
             position: relative;
             width: 500px;
             height: 500px;
+            /*background: url('static/img/img_83238.png') no-repeat;*/
         }
         .mainbox:after{
             position: absolute;
             content: '';
             width: 32px;
             height: 32px;
-            background: url('static/img/img_83238.png') no-repeat;
+            background: url('../../static/img/img_83238.png') no-repeat;
             background-size: 32px;
             right: -30px;
             top: 50%;
@@ -44,7 +49,7 @@
             height: 100%;
             position: relative;
             border-radius: 50% ;
-            border: 10px solid #fff;
+            border: 10px dotted #717171;
             overflow: hidden;
             transition: all ease 5s;
         }
@@ -107,7 +112,7 @@
             width: 75px;
             height: 75px;
             border-radius: 50%;
-            border: 4px solid #fff;
+            border: 4px dotted #717171;
             background-color: teal;
             color: #fff;
             box-shadow: 0 5px 20px #000;
@@ -132,24 +137,32 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div id="mainbox" class="mainbox">
-    <div id="box" class="box">
-        <div class="box1">
-            <span class ="span1"><b>Taco Bell</b></span>
-            <span class ="span2"><b>Acai Express</b></span>
-            <span class ="span3"><b>Thai House</b></span>
-            <span class ="span4"><b>Pizza Mio</b></span>
+<div class="wrapper-grid">
+
+        <div id="mainbox" class="mainbox">
+            <div id="box" class="box">
+                <div class="box1">
+                    <span class ="span1"><b>Taco Bell</b></span>
+                    <span class ="span2"><b>Acai Express</b></span>
+                    <span class ="span3"><b>Thai House</b></span>
+                    <span class ="span4"><b>Pizza Mio</b></span>
+                </div>
+                <div class="box2">
+                    <span class ="span1"><b>Yum Yum</b></span>
+                    <span class ="span2"><b>Steak</b></span>
+                    <span class ="span3"><b>Brazilian</b></span>
+                    <span class ="span4"><b>Lui's</b></span>
+                </div>
+
+            </div>
+            <button class="spin" onclick="myfunction()">SPIN</button>
         </div>
-        <div class="box2">
-            <span class ="span1"><b>Yum Yum</b></span>
-            <span class ="span2"><b>Steak</b></span>
-            <span class ="span3"><b>Brazilian</b></span>
-            <span class ="span4"><b>Lui's</b></span>
-        </div>
-    </div>
-    <button class="spin" onclick="myfunction()">SPIN</button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
+        <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
+    </svg>
 </div>
-<br> <br>
+
+
 
 <!--<h1>Spin the Wheel</h1>-->
 
