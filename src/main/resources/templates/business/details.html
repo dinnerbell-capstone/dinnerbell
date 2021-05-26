@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/header :: head('Restaruant Details')"></head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -17,17 +18,17 @@
           <h3 th:text="${restaurants.elder_eats_link}"></h3>
           <h3 th:text="${restaurants.website_link}"></h3>
 
-          <div th:if="${restaurants.favorites.isEmpty()}">
+          <div sec:authorize="isAuthenticated()" th:if="${!restaurants.favorites.contains(user)}">
           <button type="submit" class="btn btn-info">Add to Favorites</button>
           </div>
-        <div th:unless="${restaurants.favorites.isEmpty()}">
+        <div sec:authorize="isAuthenticated()" th:unless="${!restaurants.favorites.contains(user)}">
             <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
         </div>
 
 
 <!--<div class="container">-->
 
-
+<th:block th:replace="partials/scripts :: scripts"></th:block>
 
 <!--    <h1>Restaurant Name</h1>-->
 <!--    <p>about restaurant</p>-->
