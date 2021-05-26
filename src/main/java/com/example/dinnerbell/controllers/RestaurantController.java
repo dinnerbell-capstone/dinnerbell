@@ -80,4 +80,5 @@ public class RestaurantController {
       return "redirect:/restaurant/details/{id}";
   }
 
+
 }
