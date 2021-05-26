@@ -50,43 +50,44 @@ $("button").click(function() {
     $('#results').empty()
 });
 
-$.ajax(requestObj)
-    .done(function(data) {
-
-        console.log('typeof data = ' + typeof data)
-        console.log('data = ', data)
-        var businessName = data.businesses[arrayRandomNumber].name
-        var businessRating = data.businesses[arrayRandomNumber].rating
-        var businessLocation=  data.businesses[arrayRandomNumber].location
-        var businessImage=  data.businesses[arrayRandomNumber].image_url
-        var image = document.getElementById("image");
-
-        // image.src = data.businesses[arrayRandomNumber].image_url;
-
-
-        console.log(businessName)
-        console.log(businessRating)
-        console.log(businessLocation)
+var arr =[]
 
 
 
-        $('#results').append(businessName + ""
-            + businessLocation + ""
-            + businessRating   + ""
-            + businessImage   + ""
+for (var i = 0 ; i < 6; i++) {
+    arr[i] =
+    $.ajax(requestObj)
+        .done(function (data) {
+
+            console.log('typeof data = ' + typeof data)
+            console.log('data = ', data)
+            var businessName = data.businesses[arrayRandomNumber].name
+            var businessRating = data.businesses[arrayRandomNumber].rating
+            var businessLocation = data.businesses[arrayRandomNumber].location
+            var businessImage = data.businesses[arrayRandomNumber].image_url
+            var image = document.getElementById("image");
+
+            // image.src = data.businesses[arrayRandomNumber].image_url;
 
 
+            console.log(businessName)
+            console.log(businessRating)
+            console.log(businessLocation)
 
 
-        );
+            $('#results').append(businessName + ""
+                + businessLocation + ""
+                + businessRating + ""
+                + businessImage + ""
+            );
+
+            // console.log(offsetRandomNumber)
+            // console.log(arrayRandomNumber)
 
 
-        // console.log(offsetRandomNumber)
-        // console.log(arrayRandomNumber)
-
-        //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
-    })
-
+            //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
+        })
+}
 
 
 
@@ -248,3 +249,4 @@ wheel = function(radius)  {
         this.spinSpeed = 0.5;
     }
 }
+
