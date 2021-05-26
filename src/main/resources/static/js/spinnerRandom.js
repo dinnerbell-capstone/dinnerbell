@@ -45,7 +45,7 @@ var requestObj= {
 }
 
 
-$("#clickme").click(function() {
+$("button").click(function() {
     location.reload();
     $('#results').empty()
 });
@@ -55,19 +55,27 @@ $.ajax(requestObj)
 
         console.log('typeof data = ' + typeof data)
         console.log('data = ', data)
-        var business = data.businesses[arrayRandomNumber].name
-        console.log(data.businesses[0].rating)
-        console.log(data.businesses[0].location)
-        console.log(data.businesses[0].price)
-        console.log(data.businesses[0].url)
+        var businessName = data.businesses[arrayRandomNumber].name
+        var businessRating = data.businesses[arrayRandomNumber].rating
+        var businessLocation=  data.businesses[arrayRandomNumber].location
+        var businessImage=  data.businesses[arrayRandomNumber].image_url
+        var image = document.getElementById("image");
+
+        // image.src = data.businesses[arrayRandomNumber].image_url;
+
+
+        console.log(businessName)
+        console.log(businessRating)
+        console.log(businessLocation)
 
 
 
-        $('#box1').append(data.businesses[arrayRandomNumber].name + ""
-            // data.businesses[arrayRandomNumber].image_url + "" ,
-            // data.businesses[arrayRandomNumber].location + "" ,
-            // data.businesses[arrayRandomNumber].rating + "" ,
-            // data.businesses[arrayRandomNumber].name + "" ,
+        $('#results').append(businessName + ""
+            + businessLocation + ""
+            + businessRating   + ""
+            + businessImage   + ""
+
+
 
 
         );

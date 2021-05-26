@@ -59,12 +59,14 @@ $.ajax(requestObj)
 
          // randomRestaurantName = data.businesses[arrayRandomNumber].name
         console.log(data.businesses[arrayRandomNumber].name);
+        console.log("hello");
+        console.log(offsetRandomNumber)
+        console.log(arrayRandomNumber)
+        console.log(data.businesses[arrayRandomNumber].rating);
+
 
         $('#results').append(data.businesses[arrayRandomNumber].name + "");
 
-
-        // console.log(offsetRandomNumber)
-        // console.log(arrayRandomNumber)
 
         //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
     })
