@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${404})"></head>
+<body>
+<style>
+
+
+</style>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid error">
+  <div class="row">
+    <div class="col l12 center">
+      <th:block th:switch="${404}">
+        <h1 th:text="${404}"></h1>
+        <div></div>
+        <div th:case="'Not Found'">
+          <img src="../../static/img/404not.jpg"/>
+        </div>
+        <div th:case="'Bad Request'">
+          <img src="../../static/img/bb400.jpg"/>
+        </div>
+        <div th:case="'Forbidden'">
+          <img src="../../static/img/403Fbb.jpg"/>
+        </div>
+      </th:block>
+    </div>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
