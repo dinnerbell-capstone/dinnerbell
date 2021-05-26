@@ -5,11 +5,12 @@
 /*    background-color: #7fb8b8;*/
 /*}*/
 
-body{
-    color:black;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+body {
+    /*background-image: url("https://images.unsplash.com/photo-1471253794676-0f039a6aae9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80");*/
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 body > .container {
