@@ -19,7 +19,7 @@ public class Image {
   @OneToOne
   private Restaurant restaurant;
 
-  @ManyToMany(mappedBy = "images")
+  @ManyToMany(mappedBy = "images", fetch = FetchType.LAZY)
   @JsonBackReference
   private List<Review> reviews;
 
@@ -35,6 +35,13 @@ public class Image {
   public Image(String url, Restaurant restaurant) {
     this.url = url;
     this.restaurant = restaurant;
+  }
+
+  public Image(long id, String url, Restaurant restaurant, List<Review> reviews) {
+    this.id = id;
+    this.url = url;
+    this.restaurant = restaurant;
+    this.reviews = reviews;
   }
 
   public List<Review> getRestaurantReviews() {
