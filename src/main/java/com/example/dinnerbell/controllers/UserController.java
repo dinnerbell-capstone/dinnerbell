@@ -44,18 +44,30 @@ public class UserController {
     }
 
 
-    @GetMapping("/users/{id}/edit")
-    public String edit(@PathVariable long id, Model vModel) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userToEdit = userDao.getOne(id);
+//    @GetMapping("/users/{id}/edit")
+//    public String editUserProfile(@PathVariable long id, Model vModel) {
+////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userToEdit = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+////        User userToEdit = userDao.getOne(id);
+//        vModel.addAttribute("user", userToEdit);
+//        return "users/edit-user-profile";
+//    }
+
+
+    @GetMapping("/users/edit")
+    public String editUserProfile(Model vModel) {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userToEdit = userDao.getOne(principal.getId());
         vModel.addAttribute("user", userToEdit);
         return "users/edit-user-profile";
     }
 
-    @PostMapping("/users/{id}/edit")
-    public String update(@ModelAttribute User user) {
-        userDao.save(user);
-        return "redirect:users/profile";
+    @PostMapping("/users/edit")
+    public String updateUserProfile(@ModelAttribute User userToEdit) {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userToEdit.setId(principal.getId());
+        userDao.save(userToEdit);
+        return "redirect:/profile";
     }
 
 }

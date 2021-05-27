@@ -14,36 +14,12 @@
 <main class="container">
 
 
-    <form th:action="@{/users/${id}/edit}" th:method="POST" th:object="${user}">
-        <!--        <input type="hidden" name="id" th:value="${user.id}">-->
+    <form th:action="@{/users/edit}" th:method="POST" th:object="${user}">
         <label for="username">Username</label>
-        <input type="text" id="username" name="name" th:value="${user.username}">
+        <input type="text" th:field="*{username}" id="username" name="name">
         <label for="email">Email</label>
-                <input type="text" id="email" name="email" th:value="${user.email}">
-        <!--        <input type="text" name="salary" th:value="${user.password}">-->
-
-
-        <!--                        <div class="form-group">-->
-
-        <!--                        <input name="username" id="username" th:field="*{user.username}" type="text"/>-->
-
-        <!--                    <p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:errors="*{user.}"></p>-->
-        <!--                    </div>-->
-
-        <!--                    <label for="email">Email</label>-->
-        <!--                    <input name="email" id="email" class="form-control" th:field="*{email}" />-->
-        <!--                    <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
-
-        <!--                    <label for="password">Password</label>-->
-        <!--                    <input name="password" id="password" type="password" class="form-control" th:field="*{password}" />-->
-        <!--                    <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
-
-        <!--                    <div class="form-check">-->
-        <!--                        <input class="form-check-input" th:field="*{isBusiness}" type="checkbox" value="" id="flexCheckDefault">-->
-        <!--                        <label class="form-check-label" for="flexCheckDefault">-->
-        <!--                            Are you a business owner?-->
-        <!--                        </label>-->
-        <!--                    </div>-->
+        <input type="text" th:field="*{email}" id="email" name="email">
+        <input type="hidden" name="password" th:value="${user.password}">
         <button type="submit">Update</button>
     </form>
 </main>
