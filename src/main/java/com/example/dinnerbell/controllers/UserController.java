@@ -38,7 +38,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public String userProfile(Model model) {
-      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         return "users/profile";
     }
