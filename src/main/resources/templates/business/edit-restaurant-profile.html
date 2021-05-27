@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Restaurant Profile</title>
+<!--    <th:block th:replace="partials/styles :: styles" />-->
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="partials/navbar :: navbar"></nav>
+<header th:replace="partials/header :: header('Edit Restaurant')"></header>
+
+<!-- use thymeleaf to dynamically create the html for each post -->
+<main class="container">
+    <section class="mb-3">
+        <form id="delete-post-form" th:action="'/restaurant/' + ${restaurant.id} + '/delete'" th:method="POST">
+            <div class="d-grid mx-auto">
+                <button id="delete-btn" class="btn-danger btn btn-lg">Delete Post</button>
+            </div>
+        </form>
+    </section>
+    <section th:replace="partials/post-form :: post-form('Update Post', '/posts/' + ${id} + '/edit')"></section>
+</main>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
+<th:block th:replace="partials/scripts :: scripts" />
+
+<!-- Delete Confirmation Script -->
+<script src="/js/delete-confirmation.js"></script>
+
+</body>
+</html>

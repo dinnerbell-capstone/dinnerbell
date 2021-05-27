@@ -2,46 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!--<head th:replace="partials/header :: head('Restaruant Details')"></head>-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<style>
-    .content {
-        max-width: 900px;
-        margin: auto;
-    }
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        .content {
+            max-width: 900px;
+            margin: auto;
+        }
 
-    main {
-        margin: 0;
-        padding: 5px;
-        background-color: lightgray;
-    }
+        main {
+            margin: 0;
+            padding: 5px;
+            background-color: lightgray;
+        }
 
-    main > h1, p, .details {
-        margin: 10px;
-        padding: 5px;
-    }
+        main > h1, p, .details {
+            margin: 10px;
+            padding: 5px;
+        }
 
-    .details {
-        background: white;
-    }
+        .details {
+            background: white;
+        }
 
-    .browser > h2, p {
-        margin: 4px;
-        font-size: 90%;
-    }
+        .browser > h2, p {
+            margin: 4px;
+            font-size: 90%;
+        }
 
-    .card {
-        padding: 25px;
-    }
-    .restaurant-page-image {
+        .card {
+            padding: 25px;
+        }
 
-        width: auto;
-        text-align: center;
-        padding: 15px;
-        border: 3px solid red;
+        .restaurant-page-image {
 
-    }
-</style>
+            width: auto;
+            text-align: center;
+            padding: 15px;
+            border: 3px solid red;
+
+        }
+    </style>
+</head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
@@ -53,17 +56,17 @@
         <form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">
 
             <h1>DinnerBell Exclusive</h1>
-<!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
+            <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
             <main>
                 <h1 th:text="${restaurants.restaurant_name}"></h1>
 
-<!--                INSERT IMAGE CODE HERE-->
+                <!--                INSERT IMAGE CODE HERE-->
                 <div class="restaurant-page-image">
-                <img src="/img/pexels-photo-670705.jpeg" width="500">
+                    <img src="/img/pexels-photo-670705.jpeg" width="500">
                 </div>
                 <br>
 
-<!--                FAVORITES BUTTON-->
+                <!--                FAVORITES BUTTON-->
                 <div sec:authorize="isAuthenticated()" th:if="${!restaurants.favorites.contains(user)}">
                     <button type="submit" class="btn btn-danger">Add to Favorites</button>
                 </div>
@@ -78,8 +81,10 @@
                 </article>
                 <article class="details">
                     <h6>Phone number: </h6>
-                    <p th:text="${restaurants.phone_number}"></p>
-                    <a href="tel:+05890000111">0-589-0000111</a>
+<!--                    <p th:text="${restaurants.phone_number}"></p>-->
+<!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
+                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span th:text="${restaurants.phone_number}"></span></a>
+<!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
                 </article>
                 <article class="details">
                     <h6>Address: </h6>
