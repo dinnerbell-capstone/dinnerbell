@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header(${'Edit User'})">
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<main class="container">
+
+    <div class="row">
+        <div class="col l12">
+            <h3>Edit User</h3>
+            <div class="col l8 offset-l2">
+                <form th:action="@{/users/{id}/edit(id=${id})}" th:method="POST" th:object="${user}">
+                    <label for="username">Username</label>
+                    <input class="form-control disa" th:field="*{username}" />
+                    <p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+
+                    <label for="email">Email</label>
+                    <input class="form-control" th:field="*{email}" />
+                    <p class="card-panel red darken-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" th:field="*{password}" />
+                    <p class="card-panel red lighten-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" th:field="*{isBusiness}" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Are you a business owner?
+                        </label>
+                    </div>
+
+                    <input th:if="${showEditControls}" class="btn" type="submit" />
+                </form>
+            </div>
+            <!--<div th:replace="fragments/forms :: postsForm(@{'/posts/edit'}, true)"></div>-->
+        </div>
+    </div>
+
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
