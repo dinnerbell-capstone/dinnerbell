@@ -1,10 +1,9 @@
 package com.example.dinnerbell.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SpinnerController {
@@ -19,7 +18,16 @@ public class SpinnerController {
         return "user-select";
     }
 
+    @Value("${filestack_key}")
+    private String fileStackApiKey;
 
+
+    @RequestMapping(path = "/keys.js", produces = "application/javascript")
+    @ResponseBody
+    public String apikey(){
+        System.out.println(fileStackApiKey);
+        return "const YelpApiKey = `" + fileStackApiKey + "`";
+    }
 
 //    Questionable code to discuss... Not sure whether to use javascript or java to generate the result
 //    @GetMapping("/scratch")
