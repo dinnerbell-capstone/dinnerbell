@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/header :: head('Restaurant Reviews')"></head>
+<head th:replace="partials/header :: head('Restaurant Reviews')"><title></title></head>
 <!--<body class="d-flex flex-column min-vh-100">-->
 <body>
 
@@ -10,25 +10,23 @@
 <!--    <label for="exampleFormControlInput1" class="form-label">Email address</label>-->
 <!--    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">-->
 <!--</div>-->
-
+<form th:action="@{/review/{id}(id=${restaurant.id})}" th:method="post" enctype="multipart/form-data">
 <h1>Restaurant Review</h1>
 <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Tell us all about your dining experience to share with others here on DinnerBell.
     How was your meal? Was the staff welcoming? Was the atmosphere pleasant and clean? Would you recommend this restaurant to a friend?</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
-
-
-
-
-
-<!--Creats a form to upload images-->
+<!--multiple images-->
 <div class="mb-3">
-    <label for="formFile" class="form-label">Do you have a picture of your meal to share? Or perhaps a photo with friends enjoying your time at this restaurant?
+  <label for="formFileMultiple" class="form-label">
+    Do you have a picture of your meal to share? <br>
+    Or perhaps a photo with friends enjoying your time at this restaurant?<br>
     Please feel free to upload a photo.</label>
-    <input class="form-control" type="file" id="formFile">
+  <input class="form-control" name="file" type="file" id="formFileMultiple" multiple>
+  <input type="submit" value="Upload Files">
 </div>
-
+</form>
 
 <th:block th:replace="partials/scripts :: scripts"></th:block>
 </body>

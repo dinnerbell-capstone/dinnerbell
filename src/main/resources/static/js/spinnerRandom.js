@@ -45,40 +45,49 @@ var requestObj= {
 }
 
 
-$("#clickme").click(function() {
+$("button").click(function() {
     location.reload();
     $('#results').empty()
 });
 
-$.ajax(requestObj)
-    .done(function(data) {
-
-        console.log('typeof data = ' + typeof data)
-        console.log('data = ', data)
-        var business = data.businesses[arrayRandomNumber].name
-        console.log(data.businesses[0].rating)
-        console.log(data.businesses[0].location)
-        console.log(data.businesses[0].price)
-        console.log(data.businesses[0].url)
+var arr =[]
 
 
 
-        $('#box1').append(data.businesses[arrayRandomNumber].name + ""
-            // data.businesses[arrayRandomNumber].image_url + "" ,
-            // data.businesses[arrayRandomNumber].location + "" ,
-            // data.businesses[arrayRandomNumber].rating + "" ,
-            // data.businesses[arrayRandomNumber].name + "" ,
+for (var i = 0 ; i < 6; i++) {
+    arr[i] =
+    $.ajax(requestObj)
+        .done(function (data) {
+
+            console.log('typeof data = ' + typeof data)
+            console.log('data = ', data)
+            var businessName = data.businesses[arrayRandomNumber].name
+            var businessRating = data.businesses[arrayRandomNumber].rating
+            var businessLocation = data.businesses[arrayRandomNumber].location
+            var businessImage = data.businesses[arrayRandomNumber].image_url
+            var image = document.getElementById("image");
+
+            // image.src = data.businesses[arrayRandomNumber].image_url;
 
 
-        );
+            console.log(businessName)
+            console.log(businessRating)
+            console.log(businessLocation)
 
 
-        // console.log(offsetRandomNumber)
-        // console.log(arrayRandomNumber)
+            $('#results').append(businessName + ""
+                + businessLocation + ""
+                + businessRating + ""
+                + businessImage + ""
+            );
 
-        //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
-    })
+            // console.log(offsetRandomNumber)
+            // console.log(arrayRandomNumber)
 
+
+            //<---- PULLING FIRST RESULT FROM ARRAY. USE # RANDOM # GENERATOR TO POPULATE RANDOM RESTAURANT
+        })
+}
 
 
 
@@ -240,3 +249,4 @@ wheel = function(radius)  {
         this.spinSpeed = 0.5;
     }
 }
+
