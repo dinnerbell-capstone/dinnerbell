@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/header :: head(reviews)">
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<br>
+<br>
+<div th:each="review : ${reviews}">
+  <h1 th:text="${review.restaurant.restaurant_name}"></h1>
+  <h3 th:text="${review.content}"></h3>
+  <p th:text="${review.createdAt}"></p>
+  <h5>Author: <span th:text="${review.user.username}"></span></h5>
+
+</div>
+
+
+<th:block th:replace="partials/scripts :: scripts"></th:block>
+</body>
+</html>
