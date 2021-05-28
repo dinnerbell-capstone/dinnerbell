@@ -229,4 +229,14 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
     }
 
 
+    @GetMapping("/restaurant/review/{id}")
+    public String viewReview(Model model, @PathVariable("id") long id) {
+      Restaurant restaurant = restaurantsdao.getOne(id);
+
+      model.addAttribute("images", imageDao.findAll());
+      model.addAttribute("reviews", reviewDao.findAll());
+      model.addAttribute("restaurant", restaurant);
+     return "post/reviewPage";
+    }
+
 }
