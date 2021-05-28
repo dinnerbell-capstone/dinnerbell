@@ -199,9 +199,6 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
       reviewImages.add(image);
       review.setImages(reviewImages);
       // adds the saved image into the new instance of the array
-
-
-
         //  these are for restaurant_review
         review.setRestaurant(restaurant);
         review.setContent(content);
@@ -215,16 +212,6 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
 //      image.setRestaurant(restaurant);
 //      image.setId(uploadedImage.getId());
 
-
-
-
-
-
-
-
-
-
-
       return "redirect:/restaurant";
     }
 
@@ -232,10 +219,11 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
     @GetMapping("/restaurant/review/{id}")
     public String viewReview(Model model, @PathVariable("id") long id) {
       Restaurant restaurant = restaurantsdao.getOne(id);
-
-      model.addAttribute("images", imageDao.findAll());
-      model.addAttribute("reviews", reviewDao.findAll());
+      List<Review> reviews = reviewDao.findAll();
+      List<Image> images = imageDao.findAll();
       model.addAttribute("restaurant", restaurant);
+      model.addAttribute("images", images);
+      model.addAttribute("reviews", reviews);
      return "post/reviewPage";
     }
 
