@@ -3,11 +3,24 @@
       lang="en">
 
 <head th:replace="partials/header :: head('Restaurant Form')"></head>
-</head>
+
+<style>
 
 
-<body>
+    /*@media (max-width: 991px) {*/
+
+    /*    .showcase header {*/
+    /*        padding: 40px;*/
+    /*    }*/
+    /*}*/
+
+
+    </style>
+
+
 <nav th:replace="partials/navbar :: navbar"></nav>
+<body>
+
 
 <!--<img src=""-->
 
@@ -49,14 +62,14 @@
         <input id="hours" th:field="*{hours}" name="hours" type="text"/>
         <br>
 
-        <label for="description">Please write a brief description about your cuisine</label>
+        <label for="description">Type of cuisine</label>
         <input id="description" name="description" type="text"/>
         <br>
 
 
 <!--        &lt;!&ndash; Surround the select box within a "custom-select" DIV element.-->
 <!--Remember to set the width: &ndash;&gt;-->
-        <div class="custom-select" style="width:200px;">
+        <div class="custom-select" style="width: 20px;" >
             <select>
                 <option value="0">Price Range:</option>
                 <option value="1">$</option>
@@ -65,6 +78,7 @@
                 <option value="3">$$$$</option>
             </select>
         </div>
+
         <br>
 
       <div class="container">
@@ -80,7 +94,7 @@
     </form>
 </div>
 
-<th:block th:replace="partials/scripts :: scripts"></th:block>
-</body>
 
+</body>
+<th:block th:replace="partials/scripts :: scripts"></th:block>
 </html>
