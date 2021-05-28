@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Restaurant Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!--        <link th:href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--              integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">-->
+
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<style>
+
+    html{font-size:100%;box-sizing:border-box}
+    *,:after,:before{box-sizing:inherit}
+
+    body{margin:3px;padding:3px;background-color:#101010;
+        font-family:Roboto,Arial,Helvetica,sans-serif;
+        font-size:1.25rem;line-height:1.3}
+
+    .cards{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:1.5rem;
+        padding:3rem;
+
+    }
+
+    .card{
+        display:flex;
+        flex-direction:column;
+        flex:1 0 300px;
+        max-width:450px;
+        overflow:hidden;
+        background:#fff;
+        color:#000;
+        border-radius:5px;
+        box-shadow:3px 2px 14px hsla(0,0%,100%,.2);
+        text-decoration:none;
+        font-size:1rem;transition:all .2s ease-in-out;
+        margin: 20px;
+    }
+
+    .card:hover{
+        transform:translateY(-1rem);box-shadow:2px 3px 18px hsla(0,0%,100%,.4)}
+
+    .card__image{
+        flex:0 0 120px;
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:50%
+    }
+
+    .card__content{
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        padding:5px;
+    }
+    .card__title{
+        font-size:1.75rem;font-weight:700
+    }
+
+    .card__snippet, .card__title{
+        margin-bottom: 5px;
+    }
+
+    .card__readmore{
+        margin-top:auto;text-transform:uppercase;font-weight:700}
+
+
+
+</style>
+
+<section class="cards">
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">Elder Eats loves Sake Cafe</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">Sake Cafe</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">Best place to eat</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">The most sushi you will ever see!</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">Best place to have boba tea</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">The best sushi!</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+    <a href="#" class="card">
+        <div class="card__image" style="background-image: url('../../static/img/pexels-photo-670705.jpeg')"></div>
+        <div class="card__content">
+            <div class="card__title">Best place in SA for sushi</div>
+            <div class="card__snippet">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+            <div class="card__readmore">Like</div>
+        </div>
+    </a>
+
+
+
+
+
+</section>
+
+</body>
+</html>

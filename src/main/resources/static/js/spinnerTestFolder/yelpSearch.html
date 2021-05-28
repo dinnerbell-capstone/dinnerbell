@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +16,8 @@
     <title>Yelp API pull and Search Functionality</title>
 </head>
 <body>
+
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 
 <input type="text" name="name" id="searchbox" onkeydown="getTerm(this.value);">

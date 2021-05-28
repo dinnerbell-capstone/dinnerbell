@@ -9,6 +9,8 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+<!--<img src=""-->
+
 <h1>Tell us about your restaurant...</h1>
 
 <div class="container">
@@ -51,28 +53,9 @@
         <input id="description" name="description" type="text"/>
         <br>
 
-        <label for="price">What is the price range?</label>
-        <input id="price" name="price" type="text"/>
 
-        <h1>Custom Checkboxes</h1>
-        <label class="container">One
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Two
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Three
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Four
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <!-- Surround the select box within a "custom-select" DIV element.
-Remember to set the width: -->
+<!--        &lt;!&ndash; Surround the select box within a "custom-select" DIV element.-->
+<!--Remember to set the width: &ndash;&gt;-->
         <div class="custom-select" style="width:200px;">
             <select>
                 <option value="0">Price Range:</option>
@@ -83,34 +66,6 @@ Remember to set the width: -->
             </select>
         </div>
         <br>
-        <h1>Custom Radio Buttons</h1>
-        <label class="container">One
-            <input type="radio" checked="checked" name="radio">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Two
-            <input type="radio" name="radio">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Three
-            <input type="radio" name="radio">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">Four
-            <input type="radio" name="radio">
-            <span class="checkmark"></span>
-        </label>
-
-<!--       <div class="checkbox">-->
-<!--         <label for="italian"> Italian </label>-->
-<!--         <input id="italian" th:field="*{categories}" type="checkbox" value="1">-->
-<!--         <label for="steakhouse">Steakhouse</label>-->
-<!--         <input id="steakhouse" type="checkbox" th:field="*{categories}" value="2">-->
-<!--         <label for="buffet">Buffet</label>-->
-<!--         <input id="buffet" type="checkbox" th:field="*{categories}" value="3">-->
-<!--         <label for="pizza">Pizza</label>-->
-<!--         <input id="pizza" type="checkbox" th:field="*{categories}" value="4">-->
-<!--        </div>-->
 
       <div class="container">
         <select class="form-select" multiple aria-label="multiple select example" name="categories" id="categories" th:object="${categories}">
