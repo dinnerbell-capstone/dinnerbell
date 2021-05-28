@@ -36,6 +36,9 @@ public class Restaurant {
   private String street_address;
 
   @Column(nullable = false)
+  private String city;
+
+  @Column(nullable = false)
   private String zip_code;
 
   @Column(nullable = false, columnDefinition = "char(2) DEFAULT 'XX'")
@@ -46,18 +49,18 @@ public class Restaurant {
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
-    name = "favorite_restaurants",
-    joinColumns = {@JoinColumn(name = "restaurant_id")},
-    inverseJoinColumns = {@JoinColumn(name = "user_id")}
+          name = "favorite_restaurants",
+          joinColumns = {@JoinColumn(name = "restaurant_id")},
+          inverseJoinColumns = {@JoinColumn(name = "user_id")}
   )
   @JsonManagedReference
   private List<User> favorites;
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
-    name = "categories_restaurants",
-    joinColumns = {@JoinColumn(name = "restaurant_id")},
-    inverseJoinColumns = {@JoinColumn(name = "categories_id")}
+          name = "categories_restaurants",
+          joinColumns = {@JoinColumn(name = "restaurant_id")},
+          inverseJoinColumns = {@JoinColumn(name = "categories_id")}
   )
   @JsonManagedReference
   private List<Category> categories;
@@ -65,7 +68,7 @@ public class Restaurant {
   public Restaurant() {
   }
 
-  public Restaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites, List<Category> categories) {
+  public Restaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String city, String zip_code, String state, String price, List<User> favorites, List<Category> categories) {
     this.restaurant_name = restaurant_name;
     this.phone_number = phone_number;
     this.hours = hours;
@@ -74,6 +77,7 @@ public class Restaurant {
     this.menu_link = menu_link;
     this.elder_eats_link = elder_eats_link;
     this.street_address = street_address;
+    this.city = city;
     this.zip_code = zip_code;
     this.state = state;
     this.price = price;
@@ -81,7 +85,7 @@ public class Restaurant {
     this.categories = categories;
   }
 
-  public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
+  public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String city, String zip_code, String state, String price, List<User> favorites, List<Category> categories) {
     this.id = id;
     this.restaurant_name = restaurant_name;
     this.phone_number = phone_number;
@@ -91,40 +95,12 @@ public class Restaurant {
     this.menu_link = menu_link;
     this.elder_eats_link = elder_eats_link;
     this.street_address = street_address;
+    this.city = city;
     this.zip_code = zip_code;
     this.state = state;
     this.price = price;
     this.favorites = favorites;
-  }
-
-  public Restaurant(long id, String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price) {
-    this.id = id;
-    this.restaurant_name = restaurant_name;
-    this.phone_number = phone_number;
-    this.hours = hours;
-    this.description = description;
-    this.website_link = website_link;
-    this.menu_link = menu_link;
-    this.elder_eats_link = elder_eats_link;
-    this.street_address = street_address;
-    this.zip_code = zip_code;
-    this.state = state;
-    this.price = price;
-  }
-
-  public Restaurant(String restaurant_name, String phone_number, String hours, String description, String website_link, String menu_link, String elder_eats_link, String street_address, String zip_code, String state, String price, List<User> favorites) {
-    this.restaurant_name = restaurant_name;
-    this.phone_number = phone_number;
-    this.hours = hours;
-    this.description = description;
-    this.website_link = website_link;
-    this.menu_link = menu_link;
-    this.elder_eats_link = elder_eats_link;
-    this.street_address = street_address;
-    this.zip_code = zip_code;
-    this.state = state;
-    this.price = price;
-    this.favorites = favorites;
+    this.categories = categories;
   }
 
   public long getId() {
@@ -137,14 +113,6 @@ public class Restaurant {
 
   public String getRestaurant_name() {
     return restaurant_name;
-  }
-
-  public List<Category> getCategories() {
-    return categories;
-  }
-
-  public void setCategories(List<Category> categories) {
-    this.categories = categories;
   }
 
   public void setRestaurant_name(String restaurant_name) {
@@ -207,6 +175,14 @@ public class Restaurant {
     this.street_address = street_address;
   }
 
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
   public String getZip_code() {
     return zip_code;
   }
@@ -237,5 +213,13 @@ public class Restaurant {
 
   public void setFavorites(List<User> favorites) {
     this.favorites = favorites;
+  }
+
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
   }
 }
