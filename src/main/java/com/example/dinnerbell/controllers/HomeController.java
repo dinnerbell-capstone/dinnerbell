@@ -20,7 +20,7 @@ public class HomeController {
     this.usersdao = usersdao;
   }
 
-  @GetMapping("/home")
+  @GetMapping("/")
   public String homepage() {
     return "app/home";
   }

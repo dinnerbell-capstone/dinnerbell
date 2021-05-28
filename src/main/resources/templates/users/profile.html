@@ -1,71 +1,97 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/header :: head('Profile')"></head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container">
-    <h1>User Dashboard </h1>
-    <div class="card">
-        <div class="card-body">
-            <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-user-tab" data-bs-toggle="pill" href="#profile-tab" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile Info</a>
-                    <a class="nav-link" id="favorites-list-tab" data-bs-toggle="pill" href="#favorites-list" role="tab" aria-controls="v-pills-favorites-list" aria-selected="false">Favorites List</a>
-                    <a class="nav-link" id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">View All Reviews</a>
-                </div>
-                <div class="tab-content flex-grow-1" id="tabs">
+<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
 
-                    <div class="tab-pane fade" id="profile-tab" role="tabpanel" aria-labelledby="v-pills-user-tab">
-                        <form>
-                            <fieldset disabled >
-                                <legend>Profile Information</legend>
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" id="username"  class="form-control" placeholder="pull username from database">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="text" id="email" class="form-control" placeholder="pull email from database">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phonenumber" class="form-label">Phonenumber</label>
-                                    <input type="text" id="phonenumber" class="form-control" placeholder="pull phonenumber from database">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" id="address" class="form-control" placeholder="pull address from database">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </fieldset>
-                        </form>
-                    </div>
+<div>
+    <p th:text="${user.username}"></p>
+    <p th:text="${user.email}"></p>
 
-                    <div class="tab-pane fade" id="favorites-list" role="tabpanel" aria-labelledby="Favorites-List-tab">
-                        <ol>
-                            <li>Chuck E Cheese <button type="submit" class="btn btn-danger">Remove</button></li>
-                            <li>Dominos</li>
-                            <li>Outback</li>
-                            <li>Casamigos</li>
-                            <li>Starve</li>
-                        </ol>
-
-                    </div>
-
-
-                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="v-pills-prijave-tab">Dinnerbell is the best group ever!</div>
-                </div>
-            </div>
-
-
-    </div>
-    </div>
+    <p th:text="${user.isBusiness}"></p>
+    <p th:text="${user.restaurant}"></p>
 </div>
 
 
+<!--<div class="container">-->
+<!--    <h1>User Dashboard </h1>-->
+<!--    <div class="card">-->
+<!--        <div class="card-body">-->
+<!--            <div class="d-flex align-items-start">-->
+<!--                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">-->
+<!--                    <a class="nav-link active" id="v-pills-user-tab" data-bs-toggle="pill" href="#profile-tab"-->
+<!--                       role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile Info</a>-->
+<!--                    <a class="nav-link" id="favorites-list-tab" data-bs-toggle="pill" href="#favorites-list" role="tab"-->
+<!--                       aria-controls="v-pills-favorites-list" aria-selected="false">Favorites List</a>-->
+<!--                    <a class="nav-link" id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab"-->
+<!--                       aria-controls="v-pills-reviews" aria-selected="false">View All Reviews</a>-->
+<!--                </div>-->
+<!--                <div class="tab-content flex-grow-1" id="tabs">-->
+
+<!--                    <div class="tab-pane fade" id="profile-tab" role="tabpanel" aria-labelledby="v-pills-user-tab">-->
+<!--                        <form>-->
+<!--                            <fieldset disabled>-->
+<!--                                <legend>Profile Information</legend>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="username" class="form-label">Username</label>-->
+<!--                                    <input type="text" id="username" class="form-control"-->
+<!--                                           placeholder="pull username from database">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="email" class="form-label">Email</label>-->
+<!--                                    <input type="text" id="email" class="form-control"-->
+<!--                                           placeholder="pull email from database">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="phonenumber" class="form-label">Phonenumber</label>-->
+<!--                                    <input type="text" id="phonenumber" class="form-control"-->
+<!--                                           placeholder="pull phonenumber from database">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="address" class="form-label">Address</label>-->
+<!--                                    <input type="text" id="address" class="form-control"-->
+<!--                                           placeholder="pull address from database">-->
+<!--                                </div>-->
+<!--                                <button type="submit" class="btn btn-primary">Save</button>-->
+<!--                            </fieldset>-->
+<!--                        </form>-->
+<!--                    </div>-->
+
+<!--                    <div class="tab-pane fade" id="favorites-list" role="tabpanel" aria-labelledby="Favorites-List-tab">-->
+<!--                        <ol>-->
+<!--                            <li>Chuck E Cheese-->
+<!--                                <button type="submit" class="btn btn-danger">Remove</button>-->
+<!--                            </li>-->
+<!--                            <li>Dominos</li>-->
+<!--                            <li>Outback</li>-->
+<!--                            <li>Casamigos</li>-->
+<!--                            <li>Starve</li>-->
+<!--                        </ol>-->
+
+<!--                    </div>-->
+
+
+<!--                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="v-pills-prijave-tab">-->
+<!--                        Dinnerbell is the best group ever!-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--SHOWS CURRENT USER INTO-->
+<!--<form th:action="@{/users/profile/{id}(id=${user.id})}" th:method="post">-->
 
 
 
-<th:block th:replace="partials/scripts :: scripts" />
+<!--</form>-->
+
+
+<th:block th:replace="partials/scripts :: scripts"/>
 
 </body>
 </html>
