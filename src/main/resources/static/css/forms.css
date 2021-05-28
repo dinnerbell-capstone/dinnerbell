@@ -1,0 +1,40 @@
+
+
+body{
+    background-image: url("../img/flamePan.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 90%;
+    background-color: #000000;
+    color: #fff;
+    text-shadow: 2px 2px #900d0d;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+    z-index: 2;
+}
+/*<img src="../../static/img/flamePan.jpeg"/>*/
+.btn  {
+    border-radius: 24px;
+    background-color: #ffa200;
+    border-color: #c18c0a;
+}
+.custom-select, select{
+    background-color: #ffa200;
+    border-radius: 30px;
+    border-color: #ffb700;
+    color: #fff;
+}
+
+input{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border-radius: 30px;
+}
