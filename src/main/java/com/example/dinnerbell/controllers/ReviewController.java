@@ -130,11 +130,12 @@ public class ReviewController {
 // testing
 @GetMapping("/review/{id}")
 public String reviewPage(Model model, @PathVariable("id") long id) {
-  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-  User currentUser = usersdao.getOne(user.getId());
+//  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//  User currentUser = usersdao.getOne(user.getId());
   Restaurant restaurant = restaurantsdao.getOne(id);
-  model.addAttribute("currentUser", currentUser);
+//  model.addAttribute("currentUser", currentUser);
   model.addAttribute("restaurant", restaurant);
+
   return "post/review";
 }
 
@@ -171,8 +172,7 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
         @RequestParam(name = "file")MultipartFile uploadedFile,
                            Model model,
                            @RequestParam(name = "content") String content,
-                           @ModelAttribute Restaurant restaurant,
-                           @ModelAttribute User currentUser) {
+                           @ModelAttribute Restaurant restaurant) {
     Image image = new Image();
     if(!uploadedFile.getOriginalFilename().isEmpty()){
       String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
@@ -187,6 +187,8 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
       }
       image.setUrl(filename);
     }
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User currentUser = usersdao.getOne(user.getId());
 
     image.setRestaurant(restaurant);
     imageDao.save(image);
@@ -202,8 +204,8 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
 
         //  these are for restaurant_review
         review.setRestaurant(restaurant);
-//        review.setUser(currentUser);
         review.setContent(content);
+        review.setUser(currentUser);
       // sets images from the added savedImages
         reviewDao.save(review);
 
