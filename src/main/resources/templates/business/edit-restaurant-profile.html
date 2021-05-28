@@ -11,24 +11,31 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <header th:replace="partials/header :: header('Edit Restaurant')"></header>
 
-<!-- use thymeleaf to dynamically create the html for each post -->
-<main class="container">
-    <section class="mb-3">
-        <form id="delete-post-form" th:action="'/restaurant/' + ${restaurant.id} + '/delete'" th:method="POST">
-            <div class="d-grid mx-auto">
-                <button id="delete-btn" class="btn-danger btn btn-lg">Delete Post</button>
-            </div>
-        </form>
-    </section>
-    <section th:replace="partials/post-form :: post-form('Update Post', '/posts/' + ${id} + '/edit')"></section>
+<h1>Hello world</h1>
+
+<!--<main class="container">-->
+<!--GET ID, COMPLETE NULLABLES-->
+    <form th:action="@{/restaurant/edit/{id}(id=${restaurant.id})}" th:method="POST" th:object="${restaurant}">
+        <label for="restaurant_name">Restaurant Name</label>
+        <input type="text" th:field="*{restaurant_name}" id="restaurant_name" name="name">
+        <label for="email">Email</label>
+        <input type="text" th:field="*{street_address}" id="email" name="email">
+        <button type="submit">Update</button>
+    </form>
 </main>
+
+
+
+
+<!-- use thymeleaf to dynamically create the html for each post -->
+
 
 <footer th:replace="partials/footer :: footer"></footer>
 
 <th:block th:replace="partials/scripts :: scripts" />
 
 <!-- Delete Confirmation Script -->
-<script src="/js/delete-confirmation.js"></script>
+<!--<script src="/js/delete-confirmation.js"></script>-->
 
 </body>
 </html>
