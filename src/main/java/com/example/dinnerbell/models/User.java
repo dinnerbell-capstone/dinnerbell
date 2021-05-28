@@ -1,5 +1,6 @@
 package com.example.dinnerbell.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -25,13 +26,8 @@ public class User {
   @Column(nullable = false)
   private boolean isBusiness;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(
-    name = "favorite_restaurants",
-    joinColumns = {@JoinColumn(name = "user_id")},
-    inverseJoinColumns = {@JoinColumn(name = "restaurant_id")}
-  )
-  @JsonManagedReference
+  @ManyToMany(mappedBy = "favorites")
+  @JsonBackReference
   private List<Restaurant> restaurants;
 
   @OneToOne
