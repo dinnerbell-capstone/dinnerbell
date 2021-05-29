@@ -89,6 +89,7 @@ public class RestaurantController {
         return "business/edit-restaurant-profile";
     }
 
+
     @PostMapping("/restaurant/edit/{id}")
     public String updateRestaurantProfile(@ModelAttribute() Restaurant restaurantToEdit) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -97,15 +98,6 @@ public class RestaurantController {
         restaurantsdao.save(restaurantToEdit);
         return "redirect:/restaurant";
     }
-
-//    @PostMapping("/posts/update/{id}")
-//    public String UpdatePostResults(@ModelAttribute("updatePost") Post post) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User creator = userDao.getOne(user.getId());
-//        post.setUser(creator);
-//        postDao.save(post);
-//        return "redirect:/profile";
-//    }
 
 
 

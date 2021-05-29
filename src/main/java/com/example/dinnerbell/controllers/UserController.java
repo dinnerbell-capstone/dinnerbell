@@ -55,6 +55,7 @@ public class UserController {
         return "users/edit-user-profile";
     }
 
+//    UPDATES USER INFO IN DB, RETURNS TO PROFILE
     @PostMapping("/users/edit")
     public String updateUserProfile(@ModelAttribute User userToEdit) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
