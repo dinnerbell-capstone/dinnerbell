@@ -89,13 +89,16 @@ public class RestaurantController {
         return "business/edit-restaurant-profile";
     }
 
-//    @PostMapping("/restaurant/edit/{id}")
-//    public String updateRestaurantProfile(@ModelAttribute() Restaurant restaurantToEdit) {
-//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User creator = usersdao.getOne(principal.getId());
+
+    @PostMapping("/restaurant/edit/{id}")
+    public String updateRestaurantProfile(@ModelAttribute() Restaurant restaurantToEdit) {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User creator = usersdao.getOne(principal.getId());
 //        restaurantToEdit
-//        restaurantsdao.save(restaurantToEdit);
-//        return "redirect:/restaurant";
-//    }
+        restaurantsdao.save(restaurantToEdit);
+        return "redirect:/restaurant";
+    }
+
+
 
 }

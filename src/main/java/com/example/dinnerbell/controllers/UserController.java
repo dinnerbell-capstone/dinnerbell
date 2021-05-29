@@ -1,5 +1,6 @@
 package com.example.dinnerbell.controllers;
 
+import com.example.dinnerbell.models.Restaurant;
 import com.example.dinnerbell.models.User;
 import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
@@ -37,13 +38,15 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String userProfile(Model model) {
-//      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+    public String restaurants(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userDao.getOne(user.getId());
+        model.addAttribute("user",currentUser);
+        System.out.println(currentUser.getUsername());
         return "users/profile";
     }
 
-//    EDIT USER PROFILE PAGE
+
     @GetMapping("/users/edit")
     public String editUserProfile(Model vModel) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
