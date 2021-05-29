@@ -23,22 +23,22 @@ import java.util.List;
 
 @Controller
 public class ReviewController {
-  private final RestaurantRepo restaurantsdao;
-  private final CategoryRepo categoriesdao;
-  private final UserRepo usersdao;
-  private final ReviewRepo reviewDao;
-  private final ImageRepo imageDao;
+    private final RestaurantRepo restaurantsdao;
+    private final CategoryRepo categoriesdao;
+    private final UserRepo usersdao;
+    private final ReviewRepo reviewDao;
+    private final ImageRepo imageDao;
 
-  @Value("${file-upload-path}")
-  private String uploadPath;
+    @Value("${file-upload-path}")
+    private String uploadPath;
 
-  public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
-    this.restaurantsdao = restaurantsdao;
-    this.categoriesdao = categoriesdao;
-    this.usersdao = usersdao;
-    this.reviewDao = reviewDao;
-    this.imageDao = imageDao;
-  }
+    public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
+        this.restaurantsdao = restaurantsdao;
+        this.categoriesdao = categoriesdao;
+        this.usersdao = usersdao;
+        this.reviewDao = reviewDao;
+        this.imageDao = imageDao;
+    }
 
 //    @GetMapping("/review/{id}")
 //    public String reviewPage(Model model, @PathVariable("id") long id) {
@@ -127,17 +127,17 @@ public class ReviewController {
 
 
 
-// testing
-@GetMapping("/review/{id}")
-public String reviewPage(Model model, @PathVariable("id") long id) {
+    // testing
+    @GetMapping("/review/{id}")
+    public String reviewPage(Model model, @PathVariable("id") long id) {
 //  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //  User currentUser = usersdao.getOne(user.getId());
-  Restaurant restaurant = restaurantsdao.getOne(id);
+        Restaurant restaurant = restaurantsdao.getOne(id);
 //  model.addAttribute("currentUser", currentUser);
-  model.addAttribute("restaurant", restaurant);
+        model.addAttribute("restaurant", restaurant);
 
-  return "post/review";
-}
+        return "post/review";
+    }
 
 //  @GetMapping("/review")
 //  public String showReviewForm(){
@@ -167,64 +167,64 @@ public String reviewPage(Model model, @PathVariable("id") long id) {
 
 
 
-  @PostMapping("/review/{id}")
-  public String PostReview(
-        @RequestParam(name = "file")MultipartFile uploadedFile,
-                           Model model,
-                           @RequestParam(name = "content") String content,
-                           @ModelAttribute Restaurant restaurant) {
-    Image image = new Image();
-    if(!uploadedFile.getOriginalFilename().isEmpty()){
-      String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-      String filepath = Paths.get(uploadPath,filename).toString();
-      File destinationFile = new File(filepath);
-      try {
-        uploadedFile.transferTo(destinationFile);
-        model.addAttribute("message","File successfully uploaded");
-      } catch (IOException e) {
-        e.printStackTrace();
-        model.addAttribute("message","Oops! Something went wrong!" + e);
-      }
-      image.setUrl(filename);
-    }
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User currentUser = usersdao.getOne(user.getId());
+    @PostMapping("/review/{id}")
+    public String PostReview(
+            @RequestParam(name = "file")MultipartFile uploadedFile,
+            Model model,
+            @RequestParam(name = "content") String content,
+            @ModelAttribute Restaurant restaurant) {
+        Image image = new Image();
+        if(!uploadedFile.getOriginalFilename().isEmpty()){
+            String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+            String filepath = Paths.get(uploadPath,filename).toString();
+            File destinationFile = new File(filepath);
+            try {
+                uploadedFile.transferTo(destinationFile);
+                model.addAttribute("message","File successfully uploaded");
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("message","Oops! Something went wrong!" + e);
+            }
+            image.setUrl(filename);
+        }
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = usersdao.getOne(user.getId());
 
-    image.setRestaurant(restaurant);
-    imageDao.save(image);
+        image.setRestaurant(restaurant);
+        imageDao.save(image);
 
-      Review review = new Review();
-      // new instance of an array list
-      List<Image> reviewImages = new ArrayList<>();
-      reviewImages.add(image);
-      review.setImages(reviewImages);
-      // adds the saved image into the new instance of the array
+        Review review = new Review();
+        // new instance of an array list
+        List<Image> reviewImages = new ArrayList<>();
+        reviewImages.add(image);
+        review.setImages(reviewImages);
+        // adds the saved image into the new instance of the array
         //  these are for restaurant_review
         review.setRestaurant(restaurant);
         review.setContent(content);
         review.setUser(currentUser);
-      // sets images from the added savedImages
+        // sets images from the added savedImages
         reviewDao.save(review);
 
-      // sets the restaurant id in images
+        // sets the restaurant id in images
 
 
 //      image.setRestaurant(restaurant);
 //      image.setId(uploadedImage.getId());
 
-      return "redirect:/restaurant";
+        return "redirect:/restaurant";
     }
 
 
     @GetMapping("/restaurant/review/{id}")
     public String viewReview(Model model, @PathVariable("id") long id) {
-      Restaurant restaurant = restaurantsdao.getOne(id);
-      List<Review> reviews = reviewDao.findAll();
-      List<Image> images = imageDao.findAll();
-      model.addAttribute("restaurant", restaurant);
-      model.addAttribute("images", images);
-      model.addAttribute("reviews", reviews);
-     return "post/reviewPage";
+        Restaurant restaurant = restaurantsdao.getOne(id);
+        List<Review> reviews = reviewDao.findAll();
+        List<Image> images = imageDao.findAll();
+        model.addAttribute("restaurant", restaurant);
+        model.addAttribute("images", images);
+        model.addAttribute("reviews", reviews);
+        return "post/reviewPage";
     }
 
 }
