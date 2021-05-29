@@ -43,17 +43,7 @@ public class UserController {
         return "users/profile";
     }
 
-
-//    @GetMapping("/users/{id}/edit")
-//    public String editUserProfile(@PathVariable long id, Model vModel) {
-////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userToEdit = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-////        User userToEdit = userDao.getOne(id);
-//        vModel.addAttribute("user", userToEdit);
-//        return "users/edit-user-profile";
-//    }
-
-
+//    EDIT USER PROFILE PAGE
     @GetMapping("/users/edit")
     public String editUserProfile(Model vModel) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -62,6 +52,7 @@ public class UserController {
         return "users/edit-user-profile";
     }
 
+//    UPDATES USER INFO IN DB, RETURNS TO PROFILE
     @PostMapping("/users/edit")
     public String updateUserProfile(@ModelAttribute User userToEdit) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
