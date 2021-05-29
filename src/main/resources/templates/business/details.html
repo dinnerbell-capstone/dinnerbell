@@ -57,7 +57,7 @@
 
             <h1>DinnerBell Exclusive</h1>
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
-            <main>
+            <main class="details-css">
                 <h1 th:text="${restaurants.restaurant_name}"></h1>
 
                 <!--                INSERT IMAGE CODE HERE-->
@@ -119,7 +119,7 @@
 
             <!--BUTTON TO LEAVE A REVIEW-->
             <h3>How was your visit? Let us know!</h3>
-            <a href=“/review”>Leave a Review</a>
+            <Th:href=“@{/review/{id}(id=“${restaurant.id})}”></Th:href><a href=“/review”>Leave a Review</a>
 
 
         </form>
