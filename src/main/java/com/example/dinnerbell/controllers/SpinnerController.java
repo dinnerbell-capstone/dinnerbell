@@ -13,7 +13,7 @@ public class SpinnerController {
 
     @GetMapping("/spinner-results")
     public String spinnerResult() {
-        return "app/user-select";
+        return "app/userSelect";
     }
 
 
