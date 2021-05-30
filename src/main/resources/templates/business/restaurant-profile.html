@@ -1,6 +1,12 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: head('Restaurant Dashboard')"></head>
+<style>
+body{
+    opacity: 80%;
+}
+
+</style>
 <body>
 <div class="container">
     <nav th:replace="partials/navbar :: navbar"></nav>
@@ -8,7 +14,7 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav flex-column nav-pills me-3 " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" href="#profile-tab" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile Info</a>
                     <a class="nav-link " id="v-pills-restaurant-tab" data-bs-toggle="pill" href="#restaurant-tab" role="tab" aria-controls="v-pills-restaurant" aria-selected="true">Restaurant Info</a>
                     <a class="nav-link " id="v-pills-restaurant-details-tab" data-bs-toggle="pill" href="#restaurant-details-tab" role="tab" aria-controls="v-pills-restaurant-details" aria-selected="true">Restaurant Details Info</a>
