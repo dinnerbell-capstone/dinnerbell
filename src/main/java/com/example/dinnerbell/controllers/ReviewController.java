@@ -30,7 +30,7 @@
      private final ReviewRepo reviewDao;
      private final ImageRepo imageDao;
 
-     @Value("${file-upload-path}")
+     @Value("/Users/jacob.k.valeriano/IdeaProjects/dinnerbell/target/classes/static/uploads/")
      private String uploadPath;
 
      public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
