@@ -16,6 +16,7 @@
       <img th:if="${image.url == null}" class="responsive-im post-img" src="https://placehold.it/300x300" alt="placeholder" />
       <img class="img-thumbnail" th:if="${image.url != null && image.id == review.id}" th:src="${'/uploads/' + image.url }" />
     </div>
+    <a class="btn btn-primary" th:href="@{/review/update/{id}(id=${restaurant.id})}" role="button">Link</a>
     </div>
   </div>
   <div class="container text-center">
