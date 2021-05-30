@@ -1,22 +1,44 @@
+@font-face {
+    font-family: Squada One;
+}
 
 
+#profile-tab{
+    color: #ffa200;
+}
+a{
+    color: #900d0d;
+}
+
+a:hover {
+    color: #070000
+}
+.nav-pills .nav-link.active, .nav-pills
+.show>.nav-link{
+    color: #ffa200;
+    background-color: #101010;
+}
+
+form{
+    color: #fff;
+
+}
 body{
     background-image: url("../img/flamePan.jpeg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 160%;
     opacity: 90%;
     background-color: #000000;
-    color: #fff;
-    text-shadow: 2px 2px #900d0d;
-    position: absolute;
-    right: 0;
+    margin-top: 25px;
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     padding: 50px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: normal;
     transition: 0.5s;
+    font-family: "Squada One";
+
     z-index: 2;
 }
 /*<img src="../../static/img/flamePan.jpeg"/>*/
@@ -37,4 +59,14 @@ input{
     align-items: flex-start;
     justify-content: space-evenly;
     border-radius: 30px;
+}
+
+h1{
+
+    color: #fff;
+
+}
+.form-label{
+    color: #fff;
+
 }

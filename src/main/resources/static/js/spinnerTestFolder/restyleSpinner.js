@@ -30,7 +30,7 @@ var arrayRandomNumber = getRandomInt(0,50)
 
 var requestObj= {
     'url': cors_url + '/' + yelp_search_url,
-    'data': {term: 'restaurants', location: '78247', limit: 50, offset: offsetRandomNumber},
+    'data': {term: 'restaurants', location: '78247', limit: arrayRandomNumber, offset: offsetRandomNumber},
     headers: {
         'Authorization':'Bearer ' + YELP_TOKEN,
     },
@@ -53,12 +53,12 @@ let result = ""
             console.log('typeof data = ' + typeof data)
             console.log('data = ', data)
             let itemHTML = '';
-            $.each(data.businesses, function (index, value) {
-            var businessName = data.businesses[arrayRandomNumber].name
+            $.each(data.businesses, function (i, item) {
+            var businessName = item.name
             // var businessRating = data.businesses[arrayRandomNumber].rating
             // var businessPrice = data.businesses[arrayRandomNumber].price
             // var businessImage = data.businesses[arrayRandomNumber].image_url
-                if (index === 4) {
+                if (i === 8) {
                     return false
                 }
             itemHTML += "<span class='card text-white bg-dark ' >"
@@ -86,10 +86,8 @@ $.ajax(requestObj)
         let itemHTML = '';
         $.each(data.businesses, function (index, value) {
             var businessName = data.businesses[arrayRandomNumber].name
-            // var businessRating = data.businesses[arrayRandomNumber].rating
-            // var businessPrice = data.businesses[arrayRandomNumber].price
-            // var businessImage = data.businesses[arrayRandomNumber].image_url
-            if (index === 4) {
+
+            if (i === 8) {
                 return false
             }
             itemHTML += "<span class='card text-white bg-dark ' >"
@@ -99,8 +97,6 @@ $.ajax(requestObj)
             // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
             itemHTML += "</span>"
             itemHTML += "</div>"
-
-
 
 
         })
