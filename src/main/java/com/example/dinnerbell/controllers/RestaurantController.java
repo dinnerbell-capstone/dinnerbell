@@ -36,12 +36,20 @@ public class RestaurantController {
         return "business/create_account";
     }
 
-    @PostMapping("/restaurant/create")
-    public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
-      restaurant.setCategories(categories);
-        restaurantsdao.save(restaurant);
-        return "redirect:/restaurant";
-    }
+    //originally create functionality
+//    @PostMapping("/restaurant/create")
+//    public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
+//      restaurant.setCategories(categories);
+//        restaurantsdao.save(restaurant);
+//        return "redirect:/restaurant";
+//    }
+
+  @PostMapping("/restaurant/create")
+  public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
+    restaurant.setCategories(categories);
+    restaurantsdao.save(restaurant);
+    return "redirect:/restaurant";
+  }
 
 
     @GetMapping("/restaurant")
