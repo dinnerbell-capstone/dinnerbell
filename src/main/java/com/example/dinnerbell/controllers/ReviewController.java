@@ -43,12 +43,8 @@
 
      @GetMapping("/review/{id}")
      public String reviewPage(Model model, @PathVariable("id") long id) {
- //  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
- //  User currentUser = usersdao.getOne(user.getId());
          Restaurant restaurant = restaurantsdao.getOne(id);
- //  model.addAttribute("currentUser", currentUser);
          model.addAttribute("restaurant", restaurant);
-
          return "post/review";
      }
 
@@ -74,28 +70,16 @@
          }
          User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          User currentUser = usersdao.getOne(user.getId());
-
          image.setRestaurant(restaurant);
          imageDao.save(image);
-
          Review review = new Review();
-         // new instance of an array list
          List<Image> reviewImages = new ArrayList<>();
          reviewImages.add(image);
          review.setImages(reviewImages);
-         // adds the saved image into the new instance of the array
-         //  these are for restaurant_review
          review.setRestaurant(restaurant);
          review.setContent(content);
          review.setUser(currentUser);
-         // sets images from the added savedImages
          reviewDao.save(review);
-
-         // sets the restaurant id in images
-
-
- //      image.setRestaurant(restaurant);
- //      image.setId(uploadedImage.getId());
 
          return "redirect:/restaurant/review/{id}";
      }
@@ -111,6 +95,57 @@
          model.addAttribute("reviews", reviews);
          return "post/reviewPage";
      }
+
+//     @GetMapping("/review/update/{id}")
+//     public String updateReview(Model model, @PathVariable("id") long id){
+//       Restaurant restaurant = restaurantsdao.getOne(id);
+//       Review review = new Review();
+//       model.addAttribute("review", reviewDao.getOne(review.getId()));
+//       model.addAttribute("restaurant", restaurant);
+//       return "post/updateReview";
+//     }
+//
+//     @PostMapping("/review/update")
+//     public String updateReviewResults(@RequestParam(name = "file")MultipartFile uploadedFile,
+//                                       Model model,
+//                                       @RequestParam(name = "content") String content,
+//                                       @ModelAttribute Restaurant restaurant,
+//                                       @ModelAttribute Review review){
+//       Review reviewUpdate = reviewDao.getOne(review.getId());
+//       Image image = new Image();
+//       if(!uploadedFile.getOriginalFilename().isEmpty()){
+//         String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+//         String filepath = Paths.get(uploadPath,filename).toString();
+//         File destinationFile = new File(filepath);
+//         try {
+//           uploadedFile.transferTo(destinationFile);
+//           model.addAttribute("message","File successfully uploaded");
+//         } catch (IOException e) {
+//           e.printStackTrace();
+//           model.addAttribute("message","Oops! Something went wrong!" + e);
+//         }
+//         image.setUrl(filename);
+//       }
+//       image.setRestaurant(restaurant);
+//       List<Image> reviewImages = imageDao.findAll();
+////       imageDao.save(image);
+//
+//       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//       User currentUser = usersdao.getOne(user.getId());
+//
+//       reviewImages.add(image);
+//
+////       reviewUpdate.setImages(reviewImages);
+//
+//       review.setImages(reviewImages);
+//       review.setContent(reviewUpdate.getContent());
+//       reviewUpdate.setUser(currentUser);
+//       reviewDao.save(reviewUpdate);
+//
+//
+//
+//       return "redirect:/restaurant";
+//     }
 
  }
 
