@@ -1,3 +1,23 @@
+@font-face {
+    font-family: Squada One;
+}
+
+
+#profile-tab{
+    color: #ffa200;
+}
+a{
+    color: #900d0d;
+}
+
+a:hover {
+    color: #070000
+}
+.nav-pills .nav-link.active, .nav-pills
+.show>.nav-link{
+    color: #ffa200;
+    background-color: #101010;
+}
 
 form{
     color: #fff;
@@ -7,7 +27,7 @@ body{
     background-image: url("../img/flamePan.jpeg");
     background-repeat: no-repeat;
     background-size: 160%;
-    opacity: 60%;
+    opacity: 90%;
     background-color: #000000;
     margin-top: 25px;
     width: 100%;
@@ -17,6 +37,8 @@ body{
     justify-content: space-between;
     align-items: normal;
     transition: 0.5s;
+    font-family: "Squada One";
+
     z-index: 2;
 }
 /*<img src="../../static/img/flamePan.jpeg"/>*/
