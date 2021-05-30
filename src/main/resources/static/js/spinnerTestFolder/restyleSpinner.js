@@ -61,50 +61,76 @@ let result = ""
                 if (i === 8) {
                     return false
                 }
-            itemHTML += "<span class='card text-white bg-dark ' >"
-            itemHTML += "<div class='card-body'>"
-            itemHTML += "<b class='text-white'>" + businessName + "</b>"
-            // itemHTML += "<h2 class='text-white'>" + businessPrice + "</h2>"
-            // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
-            itemHTML += "</span>"
-            itemHTML += "</div>"
+            // itemHTML += "<span class='card text-white bg-dark ' >"
+            // itemHTML += "<div class='card-body'>"
+            // itemHTML += "<b class='text-white'>" + businessName + "</b>"
+            // // itemHTML += "<h2 class='text-white'>" + businessPrice + "</h2>"
+            // // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
+            // itemHTML += "</span>"
+            // itemHTML += "</div>"
 
-
+                itemHTML += "<span class='span1' >" + "<b>" + businessName + "</b>" + "</span>"
+                itemHTML += "<span class='span2' >" + "<b>" + businessName + "</b>" + "</span>"
+                itemHTML += "<span class='span3' >" + "<b>" + businessName + "</b>" + "</span>"
+                itemHTML += "<span class='span4' >" + "<b>" + businessName + "</b>" + "</span>"
 
 
                 })
 
 $(".box1").append(itemHTML);
+ $(".box2").append(itemHTML);
+
+
+
+
 
 
         });
 
-$.ajax(requestObj)
-    .done(function (data) {
-        console.log('typeof data = ' + typeof data)
-        console.log('data = ', data)
-        let itemHTML = '';
-        $.each(data.businesses, function (index, value) {
-            var businessName = data.businesses[arrayRandomNumber].name
-
-            if (i === 8) {
-                return false
-            }
-            itemHTML += "<span class='card text-white bg-dark ' >"
-            itemHTML += "<div class='card-body'>"
-            itemHTML += "<b class='text-white'>" + businessName + "</b>"
-            // itemHTML += "<h2 class='text-white'>" + businessPrice + "</h2>"
-            // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
-            itemHTML += "</span>"
-            itemHTML += "</div>"
 
 
-        })
-
-        $(".box2").append(itemHTML);
 
 
-    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $.ajax(requestObj)
+//     .done(function (data) {
+//         console.log('typeof data = ' + typeof data)
+//         console.log('data = ', data)
+//         let itemHTML = '';
+//         $.each(data.businesses, function (index, value) {
+//             var businessName = data.businesses[arrayRandomNumber].name
+//
+//             if (i === 8) {
+//                 return false
+//             }
+//             itemHTML += "<span class='card text-white bg-dark ' >"
+//             itemHTML += "<div class='card-body'>"
+//             itemHTML += "<b class='text-white'>" + businessName + "</b>"
+//             // itemHTML += "<h2 class='text-white'>" + businessPrice + "</h2>"
+//             // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
+//             itemHTML += "</span>"
+//             itemHTML += "</div>"
+//
+//
+//         })
+//
+//         $(".box2").append(itemHTML);
+
+
+    // });
 
 
 
