@@ -30,7 +30,7 @@
      private final ReviewRepo reviewDao;
      private final ImageRepo imageDao;
 
-     @Value("/Users/jacob.k.valeriano/IdeaProjects/dinnerbell/target/classes/static/uploads/")
+     @Value("${file-upload-path}")
      private String uploadPath;
 
      public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
@@ -40,6 +40,26 @@
          this.reviewDao = reviewDao;
          this.imageDao = imageDao;
      }
+
+   private Image getImage(MultipartFile uploadedFile, Model model) {
+     Image image = new Image();
+     if(!uploadedFile.getOriginalFilename().isEmpty()){
+       String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+       String filepath = Paths.get(uploadPath,filename).toString();
+       File destinationFile = new File(filepath);
+       try {
+         uploadedFile.transferTo(destinationFile);
+         model.addAttribute("message","File successfully uploaded");
+       } catch (IOException e) {
+         e.printStackTrace();
+         model.addAttribute("message","Oops! Something went wrong!" + e);
+       }
+       image.setUrl(filename);
+       imageDao.save(image);
+     }
+     return image;
+
+   }
 
      @GetMapping("/review/{id}")
      public String reviewPage(Model model, @PathVariable("id") long id) {
@@ -54,21 +74,8 @@
              Model model,
              @RequestParam(name = "content") String content,
              @ModelAttribute Restaurant restaurant) {
-         Image image = new Image();
-         if(!uploadedFile.getOriginalFilename().isEmpty()){
-             String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-             String filepath = Paths.get(uploadPath,filename).toString();
-             File destinationFile = new File(filepath);
-             try {
-                 uploadedFile.transferTo(destinationFile);
-                 model.addAttribute("message","File successfully uploaded");
-             } catch (IOException e) {
-                 e.printStackTrace();
-                 model.addAttribute("message","Oops! Something went wrong!" + e);
-             }
-             image.setUrl(filename);
-         }
-         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       Image image = getImage(uploadedFile, model);
+       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          User currentUser = usersdao.getOne(user.getId());
          image.setRestaurant(restaurant);
          imageDao.save(image);
@@ -85,66 +92,60 @@
      }
 
 
-     @GetMapping("/restaurant/review/{id}")
+
+
+
+   @GetMapping("/restaurant/review/{id}")
      public String viewReview(Model model, @PathVariable("id") long id) {
          Restaurant restaurant = restaurantsdao.getOne(id);
          List<Review> reviews = reviewDao.findAll();
          List<Image> images = imageDao.findAll();
+
          model.addAttribute("restaurant", restaurant);
          model.addAttribute("images", images);
          model.addAttribute("reviews", reviews);
+
+
          return "post/reviewPage";
      }
 
+//
+//
 //     @GetMapping("/review/update/{id}")
 //     public String updateReview(Model model, @PathVariable("id") long id){
 //       Restaurant restaurant = restaurantsdao.getOne(id);
-//       Review review = new Review();
-//       model.addAttribute("review", reviewDao.getOne(review.getId()));
+//
 //       model.addAttribute("restaurant", restaurant);
 //       return "post/updateReview";
 //     }
 //
-//     @PostMapping("/review/update")
+//     @PostMapping("/review/update/{id}")
 //     public String updateReviewResults(@RequestParam(name = "file")MultipartFile uploadedFile,
 //                                       Model model,
 //                                       @RequestParam(name = "content") String content,
 //                                       @ModelAttribute Restaurant restaurant,
-//                                       @ModelAttribute Review review){
+//                                       @ModelAttribute("review") Review review){
 //       Review reviewUpdate = reviewDao.getOne(review.getId());
-//       Image image = new Image();
-//       if(!uploadedFile.getOriginalFilename().isEmpty()){
-//         String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-//         String filepath = Paths.get(uploadPath,filename).toString();
-//         File destinationFile = new File(filepath);
-//         try {
-//           uploadedFile.transferTo(destinationFile);
-//           model.addAttribute("message","File successfully uploaded");
-//         } catch (IOException e) {
-//           e.printStackTrace();
-//           model.addAttribute("message","Oops! Something went wrong!" + e);
-//         }
-//         image.setUrl(filename);
-//       }
-//       image.setRestaurant(restaurant);
-//       List<Image> reviewImages = imageDao.findAll();
-////       imageDao.save(image);
-//
+//       Image image = getImage(uploadedFile,model);
 //       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //       User currentUser = usersdao.getOne(user.getId());
 //
+//       image.setRestaurant(restaurant);
+//       imageDao.save(image);
+//
+//       List<Image> reviewImages =  imageDao.findAll();
 //       reviewImages.add(image);
-//
-////       reviewUpdate.setImages(reviewImages);
-//
-//       review.setImages(reviewImages);
-//       review.setContent(reviewUpdate.getContent());
+//       reviewUpdate.setImages(review.getImages());
+//       reviewUpdate.setRestaurant(review.getRestaurant());
+//       reviewUpdate.setContent(review.getContent());
 //       reviewUpdate.setUser(currentUser);
+//
 //       reviewDao.save(reviewUpdate);
 //
 //
 //
-//       return "redirect:/restaurant";
+//
+//       return "redirect:/restaurant/review/{id}";
 //     }
 
  }
