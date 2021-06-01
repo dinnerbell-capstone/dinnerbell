@@ -19,7 +19,7 @@ public class Review {
   @OneToOne
   private User user;
 
-  @OneToOne
+  @ManyToOne
   private Restaurant restaurant;
 
   @Column(columnDefinition = "TEXT NOT NULL")
@@ -29,12 +29,7 @@ public class Review {
   @CreationTimestamp
   private Timestamp createdAt;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(
-    name = "review_images",
-    joinColumns = {@JoinColumn(name = "restaurant_review_id")},
-    inverseJoinColumns = {@JoinColumn(name = "images_id")}
-  )
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
   @JsonManagedReference
   private List<Image> images;
 
