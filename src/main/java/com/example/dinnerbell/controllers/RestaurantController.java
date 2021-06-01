@@ -1,9 +1,6 @@
 package com.example.dinnerbell.controllers;
 
-import com.example.dinnerbell.models.Category;
-import com.example.dinnerbell.models.Image;
-import com.example.dinnerbell.models.Restaurant;
-import com.example.dinnerbell.models.User;
+import com.example.dinnerbell.models.*;
 import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.ImageRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
@@ -42,25 +39,6 @@ public class RestaurantController {
         this.imageDao = imageDao;
     }
 
-//  private Image getRestaurantImage(MultipartFile uploadedFile, Model model) {
-//    Image image = new Image();
-//    if(!uploadedFile.getOriginalFilename().isEmpty()){
-//      String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-//      String filepath = Paths.get(uploadPath,filename).toString();
-//      File destinationFile = new File(filepath);
-//      try {
-//        uploadedFile.transferTo(destinationFile);
-//        model.addAttribute("message","File successfully uploaded");
-//      } catch (IOException e) {
-//        e.printStackTrace();
-//        model.addAttribute("message","Oops! Something went wrong!" + e);
-//      }
-//      image.setUrl(filename);
-//      imageDao.save(image);
-//    }
-//    return image;
-//
-//  }
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
@@ -167,5 +145,7 @@ public class RestaurantController {
     }
 
 
+    }
 
-}
+
+
