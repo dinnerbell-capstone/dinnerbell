@@ -30,7 +30,7 @@
      private final ReviewRepo reviewDao;
      private final ImageRepo imageDao;
 
-     @Value("${file-upload-path}")
+     @Value("${file_upload_path}")
      private String uploadPath;
 
      public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
@@ -163,6 +163,13 @@
        reviewDao.save(reviewFromDB);
        return "redirect:/reviews/byRestaurant/" + reviewFromDB.getRestaurant().getId();
      }
+
+   @GetMapping("/review/delete/{id}")
+   public String deleteReview(@PathVariable("id") long id){
+       Review review = reviewDao.getOne(id);
+     reviewDao.deleteById(id);
+     return "redirect:/reviews/byRestaurant/" + review.getRestaurant().getId();
+   }
 
  }
 
