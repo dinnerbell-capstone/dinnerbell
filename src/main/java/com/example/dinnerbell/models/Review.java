@@ -19,7 +19,7 @@ public class Review {
   @OneToOne
   private User user;
 
-  @OneToOne
+  @ManyToOne
   private Restaurant restaurant;
 
   @Column(columnDefinition = "TEXT NOT NULL")

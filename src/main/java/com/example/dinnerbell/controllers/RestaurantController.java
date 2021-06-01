@@ -8,6 +8,8 @@ import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.ImageRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -117,10 +120,26 @@ public class RestaurantController {
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     User currentUser = usersdao.getOne(user.getId());
     List<Image> imagesForRestaurant = imageDao.findImageByRestaurant(restaurant);
+
     model.addAttribute("images", imagesForRestaurant);
-      model.addAttribute("restaurants", restaurant);
+      model.addAttribute("restaurant", restaurant);
       model.addAttribute("user",currentUser);
     return "business/details";
+  }
+
+  @GetMapping("/details/test")
+  @ResponseBody
+  public Restaurant restaurantsImageTest(){
+      List<Restaurant> restaurants = new ArrayList<>();
+    Restaurant restaurant = restaurantsdao.getOne(1L);
+    restaurants.add(restaurant);
+    List<Image> imagesForRestaurant = imageDao.findImageByRestaurant(restaurant);
+
+    ObjectMapper objectMapper = new ObjectMapper();
+
+
+   return restaurant;
+
   }
 
   @PostMapping("/restaurant/details/{id}")

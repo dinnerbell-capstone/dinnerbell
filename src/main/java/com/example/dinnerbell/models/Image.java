@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "images")
+
 public class Image {
 
   @Id
@@ -16,7 +17,8 @@ public class Image {
   @Column(nullable = false)
   private String url;
 
-  @OneToOne
+  @JsonBackReference
+  @ManyToOne
   private Restaurant restaurant;
 
   @ManyToMany(mappedBy = "images", fetch = FetchType.LAZY)
