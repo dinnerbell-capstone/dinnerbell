@@ -19,8 +19,11 @@
                 <h1 th:text="${restaurants.restaurant_name}"></h1>
 
                 <!--                INSERT IMAGE CODE HERE-->
-                <div class="restaurant-page-image">
+              <div class="restaurant-page-image">
+<!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${images}" th:value="${image.id}">-->
                     <img src="/img/pexels-photo-670705.jpeg" width="500">
+<!--                  <img th:if="${image.url == null}" class="img-thumbnail" src="https://placehold.it/300x300" alt="placeholder" />-->
+<!--                  <img th:src="${'/uploads/' + image.url }"  alt=""/>-->
                 </div>
                 <br>
 
