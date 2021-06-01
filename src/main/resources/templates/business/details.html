@@ -22,9 +22,8 @@
 <!--              <div class="restaurant-page-image">-->
                 <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">
 <!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
-                <img th:src="${'/uploads/' + image.url}">
-<!--                  <img th:if="${image.url == null}" class="img-thumbnail" src="https://placehold.it/300x300" alt="placeholder" />-->
-<!--                  <img th:src="${'/uploads/' + image.url }"  alt=""/>-->
+                  <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
+                  <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
                 </div>
                 <br>
 
