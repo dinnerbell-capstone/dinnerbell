@@ -29,7 +29,7 @@ public class RestaurantController {
     private final UserRepo usersdao;
     private final ImageRepo imageDao;
 
-  @Value("${file-upload-path}")
+  @Value("${file_upload_path}")
   private String uploadPath;
 
     public RestaurantController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ImageRepo imageDao) {
