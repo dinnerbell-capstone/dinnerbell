@@ -30,7 +30,7 @@
      private final ReviewRepo reviewDao;
      private final ImageRepo imageDao;
 
-     @Value("/Users/jacob.k.valeriano/IdeaProjects/dinnerbell/target/classes/static/uploads/")
+     @Value("${file-upload-path}")
      private String uploadPath;
 
      public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
@@ -41,75 +41,124 @@
          this.imageDao = imageDao;
      }
 
-     @GetMapping("/review/{id}")
-     public String reviewPage(Model model, @PathVariable("id") long id) {
- //  User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
- //  User currentUser = usersdao.getOne(user.getId());
-         Restaurant restaurant = restaurantsdao.getOne(id);
- //  model.addAttribute("currentUser", currentUser);
-         model.addAttribute("restaurant", restaurant);
+//   private Image getImage(MultipartFile uploadedFile, Model model) {
+//     Image image = new Image();
+//     if(!uploadedFile.getOriginalFilename().isEmpty()){
+//       String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+//       String filepath = Paths.get(uploadPath,filename).toString();
+//       File destinationFile = new File(filepath);
+//       try {
+//         uploadedFile.transferTo(destinationFile);
+//         model.addAttribute("message","File successfully uploaded");
+//       } catch (IOException e) {
+//         e.printStackTrace();
+//         model.addAttribute("message","Oops! Something went wrong!" + e);
+//       }
+//       image.setUrl(filename);
+//
+//     }
+//     return image;
+//
+//   }
 
+     @GetMapping("/review/{id}")
+     public String reviewForm(Model model, @PathVariable("id") long id) {
+         Restaurant restaurant = restaurantsdao.getOne(id);
+         model.addAttribute("restaurant", restaurant);
          return "post/review";
      }
 
      @PostMapping("/review/{id}")
-     public String PostReview(
+     public String reviewFormResults(
              @RequestParam(name = "file")MultipartFile uploadedFile,
              Model model,
              @RequestParam(name = "content") String content,
              @ModelAttribute Restaurant restaurant) {
-         Image image = new Image();
-         if(!uploadedFile.getOriginalFilename().isEmpty()){
-             String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-             String filepath = Paths.get(uploadPath,filename).toString();
-             File destinationFile = new File(filepath);
-             try {
-                 uploadedFile.transferTo(destinationFile);
-                 model.addAttribute("message","File successfully uploaded");
-             } catch (IOException e) {
-                 e.printStackTrace();
-                 model.addAttribute("message","Oops! Something went wrong!" + e);
-             }
-             image.setUrl(filename);
+       Image image = new Image();
+       if(!uploadedFile.getOriginalFilename().isEmpty()){
+         String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+         String filepath = Paths.get(uploadPath,filename).toString();
+         File destinationFile = new File(filepath);
+         try {
+           uploadedFile.transferTo(destinationFile);
+           model.addAttribute("message","File successfully uploaded");
+         } catch (IOException e) {
+           e.printStackTrace();
+           model.addAttribute("message","Oops! Something went wrong!" + e);
          }
-         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-         User currentUser = usersdao.getOne(user.getId());
+         image.setUrl(filename);
 
+       }
+
+       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+         User currentUser = usersdao.getOne(user.getId());
          image.setRestaurant(restaurant);
          imageDao.save(image);
-
          Review review = new Review();
-         // new instance of an array list
          List<Image> reviewImages = new ArrayList<>();
          reviewImages.add(image);
          review.setImages(reviewImages);
-         // adds the saved image into the new instance of the array
-         //  these are for restaurant_review
          review.setRestaurant(restaurant);
          review.setContent(content);
          review.setUser(currentUser);
-         // sets images from the added savedImages
          reviewDao.save(review);
 
-         // sets the restaurant id in images
-
-
- //      image.setRestaurant(restaurant);
- //      image.setId(uploadedImage.getId());
-
-         return "redirect:/restaurant/review/{id}";
+         return "redirect:/reviews/byRestaurant/{id}";
      }
 
 
-     @GetMapping("/restaurant/review/{id}")
+
+
+
+   @GetMapping("/reviews/byRestaurant/{id}")
      public String viewReview(Model model, @PathVariable("id") long id) {
-         Restaurant restaurant = restaurantsdao.getOne(id);
-         List<Review> reviews = reviewDao.findAll();
-         List<Image> images = imageDao.findAll();
-         model.addAttribute("restaurant", restaurant);
-         model.addAttribute("images", images);
-         model.addAttribute("reviews", reviews);
+     Restaurant restaurant = restaurantsdao.getOne(id);
+     List<Review> reviewsForRestaurant = reviewDao.findAllByRestaurant(restaurant);
+     User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+     model.addAttribute("currentUser",currentUser);
+     model.addAttribute("restaurant", restaurant);
+     model.addAttribute("reviews",reviewsForRestaurant);
          return "post/reviewPage";
+     }
+
+
+
+     @GetMapping("/review/update/{id}")
+     public String updateReview(Model model, @PathVariable("id") long id){
+
+       Review review = reviewDao.getOne(id);
+       model.addAttribute("review",review);
+
+       return "post/updateReview";
+     }
+
+     @PostMapping("/review/update/{id}")
+     public String updateReviewResults(@RequestParam(name = "file")MultipartFile uploadedFile, Model model, @ModelAttribute("review") Review review, @PathVariable("id") long id){
+       Review reviewFromDB = reviewDao.getOne(id);
+       Image image = new Image();
+       if(!uploadedFile.getOriginalFilename().isEmpty()){
+         String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
+         String filepath = Paths.get(uploadPath,filename).toString();
+         File destinationFile = new File(filepath);
+         try {
+           uploadedFile.transferTo(destinationFile);
+           model.addAttribute("message","File successfully uploaded");
+         } catch (IOException e) {
+           e.printStackTrace();
+           model.addAttribute("message","Oops! Something went wrong!" + e);
+         }
+         image.setUrl(filename);
+         image.setRestaurant(reviewFromDB.getRestaurant());
+         imageDao.save(image);
+         List<Image> updatedImages = new ArrayList<>();
+         updatedImages.add(image);
+         reviewFromDB.setImages(updatedImages);
+       }
+
+       reviewFromDB.setContent(review.getContent());
+
+       reviewDao.save(reviewFromDB);
+       return "redirect:/reviews/byRestaurant/" + reviewFromDB.getRestaurant().getId();
      }
 
  }

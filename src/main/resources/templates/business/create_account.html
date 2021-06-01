@@ -85,12 +85,7 @@
           <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}" th:selected="${category.id}"></option>
         </select>
       </div>
-        <div class="mb-3">
-            <label for="formFileMultiple" class="form-label">
-               Upload a photo</label>
-            <input class="form-control" name="file" type="file" id="formFileMultiple" multiple>
-            <input type="submit" value="Upload Files">
-        </div>
+
     </form>
 
         <button name="submit" type="submit" class="btn btn-primary">Submit</button>

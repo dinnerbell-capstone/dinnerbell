@@ -1,27 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/header :: head(reviews)">
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<br>
-<br>
-<div class="container" th:action="@{/restaurant/review/{id}(id=${restaurant.id})}">
-  <div th:each="review : ${reviews}">
-    <div th:if="${review.restaurant.id == restaurant.id}">
-    <h1 th:text="${review.restaurant.restaurant_name}"></h1>
-    <h3 th:text="${review.content}"></h3>
-    <h5>Author: <span th:text="${review.user.username}"></span></h5>
-    <div class="container" th:each="image : ${images}" th:value="${review.id}">
-      <img th:if="${image.url == null}" class="responsive-im post-img" src="https://placehold.it/300x300" alt="placeholder" />
-      <img class="img-thumbnail" th:if="${image.url != null && image.id == review.id}" th:src="${'/uploads/' + image.url }" />
-    </div>
-    </div>
-  </div>
+
+<div class="content">
+
+  <div class="card">
+
+
+
+      <main>
+          <h1 th:text="${restaurant.restaurant_name}"></h1>
+
+
+          <div th:each="review : ${reviews}">  <!--      for each to grab reviews by restaurant id in url-->
+              <h3 class="card-text" th:text="${review.content}"></h3>
+              <h5>Author: <span th:text="${review.user.username}"></span></h5>
+
+            <!--          displaying image-->
+          <div class="card" style="width: 18rem;" th:each="image : ${review.images}" th:value="${review.id}">
+            <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
+            <img class="img-thumbnail"  th:src="${'/uploads/' + image.url }" />
+          </div>
+
+<!--          button for editing reviews if you are the creator of the review-->
+          <div class="container text-center" th:if="${review.user.id == currentUser.id}">
+            <a class="btn btn-warning" th:href="@{'/review/update/' + ${review.id}}" th:object="${review.id}">Edit</a>
+          </div>
+
+
+
+          </div> <!--       this div is the end of iterating through reviews-->
+
+      </main>
+
+<!--    button to go back to restaurant details-->
   <div class="container text-center">
-      <a class="btn btn-warning" th:href="@{/restaurant/details/{id}(id=${restaurant.id})}">Back to <span th:text="${restaurant.restaurant_name}"></span></a>
+    <a class="btn btn-warning" th:href="@{/restaurant/details/{id}(id=${restaurant.id})}">Back to <span th:text="${restaurant.restaurant_name}"></span></a>
   </div>
-</div>
+
+    </div> <!-- card div -->
+</div> <!--  content div-->
+
 
 
 
