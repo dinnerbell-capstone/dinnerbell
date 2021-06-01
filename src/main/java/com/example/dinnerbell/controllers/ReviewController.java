@@ -92,16 +92,19 @@
 
        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          User currentUser = usersdao.getOne(user.getId());
-         image.setRestaurant(restaurant);
-         imageDao.save(image);
          Review review = new Review();
          List<Image> reviewImages = new ArrayList<>();
+         image.setReview(review);
          reviewImages.add(image);
          review.setImages(reviewImages);
          review.setRestaurant(restaurant);
          review.setContent(content);
          review.setUser(currentUser);
          reviewDao.save(review);
+
+//         image.setRestaurant(restaurant);
+//         image.setReview();
+//         imageDao.save(image);
 
          return "redirect:/reviews/byRestaurant/{id}";
      }
