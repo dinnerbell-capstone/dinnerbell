@@ -77,9 +77,11 @@
 
 
             <!--BUTTON TO LEAVE A REVIEW-->
-
+        <div sec:authorize="isAuthenticated()">
             <h3>How was your visit? Let us know!</h3>
             <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurants.id})}" role="button">Leave a Review</a>
+          <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurants.id})}" role="button">View Reviews</a>
+        </div>
 
 
     </div>
