@@ -1,0 +1,3 @@
+"use strict"
+const MAPBOX_TOKEN = '<pk.eyJ1IjoiZGlubmVyYmVsbCIsImEiOiJja3AzMTdyYjYwMnN6Mm5wdGxhNjEya3lzIn0.EDhH2oFDV8u6oiJQc6FCVw>';
+const YELP_TOKEN = 's-cm1_5WJP-dLQgCFrMEJHEAYSP3iS7f5BC9TGn6nYMMZbLLVyQgk3IxrdKPx3dcgMK5emrpqG5aRhHxIMSi3zF2VMjjPPt7J0ATXvpIhqsyIgKbo5BwExsDVLqrYHYx'

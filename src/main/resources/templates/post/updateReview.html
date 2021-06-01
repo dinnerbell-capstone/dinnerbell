@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/header :: head(Edit)"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<form th:action="@{'/review/update/' + ${review.id}}" th:method="post" th:object="${review}" enctype="multipart/form-data">
+  <h1>Restaurant Review</h1>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Tell us all about your dining experience to share with others here on DinnerBell.
+      How was your meal? Was the staff welcoming? Was the atmosphere pleasant and clean? Would you recommend this restaurant to a friend?</label>
+    <textarea  th:field="*{content}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+  <!--multiple images-->
+  <div class="mb-3">
+
+    <label for="formFileMultiple" class="form-label">Wanna change your current image?</label>
+    <input  class="form-control" name="file" type="file" id="formFileMultiple" multiple>
+
+    <input type="submit" value="Upload Files">
+  </div>
+</form>
+
+
+
+<th:block th:replace="partials/scripts :: scripts"></th:block>
+</body>
+</html>
