@@ -114,6 +114,7 @@ public class RestaurantController {
 
 
 
+
   @GetMapping("/restaurant/details/{id}")
   public String restaurants(@PathVariable long id, Model model){
     Restaurant restaurant = restaurantsdao.getOne(id);
@@ -127,20 +128,6 @@ public class RestaurantController {
     return "business/details";
   }
 
-  @GetMapping("/details/test")
-  @ResponseBody
-  public Restaurant restaurantsImageTest(){
-      List<Restaurant> restaurants = new ArrayList<>();
-    Restaurant restaurant = restaurantsdao.getOne(1L);
-    restaurants.add(restaurant);
-    List<Image> imagesForRestaurant = imageDao.findImageByRestaurant(restaurant);
-
-    ObjectMapper objectMapper = new ObjectMapper();
-
-
-   return restaurant;
-
-  }
 
   @PostMapping("/restaurant/details/{id}")
   public String addToFavorites(@PathVariable("id") long id){
