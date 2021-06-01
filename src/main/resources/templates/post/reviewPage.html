@@ -23,7 +23,7 @@
 
             <!--          displaying image-->
           <div class="card" style="width: 18rem;" th:each="image : ${review.images}" th:value="${review.id}">
-            <img th:if="${image.url == null}" class="img-thumbnail" src="https://placehold.it/300x300" alt="placeholder" />
+            <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
             <img class="img-thumbnail"  th:src="${'/uploads/' + image.url }" />
           </div>
 
@@ -31,6 +31,8 @@
           <div class="container text-center" th:if="${review.user.id == currentUser.id}">
             <a class="btn btn-warning" th:href="@{'/review/update/' + ${review.id}}" th:object="${review.id}">Edit</a>
           </div>
+
+
 
           </div> <!--       this div is the end of iterating through reviews-->
 
