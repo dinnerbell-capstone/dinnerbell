@@ -21,9 +21,9 @@ public class Image {
   @ManyToOne
   private Restaurant restaurant;
 
-  @ManyToMany(mappedBy = "images", fetch = FetchType.LAZY)
+  @ManyToOne
   @JsonBackReference
-  private List<Review> reviews;
+  private Review review;
 
   public Image() {
   }
@@ -39,19 +39,25 @@ public class Image {
     this.restaurant = restaurant;
   }
 
-  public Image(long id, String url, Restaurant restaurant, List<Review> reviews) {
+  public Image(long id, String url, Restaurant restaurant, Review review) {
     this.id = id;
     this.url = url;
     this.restaurant = restaurant;
-    this.reviews = reviews;
+    this.review = review;
   }
 
-  public List<Review> getRestaurantReviews() {
-    return reviews;
+  public Image(String url, Restaurant restaurant, Review review) {
+    this.url = url;
+    this.restaurant = restaurant;
+    this.review = review;
   }
 
-  public void setRestaurantReviews(List<Review> reviews) {
-    this.reviews = reviews;
+  public Review getReview() {
+    return review;
+  }
+
+  public void setReview(Review review) {
+    this.review = review;
   }
 
   public long getId() {
