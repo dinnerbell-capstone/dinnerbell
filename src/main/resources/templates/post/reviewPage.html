@@ -29,7 +29,9 @@
 
 <!--          button for editing reviews if you are the creator of the review-->
           <div class="container text-center" th:if="${review.user.id == currentUser.id}">
-            <a class="btn btn-warning" th:href="@{'/review/update/' + ${review.id}}" th:object="${review.id}">Edit</a>
+            <a class="btn btn-warning" th:href="@{'/review/update/' + ${review.id}}">Edit</a>
+<!--            <a class="btn btn-danger" th:href="@{'/review/delete/' + ${review.id}}">Delete</a>-->
+            <div th:replace="partials/deleteModel :: modal"></div>
           </div>
 
 
