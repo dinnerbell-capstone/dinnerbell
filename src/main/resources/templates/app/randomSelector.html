@@ -81,9 +81,18 @@
         crossorigin="anonymous"></script>
 
 <script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    var user = /*[[${session.user}]]*/ '';
+    var restaurant = /*[[${restaurant}]]*/'' ;
 
 
 
+
+    /*]]>*/
+    console.log(user)
+    console.log(restaurant)
 
 </script>
 
@@ -91,11 +100,11 @@
 
 
 
-<script type="text/javascript" th:src="@{js/keys.js}"></script>
-<script type="text/javascript" th:src="@{js/randomSelector.js}"></script>
+<!--<script type="text/javascript" th:src="@{js/keys.js}"></script>-->
+<!--<script type="text/javascript" th:src="@{js/randomSelector.js}"></script>-->
 
 <script src="../../static/js/keys.js"></script>
-<!--<script src="../../static/js/randomSelector.js"></script>-->
+<script src="../../static/js/randomSelector.js"></script>
 
 
 <!--Bootstrap-->
