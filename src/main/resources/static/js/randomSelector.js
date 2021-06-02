@@ -121,19 +121,26 @@ $(".icon").click(function() {
                 console.log(address)
                 console.log(state)
                 console.log(zipcode)
-                itemHTML += "<form action='' method='post'>"
+                // itemHTML += "<form th:action=@{/restaurant/details/{id}(id=${restaurant.id})}' th:method='post'>"
+                itemHTML += "<form th:action='@{'/restaurant/details/' + ${restaurant.id}}' th:method='post'>"
+
+                // th:action="@{'/restaurant/details/' + ${restaurant.id}}"
                 itemHTML += "<main>"
                 itemHTML += "<h1>" + restaurantName + "</h1>"
                 itemHTML += "<img src='" + restaurantImage + "' style='width:500px height:500px'>"
                 itemHTML += "<br>"
-                itemHTML += " <div>"
+
+                // <!--FAVORITES BUTTON-->
+
+                itemHTML += " <div sec:authorize='isAuthenticated()' th:if='${!restaurant.favorites.contains(user)}'>"
                 itemHTML += "<button type='submit' class='btn btn-danger'>" + "Add to Favorites" + "</button>"
                 itemHTML += "</div>"
-                itemHTML += "<div>"
+                itemHTML += "<div sec:authorize='isAuthenticated()' th:unless='${!restaurant.favorites.contains(user)}'>"
                 itemHTML += "<button id='favoriteBtn' type='submit' class='btn btn-secondary'>" + "Saved to Favorites" + "</button>"
                 itemHTML += "</div>"
+
                 itemHTML += "<h5>Restaurant Description</h5>"
-                itemHTML += "<p>" + restaurantDescription + "</p>"
+                itemHTML += "<p th:text='${restaurant.description}'>" + restaurantDescription + "</p>"
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Restaurant Rating:" + "</h6>"
                 itemHTML += "<p>" + restaurantRating + "</p>"
@@ -148,12 +155,14 @@ $(".icon").click(function() {
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Address:" + "</h6>"
                 itemHTML += "<p>" + address + "</p>"
-                itemHTML += "<p>" + city + "," + state + "</p>"
-                itemHTML += "<p>" + zipcode + "</p>"
+                itemHTML += "<p th:text='${restaurant.city}'>" + city +  "</p>"
+                itemHTML += "<p class='d-none' th:text='${restaurant.id}'>" + restaurantId +  "</p>"
+                itemHTML += "<p th:text='${restaurant.state}'>"+ state + "</p>"
+                itemHTML += "<p th:text='${restaurant.zip_code}'>" + zipcode + "</p>"
                 itemHTML += "</article>"
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Website:" + "</h6>"
-                itemHTML += "<a href='" + restaurantUrl + "'>" + restaurantUrl + "</a>"
+                itemHTML += "<a th:text='${restaurant.website_link}' href='" + restaurantUrl + "'>" + restaurantUrl + "</a>"
                 itemHTML += "</article>"
                 itemHTML += "</main>"
                 itemHTML += "</form>"
