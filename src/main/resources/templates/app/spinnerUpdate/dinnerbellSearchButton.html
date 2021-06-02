@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  body{
+    margin: 50px;
+    padding: 60px;
+  }
+  card, h1, h6, p{
+    color: #00aba9;
+  }
 
+</style>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,11 +21,11 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
   <link rel="stylesheet" href="dbIcon.css" />
+  <link rel="stylesheet" href="main.css" />
 </head>
 
 <body>
 
-<h1> Let Dinnerbell Choose For You!</h1>
 <!--Container for Icon -->
 <div class="container1">
   <div class="container2">
@@ -26,10 +35,119 @@
   </div>
 </div>
 
-
+<p class="fas fa-concierge-bell"> Search For A Restaurant!</p>
+<input type="button" id="searchAgain" value="Search Again">
 
 <!--Card div hidden until icon click-->
-<div class="results " ></div>
+<div class="results" ></div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <!--CARD CLASS KEEPS CONTAINED-->
+          <div class="card">
+
+            <form action="" method="post">
+
+              <h1>DinnerBell Exclusive</h1>
+              <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
+              <main>
+                <h1> Restaurant Name </h1>
+
+                <!--                INSERT IMAGE CODE HERE-->
+                <div class="restaurant-page-image">
+                                  <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${images}" th:value="${image.id}">
+                  <img src="desserts.jpg" width="500">
+                                    <img th:if="${image.url == null}" class="img-thumbnail" src="https://placehold.it/300x300" alt="placeholder" />
+                                    <img th:src="${'/uploads/' + image.url }"  alt=""/>
+                </div>
+                <br>
+
+                <!--                FAVORITES BUTTON-->
+                <div>
+                  <button type="submit" class="btn btn-danger">Add to Favorites</button>
+                </div>
+                <div>
+                  <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
+                </div>
+                <p>Restaurant Description</p>
+
+                <article class="details">
+                  <h6>Hours: </h6>
+                  <p >Hours</p>
+                </article>
+                <article class="details">
+                  <h6>Phone number: </h6>
+
+                  <a><span > Phone Number </span></a>
+
+                </article>
+                <article class="details">
+                  <h6>Address: </h6>
+                  <p > Street Address</p>
+                </article>
+                <article class="details">
+                  <h6>City: </h6>
+                  <p > Restaurants City</p>
+                </article>
+                <article class="details">
+                  <h6>State: </h6>
+                  <p > State</p>
+                </article>
+                <article class="details">
+                  <h6>Zip code: </h6>
+                  <p > Zip Code</p>
+                </article>
+                <article class="details">
+                  <h6>Website: </h6>
+                  <p>WebSite Link</p>
+                </article>
+                <article class="details">
+                  <h6>Menu: </h6>
+                  <p > Menu</p>
+                </article>
+                <!--                                <article class="details">-->
+                <!--                                    <h6>ElderEats Link: </h6>-->
+                <!--                                    <p th:text="${restaurants.elder_eats_link}"></p>-->
+                <!--                                </article>-->
+              </main>
+            </form>
+
+
+            <!--BUTTON TO LEAVE A REVIEW-->
+            <div sec:authorize="isAuthenticated()">
+              <h3>How was your visit? Let us know!</h3>
+              <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurants.id})}" role="button">Leave a Review</a>
+              <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurants.id})}" role="button">View Reviews</a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <!--scripts-->
 <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -48,6 +166,3 @@
 </body>
 
 </html>
-
-
-
