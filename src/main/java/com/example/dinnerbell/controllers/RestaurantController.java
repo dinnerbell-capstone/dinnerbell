@@ -1,9 +1,6 @@
 package com.example.dinnerbell.controllers;
 
-import com.example.dinnerbell.models.Category;
-import com.example.dinnerbell.models.Image;
-import com.example.dinnerbell.models.Restaurant;
-import com.example.dinnerbell.models.User;
+import com.example.dinnerbell.models.*;
 import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.ImageRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
@@ -42,25 +39,6 @@ public class RestaurantController {
         this.imageDao = imageDao;
     }
 
-//  private Image getRestaurantImage(MultipartFile uploadedFile, Model model) {
-//    Image image = new Image();
-//    if(!uploadedFile.getOriginalFilename().isEmpty()){
-//      String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-//      String filepath = Paths.get(uploadPath,filename).toString();
-//      File destinationFile = new File(filepath);
-//      try {
-//        uploadedFile.transferTo(destinationFile);
-//        model.addAttribute("message","File successfully uploaded");
-//      } catch (IOException e) {
-//        e.printStackTrace();
-//        model.addAttribute("message","Oops! Something went wrong!" + e);
-//      }
-//      image.setUrl(filename);
-//      imageDao.save(image);
-//    }
-//    return image;
-//
-//  }
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
@@ -73,7 +51,7 @@ public class RestaurantController {
   public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
     restaurant.setCategories(categories);
     restaurantsdao.save(restaurant);
-    return "redirect:/restaurant";
+    return "redirect:/restaurant/details/" + restaurant.getId();
   }
 
 
@@ -109,11 +87,8 @@ public class RestaurantController {
     image.setRestaurant(restaurant);
     imageDao.save(image);
 
-    return "redirect:/restaurant/details/{id}";
+    return "redirect:/restaurant/details/" + restaurant.getId();
     }
-
-
-
 
   @GetMapping("/restaurant/details/{id}")
   public String restaurants(@PathVariable long id, Model model){
@@ -144,28 +119,34 @@ public class RestaurantController {
         restaurant.setFavorites(null);
         restaurantsdao.save(restaurant);
       }
-      return "redirect:/restaurant/details/{id}";
+      return "redirect:/restaurant/details/" + restaurant.getId();
   }
 
     @GetMapping("/restaurant/edit/{id}")
-    public String editRestaurantProfile(Model vModel, @PathVariable Long id) {
+    public String editRestaurantProfile(Model model, @PathVariable Long id) {
 //        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Restaurant restaurantToEdit = restaurantsdao.getOne(id);
-        vModel.addAttribute("restaurant", restaurantToEdit);
+      Restaurant restaurantToEdit = restaurantsdao.getOne(id);
+
+        model.addAttribute("categories", categoriesdao.findAll());
+        model.addAttribute("restaurant", restaurantToEdit);
         return "business/edit-restaurant-profile";
     }
 
 
     @PostMapping("/restaurant/edit/{id}")
-    public String updateRestaurantProfile(@ModelAttribute Restaurant restaurantToEdit) {
+    public String updateRestaurantProfile(@ModelAttribute("restaurant") Restaurant restaurantToEdit, @RequestParam(name = "categories")List<Category> categories) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User creator = usersdao.getOne(currentUser.getId());
-
+        creator.setRestaurant(restaurantToEdit);
+        restaurantToEdit.setCategories(categories);
+        usersdao.save(creator);
         restaurantsdao.save(restaurantToEdit);
         return "redirect:/restaurant";
     }
 
 
+    }
 
-}
+
+
