@@ -2,96 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/header :: head('Profile')"></head>
+<style>
+    h1, p {
+        color: black;
+    }
+</style>
 <body>
-<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<div>
-    <p th:text="${user.username}"></p>
-    <p th:text="${user.email}"></p>
+<div class="content" style="text-align: center">
+    <!--CARD CLASS KEEPS CONTAINED-->
+    <div class="card">
+        <div>
+            <h1>Welcome to DinnerBell! </h1>
 
-    <p th:text="${user.isBusiness}"></p>
-    <p th:text="${user.restaurant}"></p>
+            <main>
+                <article>Can't decide what's for dinner? Spin the wheel for a great meal! <a href="/spinner">Spin
+                    now</a></article>
+                <article>DinnerBell features the best eats and treats by our local favorites. Check them out on our
+                    Exclusives page.
+                    <a href="/index">Exclusives</a></article>
+                <article>Looking for something in particular? Try our Yelp search to find more great places to wine and
+                    dine. <a href="/search">Search Yelp</a></article>
+                <article>Join David Elder of KSAT's ElderEats as he explores a variety of restaurants in South Texas and
+                    beyond!
+                    <a href="https://www.ksat.com/food/elder-eats/">ElderEats</a></article>
+            </main>
+        </div>
+        <br>
+        <br>
+
+        <form>
+            <h6>Your User Info</h6>
+            <p th:text="${user.username}"></p>
+            <p th:text="${user.email}"></p>
+            <button href="/users/edit">Edit</button>
+            <br><br>
+
+            <div th:if="${user.isBusiness}">
+                <h6>Your Restaurant Info</h6>
+                <p th:text="${user.isBusiness}"></p>
+                <p th:text="${user.restaurant}"></p>
+                <button href="/restaurant/edit/">Edit</button>
+            </div>
+            <div th:unless="${user.isBusiness}">
+                <p>Would you like to submit your restaurant to be feature on DinnerBell? <a href="/restaurant/create">Sign
+                    up</a></p>
+            </div>
+        </form>
+    </div>
 </div>
 
-
-<!--<div class="container">-->
-<!--    <h1>User Dashboard </h1>-->
-<!--    <div class="card">-->
-<!--        <div class="card-body">-->
-<!--            <div class="d-flex align-items-start">-->
-<!--                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">-->
-<!--                    <a class="nav-link active" id="v-pills-user-tab" data-bs-toggle="pill" href="#profile-tab"-->
-<!--                       role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile Info</a>-->
-<!--                    <a class="nav-link" id="favorites-list-tab" data-bs-toggle="pill" href="#favorites-list" role="tab"-->
-<!--                       aria-controls="v-pills-favorites-list" aria-selected="false">Favorites List</a>-->
-<!--                    <a class="nav-link" id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab"-->
-<!--                       aria-controls="v-pills-reviews" aria-selected="false">View All Reviews</a>-->
-<!--                </div>-->
-<!--                <div class="tab-content flex-grow-1" id="tabs">-->
-
-<!--                    <div class="tab-pane fade" id="profile-tab" role="tabpanel" aria-labelledby="v-pills-user-tab">-->
-<!--                        <form>-->
-<!--                            <fieldset disabled>-->
-<!--                                <legend>Profile Information</legend>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="username" class="form-label">Username</label>-->
-<!--                                    <input type="text" id="username" class="form-control"-->
-<!--                                           placeholder="pull username from database">-->
-<!--                                </div>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="email" class="form-label">Email</label>-->
-<!--                                    <input type="text" id="email" class="form-control"-->
-<!--                                           placeholder="pull email from database">-->
-<!--                                </div>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="phonenumber" class="form-label">Phonenumber</label>-->
-<!--                                    <input type="text" id="phonenumber" class="form-control"-->
-<!--                                           placeholder="pull phonenumber from database">-->
-<!--                                </div>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="address" class="form-label">Address</label>-->
-<!--                                    <input type="text" id="address" class="form-control"-->
-<!--                                           placeholder="pull address from database">-->
-<!--                                </div>-->
-<!--                                <button type="submit" class="btn btn-primary">Save</button>-->
-<!--                            </fieldset>-->
-<!--                        </form>-->
-<!--                    </div>-->
-
-<!--                    <div class="tab-pane fade" id="favorites-list" role="tabpanel" aria-labelledby="Favorites-List-tab">-->
-<!--                        <ol>-->
-<!--                            <li>Chuck E Cheese-->
-<!--                                <button type="submit" class="btn btn-danger">Remove</button>-->
-<!--                            </li>-->
-<!--                            <li>Dominos</li>-->
-<!--                            <li>Outback</li>-->
-<!--                            <li>Casamigos</li>-->
-<!--                            <li>Starve</li>-->
-<!--                        </ol>-->
-
-<!--                    </div>-->
-
-
-<!--                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="v-pills-prijave-tab">-->
-<!--                        Dinnerbell is the best group ever!-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--SHOWS CURRENT USER INTO-->
-<!--<form th:action="@{/users/profile/{id}(id=${user.id})}" th:method="post">-->
-
-
-
-<!--</form>-->
-
-
 <th:block th:replace="partials/scripts :: scripts"/>
-
 </body>
 </html>

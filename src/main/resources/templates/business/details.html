@@ -15,6 +15,7 @@
 
             <h1>DinnerBell Exclusive</h1>
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
+
             <main>
                 <h1 th:text="${restaurant.restaurant_name}"></h1>
 
@@ -24,6 +25,7 @@
 <!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
                   <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
                   <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
+
                 </div>
                 <br>
 
@@ -42,10 +44,12 @@
                 </article>
                 <article class="details">
                     <h6>Phone number: </h6>
+
 <!--                    <p th:text="${restaurants.phone_number}"></p>-->
 <!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
                     <a th:href="'tel:+' + '${restaurants.phone_number}'"><span th:text="${restaurant.phone_number}"></span></a>
 <!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
+
                 </article>
                 <article class="details">
                     <h6>Address: </h6>
@@ -79,9 +83,10 @@
         </form>
 
 
-            <!--BUTTON TO LEAVE A REVIEW-->
+        <!--BUTTON TO LEAVE A REVIEW-->
         <div sec:authorize="isAuthenticated()">
             <h3>How was your visit? Let us know!</h3>
+
             <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>
           <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>
         </div>
