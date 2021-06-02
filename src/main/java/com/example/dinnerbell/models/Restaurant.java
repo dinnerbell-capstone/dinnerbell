@@ -1,6 +1,8 @@
 package com.example.dinnerbell.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Restaurant {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +46,10 @@ public class Restaurant {
   @Column(nullable = false, columnDefinition = "char(2) DEFAULT 'XX'")
   private String state;
 
+  @OneToMany(mappedBy = "restaurant")
+  @JsonManagedReference
+  private List<Image> images;
+
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
           name = "favorite_restaurants",
@@ -61,6 +67,12 @@ public class Restaurant {
   )
   @JsonManagedReference
   private List<Category> categories;
+
+  @OneToMany(mappedBy = "restaurant")
+  @JsonIgnore
+  private List<Review> reviews;
+
+
 
   public Restaurant() {
   }
@@ -96,6 +108,22 @@ public class Restaurant {
     this.state = state;
     this.favorites = favorites;
     this.categories = categories;
+  }
+
+  public List<Review> getReviews() {
+    return reviews;
+  }
+
+  public void setReviews(List<Review> reviews) {
+    this.reviews = reviews;
+  }
+
+  public List<Image> getImages() {
+    return images;
+  }
+
+  public void setImages(List<Image> images) {
+    this.images = images;
   }
 
   public long getId() {

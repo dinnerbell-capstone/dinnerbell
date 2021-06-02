@@ -30,7 +30,7 @@
      private final ReviewRepo reviewDao;
      private final ImageRepo imageDao;
 
-     @Value("${file-upload-path}")
+     @Value("${file_upload_path}")
      private String uploadPath;
 
      public ReviewController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao, ReviewRepo reviewDao, ImageRepo imageDao) {
@@ -92,16 +92,19 @@
 
        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          User currentUser = usersdao.getOne(user.getId());
-         image.setRestaurant(restaurant);
-         imageDao.save(image);
          Review review = new Review();
          List<Image> reviewImages = new ArrayList<>();
+         image.setReview(review);
          reviewImages.add(image);
          review.setImages(reviewImages);
          review.setRestaurant(restaurant);
          review.setContent(content);
          review.setUser(currentUser);
          reviewDao.save(review);
+
+//         image.setRestaurant(restaurant);
+//         image.setReview();
+//         imageDao.save(image);
 
          return "redirect:/reviews/byRestaurant/{id}";
      }
@@ -160,6 +163,13 @@
        reviewDao.save(reviewFromDB);
        return "redirect:/reviews/byRestaurant/" + reviewFromDB.getRestaurant().getId();
      }
+
+   @GetMapping("/review/delete/{id}")
+   public String deleteReview(@PathVariable("id") long id){
+       Review review = reviewDao.getOne(id);
+     reviewDao.deleteById(id);
+     return "redirect:/reviews/byRestaurant/" + review.getRestaurant().getId();
+   }
 
  }
 

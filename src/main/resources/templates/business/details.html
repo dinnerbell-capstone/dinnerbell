@@ -11,70 +11,73 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
 
-        <form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">
+        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">
 
             <h1>DinnerBell Exclusive</h1>
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
-            <main class="details-css">
-                <h1 th:text="${restaurants.restaurant_name}"></h1>
+
+            <main>
+                <h1 th:text="${restaurant.restaurant_name}"></h1>
 
                 <!--                INSERT IMAGE CODE HERE-->
-                <div class="restaurant-page-image">
-                    <!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${images}" th:value="${image.id}">-->
-                    <img src="/img/pexels-photo-670705.jpeg" width="500">
-                    <!--                  <img th:if="${image.url == null}" class="img-thumbnail" src="https://placehold.it/300x300" alt="placeholder" />-->
-                    <!--                  <img th:src="${'/uploads/' + image.url }"  alt=""/>-->
+<!--              <div class="restaurant-page-image">-->
+                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">
+<!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
+                  <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
+                  <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
+
                 </div>
                 <br>
 
                 <!--                FAVORITES BUTTON-->
-                <div sec:authorize="isAuthenticated()" th:if="${!restaurants.favorites.contains(user)}">
+                <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
                     <button type="submit" class="btn btn-danger">Add to Favorites</button>
                 </div>
-                <div sec:authorize="isAuthenticated()" th:unless="${!restaurants.favorites.contains(user)}">
+                <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
                     <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
                 </div>
-                <p th:text="${restaurants.description}"></p>
+                <p th:text="${restaurant.description}"></p>
 
                 <article class="details">
                     <h6>Hours: </h6>
-                    <p th:text="${restaurants.hours}"></p>
+                    <p th:text="${restaurant.hours}"></p>
                 </article>
                 <article class="details">
                     <h6>Phone number: </h6>
-                    <!--                    <p th:text="${restaurants.phone_number}"></p>-->
-                    <!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
-                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span
-                            th:text="${restaurants.phone_number}"></span></a>
-                    <!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
+
+<!--                    <p th:text="${restaurants.phone_number}"></p>-->
+<!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
+                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span th:text="${restaurant.phone_number}"></span></a>
+<!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
+
                 </article>
                 <article class="details">
                     <h6>Address: </h6>
-                    <p th:text="${restaurants.street_address}"></p>
+                    <p th:text="${restaurant.street_address}"></p>
                 </article>
                 <article class="details">
                     <h6>City: </h6>
-                    <p th:text="${restaurants.city}"></p>
+                    <p th:text="${restaurant.city}"></p>
                 </article>
                 <article class="details">
                     <h6>State: </h6>
-                    <p th:text="${restaurants.state}"></p>
+                    <p th:text="${restaurant.state}"></p>
                 </article>
                 <article class="details">
                     <h6>Zip code: </h6>
-                    <p th:text="${restaurants.zip_code}"></p>
+                    <p th:text="${restaurant.zip_code}"></p>
                 </article>
                 <article class="details">
                     <h6>Website: </h6>
-                    <p th:text="${restaurants.website_link}"></p>
+                    <p th:text="${restaurant.website_link}"></p>
                 </article>
                 <article class="details">
                     <h6>Menu: </h6>
-                    <p th:text="${restaurants.menu_link}"></p>
+                    <p th:text="${restaurant.menu_link}"></p>
                 </article>
                 <article class="details">
                     <h6>ElderEats Link: </h6>
-                    <p th:text="${restaurants.elder_eats_link}"></p>
+                    <p th:text="${restaurant.elder_eats_link}"></p>
                 </article>
             </main>
         </form>
@@ -84,9 +87,8 @@
         <div sec:authorize="isAuthenticated()">
             <h3>How was your visit? Let us know!</h3>
 
-            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurants.id})}" role="button">Leave a Review</a>
-            <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurants.id})}" role="button">View
-                Reviews</a>
+            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>
+          <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>
         </div>
 
 

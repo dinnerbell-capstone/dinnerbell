@@ -35,64 +35,63 @@ var requestObj= {
     'data': {term: 'restaurants', location: '78247', limit: arrayRandomNumber, offset: offsetRandomNumber},
     headers: {
         'Authorization':'Bearer ' + YELP_TOKEN,
-        
+
     },
     error: function(jqXHR, textStatus, errorThrown) {
         console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ', textStatus, ', errorThrown =', errorThrown)
     }
 }
-
-// function unhide()
-// {
-//     $(".results").toggleClass("d-none");
-//
-// }
-
-
-$(".icon").click(function() {
-    
+$("#searchAgain").click(function() {
     location.reload();
-    $(".results").empty()
-
 });
 
-var arr =[]
-let result = ""
+$(".icon").click(function() {
+    // location.reload();
+    $(".results").empty()
 
-$.ajax(requestObj)
-    .done(function (data) {
-        console.log('typeof data = ' + typeof data)
-        console.log('data = ', data)
-        let itemHTML = '';
-        $.each(data.businesses, function (i, item) {
-            var businessName = item.name
-            var businessImage = item.image_url
-            // var businessRating = data.businesses[arrayRandomNumber].rating
-            // var businessPrice = data.businesses[arrayRandomNumber].price
-            // var businessImage = data.businesses[arrayRandomNumber].image_url
-            if (i === 1) {
-                return false
-            }
-            // itemHTML += "<span class='card text-white bg-dark ' >"
-            // itemHTML += "<div class='card-body'>"
-            // itemHTML += "<b class='text-white'>" + businessName + "</b>"
-            // // itemHTML += "<h2 class='text-white'>" + businessPrice + "</h2>"
-            // // itemHTML += "<h2 class='text-white'>" + 'Rating: '  + businessRating + "</h2>"
-            // itemHTML += "</span>"
-            // itemHTML += "</div>"
-            console.log(businessName)
-            itemHTML += "<h5 class='card-title' >"+ businessName + "</h5>"
-            itemHTML += "<a href='#' class='btn btn-primary'>" + 'View More Details' + "</a>"
+    var arr =[]
+    let result = ""
+
+    $.ajax(requestObj)
+        .done(function (data) {
+            console.log('typeof data = ' + typeof data)
+            console.log('data = ', data)
+            let itemHTML = '';
+            $.each(data.businesses, function (i, item) {
+                var restaurantName = item.name
+                var restaurantId = item.id
+                var restaurantRating = item.rating
+                var restaurantPrice = item.price
+                var restaurantImage = item.image_url
+                if (i === 1) {
+                    return false
+                }
+
+                console.log(restaurantName)
+                console.log(restaurantId)
+                itemHTML += "<h1 class='h1 ' >"+ restaurantName + "</h1>"
 
 
-
-
-        })
-
-        $(".results").append(itemHTML);
+                itemHTML += "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>" +
+                    'View More Details' +
+                    "</button>"
 
 
 
+            })
+
+            $(".results").append(itemHTML);
+
+
+
+
+
+
+
+
+
+
+        });
 
 
 
