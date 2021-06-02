@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link th:href="@{/img/favicon.png}" rel="shortcut icon" type="image/x-icon">-->
+    <title>About the Creators of Dinner Bell</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://code.jquery.com/jquery-3.3.1.slim.min.js" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <!--  MAIN CSS -->
+<!--    <link rel="stylesheet" th:href="@{/css/main.css}">-->
+    <!--  LANDING CSS -->
+    <!--    <link rel="stylesheet" th:href="@{/css/about.css}">-->
+    <style>
+        body {
+            background: #f8824e;
+            background: -webkit-linear-gradient(to right, #f8824e, #00aba9);
+            background: linear-gradient(to right, #f8824e, #00aba9);
+            min-height: 100vh;
+        }
+
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover, .social-link:focus {
+            background: #ddd;
+            text-decoration: none;
+            color: #555;
+        }
+    </style>
+</head>
+<body class="bg-green" id="aboutUs">
+<header class="mb-5">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+</header>
+
+<div class="row text-center text-white">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="display-4">Dinner Bell Creators</h1>
+        <p class="lead mb-0">Our Team</p>
+<!--        <p class="lead">Snippet by<a href="https://bootstrapious.com/snippets" class="text-white">-->
+<!--            <u>Bootstrapious</u></a>-->
+        </p>
+    </div>
+</div>
+</div><!-- End -->
+
+
+<div class="container">
+    <div class="row text-center">
+
+        <!-- Team item -->
+        <div class="col-xl-3 col-sm-6 mb-5">
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+                <img src="/img/AnnGHS.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Ann Gonzales</h5><span class="small text-uppercase text-muted">Software Engineer</span>
+                <ul class="social mb-0 list-inline mt-3">
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>-->
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>-->
+                    <li class="list-inline-item"><a href="https://github.com/annmichellegonzales" class="social-link"><i class="fa fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="http://linkedin.com/in/ann-michelle-gonzales-7531a5186" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- End -->
+
+        <!-- Team item -->
+        <div class="col-xl-3 col-sm-6 mb-5">
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+                <img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Jacob Valeriano</h5><span class="small text-uppercase text-muted">Software Engineer</span>
+                <ul class="social mb-0 list-inline mt-3">
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>-->
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>-->
+                    <li class="list-inline-item"><a href="https://github.com/Jacob-K-Valeriano" class="social-link"><i class="fa fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="www.linkedin.com/in/jacobvaleriano" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- End -->
+
+        <!-- Team item -->
+        <div class="col-xl-3 col-sm-6 mb-5">
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+                <img src="/img/JeanettePHS.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Jeanette Perez</h5><span class="small text-uppercase text-muted">Software Engineer</span>
+                <ul class="social mb-0 list-inline mt-3">
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>-->
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>-->
+                    <li class="list-inline-item"><a href="https://github.com/JeanettePerez" class="social-link"><i class="fa fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/jeanettemperez/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- End -->
+
+        <!-- Team item -->
+        <div class="col-xl-3 col-sm-6 mb-5">
+<!--            <img th:src="@{/img/CodeUpHS1.jpg}" class="bg-white rounded shadow-sm py-5 px-4"alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">-->
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+                <img src="/img/EmilyHS.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Emily Horn</h5><span class="small text-uppercase text-muted">Software Engineer</span>
+                <ul class="social mb-0 list-inline mt-3">
+<!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>-->
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-behance"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- End -->
+    </div>
+</div>
+
+
+<!--<div th:replace=""></div>-->
+<!--<div th:replace=""></div>-->
+</body>
+</html>
