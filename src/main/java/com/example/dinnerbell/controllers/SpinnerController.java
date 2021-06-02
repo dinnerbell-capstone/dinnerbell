@@ -22,6 +22,8 @@ public class SpinnerController {
         return "app/userSelect";
     }
 
+
+
     @GetMapping("/about")
     public String aboutPage() {
         return "About";
