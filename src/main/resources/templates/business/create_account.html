@@ -26,18 +26,18 @@
         <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text"/>
         <br>
 
-        <label for="street_address">Address</label>
+        <label for="street_address">Street Address</label>
         <input id="street_address" th:field="*{street_address}" name="street_address" type="text"/>
         <br>
 
 
         <label for="city">City</label>
-        <input id="city" th:field="*{city}" name="street_address" type="text"/>
+        <input id="city" th:field="*{city}" name="city" type="text"/>
         <br>
 
 
         <label for="state">State</label>
-        <input id="state" th:field="*{state}" name="state" type="text"/>
+        <input id="state" th:field="*{state}" placeholder="XX" name="state" type="text"/>
         <br>
 
         <label for="zip_code">Zipcode</label>
@@ -61,8 +61,11 @@
         <br>
 
         <label for="description">Type of cuisine</label>
-        <input id="description" name="description" type="text"/>
+        <input id="description" th:field="*{description}" name="description" type="text"/>
         <br>
+
+      <label for="eats_link">Link to Elder Eats</label>
+      <input id="eats_link" th:field="*{elder_eats_link}" name="elder_eats_link" type="text"/>
 
 
 <!--        &lt;!&ndash; Surround the select box within a "custom-select" DIV element.-->
@@ -71,10 +74,10 @@
         <br>
 
       <div class="container">
-        <select class="form-select" multiple aria-label="multiple select example" name="categories" id="categories" th:object="${categories}">
-          <option value="" disabled="disabled" selected="selected">Cuisine type</option>
 
-          <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}" th:selected="${category.id}"></option>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
+          <option disabled="disabled" selected="selected">Cuisine Categories</option>
+          <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
         </select>
       </div>
 

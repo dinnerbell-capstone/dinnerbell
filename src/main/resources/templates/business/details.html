@@ -11,7 +11,7 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
 
-        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">
+        <form th:action="@{'/restaurant/details/' + ${restaurant.id}}" th:method="post">
 
             <h1>DinnerBell Exclusive</h1>
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
