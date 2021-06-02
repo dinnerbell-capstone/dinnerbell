@@ -49,8 +49,12 @@ public class RestaurantController {
 
   @PostMapping("/restaurant/create")
   public String createRestaurant(@ModelAttribute Restaurant restaurant,@RequestParam(name = "categories")List<Category> categories){
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    User creator = usersdao.getOne(user.getId());
     restaurant.setCategories(categories);
     restaurantsdao.save(restaurant);
+    creator.setRestaurant(restaurant);
+    usersdao.save(creator);
     return "redirect:/restaurant/details/" + restaurant.getId();
   }
 
@@ -110,6 +114,7 @@ public class RestaurantController {
       User currentUser = usersdao.getOne(user.getId());
       Restaurant restaurant = restaurantsdao.getOne(id);
       List<User> favorites = restaurant.getFavorites();
+
       if (!favorites.contains(currentUser)){
         favorites.add(currentUser);
         restaurant.setFavorites(favorites);
@@ -123,11 +128,8 @@ public class RestaurantController {
   }
 
     @GetMapping("/restaurant/edit/{id}")
-    public String editRestaurantProfile(Model model, @PathVariable Long id) {
-//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-      Restaurant restaurantToEdit = restaurantsdao.getOne(id);
-
+    public String updateRestaurantProfileForm(Model model, @PathVariable Long id) {
+        Restaurant restaurantToEdit = restaurantsdao.getOne(id);
         model.addAttribute("categories", categoriesdao.findAll());
         model.addAttribute("restaurant", restaurantToEdit);
         return "business/edit-restaurant-profile";
@@ -135,13 +137,14 @@ public class RestaurantController {
 
 
     @PostMapping("/restaurant/edit/{id}")
-    public String updateRestaurantProfile(@ModelAttribute("restaurant") Restaurant restaurantToEdit, @RequestParam(name = "categories")List<Category> categories) {
+    public String updateRestaurantProfileResults(@ModelAttribute("restaurant") Restaurant restaurantToEdit, @RequestParam(name = "categories")List<Category> categories) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User creator = usersdao.getOne(currentUser.getId());
-        creator.setRestaurant(restaurantToEdit);
+
         restaurantToEdit.setCategories(categories);
-        usersdao.save(creator);
         restaurantsdao.save(restaurantToEdit);
+        creator.setRestaurant(currentUser.getRestaurant());
+        usersdao.save(creator);
         return "redirect:/restaurant";
     }
 
