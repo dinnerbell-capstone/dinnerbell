@@ -143,6 +143,7 @@ public class RestaurantController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User creator = usersdao.getOne(currentUser.getId());
         Restaurant restaurantToEdit = restaurantsdao.getOne(restaurant.getId());
+
         restaurantToEdit.setCategories(categories);
         restaurantToEdit.setRestaurant_name(restaurant.getRestaurant_name());
         restaurantToEdit.setStreet_address(restaurant.getStreet_address());
