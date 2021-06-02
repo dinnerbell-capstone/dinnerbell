@@ -20,11 +20,12 @@
                 <h1 th:text="${restaurant.restaurant_name}"></h1>
 
                 <!--                INSERT IMAGE CODE HERE-->
-<!--              <div class="restaurant-page-image">-->
-                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">
-<!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
-                  <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
-                  <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
+              <div class="restaurant-page-image">
+                <div th:replace="partials/carousel :: carousel"></div>
+<!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">-->
+<!--&lt;!&ndash;                    <img src="/img/pexels-photo-670705.jpeg" width="500">&ndash;&gt;-->
+<!--                  <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />-->
+<!--                  <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">-->
 
                 </div>
                 <br>
