@@ -42,12 +42,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
           .logoutSuccessUrl("/login?logout")
         .and()
           .authorizeRequests()
-          .antMatchers("/")
+          .antMatchers("/","/about")
           .permitAll()
         .and()
           .authorizeRequests()
           .antMatchers(
-            "/restaurant/create"
+            "/restaurant/create",
+            "/restaurant",
+            "/restaurant/upload/{id}",
+            "/restaurant/details/{id}",
+            "/restaurant/edit/{id}",
+            "/random-selector",
+            "/index",
+            "/review/{id}",
+            "/reviews/byRestaurant/{id}",
+            "/review/update/{id}",
+            "/review/delete/{id}",
+            "/search",
+            "/keys.js",
+            "/profile",
+            "/users/edit"
           )
         .authenticated();
 

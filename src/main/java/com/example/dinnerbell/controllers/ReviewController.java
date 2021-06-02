@@ -41,26 +41,6 @@
          this.imageDao = imageDao;
      }
 
-//   private Image getImage(MultipartFile uploadedFile, Model model) {
-//     Image image = new Image();
-//     if(!uploadedFile.getOriginalFilename().isEmpty()){
-//       String filename = uploadedFile.getOriginalFilename().replace(" ","_").toLowerCase();
-//       String filepath = Paths.get(uploadPath,filename).toString();
-//       File destinationFile = new File(filepath);
-//       try {
-//         uploadedFile.transferTo(destinationFile);
-//         model.addAttribute("message","File successfully uploaded");
-//       } catch (IOException e) {
-//         e.printStackTrace();
-//         model.addAttribute("message","Oops! Something went wrong!" + e);
-//       }
-//       image.setUrl(filename);
-//
-//     }
-//     return image;
-//
-//   }
-
      @GetMapping("/review/{id}")
      public String reviewForm(Model model, @PathVariable("id") long id) {
          Restaurant restaurant = restaurantsdao.getOne(id);
@@ -102,11 +82,7 @@
          review.setUser(currentUser);
          reviewDao.save(review);
 
-//         image.setRestaurant(restaurant);
-//         image.setReview();
-//         imageDao.save(image);
-
-         return "redirect:/reviews/byRestaurant/{id}";
+         return "redirect:/reviews/byRestaurant/" + restaurant.getId();
      }
 
 
