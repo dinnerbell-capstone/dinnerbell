@@ -59,13 +59,16 @@
       <br>
       <br>
 
+
       <div class="container">
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories" th:object="${categories}">
+
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
           <option disabled="disabled" selected="selected">Cuisine Categories</option>
           <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
         </select>
       </div>
       <br>
+
       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
 
     </form>
