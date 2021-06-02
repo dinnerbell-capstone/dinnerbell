@@ -129,23 +129,36 @@ public class RestaurantController {
 
     @GetMapping("/restaurant/edit/{id}")
     public String updateRestaurantProfileForm(Model model, @PathVariable Long id) {
-        Restaurant restaurantToEdit = restaurantsdao.getOne(id);
+        Restaurant restaurant = restaurantsdao.getOne(id);
+
         model.addAttribute("categories", categoriesdao.findAll());
-        model.addAttribute("restaurant", restaurantToEdit);
+        model.addAttribute("restaurant", restaurant);
         return "business/edit-restaurant-profile";
     }
 
 
     @PostMapping("/restaurant/edit/{id}")
-    public String updateRestaurantProfileResults(@ModelAttribute("restaurant") Restaurant restaurantToEdit, @RequestParam(name = "categories")List<Category> categories) {
+    public String updateRestaurantProfileResults(@ModelAttribute("restaurant") Restaurant restaurant,
+                                                 @RequestParam(name = "categories")List<Category> categories) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User creator = usersdao.getOne(currentUser.getId());
-
+        Restaurant restaurantToEdit = restaurantsdao.getOne(restaurant.getId());
         restaurantToEdit.setCategories(categories);
+        restaurantToEdit.setRestaurant_name(restaurant.getRestaurant_name());
+        restaurantToEdit.setStreet_address(restaurant.getStreet_address());
+        restaurantToEdit.setCity(restaurant.getCity());
+        restaurantToEdit.setState(restaurant.getState());
+        restaurantToEdit.setZip_code(restaurant.getZip_code());
+        restaurantToEdit.setPhone_number(restaurant.getPhone_number());
+        restaurantToEdit.setWebsite_link(restaurant.getWebsite_link());
+        restaurantToEdit.setMenu_link(restaurant.getMenu_link());
+        restaurantToEdit.setHours(restaurant.getHours());
+        restaurantToEdit.setDescription(restaurant.getDescription());
+        restaurantToEdit.setElder_eats_link(restaurant.getElder_eats_link());
         restaurantsdao.save(restaurantToEdit);
         creator.setRestaurant(currentUser.getRestaurant());
         usersdao.save(creator);
-        return "redirect:/restaurant";
+        return "redirect:/restaurant/details/" + restaurant.getId();
     }
 
 
