@@ -14,27 +14,28 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
         <div>
-        <form>
-            <h6>Your User Info</h6>
-            <p th:text="${user.username}"></p>
-            <p th:text="${user.email}"></p>
-            <button href="/users/edit">Edit</button>
-            <br><br>
+            <form>
+                <h6>Your User Info</h6>
+                <p th:text="${user.username}"></p>
+                <p th:text="${user.email}"></p>
+                <button href="/users/edit">Edit</button>
+                <br><br>
 
-            <div th:if="${user.isBusiness}">
-                <h6>Your Restaurant Info</h6>
-                <p th:text="${user.isBusiness}"></p>
-                <p th:text="${user.restaurant}"></p>
-                <button href="/restaurant/edit/">Edit</button>
-            </div>
-            <div th:unless="${user.isBusiness}">
-                <p>Would you like to submit your restaurant to be feature on DinnerBell? <a href="/restaurant/create">Sign
-                    up</a></p>
-            </div>
-        </form>
+                <div th:if="${user.isBusiness}">
+                    <h6>Your Restaurant Info</h6>
+                    <p th:text="${user.isBusiness}"></p>
+                    <p th:text="${user.restaurant}"></p>
+                    <button href="/restaurant/edit/">Edit</button>
+                </div>
+                <div th:unless="${user.isBusiness}">
+                    <p>Would you like to submit your restaurant to be feature on DinnerBell? <a
+                            href="/restaurant/create">Sign
+                        up</a></p>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 <th:block th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
