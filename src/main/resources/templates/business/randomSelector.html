@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://wwww.thymeleaf.org">-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge" />-->
+    <title>Random Restaurant Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
+
+<!--    <link th:href="@{css/randomSelectorIcon.css}" rel="stylesheet" />-->
+<!--    <link th:href="@{./randomSelectorMain.css}"  rel="stylesheet" />-->
+
+<!--    <link rel="stylesheet" href="../../static/css/randomSelectorIcon.css" />-->
+<!--    <link rel="stylesheet" href="../../static/css/randomSelectorMain.css" />-->
+
+    <link rel="stylesheet" href="randomSelectorIcon.css" />
+    <link rel="stylesheet" href="randomSelectorMain.css" />
+    <style>
+        body{
+            margin: 50px;
+            padding: 60px;
+        }
+        card, h1, h6, p{
+            color: #00aba9;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
+
+<!--Container for Icon -->
+<div class="container1">
+    <div class="container2">
+        <div class="icon">
+            <img class="dbIcon" src="dinnerbell.png" alt="dbIcon">
+
+        </div>
+    </div>
+</div>
+
+<!--<p class="name">Search For A Restaurant!</p>-->
+<input type="button" id="searchAgain" value="Search Again">
+
+<!--Card div hidden until icon click-->
+<div class="results" ></div>
+
+<h3>HIDDEN CARD RESULTS</h3>
+
+!--CONTENT CLASS USES CSS TO CENTER THE DIV-->
+<div class="content">
+    <!--CARD CLASS KEEPS CONTAINED-->
+    <div class="card">
+
+        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">
+
+            <h1>DinnerBell Exclusive</h1>
+            <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
+            <main>
+                <h1 id="name" th:text="${restaurant.restaurant_name}"></h1>
+
+                <!--                INSERT IMAGE CODE HERE-->
+                <!--              <div class="restaurant-page-image">-->
+                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">
+                    <!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
+                    <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
+                    <img id="restaurantImage" th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
+                </div>
+                <br>
+
+                <!--                FAVORITES BUTTON-->
+                <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
+                    <button type="submit" class="btn btn-danger">Add to Favorites</button>
+                </div>
+                <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
+                    <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
+                </div>
+                <p id="description" th:text="${restaurant.description}"></p>
+                <p id="restaurantId" th:text="${restaurant.id}"></p>
+
+                <article class="details">
+                    <p id="hours" th:text="${restaurant.hours}"></p>
+                </article>
+                <article class="details">
+                    <!--                    <p th:text="${restaurants.phone_number}"></p>-->
+                    <!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
+                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span id="phoneNumber" th:text="${restaurant.phone_number}"></span></a>
+                    <!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
+                </article>
+                <article class="details">
+                    <p id="address" th:text="${restaurant.street_address}"></p>
+                </article>
+                <article class="details">
+                    <p id="city" th:text="${restaurant.city}"></p>
+                </article>
+                <article class="details">
+                    <p id="state" th:text="${restaurant.state}"></p>
+                </article>
+                <article class="details">
+                    <p id="zipCode" th:text="${restaurant.zip_code}"></p>
+                </article>
+                <article class="details">
+                    <p id="url" th:text="${restaurant.website_link}"></p>
+                </article>
+                <article class="details">
+                    <p th:text="${restaurant.menu_link}"></p>
+                </article>
+                <article class="details">
+                    <p th:text="${restaurant.elder_eats_link}"></p>
+                </article>
+            </main>
+        </form>
+
+
+        <!--BUTTON TO LEAVE A REVIEW-->
+        <div sec:authorize="isAuthenticated()">
+            <h3>How was your visit? Let us know!</h3>
+            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>
+            <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="" id="body">-->
+<!--    <div class="container">-->
+<!--        <div class="row"><div class="col"><h3>HIDDEN CARD RESULTS</h3></div></div>-->
+<!--        <div class="row"><div class="col" id="location"></div></div>-->
+
+
+
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+<!--                <div class="row"><div id="temperature" class="col"></div></div>-->
+<!--                <div class="row"><div id="icon" class="col"></div></div>-->
+<!--                <div class="row"><div id="summary" class="col"></div></div>-->
+<!--                <div class="row"><div id="humidity" class="col"></div></div>-->
+<!--                <div class="row"><div id="windSpeed" class="col"></div></div>-->
+<!--                <div class="row"><div id="pressure" class="col"></div></div>-->
+<!--            </div>-->
+
+<!--            <div class="col">-->
+<!--                <div class="row"><div id="temperature1" class="col"></div></div>-->
+<!--                <div class="row"><div id="icon1" class="col"></div></div>-->
+<!--                <div class="row"><div id="summary1" class="col"></div></div>-->
+<!--                <div class="row"><div id="humidity1" class="col"></div></div>-->
+<!--                <div class="row"><div id="windSpeed1" class="col"></div></div>-->
+<!--                <div class="row"><div id="pressure1" class="col"></div></div>-->
+<!--            </div>-->
+
+<!--            <div class="col">-->
+<!--                <div class="row"><div id="temperature2" class="col"></div></div>-->
+<!--                <div class="row"><div id="icon2" class="col"></div></div>-->
+<!--                <div class="row"><div id="summary2" class="col"></div></div>-->
+<!--                <div class="row"><div id="humidity2" class="col"></div></div>-->
+<!--                <div class="row"><div id="windSpeed2" class="col"></div></div>-->
+<!--                <div class="row"><div id="pressure2" class="col"></div></div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    </div>-->
+
+<!--    </div>-->
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <!--CARD CLASS KEEPS CONTAINED-->
+                    <div class="card" id="viewMore">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--scripts-->
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+<!--<script type="text/javascript" th:src="@{js/keys.js}"></script>-->
+<!--<script type="text/javascript" th:src="@{js/randomSelector.js}"></script>-->
+<script src="keys.js"></script>
+
+<!--<script src="../../static/js/keys.js"></script>-->
+<script src="randomSelector.js"></script>
+
+
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<th:block th:replace="partials/scripts :: scripts"></th:block>
+</body>
+
+</html>
+
+
+

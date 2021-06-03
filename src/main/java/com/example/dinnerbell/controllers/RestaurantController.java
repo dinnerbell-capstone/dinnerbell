@@ -5,8 +5,6 @@ import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.ImageRepo;
 import com.example.dinnerbell.repositories.RestaurantRepo;
 import com.example.dinnerbell.repositories.UserRepo;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -94,21 +91,31 @@ public class RestaurantController {
     return "redirect:/restaurant/details/" + restaurant.getId();
     }
 
-  @GetMapping("/restaurant/details/{id}")
-  public String restaurants(@PathVariable long id, Model model){
-    Restaurant restaurant = restaurantsdao.getOne(id);
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User currentUser = usersdao.getOne(user.getId());
-    List<Image> imagesForRestaurant = imageDao.findImageByRestaurant(restaurant);
+    @GetMapping("/restaurant/details/{id}")
+    public String restaurants(@PathVariable long id, Model model){
+        Restaurant restaurant = restaurantsdao.getOne(id);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = usersdao.getOne(user.getId());
+        List<Image> imagesForRestaurant = imageDao.findImageByRestaurant(restaurant);
 
-    model.addAttribute("images", imagesForRestaurant);
-      model.addAttribute("restaurant", restaurant);
-      model.addAttribute("user",currentUser);
-    return "business/details";
-  }
+        model.addAttribute("images", imagesForRestaurant);
+        model.addAttribute("restaurant", restaurant);
+        model.addAttribute("user",currentUser);
+        return "randomSelector";
+    }
+
+//@GetMapping("/random-selector")
+//  public String randomSelector() {
+//      return "business/details";
+//  }
 
 
-  @PostMapping("/restaurant/details/{id}")
+
+
+
+
+
+    @PostMapping("/restaurant/details/{id}")
   public String addToFavorites(@PathVariable("id") long id){
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       User currentUser = usersdao.getOne(user.getId());
