@@ -101,13 +101,13 @@ public class RestaurantController {
         model.addAttribute("images", imagesForRestaurant);
         model.addAttribute("restaurant", restaurant);
         model.addAttribute("user",currentUser);
-        return "business/randomSelector";
+        return "business/details";
     }
 
-//@GetMapping("/random-selector")
-//  public String randomSelector() {
-//      return "business/details";
-//  }
+@GetMapping("/random-selector")
+  public String randomSelector() {
+      return "business/randomSelector";
+  }
 
 
 
