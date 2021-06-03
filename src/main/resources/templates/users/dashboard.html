@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/header :: head('Profile')"></head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
+<div class="content" style="text-align: center">
+    <!--CARD CLASS KEEPS CONTAINED-->
+    <div class="card">
+        <div>
+            <h1>Welcome to DinnerBell! </h1>
+
+            <main>
+                <article>Can't decide what's for dinner? Spin the wheel for a great meal! <a href="/spinner">Spin
+                    now</a></article>
+                <article>DinnerBell features the best eats and treats by our local favorites. Check them out on our
+                    Exclusives page.
+                    <a href="/index">Exclusives</a></article>
+                <article>Looking for something in particular? Try our Yelp search to find more great places to wine and
+                    dine. <a href="/search">Search Yelp</a></article>
+                <article>Join David Elder of KSAT's ElderEats as he explores a variety of restaurants in South Texas and
+                    beyond!
+                    <a href="https://www.ksat.com/food/elder-eats/">ElderEats</a></article>
+            </main>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
