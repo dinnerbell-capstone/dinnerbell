@@ -167,9 +167,9 @@ $(".icon").click(function() {
                 itemHTML += "</main>"
                 itemHTML += "</form>"
                 itemHTML += "<div sec:authorize='isAuthenticated()'>"
-                itemHTML += "<h3>How was your visit? Let us know!</h3>"
-                itemHTML += "<a class='btn btn-warning' th:href='@{/review/{id}(id=${restaurants.id})}' role='button'>" + "Leave a Review" + "</a>"
-                itemHTML += "<a class='btn btn-warning' th:href='@{/reviews/byRestaurant/{id}(id=${restaurants.id})}' role='button'>" + "View Reviews" + "</a>"
+                // itemHTML += "<h3>How was your visit? Let us know!</h3>"
+                // itemHTML += "<a class='btn btn-warning' th:href='@{/review/{id}(id=${restaurants.id})}' role='button'>" + "Leave a Review" + "</a>"
+                // itemHTML += "<a class='btn btn-warning' th:href='@{/reviews/byRestaurant/{id}(id=${restaurants.id})}' role='button'>" + "View Reviews" + "</a>"
                 itemHTML += " </div>"
                 // itemHTML += " </div>"
                 // itemHTML += " </div>"
@@ -183,45 +183,6 @@ $(".icon").click(function() {
         });
 
 
-    // $.ajax({
-    //     url: cors_url + '/' + yelp_search_url,
-    //     headers: {
-    //         'Authorization':'Bearer ' + YELP_TOKEN
-    //     },
-    //     method: 'GET',
-    //     dataType: 'json',
-    //     success: function (data) {
-    //
-    //         var totalresults = data.total;
-    //         if (totalresults > 0) {
-    //             // DISPLAYS # OF RESULTS
-    //
-    //
-    //             $('#results').append('<h5>YOU HAVE ' + totalresults + ' POTENTIAL MATCHES!</h5>');
-    //
-    //             // JSON ARRAY OF 'businesses' FROM API
-    //             $.each(data.businesses, function (i, item) {
-    //                 var image = item.image_url;
-    //
-    //                 // APPENDS RESULTS
-    //
-    //                 $('#imgHere').append('<img src="' + image + '" style="width:200px;height:150px;"><br>'
-    //
-    //
-    //
-    //             );
-    //
-    //
-    //             });
-    //
-    //         } else {
-    //             // IF NO RESULTS
-    //             $('#results').append('<h5>No matching results!</h5>');
-    //
-    //         }
-    //     }
-    // })
-    //
 
 
             });

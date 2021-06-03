@@ -13,14 +13,13 @@
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous" />
 
-<!--    <link th:href="@{css/randomSelectorIcon.css}" rel="stylesheet" />-->
-<!--    <link th:href="@{./randomSelectorMain.css}"  rel="stylesheet" />-->
 
-<!--    <link rel="stylesheet" href="../../static/css/randomSelectorIcon.css" />-->
-<!--    <link rel="stylesheet" href="../../static/css/randomSelectorMain.css" />-->
 
-    <link rel="stylesheet" href="randomSelectorIcon.css" />
-    <link rel="stylesheet" href="randomSelectorMain.css" />
+
+        <link th:href="@{css/randomSelectorIcon.css}" rel="stylesheet" />
+        <link th:href="@{./randomSelectorMain.css}"  rel="stylesheet" />
+<!--    <link rel="stylesheet" href="randomSelectorIcon.css" />-->
+<!--    <link rel="stylesheet" href="randomSelectorMain.css" />-->
     <style>
         body{
             margin: 50px;
@@ -40,7 +39,8 @@
 <div class="container1">
     <div class="container2">
         <div class="icon">
-            <img class="dbIcon" src="dinnerbell.png" alt="dbIcon">
+            <img class="dbIcon" th:src="@{/img/dinnerbell.png}" alt="dbIcon">
+
 
         </div>
     </div>
@@ -52,82 +52,82 @@
 <!--Card div hidden until icon click-->
 <div class="results" ></div>
 
-<h3>HIDDEN CARD RESULTS</h3>
 
-!--CONTENT CLASS USES CSS TO CENTER THE DIV-->
-<div class="content">
+
+
+<div class="content d-none">
     <!--CARD CLASS KEEPS CONTAINED-->
-    <div class="card">
+<!--    <div class="card">-->
 
-        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">
+<!--        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">-->
 
-            <h1>DinnerBell Exclusive</h1>
-            <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
-            <main>
-                <h1 id="name" th:text="${restaurant.restaurant_name}"></h1>
+<!--            <h1>DinnerBell Exclusive</h1>-->
+<!--            &lt;!&ndash;            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING&ndash;&gt;-->
+<!--            <main>-->
+<!--                <h1 id="name" th:text="${restaurant.restaurant_name}"></h1>-->
 
-                <!--                INSERT IMAGE CODE HERE-->
-                <!--              <div class="restaurant-page-image">-->
-                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">
-                    <!--                    <img src="/img/pexels-photo-670705.jpeg" width="500">-->
-                    <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
-                    <img id="restaurantImage" th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">
-                </div>
-                <br>
+<!--                &lt;!&ndash;                INSERT IMAGE CODE HERE&ndash;&gt;-->
+<!--                &lt;!&ndash;              <div class="restaurant-page-image">&ndash;&gt;-->
+<!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">-->
+<!--                    &lt;!&ndash;                    <img src="/img/pexels-photo-670705.jpeg" width="500">&ndash;&gt;-->
+<!--                    <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />-->
+<!--                    <img id="restaurantImage" th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">-->
+<!--                </div>-->
+<!--                <br>-->
 
-                <!--                FAVORITES BUTTON-->
-                <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
-                    <button type="submit" class="btn btn-danger">Add to Favorites</button>
-                </div>
-                <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
-                    <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
-                </div>
-                <p id="description" th:text="${restaurant.description}"></p>
-                <p id="restaurantId" th:text="${restaurant.id}"></p>
+<!--                &lt;!&ndash;                FAVORITES BUTTON&ndash;&gt;-->
+<!--                <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">-->
+<!--                    <button type="submit" class="btn btn-danger">Add to Favorites</button>-->
+<!--                </div>-->
+<!--                <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">-->
+<!--                    <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>-->
+<!--                </div>-->
+<!--                <p id="description" th:text="${restaurant.description}"></p>-->
+<!--                <p id="restaurantId" th:text="${restaurant.id}"></p>-->
 
-                <article class="details">
-                    <p id="hours" th:text="${restaurant.hours}"></p>
-                </article>
-                <article class="details">
-                    <!--                    <p th:text="${restaurants.phone_number}"></p>-->
-                    <!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
-                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span id="phoneNumber" th:text="${restaurant.phone_number}"></span></a>
-                    <!--                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>-->
-                </article>
-                <article class="details">
-                    <p id="address" th:text="${restaurant.street_address}"></p>
-                </article>
-                <article class="details">
-                    <p id="city" th:text="${restaurant.city}"></p>
-                </article>
-                <article class="details">
-                    <p id="state" th:text="${restaurant.state}"></p>
-                </article>
-                <article class="details">
-                    <p id="zipCode" th:text="${restaurant.zip_code}"></p>
-                </article>
-                <article class="details">
-                    <p id="url" th:text="${restaurant.website_link}"></p>
-                </article>
-                <article class="details">
-                    <p th:text="${restaurant.menu_link}"></p>
-                </article>
-                <article class="details">
-                    <p th:text="${restaurant.elder_eats_link}"></p>
-                </article>
-            </main>
-        </form>
-
-
-        <!--BUTTON TO LEAVE A REVIEW-->
-        <div sec:authorize="isAuthenticated()">
-            <h3>How was your visit? Let us know!</h3>
-            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>
-            <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>
-        </div>
+<!--                <article class="details">-->
+<!--                    <p id="hours" th:text="${restaurant.hours}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    &lt;!&ndash;                    <p th:text="${restaurants.phone_number}"></p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a href="tel:+05890000111">0-589-0000111</a>&ndash;&gt;-->
+<!--                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span id="phoneNumber" th:text="${restaurant.phone_number}"></span></a>-->
+<!--                    &lt;!&ndash;                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>&ndash;&gt;-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p id="address" th:text="${restaurant.street_address}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p id="city" th:text="${restaurant.city}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p id="state" th:text="${restaurant.state}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p id="zipCode" th:text="${restaurant.zip_code}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p id="url" th:text="${restaurant.website_link}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p th:text="${restaurant.menu_link}"></p>-->
+<!--                </article>-->
+<!--                <article class="details">-->
+<!--                    <p th:text="${restaurant.elder_eats_link}"></p>-->
+<!--                </article>-->
+<!--            </main>-->
+<!--        </form>-->
 
 
-    </div>
+<!--        &lt;!&ndash;BUTTON TO LEAVE A REVIEW&ndash;&gt;-->
+<!--        <div sec:authorize="isAuthenticated()">-->
+<!--            <h3>How was your visit? Let us know!</h3>-->
+<!--            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>-->
+<!--            <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>-->
+<!--        </div>-->
+
+
+<!--    </div>-->
 </div>
 
 
@@ -230,12 +230,12 @@
 
 
 
-<!--<script type="text/javascript" th:src="@{js/keys.js}"></script>-->
-<!--<script type="text/javascript" th:src="@{js/randomSelector.js}"></script>-->
-<script src="keys.js"></script>
+<script type="text/javascript" th:src="@{js/keys.js}"></script>
+<script type="text/javascript" th:src="@{js/randomSelector.js}"></script>
+<!--<script src="keys.js"></script>-->
 
 <!--<script src="../../static/js/keys.js"></script>-->
-<script src="randomSelector.js"></script>
+<!--<script src="randomSelector.js"></script>-->
 
 
 <!--Bootstrap-->
