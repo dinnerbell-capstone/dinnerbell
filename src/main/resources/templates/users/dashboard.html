@@ -10,7 +10,8 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
         <div>
-            <h1>Welcome to DinnerBell! </h1>
+            <h1 style="color: black">Welcome to DinnerBell! </h1>
+            <h2>Let us help you plan your next dining experience...</h2>
 
             <main>
                 <article>DinnerBell features the best eats and treats by our local favorites. Check them out on our
@@ -20,19 +21,22 @@
                 <article>Can't decide what's for dinner? Spin the wheel for a great meal! <a href="/spinner">Spin
                     now</a></article>
                 <br>
-                <article>Still unsure and need more help? Not a problem, get ideas from Yelp! <a href="/search">Search
-                    Yelp</a></article>
-                <br>
-                <article>Join David Elder of KSAT's ElderEats as he explores a variety of restaurants in South Texas and
-                    beyond!
-                    <a href="https://www.ksat.com/food/elder-eats/">ElderEats</a></article>
-                <br>
+
             </main>
+            <h2>Your DinnerBell Favorites</h2>
             <div class="card" th:each="favorite : ${userFaves}">
-                <h6>Your DinnerBell Favorites</h6>
                 <a th:text="${favorite.getRestaurant_name()}"></a>
             </div>
 
+            <article>Still unsure and need more help? Not a problem, get ideas from Yelp! <a href="/search">Search
+                Yelp</a>
+            </article>
+            <br>
+            <article>Be sure to check out David Elder of KSAT's ElderEats as he explores a variety of restaurants in South Texas and
+                beyond!
+                <a href="https://www.ksat.com/food/elder-eats/">ElderEats</a>
+            </article>
+            <br>
         </div>
     </div>
 </div>
