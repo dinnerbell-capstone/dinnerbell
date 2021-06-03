@@ -29,7 +29,7 @@
             </select>
         </div>
       <div class="form-check">
-        <input class="form-check-input" th:field="*{isBusiness}" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" name="isBusiness" th:checked="${user.isBusiness}" type="checkbox" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Are you a business owner?
         </label>
