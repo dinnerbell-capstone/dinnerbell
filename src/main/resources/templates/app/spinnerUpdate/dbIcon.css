@@ -88,7 +88,7 @@ img {
 }
 
 .icon::before {
-    content: "\f002";
+    content: "\f562";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     font-size: 2em;
