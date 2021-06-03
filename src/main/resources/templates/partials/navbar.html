@@ -1,83 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <title>navbar</title>
-</head>
-
-
 <body>
-
-<!--<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #9a1b2e">-->
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
-    <div class="container-fluid">
+<!--<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="/">DinnerBell</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--!!!!!!!!!!!!!!!!!-->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+    <div class="container">
         <a class="navbar-brand" href="/">DinnerBell</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <!--                      <a class="nav-link active" aria-current="page" href="/home">Home</a>-->
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">Profile</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <!--!!!!!!!!!!!!!!-->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+                    <!--                <li class="nav-item">-->
+                    <a class="nav-link" href="/about">About</a>
+                    <!--                </li>-->
+                    <!--                <li class="nav-item">-->
+                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/sign-up">Sign Up</a></li>
+                    <!--                <li class="nav-item">-->
+                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">Log in</a>
+                    <!--                </li>-->
+                    <!--                <li>-->
+                    <a class="nav-link" sec:authorize="isAuthenticated()" href="/profile">Profile</a>
                     <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in-->
-                </li>
-                <!--                <li class="nav-item">-->
-                <!--                  <a sec:authorize="isAuthenticated()" class="nav-link" href="/restaurant/create">Submit your Restaurant</a> &lt;!&ndash; attempt one of only seen by business owner account &ndash;&gt;-->
-                <!--                </li>-->
-                <li class="nav-item">
-                    <a class="nav-link" href="/spinner-results">Restaurants</a> <!-- for restaurant index page? -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exclusives">Exclusives</a> <!-- for restaurant index page? -->
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/about">About the Creators</a>
-                    <!-- only view when logged in-->
-                </li>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" href="/exclusives">Exclusives</a>
+                    <!-- for restaurant index page -->
+                    <!--                </li>-->
+                    <!--                <li>-->
+                    <!--                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/dashboard">DinnerDash</a>-->
+                    <!--                </li>-->
+                    <!--                <li>-->
+                    <a class="nav-link" sec:authorize="isAuthenticated()" href="#" id="logout-link">Logout</a>
+                    <form id="logout-form" th:action="@{/logout}" th:method="post"></form>
+                    <!--                </li>-->
 
-                <!--                  DropDown Menu Selection-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Owner Menu
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a sec:authorize="isAuthenticated()" class="nav-link" href="#">Submit a Restaurant</a></li>
-                        <!--                          <li><a sec: authorize="isAclass="nav-link" href="/restaurant">Restaurants</a>-->
-                        <li><a class="dropdown-item" href="/restaurant">Restaurant Dashboard</a></li>
-                        <li><a class="dropdown-item" href="/restaurant/create">Submit your Restaurant </a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#"></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>
-                    <!--  you see when you are not logged in -->
-                </li>
-                <div sec:authorize="isAuthenticated()">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-                    </form>
                 </div>
-            </ul>
-            <form class="d-flex">
-                <!-- sec:authorize="isAuthenticated()" added inside anchor only viewed when logged in? -->
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </div>
         </div>
     </div>
 </nav>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
 </body>
 </html>

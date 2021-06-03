@@ -30,7 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, @RequestParam(name = "isBusiness", required = false, defaultValue = "false") boolean isBusiness) {
+        user.setIsBusiness(isBusiness);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
