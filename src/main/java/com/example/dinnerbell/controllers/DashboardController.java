@@ -1,5 +1,6 @@
 package com.example.dinnerbell.controllers;
 
+import com.example.dinnerbell.models.Restaurant;
 import com.example.dinnerbell.models.User;
 import com.example.dinnerbell.repositories.CategoryRepo;
 import com.example.dinnerbell.repositories.ImageRepo;
@@ -10,6 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class DashboardController {
@@ -29,18 +32,14 @@ public class DashboardController {
     }
 
     @GetMapping("/dashboard")
-    public String showSignupForm(Model model) {
-        model.addAttribute("user", new User());
-        return "users/dashboard";
-    }
-
-    @GetMapping("/profile")
-    public String restaurants(Model model){
+    public String showDashboard(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = usersdao.getOne(user.getId());
-        model.addAttribute("user",currentUser);
-        System.out.println(currentUser.getUsername());
-        return "users/profile";
+//        Restaurant restaurant = restaurantsdao.getOne(currentUser.getRestaurant().getId());
+        List<Restaurant> userFaves = currentUser.getRestaurants();
+        model.addAttribute("user", currentUser);
+        model.addAttribute("userFaves", userFaves);
+        return "users/dashboard";
     }
 
 }
