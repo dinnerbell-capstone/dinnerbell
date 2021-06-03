@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="partials/header :: head('About Us')"></head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--    <link th:href="@{/img/favicon.png}" rel="shortcut icon" type="image/x-icon">-->
@@ -14,8 +15,16 @@
     <!--  LANDING CSS -->
     <!--    <link rel="stylesheet" th:href="@{/css/about.css}">-->
     <style>
+        h1, p{
+            color: #fff;
+            justify-content: center;
+
+        }
+
         body {
-            background: #f8824e;
+            margin: 25px;
+            padding: 50px;
+            background: none;
             background: -webkit-linear-gradient(to right, #f8824e, #00aba9);
             background: linear-gradient(to right, #f8824e, #00aba9);
             min-height: 100vh;
@@ -46,21 +55,22 @@
     <nav th:replace="partials/navbar :: navbar"></nav>
 </header>
 
-<div class="row text-center text-white">
-    <div class="col-lg-8 mx-auto">
-        <h1 class="display-4">Dinner Bell Creators</h1>
-        <p class="lead mb-0">Our Team</p>
-<!--        <p class="lead">Snippet by<a href="https://bootstrapious.com/snippets" class="text-white">-->
-<!--            <u>Bootstrapious</u></a>-->
-        </p>
-    </div>
-</div>
-</div><!-- End -->
+<!--<div class="row text-center text-white">-->
+<!--    <div class="col-lg-8 mx-auto">-->
+<!--        <h1 class="display-4">Dinner Bell Creators</h1>-->
+<!--        <p class="lead mb-0">Our Team</p>-->
+<!--&lt;!&ndash;        <p class="lead">Snippet by<a href="https://bootstrapious.com/snippets" class="text-white">&ndash;&gt;-->
+<!--&lt;!&ndash;            <u>Bootstrapious</u></a>&ndash;&gt;-->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>&lt;!&ndash; End &ndash;&gt;-->
 
 
 <div class="container">
     <div class="row text-center">
-
+        <h1 class="display-4">Dinner Bell Creators</h1>
+        <p class="lead mb-0">Our Team</p>
         <!-- Team item -->
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4">
@@ -78,7 +88,7 @@
         <!-- Team item -->
         <div class="col-xl-3 col-sm-6 mb-5">
             <div class="bg-white rounded shadow-sm py-5 px-4">
-                <img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <img src="/img/JacobVProHS.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">Jacob Valeriano</h5><span class="small text-uppercase text-muted">Software Engineer</span>
                 <ul class="social mb-0 list-inline mt-3">
 <!--                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>-->
