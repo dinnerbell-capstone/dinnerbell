@@ -164,12 +164,12 @@ public class RestaurantController {
 
       //    this was used to make sure the delete a
       //    single picture uploaded by a restaurant owner worked
-//  @GetMapping("/restaurant/uploads/show/{id}")
-//  public String testDelete(@PathVariable long id, Model model){
-//      Restaurant restaurant = restaurantsdao.getOne(id);
-//      model.addAttribute("restaurant", restaurant);
-//      return "business/uploadsByRestaurants";
-//  }
+  @GetMapping("/restaurant/uploads/show/{id}")
+  public String testDelete(@PathVariable long id, Model model){
+      Restaurant restaurant = restaurantsdao.getOne(id);
+      model.addAttribute("restaurant", restaurant);
+      return "business/uploadsByRestaurants";
+  }
 
   @GetMapping("/restaurant/delete/upload/{id}")
   public String deleteUploadedRestaurantImages(@PathVariable("id") long id){
