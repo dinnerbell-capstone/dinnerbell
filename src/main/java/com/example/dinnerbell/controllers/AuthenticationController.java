@@ -20,7 +20,7 @@ public class AuthenticationController {
 
   @PostMapping("/login")
   public String login() {
-    return "redirect:/profile";
+    return "redirect:/dashboard";
   }
 
 }
