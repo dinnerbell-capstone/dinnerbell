@@ -1,2 +1,0 @@
-
-const YELP_TOKEN = '2e9YaKo41idfGA9fRadB8rerO_YjipynGbA4ikcCyjY1K1dM5CNmXhZgO6yIhASRen_3FxLvAUMUIygS_UIaeMXe0ErrWBneAx4MR3vjkZLvyTBga3q_2gsYMKmzYHYx'

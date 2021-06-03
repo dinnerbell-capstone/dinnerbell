@@ -26,10 +26,10 @@ public class HomeController {
   }
 
 
-  @GetMapping("/index")
+  @GetMapping("/exclusives")
   public String indexExclusives(Model model) {
     model.addAttribute("restaurants", restaurantsdao.findAll());
-    return "post/index";
+    return "post/yelpExclusives";
   }
 
 }
