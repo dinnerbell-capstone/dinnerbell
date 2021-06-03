@@ -38,14 +38,7 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/profile")
-    public String restaurants(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userDao.getOne(user.getId());
-        model.addAttribute("user",currentUser);
-        System.out.println(currentUser.getUsername());
-        return "users/profile";
-    }
+
 
 
     @GetMapping("/users/edit")
