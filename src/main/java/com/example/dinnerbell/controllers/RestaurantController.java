@@ -61,9 +61,6 @@ public class RestaurantController {
       model.addAttribute("restaurants",restaurantsdao.findAll());
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       User currentUser = usersdao.getOne(user.getId());
-      List<Restaurant> restaurants = restaurantsdao.findAll();
-      model.addAttribute("restaurants",restaurants);
-      model.addAttribute("restaurant", restaurantsdao.getOne(currentUser.getRestaurant().getId()));
       model.addAttribute("user",currentUser);
 
       return "business/restaurant-profile";
