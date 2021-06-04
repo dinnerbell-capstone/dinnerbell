@@ -18,9 +18,9 @@ public class AuthenticationController {
     return "users/login";
   }
 
-//  @PostMapping("/login")
-//  public String login() {
-//    return "redirect:/dashboard";
-//  }
+  @PostMapping("/login")
+  public String login() {
+    return "redirect:/dashboard";
+  }
 
 }

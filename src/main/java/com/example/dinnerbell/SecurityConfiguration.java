@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
       http
         .formLogin()
           .loginPage("/login")
-          .defaultSuccessUrl("/profile")
+          .defaultSuccessUrl("/dashboard")
           .permitAll()
         .and()
           .logout()
@@ -61,7 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/search",
             "/keys.js",
             "/profile",
-            "/users/edit"
+            "/users/edit",
+            "/dashboard"
           )
         .authenticated();
 
