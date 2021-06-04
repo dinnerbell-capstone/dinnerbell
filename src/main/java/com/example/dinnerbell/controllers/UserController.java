@@ -55,7 +55,7 @@ public class UserController {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userToEdit.setId(principal.getId());
         userDao.save(userToEdit);
-        return "redirect:/profile";
+        return "redirect:/dashboard";
     }
 
 }
