@@ -22,8 +22,21 @@
     <br>
 
     <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
+
         <label for="restaurant_name">Name</label>
         <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text"/>
+        <br>
+
+        <label for="description">Restaurant Description</label>
+        <input id="description" th:field="*{description}" name="description" type="text"/>
+        <br>
+
+        <label for="hours">Hours of Operation</label>
+        <input id="hours" th:field="*{hours}" name="hours" type="text"/>
+        <br>
+
+        <label for="phone_number">Phone Number</label>
+        <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text"/>
         <br>
 
         <label for="street_address">Street Address</label>
@@ -44,9 +57,6 @@
         <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text"/>
         <br>
 
-        <label for="phone_number">Phone Number</label>
-        <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text"/>
-        <br>
 
         <label for="website_link">Link to Website</label>
         <input id="website_link" th:field="*{website_link}" name="website_link" type="text"/>
@@ -56,13 +66,7 @@
         <input id="menu_link" th:field="*{menu_link}" name="menu_link" type="text"/>
         <br>
 
-        <label for="hours">Hours of Operation</label>
-        <input id="hours" th:field="*{hours}" name="hours" type="text"/>
-        <br>
 
-        <label for="description">Type of cuisine</label>
-        <input id="description" th:field="*{description}" name="description" type="text"/>
-        <br>
 
       <label for="eats_link">Link to Elder Eats</label>
       <input id="eats_link" th:field="*{elder_eats_link}" name="elder_eats_link" type="text"/>
