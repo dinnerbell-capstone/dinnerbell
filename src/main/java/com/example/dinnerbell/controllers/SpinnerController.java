@@ -1,5 +1,7 @@
 package com.example.dinnerbell.controllers;
 
+import com.example.dinnerbell.models.Restaurant;
+import com.example.dinnerbell.repositories.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
@@ -8,9 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 
 @Controller
 public class SpinnerController {
+    private final RestaurantRepo restaurantdao;
+
+    public SpinnerController(RestaurantRepo restaurantdao) {
+        this.restaurantdao = restaurantdao;
+    }
+
 
     @GetMapping("/spinner")
     public String spinnerPage() {
@@ -40,23 +50,13 @@ public class SpinnerController {
         return "const YelpApiKey = `" + fileStackApiKey + "`";
     }
 
-//    Questionable code to discuss... Not sure whether to use javascript or java to generate the result
-//    @GetMapping("/scratch")
-//    public String showRoll() {
-//        return "scratch";
-//    }
-//
-//    @GetMapping("/scratch/{n}")
-//    public String guess(@PathVariable int n, Model model) {
-//        int randomNum = (int) (Math.random() * (7 - 1) + 1);
-//        model.addAttribute("randomNum", "Congratulations! You will go eat at: " + randomNum + " tonight!");
-//        model.addAttribute("randomRestaurant", "Your guess was: " + n);
-//
-//        return "/scratch";
-//    }
+    @GetMapping("/exclusive-pick")
+    public String randomizeDbRestaurants(Model model){
+        List<Restaurant> restaurants = restaurantdao.findAll();
+        int randomNum = (int)(Math.random() * restaurants.size());
+        model.addAttribute("restaurant", restaurants.get(randomNum));
+        model.addAttribute("randomNum", "We suggest you try: " + randomNum);
+        return "app/exclusives-randomization";
+    }
 
-
-    //        if (randomNum == 1) {
-//            return "Taco Bell";
-//        }
 }
