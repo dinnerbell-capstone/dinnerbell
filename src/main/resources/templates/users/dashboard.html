@@ -26,12 +26,12 @@
             </main>
             <h2>Your DinnerBell Favorites</h2>
             <div class="card" th:each="favorite : ${userFaves}">
-                <a th:text="${favorite.getRestaurant_name()}"></a>
+                <a th:href="'/restaurant/details/' + ${favorite.getId()}" th:text="${favorite.getRestaurant_name()}"></a>
             </div>
 
             <h2>You DinnerBell Reviews</h2>
             <div class="card" th:each="review : ${userReviews}">
-                <a th:text="${review.getContent()}"></a>
+                <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
             </div>
 
             <article>Still unsure and need more help? Not a problem, get ideas from Yelp! <a href="/yelp/events">Search
