@@ -34,6 +34,9 @@ public class DashboardController {
     public String showDashboard(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = usersdao.getOne(user.getId());
+        if (currentUser.getIsBusiness()) {
+          return "redirect:/restaurant";
+        }
         List<Restaurant> userFaves = currentUser.getRestaurants();
         List<Review> userReviews = reviewsdao.findAllByUser(currentUser);
         model.addAttribute("user", currentUser);
