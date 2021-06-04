@@ -61,7 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/search",
             "/keys.js",
             "/profile",
-            "/users/edit"
+            "/users/edit",
+            "/dashboard"
           )
         .authenticated();
 
