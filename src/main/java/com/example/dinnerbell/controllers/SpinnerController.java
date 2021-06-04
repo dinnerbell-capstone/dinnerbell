@@ -14,7 +14,7 @@ public class SpinnerController {
 
     @GetMapping("/spinner")
     public String spinnerPage() {
-        return "app/spinner";
+        return "business/randomSelector";
     }
 
     @GetMapping("/spinner-results")

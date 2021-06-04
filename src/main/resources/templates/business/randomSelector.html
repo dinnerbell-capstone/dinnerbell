@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--<html xmlns:th="http://wwww.thymeleaf.org">-->
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +18,7 @@
 
 
         <link th:href="@{css/randomSelectorIcon.css}" rel="stylesheet" />
-        <link th:href="@{./randomSelectorMain.css}"  rel="stylesheet" />
+        <link th:href="@{css/randomSelectorMain.css}"  rel="stylesheet" />
 <!--    <link rel="stylesheet" href="randomSelectorIcon.css" />-->
 <!--    <link rel="stylesheet" href="randomSelectorMain.css" />-->
     <style>
@@ -39,7 +40,7 @@
 <div class="container1">
     <div class="container2">
         <div class="icon">
-            <img class="dbIcon" th:src="@{/img/dinnerbell.png}" alt="dbIcon">
+            <img class="dbIcon" th:src="@{img/dinnerbell.png}" alt="dbIcon">
 
 
         </div>
@@ -47,7 +48,7 @@
 </div>
 
 <!--<p class="name">Search For A Restaurant!</p>-->
-<input type="button" id="searchAgain" value="Search Again">
+<input type="button" id="searchAgain" value="CLEAR">
 
 <!--Card div hidden until icon click-->
 <div class="results" ></div>
@@ -56,144 +57,10 @@
 
 
 <div class="content d-none">
+
     <!--CARD CLASS KEEPS CONTAINED-->
-<!--    <div class="card">-->
 
-<!--        <form th:action="@{/restaurant/details/{id}(id=${restaurant.id})}" th:method="post">-->
-
-<!--            <h1>DinnerBell Exclusive</h1>-->
-<!--            &lt;!&ndash;            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING&ndash;&gt;-->
-<!--            <main>-->
-<!--                <h1 id="name" th:text="${restaurant.restaurant_name}"></h1>-->
-
-<!--                &lt;!&ndash;                INSERT IMAGE CODE HERE&ndash;&gt;-->
-<!--                &lt;!&ndash;              <div class="restaurant-page-image">&ndash;&gt;-->
-<!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">-->
-<!--                    &lt;!&ndash;                    <img src="/img/pexels-photo-670705.jpeg" width="500">&ndash;&gt;-->
-<!--                    <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />-->
-<!--                    <img id="restaurantImage" th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">-->
-<!--                </div>-->
-<!--                <br>-->
-
-<!--                &lt;!&ndash;                FAVORITES BUTTON&ndash;&gt;-->
-<!--                <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">-->
-<!--                    <button type="submit" class="btn btn-danger">Add to Favorites</button>-->
-<!--                </div>-->
-<!--                <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">-->
-<!--                    <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>-->
-<!--                </div>-->
-<!--                <p id="description" th:text="${restaurant.description}"></p>-->
-<!--                <p id="restaurantId" th:text="${restaurant.id}"></p>-->
-
-<!--                <article class="details">-->
-<!--                    <p id="hours" th:text="${restaurant.hours}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    &lt;!&ndash;                    <p th:text="${restaurants.phone_number}"></p>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a href="tel:+05890000111">0-589-0000111</a>&ndash;&gt;-->
-<!--                    <a th:href="'tel:+' + '${restaurants.phone_number}'"><span id="phoneNumber" th:text="${restaurant.phone_number}"></span></a>-->
-<!--                    &lt;!&ndash;                    <a href="'tel:+' + th:text='${restaurants.phone_number}></a>&ndash;&gt;-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p id="address" th:text="${restaurant.street_address}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p id="city" th:text="${restaurant.city}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p id="state" th:text="${restaurant.state}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p id="zipCode" th:text="${restaurant.zip_code}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p id="url" th:text="${restaurant.website_link}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p th:text="${restaurant.menu_link}"></p>-->
-<!--                </article>-->
-<!--                <article class="details">-->
-<!--                    <p th:text="${restaurant.elder_eats_link}"></p>-->
-<!--                </article>-->
-<!--            </main>-->
-<!--        </form>-->
-
-
-<!--        &lt;!&ndash;BUTTON TO LEAVE A REVIEW&ndash;&gt;-->
-<!--        <div sec:authorize="isAuthenticated()">-->
-<!--            <h3>How was your visit? Let us know!</h3>-->
-<!--            <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>-->
-<!--            <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>-->
-<!--        </div>-->
-
-
-<!--    </div>-->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="" id="body">-->
-<!--    <div class="container">-->
-<!--        <div class="row"><div class="col"><h3>HIDDEN CARD RESULTS</h3></div></div>-->
-<!--        <div class="row"><div class="col" id="location"></div></div>-->
-
-
-
-<!--        <div class="row">-->
-<!--            <div class="col">-->
-<!--                <div class="row"><div id="temperature" class="col"></div></div>-->
-<!--                <div class="row"><div id="icon" class="col"></div></div>-->
-<!--                <div class="row"><div id="summary" class="col"></div></div>-->
-<!--                <div class="row"><div id="humidity" class="col"></div></div>-->
-<!--                <div class="row"><div id="windSpeed" class="col"></div></div>-->
-<!--                <div class="row"><div id="pressure" class="col"></div></div>-->
-<!--            </div>-->
-
-<!--            <div class="col">-->
-<!--                <div class="row"><div id="temperature1" class="col"></div></div>-->
-<!--                <div class="row"><div id="icon1" class="col"></div></div>-->
-<!--                <div class="row"><div id="summary1" class="col"></div></div>-->
-<!--                <div class="row"><div id="humidity1" class="col"></div></div>-->
-<!--                <div class="row"><div id="windSpeed1" class="col"></div></div>-->
-<!--                <div class="row"><div id="pressure1" class="col"></div></div>-->
-<!--            </div>-->
-
-<!--            <div class="col">-->
-<!--                <div class="row"><div id="temperature2" class="col"></div></div>-->
-<!--                <div class="row"><div id="icon2" class="col"></div></div>-->
-<!--                <div class="row"><div id="summary2" class="col"></div></div>-->
-<!--                <div class="row"><div id="humidity2" class="col"></div></div>-->
-<!--                <div class="row"><div id="windSpeed2" class="col"></div></div>-->
-<!--                <div class="row"><div id="pressure2" class="col"></div></div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    </div>-->
-
-<!--    </div>-->
 
 <!-- Button trigger modal -->
 

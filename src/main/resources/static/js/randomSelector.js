@@ -71,9 +71,7 @@ $(".icon").click(function() {
                 console.log(restaurantImage)
                 console.log(restaurantName)
                 console.log(restaurantId)
-                itemHTML += "<h1 class='h1 ' >"+ restaurantName + "</h1>"
-
-
+                itemHTML += "<h1 class='h1'>"+ restaurantName + "</h1>"
                 itemHTML += "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>" +
                 'View More Details' +
                 "</button>"
@@ -122,7 +120,7 @@ $(".icon").click(function() {
                 console.log(state)
                 console.log(zipcode)
                 // itemHTML += "<form th:action=@{/restaurant/details/{id}(id=${restaurant.id})}' th:method='post'>"
-                itemHTML += "<form th:action='@{'/restaurant/details/' + ${restaurant.id}}' th:method='post'>"
+                itemHTML += "<form >"
 
                 // th:action="@{'/restaurant/details/' + ${restaurant.id}}"
                 itemHTML += "<main>"
@@ -132,15 +130,14 @@ $(".icon").click(function() {
 
                 // <!--FAVORITES BUTTON-->
 
-                itemHTML += " <div sec:authorize='isAuthenticated()' th:if='${!restaurant.favorites.contains(user)}'>"
+                itemHTML += " <div>"
                 itemHTML += "<button type='submit' class='btn btn-danger'>" + "Add to Favorites" + "</button>"
                 itemHTML += "</div>"
-                itemHTML += "<div sec:authorize='isAuthenticated()' th:unless='${!restaurant.favorites.contains(user)}'>"
+                itemHTML += "<div >"
                 itemHTML += "<button id='favoriteBtn' type='submit' class='btn btn-secondary'>" + "Saved to Favorites" + "</button>"
                 itemHTML += "</div>"
-
                 itemHTML += "<h5>Restaurant Description</h5>"
-                itemHTML += "<p th:text='${restaurant.description}'>" + restaurantDescription + "</p>"
+                itemHTML += "<p >" + restaurantDescription + "</p>"
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Restaurant Rating:" + "</h6>"
                 itemHTML += "<p>" + restaurantRating + "</p>"
@@ -155,25 +152,20 @@ $(".icon").click(function() {
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Address:" + "</h6>"
                 itemHTML += "<p>" + address + "</p>"
-                itemHTML += "<p th:text='${restaurant.city}'>" + city +  "</p>"
-                itemHTML += "<p class='d-none' th:text='${restaurant.id}'>" + restaurantId +  "</p>"
-                itemHTML += "<p th:text='${restaurant.state}'>"+ state + "</p>"
-                itemHTML += "<p th:text='${restaurant.zip_code}'>" + zipcode + "</p>"
+                itemHTML += "<p>" + city +  "</p>"
+                itemHTML += "<p class='d-none' >" + restaurantId +  "</p>"
+                itemHTML += "<p>"+ state + "</p>"
+                itemHTML += "<p>" + zipcode + "</p>"
                 itemHTML += "</article>"
                 itemHTML += "<article class ='details'>"
                 itemHTML += "<h6>" + "Website:" + "</h6>"
-                itemHTML += "<a th:text='${restaurant.website_link}' href='" + restaurantUrl + "'>" + restaurantUrl + "</a>"
+                itemHTML += "<a href='" + restaurantUrl + "'>" + restaurantUrl + "</a>"
                 itemHTML += "</article>"
                 itemHTML += "</main>"
                 itemHTML += "</form>"
-                itemHTML += "<div sec:authorize='isAuthenticated()'>"
-                // itemHTML += "<h3>How was your visit? Let us know!</h3>"
-                // itemHTML += "<a class='btn btn-warning' th:href='@{/review/{id}(id=${restaurants.id})}' role='button'>" + "Leave a Review" + "</a>"
-                // itemHTML += "<a class='btn btn-warning' th:href='@{/reviews/byRestaurant/{id}(id=${restaurants.id})}' role='button'>" + "View Reviews" + "</a>"
+                itemHTML += "<div>"
                 itemHTML += " </div>"
-                // itemHTML += " </div>"
-                // itemHTML += " </div>"
-                // itemHTML += " </div>"
+
 
             })
 
