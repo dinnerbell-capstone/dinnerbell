@@ -185,11 +185,17 @@ public class RestaurantController {
     return "redirect:/restaurant/details/" + image.getRestaurant().getId();
   }
 
-  @GetMapping("/index")
+  @GetMapping("/restaurants/exclusives")
   public String showAllRestaurants(Model model) {
-      List<Restaurant> restaurant = restaurantsdao.findAll();
-      return "post/index";
+      List<Restaurant> restaurants = restaurantsdao.findAll();
+      List<Category> categories = categoriesdao.findAll();
+
+      model.addAttribute("restaurants",restaurants);
+      model.addAttribute("categories", categories);
+      return "post/exclusives";
   }
+
+
 
     }
 
