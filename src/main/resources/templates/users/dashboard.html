@@ -29,6 +29,11 @@
                 <a th:text="${favorite.getRestaurant_name()}"></a>
             </div>
 
+            <h2>You DinnerBell Reviews</h2>
+            <div class="card" th:each="review : ${userReviews}">
+                <a th:text="${review.getContent()}"></a>
+            </div>
+
             <article>Still unsure and need more help? Not a problem, get ideas from Yelp! <a href="/yelp/events">Search
                 Yelp</a>
             </article>
