@@ -35,10 +35,10 @@ public class DashboardController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = usersdao.getOne(user.getId());
         List<Restaurant> userFaves = currentUser.getRestaurants();
-        List<Review> userReviews = currentUser.getRestaurant().getReviews();
+//        List<Review> userReviews = currentUser.getRestaurant().getReviews();
         model.addAttribute("user", currentUser);
         model.addAttribute("userFaves", userFaves);
-        model.addAttribute("userReviews", userReviews);
+//        model.addAttribute("userReviews", userReviews);
         return "users/dashboard";
     }
 
