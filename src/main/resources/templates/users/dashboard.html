@@ -10,17 +10,15 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
         <div>
-            <h1 style="color: black">Welcome to DinnerBell! </h1>
-            <h2>Our Menu</h2>
-            <h2>Let us help you plan your next dining experience...</h2>
+            <h1 style="color: black">Welcome to DinnerBell!</h1>
+            <h2>Let us help you plan your next dining experience by choosing from our following menu options...</h2>
 
             <main>
                 <article>DinnerBell features the best eats and treats by our local favorites. Check them out on our
-                    Exclusives page.
+                    Exclusives page. From there, you can select a restaurant to learn more about their establishment along with community reviews.
                     <a href="/restaurants/exclusives">Exclusives</a></article>
                 <br>
-                <article>Can't decide what's for dinner? Spin the wheel for a great meal! <a href="/exclusive-pick">Spin
-                    now</a></article>
+                <article>Can't decide what's for dinner? How about one of our house specials? We will pick for you! <a href="/exclusive-pick">Exclusive Pick</a></article>
                 <br>
 
             </main>
@@ -29,7 +27,7 @@
                 <a th:href="'/restaurant/details/' + ${favorite.getId()}" th:text="${favorite.getRestaurant_name()}"></a>
             </div>
 
-            <h2>You DinnerBell Reviews</h2>
+            <h2>Your DinnerBell Reviews</h2>
             <div class="card" th:each="review : ${userReviews}">
                 <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
             </div>
