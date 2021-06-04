@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: head('Exclusives')"></head>
 <body>
+  <nav th:replace="partials/navbar :: navbar"></nav>
+  <div class="container">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
+        <option disabled="disabled" selected="selected">Cuisine Categories</option>
+        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+      </select>
+      <main>
+          <div th:each="restaurant : ${restaurants}">
+            <h3 th:text="${restaurant.restaurant_name}"></h3>
+            <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="btn btn-primary">Show More</a>
+          </div>
+      </main>
 
+
+
+  </div>
+
+  <div th:replace="partials/scripts :: scripts"></div>
 </body>
 </html>
