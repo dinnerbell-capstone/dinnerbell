@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Stats</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
 
+<head th:replace="partials/headHome :: headHome('View Stats')"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<main class="container">
+    <!--    <div class="container">-->
+
+    <div class="content_container">
+
+        <h1>View Stats</h1>
+        <div class="content">
+
+
+
+
+
+        </div>
+        <!--    <div class="dish_img">-->
+        <!--      <img src="img/plainplate.png">-->
+        <!--    </div>-->
+    </div>
+    </div>
+
+    <div class="bg_img">
+        <img src="/img/bg.png">
+        <!--  <div class="social">-->
+        <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+        <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+
+        <!--  </div>-->
+    </div>
+
+
+
+</main>
+
+
+
+<th:block th:replace="partials/homeScripts :: homeScripts" />
 </body>
 </html>
