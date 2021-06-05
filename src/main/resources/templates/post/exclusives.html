@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: head('Exclusives')"></head>
+<head th:replace="partials/headHome :: headHome('Exclusives')"></head>
 <body>
   <nav th:replace="partials/navbar :: navbar"></nav>
   <div class="container">
@@ -19,6 +19,6 @@
 
   </div>
 
-  <div th:replace="partials/scripts :: scripts"></div>
+  <div th:replace="partials/homeScripts :: homeScripts"></div>
 </body>
 </html>
