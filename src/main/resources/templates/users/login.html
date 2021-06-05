@@ -1,33 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="partials/header :: head('login in')"></head>
+<head th:replace="partials/headHome :: headHome('login in')"></head>
 <style>
+.content_container{
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 1650px;
+  width: 100%;
+  padding: 50px 110px 130px;
+  position: -ms-device-fixed;
 
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.login-content {
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 1650px;
+  width: 100%;
+  padding: 50px 110px 130px;
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+h1{
+  height: 100%;
+  font-size: 5em;
+}
 </style>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>Log In</h1>
-<div th:if="${param.error}">
-  Invalid Username and Password.
+<div class="container">
+
+  <div class="content_container">
+
+    <h1>Login</h1>
+    <div class="login-content">
+
+      <div th:if="${param.error}">
+        Invalid Username and Password.
+      </div>
+      <div th:if="${param.logout}">
+        You have been logged out.
+      </div>
+
+      <form th:action="@{/login}" th:method="post">
+        <br>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" />
+        <br>
+        <br>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <br>
+        <input type="submit" value="Submit" />
+      </form>
+
+    </div>
+<!--    <div class="dish_img">-->
+<!--      <img src="img/plainplate.png">-->
+<!--    </div>-->
+  </div>
 </div>
-<div th:if="${param.logout}">
-  You have been logged out.
+
+
+
+
+
+<div class="bg_img">
+  <img src="/img/bg.png">
+<!--  <div class="social">-->
+<!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+<!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+<!--    <i class="fa fa-instagram" aria-hidden="true"></i>-->
+<!--    <i class="fa fa-whatsapp" aria-hidden="true"></i>-->
+<!--  </div>-->
 </div>
 
-<form th:action="@{/login}" th:method="post">
-  <label for="username">Username</label>
-  <input id="username" name="username" type="text" />
-  <br>
 
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" />
-  <br>
-
-  <input type="submit" value="Submit" />
-</form>
-
-<div th:replace="partials/scripts :: scripts"></div>
+<th:block th:replace="partials/homeScripts :: homeScripts" />
 </body>
 </html>
