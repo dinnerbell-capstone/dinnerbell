@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/header :: head(reviews)">
+<head th:replace="partials/headHome :: headHome(reviews)">
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -53,6 +53,6 @@
 
 
 
-<th:block th:replace="partials/scripts :: scripts"></th:block>
+<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
 </body>
 </html>

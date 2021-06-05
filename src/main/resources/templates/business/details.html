@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/header :: head('Restaruant Details')"></head>
+<head th:replace="partials/headHome :: headHome('Restaruant Details')"></head>
 
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -97,7 +97,7 @@
 </div>
 
 
-<th:block th:replace="partials/scripts :: scripts"></th:block>
+<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
 
 </body>
 </html>
