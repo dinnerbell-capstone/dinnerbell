@@ -39,9 +39,15 @@ public class RestaurantController {
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
+      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      User creator = usersdao.getOne(user.getId());
+      if (creator.getIsBusiness()){
       model.addAttribute("restaurant", new Restaurant());
       model.addAttribute("categories", categoriesdao.findAll());
         return "business/create_account";
+      }
+      return "redirect:/dashboard";
+
     }
 
   @PostMapping("/restaurant/create")
@@ -58,7 +64,6 @@ public class RestaurantController {
 
     @GetMapping("/restaurant")
     public String restaurantProfile(Model model) {
-      model.addAttribute("restaurants",restaurantsdao.findAll());
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       User currentUser = usersdao.getOne(user.getId());
       model.addAttribute("user",currentUser);
@@ -150,32 +155,37 @@ public class RestaurantController {
 
 
     @PostMapping("/restaurant/edit/{id}")
-    public String updateRestaurantProfileResults(@ModelAttribute("restaurant") Restaurant restaurant,
-                                                 @RequestParam(name = "categories")List<Category> categories) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User creator = usersdao.getOne(currentUser.getId());
-        Restaurant restaurantToEdit = restaurantsdao.getOne(restaurant.getId());
-
+    public String updateRestaurantProfileResults(Restaurant restaurant,
+                                                 @RequestParam(name = "categories")List<Category> categories,
+                                                 @RequestParam(name = "restaurant_name") String restaurantName,
+                                                 @RequestParam(name = "street_address") String streetAddress,
+                                                 @RequestParam(name = "city") String city,
+                                                 @RequestParam(name = "state") String state,
+                                                 @RequestParam(name = "zip_code") String zipCode,
+                                                 @RequestParam(name = "phone_number") String phoneNumber,
+                                                 @RequestParam(name = "website_link") String website,
+                                                 @RequestParam(name = "menu_link") String menu,
+                                                 @RequestParam(name = "hours") String hours,
+                                                 @RequestParam(name = "description") String description,
+                                                 @RequestParam(name = "elder_eats_link") String elderEats,
+                                                 Restaurant restaurantToEdit) {
         restaurantToEdit.setCategories(categories);
-        restaurantToEdit.setRestaurant_name(restaurant.getRestaurant_name());
-        restaurantToEdit.setStreet_address(restaurant.getStreet_address());
-        restaurantToEdit.setCity(restaurant.getCity());
-        restaurantToEdit.setState(restaurant.getState());
-        restaurantToEdit.setZip_code(restaurant.getZip_code());
-        restaurantToEdit.setPhone_number(restaurant.getPhone_number());
-        restaurantToEdit.setWebsite_link(restaurant.getWebsite_link());
-        restaurantToEdit.setMenu_link(restaurant.getMenu_link());
-        restaurantToEdit.setHours(restaurant.getHours());
-        restaurantToEdit.setDescription(restaurant.getDescription());
-        restaurantToEdit.setElder_eats_link(restaurant.getElder_eats_link());
+        restaurantToEdit.setRestaurant_name(restaurantName);
+        restaurantToEdit.setStreet_address(streetAddress);
+        restaurantToEdit.setCity(city);
+        restaurantToEdit.setState(state);
+        restaurantToEdit.setZip_code(zipCode);
+        restaurantToEdit.setPhone_number(phoneNumber);
+        restaurantToEdit.setWebsite_link(website);
+        restaurantToEdit.setMenu_link(menu);
+        restaurantToEdit.setHours(hours);
+        restaurantToEdit.setDescription(description);
+        restaurantToEdit.setElder_eats_link(elderEats);
         restaurantsdao.save(restaurantToEdit);
-        creator.setRestaurant(currentUser.getRestaurant());
-        usersdao.save(creator);
         return "redirect:/restaurant/details/" + restaurant.getId();
     }
 
-      //    this was used to make sure the delete a
-      //    single picture uploaded by a restaurant owner worked
+
   @GetMapping("/restaurant/uploads/show/{id}")
   public String testDelete(@PathVariable long id, Model model){
       Restaurant restaurant = restaurantsdao.getOne(id);
