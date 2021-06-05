@@ -63,6 +63,8 @@
             <br><h2>Sign Up</h2><br>
             <div class="signup-content">
                 <form th:action="@{/sign-up}" th:method="POST" th:object="${user}">
+                    <h4>We would love to have you join our table!</h4>
+                    <h5>Please enter your user information below.</h5>
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input name="username" id="username" th:field="*{username}" type="text"  class="form-control" placeholder="What should we call you?" required>
@@ -80,12 +82,6 @@
                             <option>Just Hungry</option>
                         </select>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" name="isBusiness" th:checked="${user.isBusiness}" type="checkbox" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Are you a business owner?
-                        </label>
-                    </div>
                     <div class="form-group">
                         <label>Email address</label>
                         <input name="email" type="email"  class="form-control" aria-describedby="emailHelp" placeholder="Enter email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" required>
@@ -95,6 +91,15 @@
                         <label class="form-check-label">
                             <input name="newsletter check" type="checkbox" class="form-check-input">
                             Subscribe me to the newsletter!
+                        </label>
+                    </div><br>
+                    <h4>DinnerBell features the tastiest local restaurants
+                        <br>
+                        for our community to explore.</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" name="isBusiness" th:checked="${user.isBusiness}" type="checkbox" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Are you a business owner? Check this box to be featured!
                         </label>
                     </div><br>
                     <button name="submit" type="submit" class="btn btn-primary">Submit</button>
