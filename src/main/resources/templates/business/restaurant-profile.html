@@ -18,7 +18,7 @@
             <h5 class="card-title">Let's build your restaurant profile to display to future and current guest.</h5>
             <p class="card-text">The following links will help you create your page</p>
 
-            <a role="button" class="btn btn-primary" th:href="@{/restaurant/create}">Add more photos</a>
+            <a role="button" class="btn btn-primary" th:href="@{/restaurant/create}">Enter Restaurant information </a>
           </div>
         </div>
       </section>
@@ -29,7 +29,7 @@
       <section th:if="${!user.restaurant.images.isEmpty()}">
         <div class="card">
           <div class="card-body text-center">
-            <div th:replace="partials/carousel :: carousel"></div>
+            <div th:replace="partials/carouselUser :: carouselUser"></div>
             <h3>Edit Restaurant Photos</h3>
             <a role="button" class="btn btn-primary" th:href="@{'/restaurant/uploads/show/' + ${user.restaurant.id}}">Edit Photos</a>
             <a role="button" class="btn btn-primary" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Add more photos</a>
@@ -46,7 +46,7 @@
         </div>
       </section>
 
-      <section>
+      <section class="col-md-6">
         <div class="card">
           <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
           <div class="card-body row">
@@ -55,7 +55,7 @@
                 <h5 class="card-title">Account Information</h5><br>
                 <h6>Username: <span th:text="${user.username}"></span></h6><br>
                 <h6>Email: <span th:text="${user.email}"></span></h6><br>
-                <a role="button" class="btn btn-primary" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Update Account</a>
+                <a role="button" class="btn btn-primary" th:href="@{/users/edit}">Update Account</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">

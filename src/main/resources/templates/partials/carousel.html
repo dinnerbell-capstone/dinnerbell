@@ -9,7 +9,7 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div th:class="${i.index == 0}? 'carousel-item active' : 'carousel-item' " th:each="image,i : ${user.restaurant.images}">
+    <div th:class="${i.index == 0}? 'carousel-item active' : 'carousel-item' " th:each="image,i : ${restaurant.images}">
       <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
       <img th:src="${'/upload/' + image.url}" alt="placeholder">
     </div>
