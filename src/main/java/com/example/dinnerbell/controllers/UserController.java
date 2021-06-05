@@ -51,9 +51,23 @@ public class UserController {
 
 //    UPDATES USER INFO IN DB, RETURNS TO PROFILE
     @PostMapping("/users/edit")
-    public String updateUserProfile(@ModelAttribute User userToEdit) {
+    public String updateUserProfile(@RequestParam(name = "username") String username,
+                                    @RequestParam(name = "email") String email,
+                                    User userToEdit) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userDao.getOne(principal.getId());
+      if (currentUser.getIsBusiness()) {
         userToEdit.setId(principal.getId());
+        userToEdit.setRestaurant(currentUser.getRestaurant());
+        userToEdit.setIsBusiness(currentUser.getIsBusiness());
+        userToEdit.setUsername(username);
+        userToEdit.setEmail(email);
+        userDao.save(userToEdit);
+        return "redirect:/restaurant";
+      }
+        userToEdit.setId(principal.getId());
+        userToEdit.setUsername(username);
+        userToEdit.setEmail(email);
         userDao.save(userToEdit);
         return "redirect:/dashboard";
     }
