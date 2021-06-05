@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/header :: head('Our Menu')"></head>
+<head th:replace="partials/headHome :: headHome('Our Menu')"></head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 
 <div class="content" style="text-align: center">
+
+
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
         <div>
@@ -46,6 +48,7 @@
 </div>
 
 
-<th:block th:replace="partials/scripts :: scripts"/>
+<th:block th:replace="partials/homeScripts :: homeScripts" />
 </body>
 </html>
+
