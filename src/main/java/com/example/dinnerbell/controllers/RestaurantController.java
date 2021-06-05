@@ -39,9 +39,15 @@ public class RestaurantController {
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
+      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      User creator = usersdao.getOne(user.getId());
+      if (creator.getIsBusiness()){
       model.addAttribute("restaurant", new Restaurant());
       model.addAttribute("categories", categoriesdao.findAll());
         return "business/create_account";
+      }
+      return "redirect:/dashboard";
+
     }
 
   @PostMapping("/restaurant/create")
@@ -161,12 +167,8 @@ public class RestaurantController {
                                                  @RequestParam(name = "menu_link") String menu,
                                                  @RequestParam(name = "hours") String hours,
                                                  @RequestParam(name = "description") String description,
-                                                 @RequestParam(name = "elder_eats_link") String elderEats
-    ) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User creator = usersdao.getOne(currentUser.getId());
-        Restaurant restaurantToEdit = restaurantsdao.getOne(restaurant.getId());
-
+                                                 @RequestParam(name = "elder_eats_link") String elderEats,
+                                                 Restaurant restaurantToEdit) {
         restaurantToEdit.setCategories(categories);
         restaurantToEdit.setRestaurant_name(restaurantName);
         restaurantToEdit.setStreet_address(streetAddress);
@@ -180,13 +182,10 @@ public class RestaurantController {
         restaurantToEdit.setDescription(description);
         restaurantToEdit.setElder_eats_link(elderEats);
         restaurantsdao.save(restaurantToEdit);
-        creator.setRestaurant(currentUser.getRestaurant());
-        usersdao.save(creator);
         return "redirect:/restaurant/details/" + restaurant.getId();
     }
 
-      //    this was used to make sure the delete a
-      //    single picture uploaded by a restaurant owner worked
+
   @GetMapping("/restaurant/uploads/show/{id}")
   public String testDelete(@PathVariable long id, Model model){
       Restaurant restaurant = restaurantsdao.getOne(id);
