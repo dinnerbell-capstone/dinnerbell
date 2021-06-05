@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/header :: head('Restaurant Reviews')"><title></title></head>
+<head th:replace="partials/headHome :: headHome('Restaurant Reviews')"><title></title></head>
 <!--<body class="d-flex flex-column min-vh-100">-->
 <body>
 
@@ -28,6 +28,6 @@
 </div>
 </form>
 
-<th:block th:replace="partials/scripts :: scripts"></th:block>
+<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
 </body>
 </html>
