@@ -7,7 +7,7 @@
   <main>
     <div th:each="image : ${restaurant.images}">
       <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
-      <img th:src="${'/uploads/' + image.url}" alt="placeholder">
+      <img th:src="${'/upload/' + image.url}" alt="placeholder">
         <a class="btn btn-danger" th:value="${image.id}" th:href="@{'/restaurant/delete/upload/' + ${image.id}}">Delete</a>
     </div>
   </main>

@@ -26,9 +26,10 @@ public class HomeController {
   }
 
 
-  @GetMapping("/exclusives")
+  @GetMapping("/yelp/events")
   public String indexExclusives(Model model) {
-    model.addAttribute("restaurants", restaurantsdao.findAll());
+    // this will only grab created restaurants not yelp restaurants
+//    model.addAttribute("restaurants", restaurantsdao.findAll());
     return "post/yelpExclusives";
   }
 

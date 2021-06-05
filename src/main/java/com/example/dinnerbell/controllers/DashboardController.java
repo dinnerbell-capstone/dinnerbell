@@ -20,25 +20,28 @@ public class DashboardController {
 
     private final RestaurantRepo restaurantsdao;
     private final UserRepo usersdao;
-    private final ReviewRepo reviewRepo;
+    private final ReviewRepo reviewsdao;
 
 
 
     public DashboardController(RestaurantRepo restaurantsdao, UserRepo usersdao, ReviewRepo reviewsdao) {
         this.restaurantsdao = restaurantsdao;
         this.usersdao = usersdao;
-        this.reviewRepo = reviewsdao;
+        this.reviewsdao = reviewsdao;
     }
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = usersdao.getOne(user.getId());
+        if (currentUser.getIsBusiness()) {
+          return "redirect:/restaurant";
+        }
         List<Restaurant> userFaves = currentUser.getRestaurants();
-//        List<Review> userReviews = currentUser.getRestaurant().getReviews();
+        List<Review> userReviews = reviewsdao.findAllByUser(currentUser);
         model.addAttribute("user", currentUser);
         model.addAttribute("userFaves", userFaves);
-//        model.addAttribute("userReviews", userReviews);
+        model.addAttribute("userReviews", userReviews);
         return "users/dashboard";
     }
 

@@ -10,7 +10,7 @@ public class SearchController {
 
     @GetMapping("/search")
     public String spinnerPage() {
-        return "yelpSearch";
+        return "app/yelpSearch";
     }
 
 }

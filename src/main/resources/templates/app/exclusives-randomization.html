@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/header :: head('Our Menu')"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container">
+
+    <h1>Click here for a randomly generated restaurant recommendation: </h1>
+
+    <a href="/exclusive-pick">Choose for me!</a>
+    <br>
+    <a th:href="'/restaurant/details/' + ${restaurant.id}" th:text="${restaurant.restaurant_name}"></a>
+</div>
+
+<th:block th:replace="partials/scripts :: scripts"/>
+</body>
+</html>

@@ -59,7 +59,12 @@ public class RestaurantController {
     @GetMapping("/restaurant")
     public String restaurantProfile(Model model) {
       model.addAttribute("restaurants",restaurantsdao.findAll());
+      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      User currentUser = usersdao.getOne(user.getId());
+      model.addAttribute("user",currentUser);
+
       return "business/restaurant-profile";
+
     }
 
     @GetMapping("/restaurant/upload/{id}")
@@ -104,10 +109,10 @@ public class RestaurantController {
         return "business/details";
     }
 
-@GetMapping("/random-selector")
-  public String randomSelector() {
-      return "business/randomSelector";
-  }
+//@GetMapping("/random-selector")
+//  public String randomSelector() {
+//      return "business/randomSelector";
+//  }
 
 
 
@@ -185,11 +190,17 @@ public class RestaurantController {
     return "redirect:/restaurant/details/" + image.getRestaurant().getId();
   }
 
-  @GetMapping("/index")
+  @GetMapping("/restaurants/exclusives")
   public String showAllRestaurants(Model model) {
-      List<Restaurant> restaurant = restaurantsdao.findAll();
-      return "post/index";
+      List<Restaurant> restaurants = restaurantsdao.findAll();
+      List<Category> categories = categoriesdao.findAll();
+
+      model.addAttribute("restaurants",restaurants);
+      model.addAttribute("categories", categories);
+      return "post/exclusives";
   }
+
+
 
     }
 

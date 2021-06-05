@@ -12,63 +12,62 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  private UserDetailsLoader usersLoader;
+    private UserDetailsLoader usersLoader;
 
-  public SecurityConfiguration(UserDetailsLoader usersLoader) {
-    this.usersLoader = usersLoader;
-  }
+    public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
+    }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth
-      .userDetailsService(usersLoader)
-      .passwordEncoder(passwordEncoder());
-  }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(usersLoader)
+                .passwordEncoder(passwordEncoder());
+    }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-      http
-        .formLogin()
-          .loginPage("/login")
-          .defaultSuccessUrl("/dashboard")
-          .permitAll()
-        .and()
-          .logout()
-          .logoutSuccessUrl("/login?logout")
-        .and()
-          .authorizeRequests()
-          .antMatchers("/","/about")
-          .permitAll()
-        .and()
-          .authorizeRequests()
-          .antMatchers(
-            "/restaurant/create",
-            "/restaurant",
-            "/restaurant/upload/{id}",
-            "/restaurant/details/{id}",
-            "/restaurant/edit/{id}",
-            "/random-selector",
-            "/index",
-            "/review/{id}",
-            "/reviews/byRestaurant/{id}",
-            "/review/update/{id}",
-            "/review/delete/{id}",
-            "/search",
-            "/keys.js",
-            "/profile",
-            "/users/edit",
-            "/dashboard"
-          )
-        .authenticated();
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/dashboard")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login?logout")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/", "/about")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/restaurant/create",
+                        "/restaurant",
+                        "/restaurant/upload/{id}",
+                        "/restaurant/details/{id}",
+                        "/restaurant/edit/{id}",
+                        "/random-selector",
+                        "/index",
+                        "/review/{id}",
+                        "/reviews/byRestaurant/{id}",
+                        "/review/update/{id}",
+                        "/review/delete/{id}",
+                        "/search",
+                        "/keys.js",
+                        "/profile",
+                        "/users/edit",
+                        "/dashboard",
+                        "/exclusive-pick"
+                )
+                .authenticated();
 
-  }
-
-
+    }
 
 
 }
