@@ -166,7 +166,7 @@ body {
 }
 
  .ring {
-   animation: ring 0.5s steps(32) infinite;
+   animation: ring 0.5s steps(32) normal;
    transform-origin: 50% 25%;
  }
 
