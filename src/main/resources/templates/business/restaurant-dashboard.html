@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/headHome :: headHome('Restaurant Dashboard')"></head>
+<!--<head th:replace="partials/headHome :: headHome('Restaurant Dashboard')"></head>-->
+<head th:replace="partials/header :: head('Restaurant Dashboard')"></head>
 <!--<style>-->
 <!--body{-->
 <!--    opacity: 80%;-->
@@ -28,6 +29,7 @@
     <div class="container" th:if="${user.restaurant != null}">
       <section th:if="${!user.restaurant.images.isEmpty()}">
         <div class="card">
+          <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
           <div class="card-body text-center">
             <div th:replace="partials/carouselUser :: carouselUser"></div>
             <h3>Edit Restaurant Photos</h3>
@@ -38,6 +40,7 @@
       </section>
       <section th:unless="${!user.restaurant.images.isEmpty()}">
         <div class="card row">
+          <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
           <div class="card-body text-center"  width="100">
             <h1>Let's build Your Restaurant page</h1>
             <h3>Upload your restaurant photo's to display on restaurant page.</h3>
@@ -46,38 +49,53 @@
         </div>
       </section>
 
-      <section class="col-md-6">
+      <div>
         <div class="card">
-          <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
           <div class="card-body row">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Account Information</h5><br>
-                <h6>Username: <span th:text="${user.username}"></span></h6><br>
+                <h5 class="card-title">Account Information</h5>
+                <h6>Username: <span th:text="${user.username}"></span></h6>
                 <h6>Email: <span th:text="${user.email}"></span></h6><br>
                 <a role="button" class="btn btn-primary" th:href="@{/users/edit}">Update Account</a>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Restaurant Information</h5><br>
-                <h6 class="card-subtitle mb-2 text-muted"></h6><br>
-                <h6>Restaurant: <span th:text="${user.restaurant.restaurant_name}"></span></h6><br>
+                <h5 class="card-title">Restaurant Information</h5>
+                <h6>Restaurant name: <span th:text="${user.restaurant.restaurant_name}"></span></h6>
+                <h6>Hours: <span th:text="${user.restaurant.hours}"></span></h6>
+                <h6 th:each="restaurantCategory : ${user.restaurant.categories}" th:selected="${restaurantCategory.id}" th:value="${restaurantCategory.id}" th:text="'Cuisine Category: ' + ${restaurantCategory.name}"></h6>
+                <h6>Address: <span th:text="${user.restaurant.street_address} + ', ' + ${user.restaurant.city} +  ', ' + ${user.restaurant.state} + ', ' + ${user.restaurant.zip_code}"></span></h6>
+                <h6>Phone Number: <span th:text="${user.restaurant.phone_number}"></span></h6>
                 <a role="button" class="btn btn-primary" th:href="@{'/restaurant/edit/' + ${user.restaurant.id}}">Update Restaurant</a>
+                <a role="button" class="btn btn-primary" th:href="@{'/restaurant/details/' + ${user.restaurant.id}}">Show Restaurant</a>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Restaurant Stats</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+            <div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Restaurant Stats</h5>
+                  <div th:if="${!user.restaurant.favorites.isEmpty()}">
+                    <p class="card-text">Number of favorites: <span th:text="${user.restaurant.favorites.size()}"></span></p>
+                  </div>
+                  <h6>List Of Reviews from <span th:text="${user.restaurant.restaurant_name}"></span> </h6>
+                  <div th:if="${!user.restaurant.reviews.isEmpty()}">
+                    <div th:each="review : ${user.restaurant.reviews}">
+                      <h3 class="card-text" th:text="${review.content}"></h3>
+                      <div th:each="image : ${user.restaurant.images}">
+                        <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
+                        <img class="img-thumbnail"  th:src="${'/upload/' + image.url }" />
+                      </div>
+                    </div>
+                    <a class="btn btn-warning" th:href="@{'/reviews/byRestaurant/' + ${user.restaurant.id}}" role="button">View Reviews</a>
+                  </div>
+                </div>
               </div>
             </div>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
-      </section>
+      </div>
     </div>
 
 
