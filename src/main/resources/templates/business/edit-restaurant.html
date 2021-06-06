@@ -65,10 +65,10 @@
 
 
       <div class="container">
-
+        <h3>Has your Cuisine type recently changed?</h3><br>
         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
-          <option disabled="disabled" selected="selected">Cuisine Categories</option>
-          <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+          <option th:each="restaurantCategory : ${restaurant.categories}" th:selected="${restaurantCategory.id}" th:value="${restaurantCategory.id}" th:text="'Current: ' + ${restaurantCategory.name}"></option>
+          <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
         </select>
       </div>
       <br>
