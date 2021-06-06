@@ -66,9 +66,11 @@ public class RestaurantController {
     public String restaurantProfile(Model model) {
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       User currentUser = usersdao.getOne(user.getId());
-      model.addAttribute("user",currentUser);
-
-      return "business/restaurant-profile";
+      if (currentUser.getIsBusiness()){
+        model.addAttribute("user",currentUser);
+        return "business/restaurant-dashboard";
+      }
+      return "redirect:/dashboard";
 
     }
 
@@ -147,42 +149,19 @@ public class RestaurantController {
     @GetMapping("/restaurant/edit/{id}")
     public String updateRestaurantProfileForm(Model model, @PathVariable Long id) {
         Restaurant restaurant = restaurantsdao.getOne(id);
-
-        model.addAttribute("categories", categoriesdao.findAll());
         model.addAttribute("restaurant", restaurant);
-        return "business/edit-restaurant-profile";
+        model.addAttribute("categories", categoriesdao.findAll());
+        return "business/edit-restaurant";
     }
 
 
     @PostMapping("/restaurant/edit/{id}")
-    public String updateRestaurantProfileResults(Restaurant restaurant,
-                                                 @RequestParam(name = "categories")List<Category> categories,
-                                                 @RequestParam(name = "restaurant_name") String restaurantName,
-                                                 @RequestParam(name = "street_address") String streetAddress,
-                                                 @RequestParam(name = "city") String city,
-                                                 @RequestParam(name = "state") String state,
-                                                 @RequestParam(name = "zip_code") String zipCode,
-                                                 @RequestParam(name = "phone_number") String phoneNumber,
-                                                 @RequestParam(name = "website_link") String website,
-                                                 @RequestParam(name = "menu_link") String menu,
-                                                 @RequestParam(name = "hours") String hours,
-                                                 @RequestParam(name = "description") String description,
-                                                 @RequestParam(name = "elder_eats_link") String elderEats,
-                                                 Restaurant restaurantToEdit) {
-        restaurantToEdit.setCategories(categories);
-        restaurantToEdit.setRestaurant_name(restaurantName);
-        restaurantToEdit.setStreet_address(streetAddress);
-        restaurantToEdit.setCity(city);
-        restaurantToEdit.setState(state);
-        restaurantToEdit.setZip_code(zipCode);
-        restaurantToEdit.setPhone_number(phoneNumber);
-        restaurantToEdit.setWebsite_link(website);
-        restaurantToEdit.setMenu_link(menu);
-        restaurantToEdit.setHours(hours);
-        restaurantToEdit.setDescription(description);
-        restaurantToEdit.setElder_eats_link(elderEats);
-        restaurantsdao.save(restaurantToEdit);
-        return "redirect:/restaurant/details/" + restaurant.getId();
+    public String updateRestaurantProfileResults(@ModelAttribute Restaurant updatedRestaurant, @PathVariable long id, @RequestParam("categories") List<Category> categories) {
+      Restaurant restaurantInDB = restaurantsdao.getOne(id);
+      restaurantInDB.updateRestaurant(updatedRestaurant);
+      restaurantInDB.setCategories(categories);
+      restaurantsdao.save(restaurantInDB);
+        return "redirect:/restaurant/details/" + restaurantInDB.getId();
     }
 
 
