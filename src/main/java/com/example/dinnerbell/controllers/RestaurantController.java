@@ -161,7 +161,7 @@ public class RestaurantController {
       restaurantInDB.updateRestaurant(updatedRestaurant);
       restaurantInDB.setCategories(categories);
       restaurantsdao.save(restaurantInDB);
-        return "redirect:/restaurant/details/" + restaurantInDB.getId();
+        return "redirect:/restaurant";
     }
 
 
