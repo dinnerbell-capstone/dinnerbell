@@ -85,7 +85,6 @@
                     <div class="form-group">
                         <label>Email address</label>
                         <input name="email" type="email"  class="form-control" aria-describedby="emailHelp" placeholder="Enter email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" required>
-                        <small class="form-text text-muted">Don't worry! Your email is safe with us!</small>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
@@ -93,13 +92,12 @@
                             Subscribe me to the newsletter!
                         </label>
                     </div><br>
-                    <h4>DinnerBell features the tastiest local restaurants
-                        <br>
-                        for our community to explore.</h4>
+                    <h5>DinnerBell features the tastiest local restaurants
+                        for our community to explore.</h5>
                     <div class="form-check">
                         <input class="form-check-input" name="isBusiness" th:checked="${user.isBusiness}" type="checkbox" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
-                            Are you a business owner? Check this box to be featured!
+                            Are you a restaurant owner? Check this box to be featured!
                         </label>
                     </div><br>
                     <button name="submit" type="submit" class="btn btn-primary">Submit</button>
