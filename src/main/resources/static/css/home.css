@@ -13,6 +13,10 @@ body {
   height: 100%;
   overflow: hidden;
 }
+.navbar, .navbar-brand, .nav-link, a.navbar-brand {
+  color: #1fd9d6;
+  font-size: 30px;
+}
 
 .bg_img {
   position: fixed;
@@ -74,7 +78,7 @@ body {
   box-sizing: border-box;
   max-width: 1650px;
   width: 100%;
-  padding: 50px 110px 130px;
+  /*padding: 50px 110px 130px;*/
   position: relative;
   z-index: 1;
   margin: auto;
