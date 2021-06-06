@@ -63,7 +63,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/profile",
                         "/users/edit",
                         "/dashboard",
-                        "/exclusive-pick"
+                        "/exclusive-pick",
+                        "/restaurants/exclusives"
                 )
                 .authenticated();
 
