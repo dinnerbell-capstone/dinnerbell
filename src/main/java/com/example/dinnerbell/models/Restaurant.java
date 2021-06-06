@@ -110,6 +110,20 @@ public class Restaurant {
     this.categories = categories;
   }
 
+  public void updateRestaurant(Restaurant updatedRestaurant) {
+    this.restaurant_name = updatedRestaurant.restaurant_name;
+    this.phone_number = updatedRestaurant.phone_number;
+    this.hours = updatedRestaurant.hours;
+    this.description = updatedRestaurant.description;
+    this.website_link = updatedRestaurant.website_link;
+    this.menu_link = updatedRestaurant.menu_link;
+    this.elder_eats_link = updatedRestaurant.elder_eats_link;
+    this.street_address = updatedRestaurant.street_address;
+    this.city = updatedRestaurant.city;
+    this.zip_code = updatedRestaurant.zip_code;
+    this.state = updatedRestaurant.state;
+  }
+
   public List<Review> getReviews() {
     return reviews;
   }
