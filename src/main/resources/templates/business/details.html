@@ -54,19 +54,7 @@
                 </article>
                 <article class="details">
                     <h6>Address: </h6>
-                    <p th:text="${restaurant.street_address}"></p>
-                </article>
-                <article class="details">
-                    <h6>City: </h6>
-                    <p th:text="${restaurant.city}"></p>
-                </article>
-                <article class="details">
-                    <h6>State: </h6>
-                    <p th:text="${restaurant.state}"></p>
-                </article>
-                <article class="details">
-                    <h6>Zip code: </h6>
-                    <p th:text="${restaurant.zip_code}"></p>
+                  <p th:text="${restaurant.street_address} + ', ' + ${restaurant.city} +  ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
                 </article>
                 <article class="details">
                     <h6>Website: </h6>
@@ -97,7 +85,7 @@
 </div>
 
 
-<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
+<div th:replace="partials/homeScripts :: homeScripts"></div>
 
 </body>
 </html>
