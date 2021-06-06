@@ -24,7 +24,7 @@
             <!--          displaying image-->
           <div class="card" style="width: 18rem;" th:each="image : ${review.images}" th:value="${review.id}">
             <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
-            <img class="img-thumbnail"  th:src="${'/uploads/' + image.url }" />
+            <img class="img-thumbnail"  th:src="${'/upload/' + image.url }" />
           </div>
 
 <!--          button for editing reviews if you are the creator of the review-->
