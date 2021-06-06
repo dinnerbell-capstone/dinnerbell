@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/headHome :: headHome('Exclusives')"></head>
+<style>
+    .scroll-container {
+        width: 350px;
+        height: 600px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+    .flex-box{
+        color: #fff;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 1650px;
+        width: 100%;
+        padding: 50px 110px 130px;
+        position: -ms-device-fixed;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+</style>
+
 <body>
   <nav th:replace="partials/navbar :: navbar"></nav>
-  <div class="container">
+
+
+
+
+
+<div class="flex-box">
+  <div class="scroll-container">
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
         <option disabled="disabled" selected="selected">Cuisine Categories</option>
         <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
@@ -14,8 +43,15 @@
             <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="btn btn-primary">Show More</a>
           </div>
       </main>
+  </div>
+      <div class="bg_img">
+          <img src="/img/bg.png">
+          <!--  <div class="social">-->
+          <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+          <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
 
-
+          <!--  </div>-->
+      </div>
 
   </div>
 

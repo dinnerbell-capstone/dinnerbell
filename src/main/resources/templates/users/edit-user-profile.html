@@ -13,7 +13,6 @@
         width: 100%;
         padding: 50px 110px 130px;
         position: -ms-device-fixed;
-
         margin: auto;
         display: flex;
         justify-content: center;
@@ -78,17 +77,6 @@
 
         <!--  </div>-->
     </div>
-
-
-
-    <form th:action="@{/users/edit}" th:method="POST" th:object="${user}">
-        <label for="username">Username</label>
-        <input type="text" th:field="*{username}" id="username" name="username">
-        <label for="email">Email</label>
-        <input type="text" th:field="*{email}" id="email" name="email">
-        <input type="hidden" name="password" th:value="${user.password}">
-        <button type="submit">Update</button>
-    </form>
 
 </main>
 
