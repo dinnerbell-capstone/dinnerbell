@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/header :: head('Our Menu')"></head>
+<head th:replace="partials/headHome :: headHome('Our Pick')"></head>
+
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container">
+<div class="container" style="text-align: center">
 
-    <h1>Click here for a randomly generated restaurant recommendation: </h1>
+    <div class="card" style="background-color: darkorange">
+        <div>
+            <img class="ring" src="https://d30y9cdsu7xlg0.cloudfront.net/png/307-200.png">
+        </div>
+        <br>
+        <h1>DinnerBell recommends: </h1>
+        <a th:href="'/restaurant/details/' + ${restaurant.id}" th:text="${restaurant.restaurant_name}"
+           style="font-size: xx-large" ></a>
+        <br>
+        <a class="btn btn-dark" href="/exclusive-pick" role="button">Try again</a>
 
-    <a href="/exclusive-pick">Choose for me!</a>
-    <br>
-    <a th:href="'/restaurant/details/' + ${restaurant.id}" th:text="${restaurant.restaurant_name}"></a>
+    </div>
 </div>
 
 <th:block th:replace="partials/scripts :: scripts"/>
