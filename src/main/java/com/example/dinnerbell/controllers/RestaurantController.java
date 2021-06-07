@@ -106,14 +106,6 @@ public class RestaurantController {
         return "business/details";
     }
 
-//@GetMapping("/random-selector")
-//  public String randomSelector() {
-//      return "business/randomSelector";
-//  }
-
-
-
-
 
 
 

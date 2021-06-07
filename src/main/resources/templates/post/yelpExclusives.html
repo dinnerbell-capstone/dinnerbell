@@ -5,65 +5,36 @@
 <!--<html>-->
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <head th:replace="partials/headHome :: headHome('Exclusive Events')"></head>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap" rel="stylesheet">
 
 
-    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
-
     <style>
-        h1, p{
-            color: #fff;
-            justify-content: center;
-
+        .card-header, .card-footer {
+            background-color: #2d313c;
+        }
+        .card-body {
+            background-color: darkorange;
         }
 
-        .card {
-
-            background: none;
-            background: -webkit-linear-gradient(to right, #f8824e, #4cb6b6);
-            background: linear-gradient(to right, #99d5d5, #656565);
-            opacity: 1;
-            /*font-family: 'Noto Sans', sans-serif;*/
-
-
-        }
-
-        body {
-            margin: 25px;
-            padding: 50px;
-            background: none;
-            background: -webkit-linear-gradient(to right, #f8824e, #00aba9);
-            background: linear-gradient(to right, #f8824e, #00aba9);
-            min-height: 100vh;
-            /*font-family: 'Noto Sans', sans-serif;*/
+        h1 {
+            color: #1fd9d6;
         }
     </style>
+
+
 </head>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <body class="d-flex flex-column min-vh-100">
 
+<h1 class="text-white ">Here you will find exclusive restaurant events!!! </h1>
 
-
-<h1>DinnerBell Exclusives</h1>
-<h3 class="text-white ">Here you will find exclusive restaurant events!!! </h3>
-
-<!--<form th:action="@{/restaurant/details/{id}(id=${restaurants.id})}" th:method="post">-->
-
-<!--    <h1 th:text="${restaurants.restaurant_name}"></h1>-->
-
-<!--    <a href="/restaurant/details/1">Restaurant 1</a>-->
 
 
 <main>
-<!--    <div class="card" th:each="restaurant : ${restaurants}">-->
-<!--        <h3 th:text="${restaurant.restaurant_name}"/>-->
-        <!--        <p th:text="${restaurant.description}"/>-->
+
 
 
 
@@ -79,18 +50,18 @@
 
 
 
-<div id="insertImage"></div>
+    <div id="insertImage"></div>
 
-    <div class="card text-center">
-        <div class="card-header text-white font-weight-bold" id="businessId">
+    <div class="card text-center" style="background: none">
+        <div class="card-header font-weight-bold text-white" id="businessId">
 
         </div>
         <div class="card-body">
-            <h5 class="card-title text-white" id="eventName"></h5>
+            <h5 class="card-title " id="eventName"></h5>
             <p class="card-text text-primary font-weight-bold" id="description"></p>
             <div id="links"></div>
         </div>
-        <div class="card-footer text-muted font-weight-bold" id="address">
+        <div class="card-footer font-weight-bold text-white" id="address">
 
         </div>
     </div>
@@ -98,17 +69,17 @@
 
     <div id="insertImage1"></div>
 
-    <div class="card text-center">
-        <div class="card-header text-white font-weight-bold" id="businessId1">
+    <div class="card text-center" style="background: none" >
+        <div class="card-header font-weight-bold text-white" id="businessId1">
         </div>
 
         <div class="card-body">
-            <h5 class="card-title text-white" id="eventName1"></h5>
+            <h5 class="card-title " id="eventName1"></h5>
             <p class="card-text text-primary font-weight-bold" id="description1"></p>
             <p id="links1"></p>
         </div>
 
-        <div class="card-footer text-muted font-weight-bold" id="address1">
+        <div class="card-footer font-weight-bold text-white" id="address1">
         </div>
     </div>
 
@@ -116,43 +87,38 @@
 
     <div id="insertImage2"></div>
 
-    <div class="card text-center">
-        <div class="card-header text-white font-weight-bold" id="businessId2">
+    <div class="card text-center" style="background: none">
+        <div class="card-header font-weight-bold text-white" id="businessId2">
         </div>
 
         <div class="card-body">
-            <h5 class="card-title text-white" id="eventName2"></h5>
+            <h5 class="card-title" id="eventName2"></h5>
             <p class="card-text text-primary font-weight-bold" id="description2"></p>
             <p id="links2"></p>
         </div>
 
-        <div class="card-footer text-muted" id="address2">
+        <div class="card-footer text-white" id="address2">
         </div>
     </div>
-
-
-
-
-
-
-
-
 </main>
 
 
-<!--<th:block th:replace="partials/scripts :: scripts"></th:block>-->
 
+<div class="bg_img">
+    <img src="/img/bg.png">
+    <!--  <div class="social">-->
+    <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+    <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+    <!--    <i class="fa fa-instagram" aria-hidden="true"></i>-->
+    <!--    <i class="fa fa-whatsapp" aria-hidden="true"></i>-->
+    <!--  </div>-->
+</div>
 
-<!--<script src="keys.js"></script>-->
+<th:block th:replace="partials/homeScripts :: homeScripts" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="/keys.js"></script>
+<script type="text/javascript" th:src="@{/js/yelpExclusives.js}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!--<script src="yelpExclusives.js"></script>-->
-
-
-<script type="text/javascript" th:src="@{js/keys.js}"></script>
-<script type="text/javascript" th:src="@{js/yelpExclusives.js}"></script>
-
 
 
 </body>

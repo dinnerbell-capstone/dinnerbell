@@ -4,10 +4,10 @@
 var searchterms = '';
 
 
-function getTerm(term) {
-    console.log(term);
-    $('.term').text(term);
-}
+// function getTerm(term) {
+//     console.log(term);
+//     $('.term').text(term);
+// }
 
 $("#clearButton").on("click", function() {
     location.reload()
@@ -36,7 +36,7 @@ $("#submit").on("click", function() {
         $.ajax({
             url: myurl,
             headers: {
-                'Authorization': 'Bearer ' + YELP_TOKEN
+                'Authorization': 'Bearer ' + yelpToken
             },
             method: 'GET',
             dataType: 'json',
@@ -105,17 +105,19 @@ console.log(data)
                         // itemHTML += "<a href='" + eventUrl2 + "'>" + eventUrl2 + "</a>"
 
                         $('#results').append(
-                            '<div class="card">' +
-                            '<div id="' + id + '" style="margin-top:50px;margin-bottom:50px;">' +
+                            '<div class="card text-white" style="background-color: darkorange; width:50%">' +
+                            '<div class="card__title cards text-white" style="background-color: #101010">' + name + '' +  '</div>' +
+                            '<div id="' + id + '" style="margin-top:20px;margin-bottom:25px;">' +
                             '<img src="' + image + '" style="width:200px;height:150px;"><br>' +
-                            name + '' +
                             '<div class="card-content">' +
-                            '<br>' + '<div class="card__title ">' + name + '' +
-                            '<br>' + '<div class="card__title"> BusinessID: +' + name + '' +
+              
                             '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '' +
                             '<br>The phone number for this business is: ' + phone + '' +
                             '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>' +
+                            '</div>' +
                             '</div>'
+
+
 
 
                         );

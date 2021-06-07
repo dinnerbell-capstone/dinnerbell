@@ -4,10 +4,7 @@
 var searchterms = '';
 
 
-function getTerm(term) {
-    console.log(term);
-    $('.term').text(term);
-}
+
 
 
 
@@ -40,7 +37,7 @@ $("#submit").on("click", function() {
         $.ajax({
             url: myurl,
             headers: {
-                'Authorization':'Bearer ' + yelpKey
+                'Authorization':'Bearer ' + YELP_EXCLUSIVES
             },
             method: 'GET',
             dataType: 'json',
