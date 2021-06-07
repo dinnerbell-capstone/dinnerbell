@@ -24,11 +24,11 @@
     <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
 
         <label for="restaurant_name">Name</label>
-        <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text"/>
+        <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text" required/>
         <br>
 
         <label for="description">Restaurant Description</label>
-        <input id="description" th:field="*{description}" name="description" type="text"/>
+        <input id="description" th:field="*{description}" name="description" type="text" required/>
         <br>
 
         <label for="hours">Hours of Operation</label>
@@ -36,25 +36,25 @@
         <br>
 
         <label for="phone_number">Phone Number</label>
-        <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text"/>
+        <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text" required/>
         <br>
 
         <label for="street_address">Street Address</label>
-        <input id="street_address" th:field="*{street_address}" name="street_address" type="text"/>
+        <input id="street_address" th:field="*{street_address}" name="street_address" type="text" required/>
         <br>
 
 
         <label for="city">City</label>
-        <input id="city" th:field="*{city}" name="city" type="text"/>
+        <input id="city" th:field="*{city}" name="city" type="text" required/>
         <br>
 
 
         <label for="state">State</label>
-        <input id="state" th:field="*{state}" placeholder="XX" name="state" type="text"/>
+        <input id="state" th:field="*{state}" placeholder="XX" name="state" type="text" required/>
         <br>
 
         <label for="zip_code">Zipcode</label>
-        <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text"/>
+        <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text" required/>
         <br>
 
 
