@@ -40,7 +40,7 @@ $("#submit").on("click", function() {
         $.ajax({
             url: myurl,
             headers: {
-                'Authorization':'Bearer ' + yelpKey
+                'Authorization':'Bearer ' + FileStackApiKey
             },
             method: 'GET',
             dataType: 'json',

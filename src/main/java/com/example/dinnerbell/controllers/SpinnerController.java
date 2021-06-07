@@ -22,10 +22,10 @@ public class SpinnerController {
     }
 
 
-    @GetMapping("/yelpRandomizer")
-    public String spinnerPage() {
-        return "business/randomSelector";
-    }
+//    @GetMapping("/yelpRandomizer")
+//    public String spinnerPage() {
+//        return "business/randomSelector";
+//    }
 
     @GetMapping("/spinner-results")
     public String spinnerResult() {

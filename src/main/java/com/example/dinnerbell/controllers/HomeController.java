@@ -17,8 +17,8 @@ public class HomeController {
   private final CategoryRepo categoriesdao;
   private final UserRepo usersdao;
 
-  @Value("${yelp_key}")
-  private String yelpKey;
+  @Value("${filestack_key}")
+  private String fileStackApiKey;
 
   public HomeController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao) {
     this.restaurantsdao = restaurantsdao;
@@ -35,9 +35,9 @@ public class HomeController {
 
   @RequestMapping(path = "/keys.js", produces = "application/javascript")
   @ResponseBody
-    public String apikey(){
-    System.out.println(yelpKey);
-    return "const yelpKey = `" + yelpKey + "`;";
+  public String apikey(){
+    System.out.println(fileStackApiKey);
+    return "const FileStackApiKey = `" + fileStackApiKey + "`";
   }
 
   @GetMapping("/yelp/events")
@@ -47,4 +47,14 @@ public class HomeController {
     return "post/yelpExclusives";
   }
 
+  @GetMapping("/yelpRandomizer")
+  public String spinnerPage() {
+    return "business/randomSelector";
+  }
+
+
+  @GetMapping("/search")
+  public String yelpSearch() {
+    return "app/yelpSearch";
+  }
 }

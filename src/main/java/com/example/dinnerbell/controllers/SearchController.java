@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SearchController {
 
-    @GetMapping("/search")
-    public String spinnerPage() {
-        return "app/yelpSearch";
-    }
+//    @GetMapping("/search")
+//    public String spinnerPage() {
+//        return "app/yelpSearch";
+//    }
 
 }
