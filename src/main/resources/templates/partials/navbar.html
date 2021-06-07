@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">DinnerBell</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -26,7 +26,7 @@
                     <a class="nav-link" href="/about">About</a>
                     <!--                </li>-->
                     <!--                <li class="nav-item">-->
-                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/sign-up">Sign Up</a></li>
+                    <a class="nav-link" sec:authorize="!isAuthenticated()" href="/sign-up">Sign Up</a>
                     <!--                <li class="nav-item">-->
                     <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">Log in</a>
                     <!--                </li>-->
@@ -41,12 +41,16 @@
 
                     <!--                </li>-->
                     <!--                <li>-->
-                    <a class="nav-link" sec:authorize="isAuthenticated()" href="/sign-up" id="logout-link">Logout</a>
-                    <form id="logout-form" th:action="@{/logout}" th:method="post"></form>
+<!--                    <a class="nav-link" sec:authorize="isAuthenticated()" href="/sign-up" id="logout-link">Logout</a>-->
+<!--                    <form id="logout-form" th:action="@{/logout}" th:method="post"></form>-->
+                  <div sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                      <button class="nav-link bg-transparent border-0">Logout</button>
+                    </form>
+                  </div>
                 </div>
             </div>
-        </div>
-    </div>
+
 </nav>
 </body>
 </html>
