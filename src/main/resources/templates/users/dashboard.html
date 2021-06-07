@@ -13,48 +13,47 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container-fluid mt-5 p-5">
-    <div class="content" style="text-align: center">
-
+    <div class="content col-12" style="text-align: center">
         <!--CARD CLASS KEEPS CONTAINED-->
         <div class="card">
             <div>
-                <h1 style="color: black">Welcome to DinnerBell!</h1>
-                <h2>Let us help you plan your next dining experience by choosing from our following menu options...</h2>
+                <h1 style="color: black">Our Menu</h1>
+                <h2>Let DinnerBell help you plan your next dining experience by choosing from our following menu options...</h2>
 
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 mt-3">
                             <h4>Exclusive DinnerBell Restaurants</h4>
                             We feature the best eats and treats by our local
                             top restaurants. Be sure to choose your own favorites and leave a review.
-                            <br>
+                            <br><br>
                             <a class="btn btn-dark" href="/restaurants/exclusives" role="button">Exclusive Restaurants</a>
                         </div>
-                        <div class="col">
+                        <div class="col-12 mt-3">
                             <h4>DinnerBell Choice</h4>
                             Can't decide what's for dinner? How about one of our house
                             specials? Allow us to pick for you. Get a decision now!
-                            <br>
+                            <br><br>
                             <a class="btn btn-dark" href="/exclusive-pick" role="button">Exclusive Pick</a>
                         </div>
-                        <div class="col">
+                        <div class="col-12 mt-3">
                             <h4>Around the Town</h4>
                             Still unsure and need more help? Not a problem, get ideas from
                             Yelp! Search San Antonio to find your preference.
-                            <br>
+                            <br><br>
                             <a class="btn btn-dark" href="/yelp/events" role="button">Search Yelp SA</a>
                         </div>
                     </div>
                 </div>
 
-                <h2>Your DinnerBell Favorites</h2>
+                <h2 class="mt-3">Your DinnerBell Favorites</h2>
                 <div class="card" th:each="favorite : ${userFaves}">
                     <a th:href="'/restaurant/details/' + ${favorite.getId()}"
                        th:text="${favorite.getRestaurant_name()}"></a>
                 </div>
                 <br>
 
-                <h2>Your DinnerBell Reviews</h2>
+                <h2 class="mt-3">Your DinnerBell Reviews</h2>
                 <div class="card" th:each="review : ${userReviews}">
                     <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
                 </div>
