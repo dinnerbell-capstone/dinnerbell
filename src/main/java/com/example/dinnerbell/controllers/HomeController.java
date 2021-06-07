@@ -17,6 +17,9 @@ public class HomeController {
   private final CategoryRepo categoriesdao;
   private final UserRepo usersdao;
 
+  @Value("${yelp_key}")
+  private String yelpKey;
+
   public HomeController(RestaurantRepo restaurantsdao, CategoryRepo categoriesdao, UserRepo usersdao) {
     this.restaurantsdao = restaurantsdao;
     this.categoriesdao = categoriesdao;
@@ -29,14 +32,12 @@ public class HomeController {
   }
 
 
-  @Value("${yelp_key}")
-  private String yelpApiKey;
 
   @RequestMapping(path = "/keys.js", produces = "application/javascript")
   @ResponseBody
-  public String apikey(){
-
-    return "const yelpKey = `" + yelpApiKey + "`;";
+    public String apikey(){
+    System.out.println(yelpKey);
+    return "const yelpKey = `" + yelpKey + "`;";
   }
 
   @GetMapping("/yelp/events")
