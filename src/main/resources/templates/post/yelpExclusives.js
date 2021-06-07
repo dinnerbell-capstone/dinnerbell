@@ -4,10 +4,7 @@
 var searchterms = '';
 
 
-function getTerm(term) {
-    console.log(term);
-    $('.term').text(term);
-}
+
 
 
 
@@ -40,11 +37,7 @@ $("#submit").on("click", function() {
         $.ajax({
             url: myurl,
             headers: {
-
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-              'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-                'Authorization':'Bearer ' + FileStackApiKey
+                'Authorization':'Bearer ' + YELP_EXCLUSIVES
             },
             method: 'GET',
             dataType: 'json',

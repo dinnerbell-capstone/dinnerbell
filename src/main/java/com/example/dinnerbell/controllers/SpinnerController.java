@@ -22,10 +22,10 @@ public class SpinnerController {
     }
 
 
-    @GetMapping("/spinner")
-    public String spinnerPage() {
-        return "business/randomSelector";
-    }
+//    @GetMapping("/yelpRandomizer")
+//    public String spinnerPage() {
+//        return "business/randomSelector";
+//    }
 
     @GetMapping("/spinner-results")
     public String spinnerResult() {
@@ -39,16 +39,15 @@ public class SpinnerController {
         return "About";
     }
 
-    @Value("${filestack_key}")
-    private String fileStackApiKey;
-
-
-    @RequestMapping(path = "/keys.js", produces = "application/javascript")
-    @ResponseBody
-    public String apikey(){
-        System.out.println(fileStackApiKey);
-        return "const YelpApiKey = `" + fileStackApiKey + "`";
-    }
+//    @Value("${yelp_token}")
+//    private String yelpApiToken;
+//
+//    @RequestMapping(path = "/keys1.js", produces = "application/javascript")
+//    @ResponseBody
+//    public String apitoken(){
+//
+//        return "const yelpToken = `" + yelpApiToken + "`;";
+//    }
 
     @GetMapping("/exclusive-pick")
     public String randomizeDbRestaurants(Model model){

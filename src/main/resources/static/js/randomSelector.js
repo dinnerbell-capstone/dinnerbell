@@ -34,7 +34,7 @@ var requestObj= {
     'url': cors_url + '/' + yelp_search_url,
     'data': {term: 'restaurants', location: '78247', limit: arrayRandomNumber, offset: offsetRandomNumber},
     headers: {
-        'Authorization':'Bearer ' + YELP_TOKEN,
+        'Authorization':'Bearer ' + FileStackApiKey,
         
     },
     error: function(jqXHR, textStatus, errorThrown) {
@@ -71,10 +71,15 @@ $(".icon").click(function() {
                 console.log(restaurantImage)
                 console.log(restaurantName)
                 console.log(restaurantId)
-                itemHTML += "<h1 class='h1'>"+ restaurantName + "</h1>"
-                itemHTML += "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>" +
+
+                itemHTML += "<div class='container mt-5 p-5' style='text-align: center'>"
+                itemHTML += "<div class='card' style='background-color: darkorange'>"
+                itemHTML += "<h1 class='h1' style='color: white'>"+ restaurantName + "</h1>"
+                itemHTML += "<button type='button' class='btn btn-dark' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>" +
                 'View More Details' +
                 "</button>"
+                itemHTML += "</div>"
+                itemHTML += "</div>"
 
 
 
