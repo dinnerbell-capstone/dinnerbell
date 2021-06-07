@@ -39,15 +39,9 @@ public class RestaurantController {
 
     @GetMapping("/restaurant/create")
     public String showCreateRestaurantForm(Model model) {
-      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      User creator = usersdao.getOne(user.getId());
-      if (creator.getIsBusiness()){
       model.addAttribute("restaurant", new Restaurant());
       model.addAttribute("categories", categoriesdao.findAll());
         return "business/create_account";
-      }
-      return "redirect:/dashboard";
-
     }
 
   @PostMapping("/restaurant/create")
@@ -58,7 +52,7 @@ public class RestaurantController {
     restaurantsdao.save(restaurant);
     creator.setRestaurant(restaurant);
     usersdao.save(creator);
-    return "redirect:/restaurant/details/" + restaurant.getId();
+    return "redirect:/restaurant";
   }
 
 
