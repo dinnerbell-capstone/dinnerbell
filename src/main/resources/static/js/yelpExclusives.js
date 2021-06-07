@@ -22,7 +22,7 @@ $("#submit").on("click", function() {
     var numberOfResults = parseInt($("#numberOfResults").val());
     console.log(numberOfResults);
 
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/events?categories=food-and-drink&location=sanantonio"
+    var myurl = "https://api.yelp.com/v3/events?categories=food-and-drink&location=sanantonio"
 
         // +
         // "search?categories=by-food-and-drink&location=sanantonio&limit=4"
