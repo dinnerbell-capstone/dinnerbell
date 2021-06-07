@@ -33,10 +33,11 @@
 
 <div class="flex-box mt-5 p-5">
   <div class="scroll-container">
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
-        <option disabled="disabled" selected="selected">Cuisine Categories</option>
-        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
-      </select>
+<!--      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">-->
+<!--        <option disabled="disabled" selected="selected">Cuisine Categories</option>-->
+<!--        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>-->
+<!--      </select>-->
+    <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Can't Decide? Let us help!</a>
       <main>
           <div th:each="restaurant : ${restaurants}">
             <h3 th:text="${restaurant.restaurant_name}"></h3>

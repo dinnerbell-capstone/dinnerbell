@@ -83,7 +83,7 @@
                   <div th:if="${!user.restaurant.reviews.isEmpty()}">
                     <div th:each="review : ${user.restaurant.reviews}">
                       <h3 class="card-text" th:text="${review.content}"></h3>
-                      <div th:each="image : ${user.restaurant.images}">
+                      <div th:each="image : ${review.images}">
                         <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
                         <img class="img-thumbnail"  th:src="${'/upload/' + image.url }" />
                       </div>
