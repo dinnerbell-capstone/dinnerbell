@@ -34,5 +34,5 @@ build/
 
 src/main/resources/application.properties
 src/main/resources/static/js/keys.js
-src/main/resources/templates/app/keys.js
+src/main/resources/templates/business/keys.js
 
