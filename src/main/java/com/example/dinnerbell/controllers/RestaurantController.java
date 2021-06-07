@@ -60,12 +60,8 @@ public class RestaurantController {
     public String restaurantProfile(Model model) {
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       User currentUser = usersdao.getOne(user.getId());
-      if (currentUser.getIsBusiness()){
         model.addAttribute("user",currentUser);
         return "business/restaurant-dashboard";
-      }
-      return "redirect:/dashboard";
-
     }
 
     @GetMapping("/restaurant/upload/{id}")
