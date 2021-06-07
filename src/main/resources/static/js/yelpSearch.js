@@ -36,7 +36,7 @@ $("#submit").on("click", function() {
         $.ajax({
             url: myurl,
             headers: {
-                'Authorization': 'Bearer ' + yelpToken
+                'Authorization': 'Bearer ' + yelpKey
             },
             method: 'GET',
             dataType: 'json',

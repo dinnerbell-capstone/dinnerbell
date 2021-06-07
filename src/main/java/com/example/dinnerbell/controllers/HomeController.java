@@ -27,6 +27,8 @@ public class HomeController {
   public String homepage() {
     return "app/home";
   }
+
+
   @Value("${yelp_key}")
   private String yelpApiKey;
 

@@ -39,15 +39,15 @@ public class SpinnerController {
         return "About";
     }
 
-    @Value("${yelp_token}")
-    private String yelpApiToken;
-
-    @RequestMapping(path = "/keys1.js", produces = "application/javascript")
-    @ResponseBody
-    public String apitoken(){
-
-        return "const yelpToken = `" + yelpApiToken + "`;";
-    }
+//    @Value("${yelp_token}")
+//    private String yelpApiToken;
+//
+//    @RequestMapping(path = "/keys1.js", produces = "application/javascript")
+//    @ResponseBody
+//    public String apitoken(){
+//
+//        return "const yelpToken = `" + yelpApiToken + "`;";
+//    }
 
     @GetMapping("/exclusive-pick")
     public String randomizeDbRestaurants(Model model){

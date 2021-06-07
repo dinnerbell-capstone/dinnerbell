@@ -34,7 +34,7 @@ var requestObj= {
     'url': cors_url + '/' + yelp_search_url,
     'data': {term: 'restaurants', location: '78247', limit: arrayRandomNumber, offset: offsetRandomNumber},
     headers: {
-        'Authorization':'Bearer ' + yelpToken,
+        'Authorization':'Bearer ' + yelpKey,
         
     },
     error: function(jqXHR, textStatus, errorThrown) {
