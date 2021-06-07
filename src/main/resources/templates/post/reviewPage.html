@@ -13,7 +13,7 @@
 
 
 
-      <main>
+      <main class="card-body">
           <h1 th:text="${restaurant.restaurant_name}"></h1>
 
 
@@ -28,11 +28,11 @@
           </div>
 
 <!--          button for editing reviews if you are the creator of the review-->
-          <div class="container text-center" th:if="${review.user.id == currentUser.id}">
+          <th:block class="container text-center" th:if="${review.user.id == currentUser.id}">
             <a class="btn btn-warning" th:href="@{'/review/update/' + ${review.id}}">Edit</a>
 <!--            <a class="btn btn-danger" th:href="@{'/review/delete/' + ${review.id}}">Delete</a>-->
-            <div th:replace="partials/deleteModel :: modal"></div>
-          </div>
+            <th:block th:replace="partials/deleteModel :: modal"></th:block>
+          </th:block>
 
 
 
