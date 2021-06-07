@@ -11,7 +11,6 @@
     <!--CARD CLASS KEEPS CONTAINED-->
     <div class="card">
 
-        <form th:action="@{'/restaurant/details/' + ${restaurant.id}}" th:method="post">
 
             <h1>DinnerBell Exclusive</h1>
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
@@ -22,14 +21,11 @@
                 <!--                INSERT IMAGE CODE HERE-->
               <div class="restaurant-page-image">
                 <div th:replace="partials/carousel :: carousel"></div>
-<!--                <div class="restaurant-page-image" style="width: 18rem;" th:each="image : ${restaurant.images}">-->
-<!--&lt;!&ndash;                    <img src="/img/pexels-photo-670705.jpeg" width="500">&ndash;&gt;-->
-<!--                  <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />-->
-<!--                  <img th:src="${'/uploads/' + image.url}" width="500" alt="placeholder">-->
 
                 </div>
                 <br>
 
+        <form th:action="@{'/restaurant/details/' + ${restaurant.id}}" th:method="post">
                 <!--                FAVORITES BUTTON-->
                 <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
                     <button type="submit" class="btn btn-danger">Add to Favorites</button>
@@ -37,6 +33,7 @@
                 <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
                     <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
                 </div>
+        </form>
                 <p th:text="${restaurant.description}"></p>
 
                 <article class="details">
@@ -58,18 +55,19 @@
                 </article>
                 <article class="details">
                     <h6>Website: </h6>
-                    <p th:text="${restaurant.website_link}"></p>
+<!--                    <p th:text="${restaurant.website_link}"></p>-->
+                  <a th:href="${restaurant.website_link}">Link to <span th:text="${restaurant.restaurant_name}"></span></a>
                 </article>
                 <article class="details">
                     <h6>Menu: </h6>
-                    <p th:text="${restaurant.menu_link}"></p>
+                  <a th:href="${restaurant.menu_link}">Link Menu</a>
+
                 </article>
                 <article class="details">
                     <h6>ElderEats Link: </h6>
-                    <p th:text="${restaurant.elder_eats_link}"></p>
+                  <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>
                 </article>
             </main>
-        </form>
 
 
         <!--BUTTON TO LEAVE A REVIEW-->
