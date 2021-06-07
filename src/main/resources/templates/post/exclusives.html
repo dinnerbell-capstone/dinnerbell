@@ -7,9 +7,10 @@
         height: 600px;
         overflow-y: scroll;
         scroll-behavior: smooth;
+
     }
     .flex-box{
-        color: #fff;
+        color: #1fd5b1;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
         max-width: 1650px;
@@ -38,12 +39,15 @@
 <!--        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>-->
 <!--      </select>-->
     <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Can't Decide? Let us help!</a>
-      <main>
-          <div th:each="restaurant : ${restaurants}">
-            <h3 th:text="${restaurant.restaurant_name}"></h3>
-            <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="btn btn-primary">Show More</a>
+      <div div class="row gy-5">
+
+          <div class="col-6" th:each="restaurant : ${restaurants}">
+              <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link" th:text="${restaurant.restaurant_name}"></a>
+
+              <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+              <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
           </div>
-      </main>
+      </div>
   </div>
       <div class="bg_img">
           <img src="/img/bg.png">
