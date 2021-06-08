@@ -1,19 +1,24 @@
-# dinnerbell
+# DinnerBell
 
-Summary
+A full-stack Java application made with Spring Boot.
 
-Let’s go out to eat! 
+DinnerBell is a foodie community platform for restaurant patrons to leave reviews, choose their favorites, and search through categories of local restaurants. Restaurant owners can provide details about their business and view community statistics. Patrons and owners can both upload images to the site.
 
-Cool, yes! Where do you want to go?
+<ul>
+  <li>Spring Boot</li>
+  <li>Hibernate ORM + JPA</li>
+  <li>Thymeleaf</li>
+  <li>HTML/CSS</li>
+  <li>Javascript/Bootstrap</li>
+</ul>
 
-I don’t know, you pick.
+<strong>Setup Instruction</strong>
+<ol>
+  <li>Clone this repo locally.</li>
+<li>Create an application.properties file with valid credentials for a MySQL connection, use the application.properties.example as a template.
+  </li>
+<li>Make sure to start MySQL server.</li>
+<li>Run the seeder.sql file to populate some data in the database.</li>
+</ol>
 
-No, you…
-
-Let’s consult the DINNER BELL!
-
-With the Dinner Bell app, choosing a restaurant can now be a seamless resolve to the ever so common question: Where do you want to eat at? 
-
-The Dinner Bell generator will provide users with a straightforward choice without having to think. Just press and go!  Complete with local favorites, reviews, and searches, users are able to enjoy the functionality of narrowing down their preferences and getting just the right dining experience.
-
-On the admin side, restaurant owners and corporations can provide these details of their eateries to promote business and profit. There will also be a space to promote events, wine tasting, and food truck pop ups. Featured links will be provided with the best food critiques, including Elder Eats from KSAT-12.
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
