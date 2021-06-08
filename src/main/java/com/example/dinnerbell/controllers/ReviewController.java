@@ -104,10 +104,8 @@
 
      @GetMapping("/review/update/{id}")
      public String updateReview(Model model, @PathVariable("id") long id){
-
        Review review = reviewDao.getOne(id);
        model.addAttribute("review",review);
-
        return "post/updateReview";
      }
 
@@ -135,7 +133,6 @@
        }
 
        reviewFromDB.setContent(review.getContent());
-
        reviewDao.save(reviewFromDB);
        return "redirect:/reviews/byRestaurant/" + reviewFromDB.getRestaurant().getId();
      }
