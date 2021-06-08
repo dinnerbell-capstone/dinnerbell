@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/headHome :: headHome('Edit Restaurant')"></head>
-<style>
-  .flex-box{
-    color: #1fd5b1;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    max-width: 1650px;
-    width: 100%;
-    padding: 50px 110px 130px;
-    position: -ms-device-fixed;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
+
 
 <body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 
-<div class="flex-box mt-5 p-5">
+<div class="container">
   <br>
-  <div class="row gy-5">
-    <div class="col-6">
+
     <form th:action="@{'/restaurant/edit/'  + ${restaurant.id}}" th:method="POST" th:object="${restaurant}">
 
       <label for="restaurant_name">Name</label>
@@ -89,19 +74,10 @@
       <br>
 
       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-     </form>
-    </div>
-  </div>
+
+    </form>
 </div>
 
-<div class="bg_img">
-  <img src="/img/bg.png">
-  <!--  <div class="social">-->
-  <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
-  <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
-
-  <!--  </div>-->
-</div>
 
 
 <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>

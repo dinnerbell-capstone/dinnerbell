@@ -4,7 +4,7 @@
 
 <head th:replace="partials/headHome :: headHome('Restaurant Form')"></head>
 <style>
-    .flex-box{
+    .col{
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
@@ -15,78 +15,70 @@
         margin: auto;
         display: flex;
         justify-content: center;
-        font-size: x-large;
+        align-items: center;
     }
 
     h1{
         color: #fff;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
-
-
 </style>
 
 
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+
 <h1>Tell us about your restaurant...</h1>
 
-<div class="flex-box mt-12 p-12">
 
+    <br>
+<div class="row g-3">
+<div class="col">
 
     <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
 
-        <div class="form-row mb-4" for="restaurant_name">Name</div>
-        <input  id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text" required/>
+        <div for="restaurant_name">Name</div>
+        <input  class="col-6col-md-4"   id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text" required/>
         <br>
 
-        <div class="form-row mb-4" for="description">Restaurant Description</div>
+        <div class="col-6col-md-4" for="description">Restaurant Description</div>
         <input id="description" th:field="*{description}" name="description" type="text" required/>
         <br>
 
-        <div class="form-row mb-4" for="hours">Hours of Operation</div>
+        <div class="col-6col-md-4" for="hours">Hours of Operation</div>
         <input id="hours" th:field="*{hours}" name="hours" type="text"/>
         <br>
 
-        <div class="form-row mb-4" for="phone_number">Phone Number</div>
+        <div class="col-6col-md-4" for="phone_number">Phone Number</div>
         <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text" required/>
         <br>
 
-        <div class="form-row mb-4" for="street_address">Street Address</div>
+        <div class="col-6col-md-4" for="street_address">Street Address</div>
         <input id="street_address" th:field="*{street_address}" name="street_address" type="text" required/>
         <br>
 
-    </form>
-    <div class="flex-box mt-12 p-12">
-        <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
 
-
-
-        <div class="form-row mb-4" for="city">City</div>
+        <div class="col-6col-md-4" for="city">City</div>
         <input id="city" th:field="*{city}" name="city" type="text" required/>
         <br>
 
 
-        <div class="form-row mb-4" for="state">State</div>
+        <div class="col-6col-md-4" for="state">State</div>
         <input id="state" th:field="*{state}" placeholder="XX" name="state" type="text" required/>
         <br>
 
-        <div class="form-row mb-4" for="zip_code">Zipcode</div>
+        <div class="col-6col-md-4" for="zip_code">Zipcode</div>
         <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text" required/>
         <br>
 
 
-        <div class="form-row mb-4" for="website_link">Link to Website</div>
+        <div class="col-6 col-md-4" for="website_link">Link to Website</div>
         <input id="website_link" th:field="*{website_link}" name="website_link" type="text"/>
         <br>
 
-<!--        <div class="col-6 col-md-4" for="menu_link">Link to Menu</div>-->
-<!--        <input id="menu_link" th:field="*{menu_link}" name="menu_link" type="text"/>-->
-<!--        <br>-->
+        <div class="col-6 col-md-4" for="menu_link">Link to Menu</div>
+        <input id="menu_link" th:field="*{menu_link}" name="menu_link" type="text"/>
+        <br>
 
 
 
@@ -101,7 +93,7 @@
 
       <div class="container">
 
-        <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" name="categories" id="categories">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
           <option disabled="disabled" selected="selected">Cuisine Categories</option>
           <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
         </select>
@@ -109,11 +101,9 @@
 
         <button name="submit" type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-        </form>
         </div>
     </div>
-
+</div>
 <div class="bg_img">
     <img src="/img/bg.png">
     <!--  <div class="social">-->
