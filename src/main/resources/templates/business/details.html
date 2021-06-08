@@ -2,19 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/headHome :: headHome('Restaruant Details')"></head>
+<style>
+    .flex-box{
+        color: #9effec;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 1650px;
+        width: 100%;
+        padding: 50px 110px 130px;
+        position: -ms-device-fixed;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .row {
+        justify-content: center;
+    }
+    p, a {
+        font-size: x-large;
+        font-weight: lighter;
+    }
 
+</style>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <!--CONTENT CLASS USES CSS TO CENTER THE DIV-->
-<div class="content mt-5 p-5" style="text-align: center">
+<div class="flex-box mt-5 p-5" style="text-align: center">
     <!--CARD CLASS KEEPS CONTAINED-->
-    <div class="card">
+    <div class="row gy-5">
 
             <!--            MAIN AND ARTICLES SEPARATE DATA .details class IS USED IN CSS FOR FORMAT AND STYLING-->
 
-            <main>
-                <h1 class="mt-4 p-1 mb-3" th:text="${restaurant.restaurant_name}"></h1>
+            <div class="col-6">
+                <h1 th:text="${restaurant.restaurant_name}"></h1>
 
                 <!--                INSERT IMAGE CODE HERE-->
               <div class="restaurant-page-image">
@@ -35,11 +57,11 @@
                 <p th:text="${restaurant.description}"></p>
 
                 <article class="details">
-                    <h6>Hours: </h6>
+                    <h2>Hours: </h2>
                     <p th:text="${restaurant.hours}"></p>
                 </article>
                 <article class="details">
-                    <h6>Phone number: </h6>
+                    <h2>Phone number: </h2>
 
 <!--                    <p th:text="${restaurants.phone_number}"></p>-->
 <!--                    <a href="tel:+05890000111">0-589-0000111</a>-->
@@ -48,29 +70,29 @@
 
                 </article>
                 <article class="details">
-                    <h6>Address: </h6>
+                    <h2>Address: </h2>
                   <p th:text="${restaurant.street_address} + ', ' + ${restaurant.city} +  ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
                 </article>
                 <article class="details">
-                    <h6>Website: </h6>
+                    <h2>Website: </h2>
 <!--                    <p th:text="${restaurant.website_link}"></p>-->
                   <a th:href="${restaurant.website_link}">Link to <span th:text="${restaurant.restaurant_name}"></span></a>
                 </article>
                 <article class="details">
-                    <h6>Menu: </h6>
+                    <h2>Menu: </h2>
                   <a th:href="${restaurant.menu_link}">Link Menu</a>
 
                 </article>
                 <article class="details">
-                    <h6>ElderEats Link: </h6>
+                    <h2>ElderEats Link: </h2>
                   <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>
                 </article>
-            </main>
+            </div>
 
 
         <!--BUTTON TO LEAVE A REVIEW-->
         <div sec:authorize="isAuthenticated()">
-            <h3>How was your visit? Let us know!</h3>
+            <h2>How was your visit? Let us know!</h2>
 
             <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a Review</a>
           <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}" role="button">View Reviews</a>
@@ -78,6 +100,15 @@
 
 
     </div>
+</div>
+
+<div class="bg_img">
+    <img src="/img/bg.png">
+    <!--  <div class="social">-->
+    <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+    <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+
+    <!--  </div>-->
 </div>
 
 
