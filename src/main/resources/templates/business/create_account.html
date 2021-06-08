@@ -5,6 +5,7 @@
 <head th:replace="partials/headHome :: headHome('Restaurant Form')"></head>
 <style>
     .col{
+        font-size:20px;
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
@@ -21,6 +22,7 @@
     h1{
         color: #fff;
     }
+
 </style>
 
 
@@ -30,70 +32,83 @@
 
 <h1>Tell us about your restaurant...</h1>
 
-<div class="container">
+<div class="container col">
   <br>
 
   <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
+  <div class="row">
+      <div class="form-group col-md-5">
+        <label for="restaurant_name">Restaurant Name</label><br>
+        <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text" placeholder="Restaurant Name" required/>
+      </div>
 
-    <label for="restaurant_name">Name</label>
-    <input id="restaurant_name" th:field="*{restaurant_name}" name="restaurant_name" type="text" required/>
-    <br>
+      <div class="form-group  col-md-5">
+        <label for="description">Restaurant Description</label><br>
+        <input id="description" th:field="*{description}" name="description" type="text" placeholder="Restaurant Description" required/>
+      </div>
 
-    <label for="description">Restaurant Description</label>
-    <input id="description" th:field="*{description}" name="description" type="text" required/>
-    <br>
+      <div class="form-group col-md-5">
+        <label for="hours">Hours of Operation</label><br>
+        <input id="hours" th:field="*{hours}" name="hours" type="text" placeholder="Hours of Operation"/>
+      </div>
 
-    <label for="hours">Hours of Operation</label>
-    <input id="hours" th:field="*{hours}" name="hours" type="text"/>
-    <br>
+      <div class="form-group col-md-5">
+        <label for="phone_number">Phone Number</label><br>
+        <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text" placeholder="Phone Number" required/>
+      </div>
 
-    <label for="phone_number">Phone Number</label>
-    <input id="phone_number" th:field="*{phone_number}" name="phone_number" type="text" required/>
-    <br>
+      <div class="form-group col-md-5">
+        <label for="street_address">Street Address</label><br>
+        <input id="street_address" th:field="*{street_address}" name="street_address" type="text" placeholder="Street Address" required/>
+      </div>
+  </div>
+    <div class="row">
+      <div class="form-group col-md-5">
+        <label for="city">City</label><br>
+        <input id="city" th:field="*{city}" name="city" type="text" placeholder="City" required/>
+      </div>
 
-    <label for="street_address">Street Address</label>
-    <input id="street_address" th:field="*{street_address}" name="street_address" type="text" required/>
-    <br>
+      <div class="form-group col-md-5">
+        <label for="state">State</label><br>
+        <input id="state" th:field="*{state}" placeholder="XX" maxlength="2" name="state" type="text" required/>
+      </div>
 
+      <div class="form-group col-md-5">
+        <label for="zip_code">Zipcode</label><br>
+        <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text" placeholder="zip code" required/>
+      </div>
 
-    <label for="city">City</label>
-    <input id="city" th:field="*{city}" name="city" type="text" required/>
-    <br>
+      <div class="form-group col-md-5">
+        <label for="website_link">Link to Website</label><br>
+        <input id="website_link" th:field="*{website_link}" name="website_link" placeholder="https://example.com" type="url" pattern="https://*" />
+      </div>
 
-
-    <label for="state">State</label>
-    <input id="state" th:field="*{state}" placeholder="XX" name="state" type="text" required/>
-    <br>
-
-    <label for="zip_code">Zipcode</label>
-    <input id="zip_code" th:field="*{zip_code}" name="zip_code" type="text" required/>
-    <br>
-
-
-    <label for="website_link">Link to Website</label>
-    <input id="website_link" th:field="*{website_link}" name="website_link" type="text"/>
-    <br>
-
-    <label for="menu_link">Link to Menu</label>
-    <input id="menu_link" th:field="*{menu_link}" name="menu_link" type="text"/>
-    <br>
-
-
-
-    <label for="eats_link">Link to Elder Eats</label>
-    <input id="eats_link" th:field="*{elder_eats_link}" name="elder_eats_link" type="text"/>
+      <div class="form-group col-md-5">
+        <label for="menu_link">Link to Menu</label><br>
+        <input id="menu_link" th:field="*{menu_link}" name="menu_link" placeholder="https://example.com" type="url" pattern="https://*"/>
+      </div>
 
 
+      <div class="form-group col-md-5">
+        <label for="eats_link">Link to Elder Eats</label><br>
+        <input id="eats_link" th:field="*{elder_eats_link}" name="elder_eats_link" placeholder="https://example.com" type="url" pattern="https://*"/>
+      </div>
+  </div>
     <!--        &lt;!&ndash; Surround the select box within a "custom-select" DIV element.-->
     <!--Remember to set the width: &ndash;&gt;-->
-
-
+  <br>
+  <div class="content">
         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">
           <option disabled="disabled" selected="selected">Cuisine Categories</option>
           <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
         </select>
 
+  </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
         <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+
+      </div>
+
     </form>
         </div>
 <div class="bg_img">
