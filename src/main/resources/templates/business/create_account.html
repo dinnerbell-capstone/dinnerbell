@@ -4,7 +4,7 @@
 
 <head th:replace="partials/headHome :: headHome('Restaurant Form')"></head>
 <style>
-    .col{
+    .restaurant-form-container{
         font-size:20px;
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
@@ -32,7 +32,7 @@
 
 <h1>Tell us about your restaurant...</h1>
 
-<div class="container col">
+<div class="container restaurant-form-container">
   <br>
 
   <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
