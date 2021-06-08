@@ -2,79 +2,181 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/headHome :: headHome('Our Menu')"></head>
+<a href="https://icons8.com/icon/6ER3rS2ZLjRQ/orange-heart"></a>
+<a href="https://icons8.com/icon/114889/food"></a>
+<a href="https://icons8.com/icon/apsEwjRsibDJ/review"></a>
 <style>
-    .container {
-        border-radius: 50%;
+    .header-h {
+        font-size: 35px;
+        color: #FFB03B;
+        font-size: 46px;
+        font-family: 'Satisfy', sans-serif;
+        font-weight: 300;
     }
+    ul
+    {
+        list-style:none;
+    }
+    .header-p {
+        color: #ffffff;
+        font-size:26px;
+    }
+    .section-padding{
+        padding: 60px 0px;
+    }
+    .marb-35{
+        margin-bottom:35px;
+    }
+
+
+
+
+
+
+    #menu-filters ul li a.active, #menu-filters ul li a:hover
+    {
+        background: #FFB03B;
+        color:#fff;
+        border:1px solid #FFB03B;
+    }
+    #menu-filters ul li
+    {
+        display:inline-block;
+        color:#fff;
+        text-transform:capitalize;
+        letter-spacing:1px;
+        margin-botttom:40px;
+    }
+    #menu-filters ul li a
+    {
+        padding:10px 20px;
+        font-size:14px;
+        color:#fff;
+        border-radius:0px;
+        border:2px solid #BBBBBB;
+        text-decoration:none;
+        cursor:pointer;
+        background-color: #1E4B6D;
+
+    }
+    @media (min-width: 20px) and (max-width: 450px)
+    {
+        .menu-restaurant
+        {
+            width: 100%;
+        }
+        .header-h
+        {
+            font-size: 35px;
+        }
+        .header-p
+        {
+            font-size: 14px;
+        }
+
+    }
+
+    .nav-tabs {
+        border-bottom: none!important;
+    }
+
+    .nav-tabs .nav-link {
+        border-top-left-radius: .6rem;
+        border-top-right-radius: .6rem;
+        padding-top: 1rem;
+    }
+    .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+        border: none!important;
+        color: rgba(255, 153, 0, 0.83);
+        /*background-color: #03b090!important;*/
+    }
+
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: rgba(255, 169, 104, 0.83);
+        background-color: #03b09c !important;
+        border: none!important;
+    }
+
+    .nav-tab-shadow{
+        box-shadow: 0 -0.1rem 3rem rgba(0,0,0,0.175)!important;
+    }
+
+    #publishedTab span:hover,#draftTab span:hover{
+        cursor: pointer;
+        color: #fec82e!important;
+    }
+
+
+
+
 </style>
 
 
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container-fluid mt-5 p-5">
-    <div class="content col-12" style="text-align: center">
-        <!--CARD CLASS KEEPS CONTAINED-->
-        <div class="card mt-5 p-1" style="background-color: #eaf1f5">
-            <div>
-                <h1>Our Menu</h1>
-                <h2>Let DinnerBell help you plan your next dining experience by choosing from our following menu
-                    options...</h2>
+<div id="menu-list" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center  marb-35">
+                <h1 class="header-h">Menu</h1>
+                <p  class="header-p">Let DinnerBell help you plan your next dining experience choose from our following menu</p>
 
-                <div class="container mt-5 p-2">
-                    <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
-                        <div class="col">
-                            <h4>Exclusive DinnerBell Restaurants</h4>
-                            Choose your own favorites and leave a review.
-                            <br><br>
-                            <a class="btn btn-dark" href="/restaurants/exclusives" role="button">Exclusive
-                                Restaurants</a>
-                        </div>
-                        <div class="col">
-                            <h4>DinnerBell Choice</h4>
-                            Can't decide what's for dinner? Get a decision now!
-                            <br><br>
-                            <a class="btn btn-dark" href="/exclusive-pick" role="button">Exclusive Pick</a>
-                        </div>
-                        <div class="col">
-                            <h4>Around Town</h4>
-                            Yelp can help! Search San Antonio to find your preference.
-                            <br><br>
-                            <!--                            <a class="btn btn-dark" href="/yelp/events" role="button">Yelp SA Special Events</a>-->
-                            <!--                            <a class="btn btn-dark" href="/yelpRandomizer" role="button">Yelp Randomizer</a>-->
-                            <a class="btn btn-dark" href="/search" role="button">Yelp Search</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="container mt-5 p-2">
-                    <div class="row row-cols-3"></div>
-                    <div class="col">
-                        <h2 class="mt-3">Your DinnerBell Favorites</h2>
-                        <div class="card" th:each="favorite : ${userFaves}">
-                            <a th:href="'/restaurant/details/' + ${favorite.getId()}"
-                               th:text="${favorite.getRestaurant_name()}"></a>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <h2 class="mt-3">Your DinnerBell Reviews</h2>
-                        <div class="card" th:each="review : ${userReviews}">
-                            <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
-                        </div>
-                        <div class="p-2 bg-light border">Be sure to check out David Elder of KSAT's ElderEats as he
-                            explores
-                            a variety of restaurants in
-                            South Texas and beyond!
-                            <a style="text-align: center;" href="https://www.ksat.com/food/elder-eats/">ElderEats</a>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="col-md-12 text-center" id="menu-filters">
+                <ul>
+<!--                    <li></li>-->
+                    <li>  <a class="filter " href="/restaurants/exclusives" role="button">Exclusives</a> </li>
+                    <li><a class="filter" href="/exclusive-pick" role="button">Quick Pick</a></li>
+                    <li><a class="filter" href="/search" role="button">Yelp Help</a></li>
+                </ul>
+            </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<main class="mb-5">
+    <div class="container">
+        <d class="nav nav-tabs row align-items-center justify-content-center">
+
+            <li class="nav-item col-4 col-md-2 px-0" id="Reviews" title="Reviews">
+                <a class="nav-link dashtab nav-tab-shadow text-center">
+                    <img src="https://img.icons8.com/bubbles/100/000000/review.png"/>
+
+                    <div class="reviews" th:each="review : ${userReviews}">
+                        <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
+                    </div>
+
+
+                    <p class="text-white mb-0 small">Reviews</p>
+                </a>
+            </li>
+            <!--        favorites-->
+            <li class="nav-item col-4 col-md-2 px-0" id="userFavorites" title="Favorites" >
+                <a class="nav-link dashtab nav-tab-shadow text-center" >
+                    <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png"/>
+                    <div class="favorites" th:each="favorite : ${userFaves}">
+                        <a th:href="'/restaurant/details/' + ${favorite.getId()}"
+                           th:text="${favorite.getRestaurant_name()}"></a>
+                    </div>
+
+
+                    <p class="text-white mb-0 small">Favorites</p>
+                </a>
+            </li>
+
+            <li class="nav-item col-4 col-md-2 px-0" id="ElderEats" title="Elder Eats" >
+                <a class="nav-link dashtab nav-tab-shadow text-center" href="https://www.ksat.com/food/elder-eats/" data-toggle="tab">
+                    <img src="https://img.icons8.com/bubbles/100/000000/food.png"/>
+                    <h6>  Check out ElderEats as he explores restaurants in Texas!</h6>
+                    <p class="text-white mb-0 small">Elder Eats</p>
+                </a>
+            </li>
+        </d>
+    </div>
+</main>
+
 
 <th:block th:replace="partials/homeScripts :: homeScripts"/>
 </body>
