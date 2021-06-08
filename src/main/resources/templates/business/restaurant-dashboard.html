@@ -1,34 +1,26 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/headHome :: headHome('Restaurant Dashboard')">
+<head th:replace="partials/restaurantDashHead :: DashHead('Restaurant Dashboard')">
 
 </head>
 
-<!--<style>-->
-<!--body{-->
-<!--    opacity: 80%;-->
-<!--}-->
-
-<!--</style>-->
 <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-    <div class="container" th:if="${user.restaurant == null}">
-      <section>
-        <div class="card">
-          <h5 class="card-header">Hey there, <span th:text="${user.username}"></span></h5>
-          <div class="card-body">
-            <h5 class="card-title">Let's build your restaurant profile to display to future and current guest.</h5>
-            <p class="card-text">The following links will help you create your page</p>
-
-            <a role="button" class="btn btn-primary" th:href="@{/restaurant/create}">Enter Restaurant information </a>
+    <div id="menu-list" th:if="${user.restaurant == null}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center marb-35">
+          <h1 class="header-h">Restaurant Dashboard</h1>
+            <p class="header-p">Let's build your restaurant page.
+            <a role="button" class="nav-link bg-transparent border-0" th:href="@{/restaurant/create}">Enter Restaurant information </a>
           </div>
         </div>
-      </section>
+      </div>
     </div>
 
 
-    <div class="container overflow-hidden text-center" th:if="${user.restaurant != null}">
+    <div class="container" th:if="${user.restaurant != null}">
       <h1 class="text-light text-center">Your Restaurant Dashboard</h1>
         <div class="row gy-5">
             <div class="card col-3">
@@ -79,7 +71,6 @@
 
           </div>
           </div>
-        </div>
 
       <section th:if="${!user.restaurant.images.isEmpty()}">
         <div class="card">
@@ -102,6 +93,7 @@
         </div>
       </section>
 
+        </div>
 
 
 
