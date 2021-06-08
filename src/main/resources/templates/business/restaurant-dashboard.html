@@ -4,18 +4,29 @@
 
 </head>
 
-<!--<style>-->
-<!--body{-->
-<!--    opacity: 80%;-->
-<!--}-->
+<style>
+  .flex-box{
+    color: #fffdfd;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 1650px;
+    width: 100%;
+    padding: 50px 110px 130px;
+    position: -ms-device-fixed;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+  }
 
-<!--</style>-->
+</style>
 <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-    <div class="container" th:if="${user.restaurant == null}">
+    <div class="flex-box mt-5 p-5" th:if="${user.restaurant == null}">
       <section>
-        <div class="card">
+        <div class="col-6">
           <h5 class="card-header">Hey there, <span th:text="${user.username}"></span></h5>
           <div class="card-body">
             <h5 class="card-title">Let's build your restaurant profile to display to future and current guest.</h5>
@@ -28,9 +39,9 @@
     </div>
 
 
-    <div class="container overflow-hidden text-center" th:if="${user.restaurant != null}">
-      <h1 class="text-light text-center">Your Restaurant Dashboard</h1>
-        <div class="row gy-5">
+    <div class="flex-box mt-5 p-5" th:if="${user.restaurant != null}">
+      <h1>Your Restaurant Dashboard</h1>
+        <div class="col-6">
             <div class="card col-3">
               <div class="p-3 border bg-light">
                 <h5 class="card-title">Account Information</h5>
@@ -105,7 +116,14 @@
 
 
 
+    <div class="bg_img">
+      <img src="/img/bg.png">
+      <!--  <div class="social">-->
+      <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+      <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
 
+      <!--  </div>-->
+    </div>
 
 
 
