@@ -19,13 +19,14 @@
 <body class="d-flex flex-column min-vh-100">
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+
 <div class="bg_img">
     <img src="/img/bg.png">
     <div class="social">
-        <i class="fa fa-facebook" aria-hidden="true"></i>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        <a href="https://www.facebook.com/"> <i class="fa fa-facebook" aria-hidden="true"></i>   </a>
+        <a href="https://twitter.com/">  <i class="fa fa-twitter" aria-hidden="true"></i>  </a>
+        <a href="https://www.instagram.com/"> <i class="fa fa-instagram" aria-hidden="true"></i>   </a>
+        <a href="https://www.whatsapp.com">  <i class="fa fa-whatsapp" aria-hidden="true"></i>  </a>
     </div>
 </div>
 <div class="container">
@@ -33,8 +34,8 @@
         <div class="content">
             <h2>Are you Hungry?</h2>
             <h2>Don't Wait!</h2>
-            <p>Let Dinner Bell <br>choose now!</p>
-            <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/>
+            <p>Ring Dinner Bell <br>to choose now!</p>
+            <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <br> for help <br> <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </a>
         </div>
         <div class="dish_img">
             <img src="img/Bestplate.png">
