@@ -74,18 +74,23 @@
                   <p th:text="${restaurant.street_address} + ', ' + ${restaurant.city} +  ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
                 </article>
                 <article class="details">
+                  <div th:if="${!restaurant.website_link.isEmpty()}">
                     <h2>Website: </h2>
-<!--                    <p th:text="${restaurant.website_link}"></p>-->
-                  <a th:href="${restaurant.website_link}">Link to <span th:text="${restaurant.restaurant_name}"></span></a>
+                   <a th:href="${restaurant.website_link}">Link to <span th:text="${restaurant.restaurant_name}"></span></a>
+                  </div>
                 </article>
                 <article class="details">
+                  <div th:if="${!restaurant.menu_link.isEmpty()}">
                     <h2>Menu: </h2>
-                  <a th:href="${restaurant.menu_link}">Link Menu</a>
+                    <a th:href="${restaurant.menu_link}">Link Menu</a>
+                  </div>
 
                 </article>
                 <article class="details">
+                  <div th:if="${!restaurant.elder_eats_link.isEmpty()}">
                     <h2>ElderEats Link: </h2>
-                  <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>
+                    <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>
+                  </div>
                 </article>
             </div>
 
