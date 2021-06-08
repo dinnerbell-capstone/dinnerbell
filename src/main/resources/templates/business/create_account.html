@@ -3,36 +3,13 @@
       lang="en">
 
 <head th:replace="partials/headHome :: headHome('Restaurant Form')"></head>
-<style>
-    .col{
-        font-size:20px;
-        color: #1fd5b1;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        max-width: 1650px;
-        width: 100%;
-        padding: 50px 110px 130px;
-        position: -ms-device-fixed;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    h1{
-        color: #fff;
-    }
-
-</style>
-
-
 
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<h1>Tell us about your restaurant...</h1>
+<h1 class="restaurant-h1">Tell us about your restaurant...</h1>
 
-<div class="container col">
+<div class="container restaurant-form-container">
   <br>
 
   <form th:action="@{/restaurant/create}" th:method="post" th:object="${restaurant}">
@@ -111,12 +88,12 @@
 
     </form>
         </div>
-<div class="bg_img">
-    <img src="/img/bg.png">
-    <!--  <div class="social">-->
-    <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
-    <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
-</div>
+<!--<div class="bg_img">-->
+<!--    <img src="/img/bg.png">-->
+<!--    &lt;!&ndash;  <div class="social">&ndash;&gt;-->
+<!--    &lt;!&ndash;    <i class="fa fa-concierge-bell" aria-hidden="true"></i>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <i class="fa fa-bell" aria-hidden="true"></i>&ndash;&gt;-->
+<!--</div>-->
 
 
 <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
