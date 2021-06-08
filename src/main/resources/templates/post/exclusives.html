@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/headHome :: headHome('Exclusives')"></head>
+<a href="https://icons8.com/icon/fvJAqAdGkyGB/bellhop-bell"></a>
 <style>
     /*.scroll-container {*/
     /*    width: 650px;*/
@@ -38,7 +39,8 @@
 <!--        <option disabled="disabled" selected="selected">Cuisine Categories</option>-->
 <!--        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>-->
 <!--      </select>-->
-    <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Can't Decide? Let us help!</a>
+
+    <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell for help <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </a>
       <div class="row gy-5">
 
           <div class="col-6" th:each="restaurant : ${restaurants}">
