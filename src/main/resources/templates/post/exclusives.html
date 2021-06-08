@@ -3,13 +3,6 @@
 <head th:replace="partials/headHome :: headHome('Exclusives')"></head>
 <a href="https://icons8.com/icon/fvJAqAdGkyGB/bellhop-bell"></a>
 <style>
-    /*.scroll-container {*/
-    /*    width: 650px;*/
-    /*    height: 600px;*/
-    /*    overflow-y: scroll;*/
-    /*    scroll-behavior: smooth;*/
-
-    /*}*/
     .flex-box{
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
@@ -24,27 +17,21 @@
         align-items: center;
         }
 
+
 </style>
 
 <body>
   <nav th:replace="partials/navbar :: navbar"></nav>
 
 
-
+  <div class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </div>
 
 
 <div class="flex-box mt-5 p-5">
-<!--  <div class="scroll-container">-->
-<!--      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">-->
-<!--        <option disabled="disabled" selected="selected">Cuisine Categories</option>-->
-<!--        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>-->
-<!--      </select>-->
-
-    <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell for help <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </a>
-      <div class="row gy-5">
+    <div class="row gy-5">
 
           <div class="col-6" th:each="restaurant : ${restaurants}">
-              <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link" th:text="${restaurant.restaurant_name}"></a>
+              <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link" th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
 
               <script src="https://apps.elfsight.com/p/platform.js" defer></script>
               <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
