@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/headHome :: headHome('Exclusives')"></head>
 <style>
-    .scroll-container {
-        width: 650px;
-        height: 600px;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
+    /*.scroll-container {*/
+    /*    width: 650px;*/
+    /*    height: 600px;*/
+    /*    overflow-y: scroll;*/
+    /*    scroll-behavior: smooth;*/
 
-    }
+    /*}*/
     .flex-box{
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
@@ -33,13 +33,13 @@
 
 
 <div class="flex-box mt-5 p-5">
-  <div class="scroll-container">
+<!--  <div class="scroll-container">-->
 <!--      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="categories" id="categories">-->
 <!--        <option disabled="disabled" selected="selected">Cuisine Categories</option>-->
 <!--        <option  th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>-->
 <!--      </select>-->
     <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Can't Decide? Let us help!</a>
-      <div div class="row gy-5">
+      <div class="row gy-5">
 
           <div class="col-6" th:each="restaurant : ${restaurants}">
               <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link" th:text="${restaurant.restaurant_name}"></a>
