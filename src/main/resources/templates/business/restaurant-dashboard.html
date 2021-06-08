@@ -91,7 +91,7 @@
           </div>
         </div>
       </section>
-      <section th:unless="${!user.restaurant.images.isEmpty()}">
+      <section th:if="${user.restaurant.images.isEmpty()}">
         <div class="card row">
           <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
           <div class="card-body text-center"  width="100">
