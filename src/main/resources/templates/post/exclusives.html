@@ -3,7 +3,7 @@
 <head th:replace="partials/headHome :: headHome('Exclusives')"></head>
 <a href="https://icons8.com/icon/fvJAqAdGkyGB/bellhop-bell"></a>
 <style>
-    .flex-box{
+    .flex-box {
         color: #1fd5b1;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
@@ -15,40 +15,84 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        }
+    }
 
 
 </style>
 
 <body>
-  <nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 
-  <div class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </div>
+<div class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img
+        src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/>
+</div>
+
+<!--<div th: ></div>-->
+
+<select class="form-select form-select-sm w-25 p-3" id="numberOfResults" aria-label=".form-select-sm example"
+        style="text-align: center">
+    <option value="all">All</option>
+    <option th:each="category : ${categories}" th:value="${category.name}" th:text="${#strings.capitalizeWords(category.name)}"></option>
+
+
+    <!--    <option disabled value="Category">CATEGORY</option>-->
+
+</select>
 
 
 <div class="flex-box mt-5 p-5">
     <div class="row gy-5">
+<!--LABEL TO STYLE-->
+        <div class="col-6" th:each="restaurant : ${restaurants}">
+            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">
+                <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link"
+                   th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
 
-          <div class="col-6" th:each="restaurant : ${restaurants}">
-              <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link" th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg_img">
+    <img src="/img/bg.png">
+    <!--  <div class="social">-->
+    <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+    <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
 
-              <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-              <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>
-          </div>
-      </div>
-  </div>
-      <div class="bg_img">
-          <img src="/img/bg.png">
-          <!--  <div class="social">-->
-          <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
-          <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+    <!--  </div>-->
+</div>
 
-          <!--  </div>-->
-      </div>
+</div>
 
-  </div>
 
-  <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
+<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
+<script>
+    "use strict";
+
+    const categorySelection = document.getElementById("numberOfResults");
+
+    categorySelection.addEventListener("change", function (e) {
+        const exclusives = document.querySelectorAll(".exclusive");
+        const selection = e.target.value;
+
+        for (let exclusive of exclusives) {
+            let cat = exclusive.getAttribute("data-cat");
+            if (selection === "all") {
+                exclusive.style.display = "block";
+                continue;
+            }
+            if (cat === selection) {
+                exclusive.style.display = "block";
+            } else {
+                exclusive.style.display = "none"
+            }
+        }
+        console.log(e.target.value);
+    });
+
+
+</script>
 </body>
 </html>
