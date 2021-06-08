@@ -2,13 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/headHome :: headHome('Our Pick')"></head>
-
+<style>
+    .container{
+        text-align: center;
+    }
+</style>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container mt-5 p-5" style="text-align: center">
+<div class="container mt-5 p-5"  style="width: 22rem">
 
-    <div class="card" style="background-color: darkorange">
+    <div class="card" style="background-color: #0abfc2">
         <div>
             <img class="ring" src="https://d30y9cdsu7xlg0.cloudfront.net/png/307-200.png">
         </div>
@@ -19,6 +23,16 @@
         <br>
         <a class="btn btn-dark" href="/exclusive-pick" role="button">Ring again</a>
 
+    </div>
+</div>
+
+<div class="bg_img">
+    <img src="/img/bg.png">
+    <div class="social">
+        <a href="https://www.facebook.com/"> <i class="fa fa-facebook" aria-hidden="true"></i>   </a>
+        <a href="https://twitter.com/">  <i class="fa fa-twitter" aria-hidden="true"></i>  </a>
+        <a href="https://www.instagram.com/"> <i class="fa fa-instagram" aria-hidden="true"></i>   </a>
+        <a href="https://www.whatsapp.com">  <i class="fa fa-whatsapp" aria-hidden="true"></i>  </a>
     </div>
 </div>
 

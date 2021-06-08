@@ -15,6 +15,13 @@
         height: 100%;
         font-size: 3em;
     }
+    h3{
+        font-weight: lighter;
+        color: #ffa200;
+    }
+    .btn{
+        color: #00aba9;
+    }
 </style>
 <body class="d-flex flex-column min-vh-100">
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -34,7 +41,7 @@
         <div class="content">
             <h2>Are you Hungry?</h2>
             <h2>Don't Wait!</h2>
-            <p>Ring Dinner Bell <br>to choose now!</p>
+            <h3>Ring Dinner Bell <br>to choose now!</h3>
             <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <br> for help <br> <img src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/> </a>
         </div>
         <div class="dish_img">
