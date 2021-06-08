@@ -11,7 +11,7 @@
     <div class="carousel-inner">
       <div th:class="${i.index == 0}? 'carousel-item active' : 'carousel-item' " th:each="image,i : ${user.restaurant.images}">
         <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
-        <img style="height: 500px" th:src="${'/upload/' + image.url}" alt="placeholder">
+        <img style="height: 300px" class="img-thumbnail" th:src="${'/upload/' + image.url}" alt="placeholder">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
