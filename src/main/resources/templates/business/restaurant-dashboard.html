@@ -112,13 +112,13 @@
 
         <div class="nav nav-tabs row align-items-center justify-content-center">
 
-          <h1 class="header-h">Restaurant Dashboard</h1>
-          <div class="nav-item col-12 col-md-5 px-0" id=“Account”>
+          <h1 class="header-h text-center">Restaurant Dashboard</h1>
+          <div class="nav-item col-12 col-md-5 px-2" id=“Account”>
             <div class="restaurant-card-text dashtab nav-tab-shadow text-center">
               <img class="img-thumbnail bg-transparent border-0" src="https://img.icons8.com/bubbles/100/000000/review.png"/>
               <br>
               <h5 class="card-title fw-bolder">Account Information</h5>
-              <div class="text-start">
+              <div class="my-4 text-center">
                 <h6>Username: <span class="span-values fw-bold" th:text="${user.username}"></span></h6>
                 <h6>Email: <span class="span-values fw-bold" th:text="${user.email}"></span></h6><br>
               </div>
@@ -128,12 +128,12 @@
           </div>
           </div>
 
-          <div class="nav-item col-12 col-md-5 px-0">
+          <div class="nav-item col-12 col-md-5 px-2">
             <div class="restaurant-card-text dashtab nav-tab-shadow text-center">
               <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png"/>
               <br>
               <h5 class="card-title fw-bolder">Restaurant Information</h5>
-              <div class="text-start">
+              <div class="text-center">
                 <h6>Restaurant name: <span class="span-values fw-bold" th:text="${user.restaurant.restaurant_name}"></span></h6>
                 <h6>Hours: <span class="span-values fw-bold" th:text="${user.restaurant.hours}"></span></h6>
                 <h6 class="fw-bold" th:each="restaurantCategory : ${user.restaurant.categories}" th:selected="${restaurantCategory.id}" th:value="${restaurantCategory.id}">Cuisine Category: <span class="span-values fw-bold" th:text="${restaurantCategory.name}"></span></h6>
@@ -141,38 +141,32 @@
                 <h6>Phone Number: <span class="span-values fw-bold" th:text="${user.restaurant.phone_number}"></span></h6>
               </div>
               <div class="text-center row">
-                <div class="col-6">
-                  <a role="button" class="nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/edit/' + ${user.restaurant.id}}">Update</a>
-                </div>
-                <div class="col-6">
-                  <a role="button" class="nav-link dashtab nav-tab-shadow"  th:href="@{'/restaurant/details/' + ${user.restaurant.id}}">View</a>
-                </div>
+                  <a role="button" class="col-6 nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/edit/' + ${user.restaurant.id}}">Update</a>
+                  <a role="button" class="col-6 nav-link dashtab nav-tab-shadow"  th:href="@{'/restaurant/details/' + ${user.restaurant.id}}">View</a>
               </div>
             </div>
           </div>
           <br>
           <br>
-          <div class="container">
+          <div class="container my-4">
           <div class="restaurant-card-text dashtab nav-tab-shadow text-center" data-toggle="tab">
             <h2 class="header-h">Restaurant statistics</h2>
             <div class="row">
-              <h5 class="col-6 restaurant-card-text">Number of favorites: <span th:text="${user.restaurant.favorites.size()}"></span></h5>
-              <h5 class="col-6 restaurant-card-text">Number of Reviews: <span th:text="${user.restaurant.reviews.size()}"></span></h5>
+              <h4 class="col-6 restaurant-card-text">Number of favorites: <span th:text="${user.restaurant.favorites.size()}"></span></h4>
+              <h4 class="col-6 restaurant-card-text">Number of Reviews: <span th:text="${user.restaurant.reviews.size()}"></span></h4>
             </div>
           </div>
         </div>
-          <br>
-          <br>
-          <br>
+
 
               <section th:if="${!user.restaurant.images.isEmpty()}">
 
                   <div class="text-center col-12">
                     <h2 class="header-h">Restaurant Photo's</h2>
                     <div th:replace="partials/carouselUser :: carouselUser"></div>
-                    <div>
-                      <a role="button" class="nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/uploads/show/' + ${user.restaurant.id}}">Edit Photos</a>
-                      <a role="button" class="nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Add more photos</a>
+                    <div class="row">
+                      <a role="button" class="col-6 nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/uploads/show/' + ${user.restaurant.id}}">Edit Photos</a>
+                      <a role="button" class="col-6 nav-link dashtab nav-tab-shadow" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Add more photos</a>
                     </div>
                   </div>
 
@@ -187,24 +181,12 @@
                   </div>
                 </div>
               </section>
-              <br>
-              <br>
-              <br>
 
 
 
-
-
-            <div class="restaurant-card-text dashtab nav-tab-shadow text-center" data-toggle="tab">
-<!--              <h2 class="header-h">Restaurant statistics</h2>-->
-<!--              <div class="row">-->
-<!--                <h4 class="col-6 restaurant-card-text">Number of favorites: <span th:text="${user.restaurant.favorites.size()}"></span></h4>-->
-<!--                <h4 class="col-6 restaurant-card-text">Number of Reviews: <span th:text="${user.restaurant.reviews.size()}"></span></h4>-->
-<!--              </div>-->
-
-              <div th:if="${!user.restaurant.reviews.isEmpty()}">
-                <h3 class="header-h">Reviews</h3>
-                <div class="row" th:each="review : ${user.restaurant.reviews}">
+                <h3 class="my-4 header-h text-center">Reviews</h3>
+            <div class="my-2 restaurant-card-text justify-content-center row" data-toggle="tab">
+                <div class="col-md-4" th:each="review : ${user.restaurant.reviews}">
                   <div class="text-center" th:each="image : ${review.images}" style="width: 18rem;">
                     <div class="col-md-4">
                       <h3 class="text-center" th:text="${review.content}"></h3>
@@ -213,8 +195,8 @@
                     </div>
                   </div>
                 </div>
-                    <a class="nav-link dashtab nav-tab-shadow" th:href="@{'/reviews/byRestaurant/' + ${user.restaurant.id}}" role="button">View Reviews</a>
-              </div>
+                    <a class="nav-link dashtab nav-tab-shadow text-center" th:href="@{'/reviews/byRestaurant/' + ${user.restaurant.id}}" role="button">View Reviews</a>
+
       </div>
 
       </div>
