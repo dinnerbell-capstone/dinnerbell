@@ -13,71 +13,68 @@
         font-family: 'Satisfy', sans-serif;
         font-weight: 300;
     }
-    ul
-    {
-        list-style:none;
+
+    ul {
+        list-style: none;
     }
+
     .header-p {
         color: #ffffff;
-        font-size:26px;
+        font-size: 26px;
     }
-    .section-padding{
+
+    .section-padding {
         padding: 60px 0px;
     }
-    .marb-35{
-        margin-bottom:35px;
+
+    .marb-35 {
+        margin-bottom: 35px;
     }
 
 
-
-
-
-
-    #menu-filters ul li a.active, #menu-filters ul li a:hover
-    {
+    #menu-filters ul li a.active, #menu-filters ul li a:hover {
         background: #FFB03B;
-        color:#fff;
-        border:1px solid #FFB03B;
+        color: #fff;
+        border: 1px solid #FFB03B;
     }
-    #menu-filters ul li
-    {
-        display:inline-block;
-        color:#fff;
-        text-transform:capitalize;
-        letter-spacing:1px;
-        margin-botttom:40px;
+
+    #menu-filters ul li {
+        display: inline-block;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        margin-botttom: 40px;
     }
-    #menu-filters ul li a
-    {
-        padding:10px 20px;
-        font-size:14px;
-        color:#fff;
-        border-radius:0px;
-        border:2px solid #BBBBBB;
-        text-decoration:none;
-        cursor:pointer;
+
+    #menu-filters ul li a {
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 0px;
+        border: 2px solid #BBBBBB;
+        text-decoration: none;
+        cursor: pointer;
         background-color: #1E4B6D;
 
     }
-    @media (min-width: 20px) and (max-width: 450px)
-    {
-        .menu-restaurant
-        {
+
+    @media (min-width: 20px) and (max-width: 450px) {
+        .menu-restaurant {
             width: 100%;
         }
-        .header-h
-        {
+
+        .header-h {
             font-size: 35px;
         }
-        .header-p
-        {
+
+        .header-p {
             font-size: 14px;
         }
 
     }
 
     .nav-tabs {
-        border-bottom: none!important;
+        border-bottom: none !important;
     }
 
     .nav-tabs .nav-link {
@@ -85,8 +82,9 @@
         border-top-right-radius: .6rem;
         padding-top: 1rem;
     }
+
     .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-        border: none!important;
+        border: none !important;
         color: rgba(255, 153, 0, 0.83);
         /*background-color: #03b090!important;*/
     }
@@ -94,19 +92,17 @@
     .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
         color: rgba(255, 169, 104, 0.83);
         background-color: #03b09c !important;
-        border: none!important;
+        border: none !important;
     }
 
-    .nav-tab-shadow{
-        box-shadow: 0 -0.1rem 3rem rgba(0,0,0,0.175)!important;
+    .nav-tab-shadow {
+        box-shadow: 0 -0.1rem 3rem rgba(0, 0, 0, 0.175) !important;
     }
 
-    #publishedTab span:hover,#draftTab span:hover{
+    #publishedTab span:hover, #draftTab span:hover {
         cursor: pointer;
-        color: #fec82e!important;
+        color: #fec82e !important;
     }
-
-
 
 
 </style>
@@ -120,25 +116,26 @@
         <div class="row">
             <div class="col-md-12 text-center  marb-35">
                 <h1 class="header-h">Menu</h1>
-                <p  class="header-p">Let DinnerBell help you plan your next dining experience choose from our following menu</p>
+                <p class="header-p">Let DinnerBell help you plan your next dining experience choose from our following
+                    menu</p>
 
             </div>
             <div class="col-md-12 text-center" id="menu-filters">
                 <ul>
-<!--                    <li></li>-->
-                    <li>  <a class="filter " href="/restaurants/exclusives" role="button">Exclusives</a> </li>
+
+                    <li><a class="filter " href="/restaurants/exclusives" role="button">Exclusives</a></li>
                     <li><a class="filter" href="/exclusive-pick" role="button">Quick Pick</a></li>
-                    <li><a class="filter" href="/search" role="button">Yelp Help</a></li>
+
                 </ul>
-            </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 
 <main class="mb-5">
     <div class="container">
-        <d class="nav nav-tabs row align-items-center justify-content-center">
+        <div class="row">
 
             <li class="nav-item col-4 col-md-2 px-0" id="Reviews" title="Reviews">
                 <a class="nav-link dashtab nav-tab-shadow text-center">
@@ -153,8 +150,8 @@
                 </a>
             </li>
             <!--        favorites-->
-            <li class="nav-item col-4 col-md-2 px-0" id="userFavorites" title="Favorites" >
-                <a class="nav-link dashtab nav-tab-shadow text-center" >
+            <li class="nav-item col-4 col-md-2 px-0" id="userFavorites" title="Favorites">
+                <a class="nav-link dashtab nav-tab-shadow text-center">
                     <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png"/>
                     <div class="favorites" th:each="favorite : ${userFaves}">
                         <a th:href="'/restaurant/details/' + ${favorite.getId()}"
@@ -165,14 +162,15 @@
                 </a>
             </li>
 
-            <li class="nav-item col-4 col-md-2 px-0" id="ElderEats" title="Elder Eats" >
-                <a class="nav-link dashtab nav-tab-shadow text-center" href="https://www.ksat.com/food/elder-eats/" data-toggle="tab">
+            <li class="nav-item col-4 col-md-2 px-0" id="ElderEats" title="Elder Eats">
+                <a class="nav-link dashtab nav-tab-shadow text-center" href="https://www.ksat.com/food/elder-eats/"
+                   data-toggle="tab">
                     <img src="https://img.icons8.com/bubbles/100/000000/food.png"/>
-                    <h6>  Check out ElderEats as he explores restaurants in Texas!</h6>
+                    <h6> Check out ElderEats as he explores restaurants in Texas!</h6>
                     <p class="text-white mb-0 small">Elder Eats</p>
                 </a>
             </li>
-        </d>
+        </div>
     </div>
 </main>
 
