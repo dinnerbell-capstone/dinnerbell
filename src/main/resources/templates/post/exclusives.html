@@ -51,7 +51,7 @@
     <div class="row gy-5">
 <!--LABEL TO STYLE-->
         <div class="col-6" th:each="restaurant : ${restaurants}">
-<!--            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">-->
+            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">
                 <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link"
                    th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
 
