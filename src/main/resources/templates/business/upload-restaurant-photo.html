@@ -3,14 +3,16 @@
 <head th:replace="partials/headHome :: headHome(upload)"></head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-  <div class="container text-center">
-  <main>
+  <div class="container text-center my-5">
+  <main class="mx-5">
 <form th:action="@{'/restaurant/upload/'+${restaurant.id}}" th:method="post" enctype="multipart/form-data">
 
     <div class="mb-3">
-      <label for="formFileMultiple" class="form-label">Upload a photo for your restaurant banner</label>
+      <label for="formFileMultiple" class="form-label fw-bolder text-white">Upload a photo for your restaurant banner</label>
       <input class="form-control" name="file" type="file" id="formFileMultiple" multiple>
-      <input type="submit" value="Upload Files">
+      <div class="my-3">
+      <input class="nav-link bg-transparent border-0" type="submit" value="Upload Files">
+      </div>
     </div>
 
 </form>
