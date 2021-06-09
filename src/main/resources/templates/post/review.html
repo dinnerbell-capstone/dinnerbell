@@ -2,9 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/headHome :: headHome('Restaurant Reviews')"><title></title></head>
 <!--<body class="d-flex flex-column min-vh-100">-->
+<nav th:replace="partials/navbar :: navbar"></nav>
+<a href="https://icons8.com/icon/113572/compose"></a>
+<style>
+    body{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .container{
+        padding-right: 150px;
+        padding-left: 150px;
+        justify-content: center;
+    }
+
+    h1, p {
+        text-align: center;
+    }
+
+</style>
 <body>
 
-<nav th:replace="partials/navbar :: navbar"></nav>
+
 
 <!--<div class="mb-3">-->
 <!--    <label for="exampleFormControlInput1" class="form-label">Email address</label>-->
@@ -13,8 +31,12 @@
 <div class="mt-5 p-5" style="color: white">
     <form th:action="@{/review/{id}(id=${restaurant.id})}" th:method="post" enctype="multipart/form-data">
         <h1>Restaurant Review</h1>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Tell us all about your dining experience to
+        <div class="center">
+            <p><img src="https://img.icons8.com/bubbles/100/000000/multi-edit.png"/></p>
+        </div>
+       <div class="container">
+           <div class="mb-3">
+               <label for="exampleFormControlTextarea1" class="form-label">Tell us all about your dining experience to
                 share with others here on DinnerBell.
                 How was your meal? Was the staff welcoming? Was the atmosphere pleasant and clean? Would you recommend
                 this restaurant to a friend?</label>
@@ -29,8 +51,10 @@
             <input class="form-control" name="file" type="file" id="formFileMultiple" multiple>
             <input type="submit" value="Upload Files">
         </div>
+       </div>
     </form>
 </div>
+
 
 <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
 </body>

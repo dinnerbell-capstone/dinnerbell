@@ -4,6 +4,7 @@
 <!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
 
 <head th:replace="partials/headHome :: headHome(Profile)"></head>
+<a href="https://icons8.com/icon/vKp9UpF1MZHK/person-cook"></a>
 <style>
     .content_container{
         color: #fff;
@@ -48,13 +49,15 @@
 
         <h1>Edit Profile</h1>
         <div class="edit-content">
-
+            <img src="https://img.icons8.com/emoji/96/000000/person-cook.png"/>
             <form th:action="@{/users/edit}" th:method="POST" th:object="${user}">
                 <label for="username">Username</label>
                 <input type="text" th:field="*{username}" id="username" name="name">
                 <br>
-                <label for="email">Email &emsp;</label>
+                <br>
+                <label for="email">Email    &emsp;</label>
                 <input type="text" th:field="*{email}" id="email" name="email">
+                <br>
                 <br>
                 <input type="hidden" name="password" th:value="${user.password}">
                 <button type="submit">Update</button>

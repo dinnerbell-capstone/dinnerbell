@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/headHome :: headHome('Restaruant Details')"></head>
+<a href="https://icons8.com/icon/hHCVRMNd3zwr/fork-and-knife-with-plate"></a>
 <style>
     .flex-box {
         color: #9effec;
@@ -9,7 +10,7 @@
         box-sizing: border-box;
         max-width: 1650px;
         width: 100%;
-        padding: 50px 110px 130px;
+        /*padding: 50px 110px 130px;*/
         position: -ms-device-fixed;
         margin: auto;
         display: flex;
@@ -17,83 +18,129 @@
         align-items: center;
     }
 
-    .row {
+
+    h3{
+        color: #00fbff;
+        text-align: center;
         justify-content: center;
+        font-size: large;
+        font-weight: bold;
+    }
+     p, a {
+        text-align: center;
+        justify-content: center;
+        font-size: large;
+        font-weight: lighter;
+         color: #ffffff;
     }
 
-    p, a {
-        font-size: x-large;
-        font-weight: lighter;
+    .btn-warning{
+        color: #ffffff;
+        background-color: #00aba9;
+        border: #0abfc2;
+        border-radius: 12px;
     }
+
+    .align-items-center {
+         align-items: stretch!important;
+    }
+
 
 </style>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
-<h1 style="text-align: center; color: white" th:text="${restaurant.restaurant_name}"></h1>
-<div class="flex-box mt-5 p-5" style="text-align: center">
+<main class="mb-5">
     <div class="container">
-        <div class="row align-items-start">
-            <div class="col">
-                <div class="restaurant-page-image">
-                    <div th:replace="partials/carousel :: carousel"></div>
-                    <form th:action="@{'/restaurant/details/' + ${restaurant.id}}" th:method="post">
-                        <!--                FAVORITES BUTTON-->
-                        <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
-                            <button type="submit" class="btn btn-danger">Add to Favorites</button>
+        <div class="nav nav-tabs row align-items-center justify-content-center">
+
+            <nav th:replace="partials/navbar :: navbar"></nav>
+            <h1 style="text-align: center; color: white" th:text="${restaurant.restaurant_name}"></h1>
+            <div class="flex-box mt-5 p-5" style="text-align: center">
+                <div class="container1">
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <div class="restaurant-page-image">
+                                <div th:replace="partials/carousel :: carousel"></div>
+                                <form th:action="@{'/restaurant/details/' + ${restaurant.id}}" th:method="post">
+                                    <!--                FAVORITES BUTTON-->
+                                    <div sec:authorize="isAuthenticated()" th:if="${!restaurant.favorites.contains(user)}">
+                                        <button type="submit" class="btn btn-danger">Add to Favorites</button>
+                                    </div>
+
+                                    <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
+                                        <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
+                                    </div>
+                                </form>
+
+                            </div>
                         </div>
-                        <div sec:authorize="isAuthenticated()" th:unless="${!restaurant.favorites.contains(user)}">
-                            <button id="favoriteBtn" type="submit" class="btn btn-secondary">Saved to Favorites</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-            <div class="col">
-                <div sec:authorize="isAuthenticated()">
-                    <h2>How was your visit? Let us know!</h2>
-
-                    <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a
-                        Review</a>
-                    <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}"
-                       role="button">View
-                        Reviews</a>
-                    <br><br>
-                    <p th:text="${restaurant.description}"></p>
+                    </div>
                 </div>
             </div>
 
-        </div>
 
-        <div class="row justify-content-center mt-2">
-            <div class="col-4">
-                <h2>Hours: </h2>
-                <p th:text="${restaurant.hours}"></p>
-                <h2>Phone: </h2>
-                <a th:href="'tel:+' + '${restaurants.phone_number}'"><span th:text="${restaurant.phone_number}"></span></a>
-                <br>
-                <h2>Address: </h2>
-                <p th:text=" ${restaurant.street_address} + ', ' + ${restaurant.city} + ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
+                        <li class="nav-item col-8 col-md-2 px-0" id="Reviews" title="Reviews">
+                            <a class="nav-link dashtab nav-tab-shadow text-center">
+                                <img src="https://img.icons8.com/bubbles/100/000000/review.png"/>
+
+                                <div sec:authorize="isAuthenticated()">
+                                    <h3>How was your visit?</h3>
+                                    <div class="text-center">
+                                    <a class="btn btn-warning" th:href="@{/review/{id}(id=${restaurant.id})}" role="button">Leave a
+                                        Review</a>
+                                        <br><br>
+                                    <a class="btn btn-warning" th:href="@{/reviews/byRestaurant/{id}(id=${restaurant.id})}"
+                                       role="button">View
+                                        Reviews</a>
+                                    </div>
+                                    <br>
+                                    <p th:text="${restaurant.description}"></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item col-8 col-md-2 px-0" id="userFavorites" title="Favorites" >
+                            <a class="nav-link dashtab nav-tab-shadow text-center" >
+                                <img src="https://img.icons8.com/emoji/96/000000/fork-and-knife-with-plate-emoji.png"/>
+
+                                <h3>Hours: </h3>
+                                <p th:text="${restaurant.hours}"></p>
+
+                                <div class="text-center">
+                                    <h3>Phone: </h3>
+                                <a th:href="'tel:+' + '${restaurants.phone_number}'"><span th:text="${restaurant.phone_number}"></span></a>
+                                </div>
+                                    <br>
+                                <h3>Address: </h3>
+                                <p th:text=" ${restaurant.street_address} + ', ' + ${restaurant.city} + ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
+
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </main>
+
+
+
+
+
+
+
+<!--            <div class="col-4 details">-->
+<!--                <div th:if="${!restaurant.website_link.isEmpty()}">-->
+<!--                    <h2>Website: </h2>-->
+<!--                    <a th:href="${restaurant.website_link}">Link to <span-->
+<!--                            th:text="${restaurant.restaurant_name}"></span></a>-->
+<!--                </div>-->
+<!--                <div th:if="${!restaurant.menu_link.isEmpty()}">-->
+<!--                    <h2>Menu: </h2>-->
+<!--                    <a th:href="${restaurant.menu_link}">Link Menu</a>-->
+<!--                </div>-->
+<!--                <div th:if="${!restaurant.elder_eats_link.isEmpty()}">-->
+<!--                    <h2>ElderEats Link: </h2>-->
+<!--                    <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>-->
+<!--                </div>-->
+
             </div>
 
-            <div class="col-4 details">
-                <div th:if="${!restaurant.website_link.isEmpty()}">
-                    <h2>Website: </h2>
-                    <a th:href="${restaurant.website_link}">Link to <span
-                            th:text="${restaurant.restaurant_name}"></span></a>
-                </div>
-                <div th:if="${!restaurant.menu_link.isEmpty()}">
-                    <h2>Menu: </h2>
-                    <a th:href="${restaurant.menu_link}">Link Menu</a>
-                </div>
-                <div th:if="${!restaurant.elder_eats_link.isEmpty()}">
-                    <h2>ElderEats Link: </h2>
-                    <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 </div>
 
