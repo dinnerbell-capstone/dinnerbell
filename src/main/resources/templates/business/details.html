@@ -72,13 +72,17 @@
                                 </form>
 
                             </div>
+                          <div class="col my-3">
+                            <h2 style="text-align: center; color: #1fd9d6">About Us</h2>
+                            <p th:text="${restaurant.description}"></p>
+                          </div>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-                        <li class="nav-item col-8 col-md-2 px-0" id="Reviews" title="Reviews">
+                        <div class="nav-item col-8 col-md-2 px-0" id="Reviews" title="Reviews">
                             <a class="nav-link dashtab nav-tab-shadow text-center">
                                 <img src="https://img.icons8.com/bubbles/100/000000/review.png"/>
 
@@ -93,12 +97,12 @@
                                         Reviews</a>
                                     </div>
                                     <br>
-                                    <p th:text="${restaurant.description}"></p>
+<!--                                    <p th:text="${restaurant.description}"></p>-->
                                 </div>
                             </a>
-                        </li>
-                        <li class="nav-item col-8 col-md-2 px-0" id="userFavorites" title="Favorites" >
-                            <a class="nav-link dashtab nav-tab-shadow text-center" >
+                        </div>
+                        <div class="nav-item col-8 col-md-2 px-0" id="userFavorites" title="Favorites" >
+                            <div class="nav-link dashtab nav-tab-shadow text-center" >
                                 <img src="https://img.icons8.com/emoji/96/000000/fork-and-knife-with-plate-emoji.png"/>
 
                                 <h3>Hours: </h3>
@@ -112,39 +116,27 @@
                                 <h3>Address: </h3>
                                 <p th:text=" ${restaurant.street_address} + ', ' + ${restaurant.city} + ', ' + ${restaurant.state} + ', ' + ${restaurant.zip_code}"></p>
 
-                            </a>
-                        </li>
-                    </div>
+                            </div>
+                        </div>
+            <div class="col-12 text-center details">
+              <h2 style="text-align: center; color: #1fd9d6">Website Links</h2>
+                <div th:if="${!restaurant.website_link.isEmpty()}">
+                    <a th:href="${restaurant.website_link}">Link to <span
+                            th:text="${restaurant.restaurant_name}"></span></a>
                 </div>
-            </main>
-
-
-
-
-
-
-
-<!--            <div class="col-4 details">-->
-<!--                <div th:if="${!restaurant.website_link.isEmpty()}">-->
-<!--                    <h2>Website: </h2>-->
-<!--                    <a th:href="${restaurant.website_link}">Link to <span-->
-<!--                            th:text="${restaurant.restaurant_name}"></span></a>-->
-<!--                </div>-->
-<!--                <div th:if="${!restaurant.menu_link.isEmpty()}">-->
-<!--                    <h2>Menu: </h2>-->
-<!--                    <a th:href="${restaurant.menu_link}">Link Menu</a>-->
-<!--                </div>-->
-<!--                <div th:if="${!restaurant.elder_eats_link.isEmpty()}">-->
-<!--                    <h2>ElderEats Link: </h2>-->
-<!--                    <a th:href="${restaurant.elder_eats_link}">Elder Eats</a>-->
-<!--                </div>-->
-
+                <div th:if="${!restaurant.menu_link.isEmpty()}">
+                    <a th:href="${restaurant.menu_link}">Link to Menu</a>
+                </div>
+                <div th:if="${!restaurant.elder_eats_link.isEmpty()}">
+                    <a th:href="${restaurant.elder_eats_link}">Elder Eats: Restaurant Review</a>
+                </div>
             </div>
+        </div>
+    </div>
+</main>
 
 
-</div>
 
-</div>
 
 <div class="bg_img">
     <img src="/img/bg.png">
