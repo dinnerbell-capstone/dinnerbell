@@ -16,6 +16,12 @@
         justify-content: center;
         align-items: center;
     }
+    .form-select {
+        display: -webkit-inline-flex!important;
+        color: #ffffff;
+        background-color: teal;
+        size: 50px;
+    }
 
 
 </style>
@@ -24,9 +30,9 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 
-<div class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img
+<a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img
         src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/>
-</div>
+</a>
 
 <!--<div th: ></div>-->
 
@@ -45,7 +51,7 @@
     <div class="row gy-5">
 <!--LABEL TO STYLE-->
         <div class="col-6" th:each="restaurant : ${restaurants}">
-            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">
+<!--            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">-->
                 <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link"
                    th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
 
