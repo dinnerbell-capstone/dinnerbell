@@ -71,7 +71,7 @@
                                     <!--                FAVORITES BUTTON-->
                                     <div sec:authorize="isAuthenticated()"
                                          th:if="${!restaurant.favorites.contains(user)}">
-                                        <button type="submit" class="btn btn-danger">Add to Favorites</button>
+                                        <button type="submit" class="btn btn-info">Add to Favorites</button>
                                     </div>
 
                                     <div sec:authorize="isAuthenticated()"
