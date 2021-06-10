@@ -18,18 +18,40 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container text-center">
-    <div class="card">
-        <h1 style="padding: 1em">Upload an Image</h1>
-        <main>
-            <div th:each="image : ${restaurant.images}">
-                <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder"/>
-                <img th:src="${'/upload/' + image.url}" alt="placeholder">
-                <a class="btn btn-danger" th:value="${image.id}"
-                   th:href="@{'/restaurant/delete/upload/' + ${image.id}}">Delete</a>
-            </div>
-        </main>
+<div class="card my-5 mx-5 text-center" style="background-color: #023047">
+  <div class="card-body">
+  <h2 style="color:#FFB03B">Edit Restaurant photo's</h2>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div th:class="${i.index == 0}? 'carousel-item active' : 'carousel-item' " th:each="image,i : ${restaurant.images}">
+        <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
+        <img style="height: 300px" class="img-thumbnail" th:src="${'/upload/' + image.url}" alt="placeholder">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a class="btn btn-danger" th:value="${image.id}" th:href="@{'/restaurant/delete/upload/' + ${image.id}}">Delete</a>
+        </div>
+      </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+
+<!--  <main>-->
+<!--    <div th:each="image : ${restaurant.images}">-->
+<!--      <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />-->
+<!--      <img th:src="${'/upload/' + image.url}" alt="placeholder">-->
+<!--    </div>-->
+<!--  </main>-->
+
+</div>
 </div>
 
 
