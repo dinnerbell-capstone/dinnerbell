@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/headHome :: headHome(Upload)"></head>
+<style>
+
+    .card {
+        background-color: #FB8500;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    }
+
+</style>
+
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container text-center">
-  <main>
-    <div th:each="image : ${restaurant.images}">
-      <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder" />
-      <img th:src="${'/upload/' + image.url}" alt="placeholder">
-        <a class="btn btn-danger" th:value="${image.id}" th:href="@{'/restaurant/delete/upload/' + ${image.id}}">Delete</a>
-    </div>
-  </main>
 
+<div class="container text-center">
+    <div class="card">
+        <h1 style="padding: 1em">Upload an Image</h1>
+        <main>
+            <div th:each="image : ${restaurant.images}">
+                <img th:if="${image.url == null}" src="https://placehold.it/300x300" alt="placeholder"/>
+                <img th:src="${'/upload/' + image.url}" alt="placeholder">
+                <a class="btn btn-danger" th:value="${image.id}"
+                   th:href="@{'/restaurant/delete/upload/' + ${image.id}}">Delete</a>
+            </div>
+        </main>
+    </div>
 </div>
 
 
