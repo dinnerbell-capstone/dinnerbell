@@ -16,61 +16,67 @@
         justify-content: center;
         align-items: center;
     }
+
     .form-select {
-        display: -webkit-inline-flex!important;
-        color: #ffffff;
-        background-color: teal;
+        display: -webkit-inline-flex !important;
+        color: white;
+        background-color: #023047;
         size: 50px;
     }
-
 
 </style>
 
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+<div class="card" style="background-color: #FB8500;">
 
-<a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Ring bell <img
-        src="https://img.icons8.com/emoji/48/000000/bellhop-bell.png"/>
-</a>
-
-<!--<div th: ></div>-->
-
-<select class="form-select form-select-sm w-25 p-3" id="numberOfResults" aria-label=".form-select-sm example"
-        style="text-align: center">
-    <option value="all">All</option>
-    <option th:each="category : ${categories}" th:value="${category.name}" th:text="${#strings.capitalizeWords(category.name)}"></option>
+    <h1 style="text-align: center; color: white;">Restaurant Selection</h1>
 
 
-    <!--    <option disabled value="Category">CATEGORY</option>-->
-
-</select>
 
 
-<div class="flex-box mt-5 p-5">
-    <div class="row gy-5">
-<!--LABEL TO STYLE-->
-        <div class="col-6" th:each="restaurant : ${restaurants}">
-            <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">
-                <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link"
-                   th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
+    <!--<div th: ></div>-->
+<!--CATEGORIES FROM DB-->
+    <select class="form-select form-select-sm w-25 p-3" id="numberOfResults" aria-label=".form-select-sm example"
+            style="text-align: center";>
+        <option value="all">All</option>
+        <option th:each="category : ${categories}" th:value="${category.name}"
+                th:text="${#strings.capitalizeWords(category.name)}"></option>
 
-<!--                <script src="https://apps.elfsight.com/p/platform.js" defer></script>-->
-<!--                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>-->
+
+        <!--    <option disabled value="Category">CATEGORY</option>-->
+
+    </select>
+
+
+    <div class="flex-box mt-5 p-5">
+        <div class="row gy-5">
+            <!--LABEL TO STYLE-->
+
+            <div class="col-6" th:each="restaurant : ${restaurants}">
+                <div class="card" style="background-color: #023047">
+                    <div class="exclusive" th:attr="data-cat=${restaurant.categories.get(0).name}">
+                        <a th:href="@{'/restaurant/details/' + ${restaurant.id}}" role="button" class="nav-link"
+                           th:text="${restaurant.restaurant_name}" style="text-align: center"></a>
+
+                        <!--                <script src="https://apps.elfsight.com/p/platform.js" defer></script>-->
+                        <!--                <div class="elfsight-app-af12e0df-1c91-49bf-a211-1854f06190dc"></div>-->
+                    </div>
+                </div>
             </div>
+            <a class="btn btn-dark" th:href="@{/exclusive-pick}" role="button">Quick Pick</a>
         </div>
     </div>
 </div>
-<div class="bg_img">
-    <img src="/img/bg.png">
-    <!--  <div class="social">-->
-    <!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
-    <!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
+<!--    <div class="bg_img">-->
+<!--        <img src="/img/bg.png">-->
+<!--  <div class="social">-->
+<!--    <i class="fa fa-concierge-bell" aria-hidden="true"></i>-->
+<!--    <i class="fa fa-bell" aria-hidden="true"></i>-->
 
-    <!--  </div>-->
-</div>
-
-</div>
+<!--  </div>-->
+<!--    </div>-->
 
 
 <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
