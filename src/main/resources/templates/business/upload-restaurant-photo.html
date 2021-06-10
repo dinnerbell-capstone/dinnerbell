@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/headHome :: headHome(upload)"></head>
+<style>
+
+    .card {
+        background-color: #FB8500;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    .btn-warning {
+        color: #ffffff;
+        background-color: #00aba9;
+        border: #0abfc2;
+        border-radius: 12px;
+    }
+
+
+</style>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-  <div class="container text-center my-5">
-  <main class="mx-5">
-<form th:action="@{'/restaurant/upload/'+${restaurant.id}}" th:method="post" enctype="multipart/form-data">
+<div class="container text-center">
 
-    <div class="mb-3">
-      <label for="formFileMultiple" class="form-label fw-bolder text-white">Upload a photo for your restaurant banner</label>
-      <input class="form-control" name="file" type="file" id="formFileMultiple" multiple>
-      <div class="my-3">
-      <input class="nav-link bg-transparent border-0" type="submit" value="Upload Files">
-      </div>
+    <div class="card">
+        <h1 style="padding: 1em">Upload an Image</h1>
+        <form th:action="@{'/restaurant/upload/'+${restaurant.id}}" th:method="post" enctype="multipart/form-data">
+
+            <div>
+                <label for="formFileLg" class="form-label">Please share an image of your restaurant</label>
+                <input class="form-control form-control-lg" id="formFileLg" name="file" type="file">
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning m-2" style="padding: 1em" value="Upload Files">Submit
+                </button>
+            </div>
+        </form>
     </div>
-
-</form>
-
-  </main>
-
 </div>
 
 
