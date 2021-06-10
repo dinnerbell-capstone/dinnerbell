@@ -22,4 +22,5 @@ DinnerBell is a foodie community platform for restaurant patrons to leave review
 </ol>
 
 https://getbootstrap.com/docs/5.0/getting-started/introduction/
+<br>
 https://coolors.co/8ecae6-219ebc-023047-ffb703-fb8500
