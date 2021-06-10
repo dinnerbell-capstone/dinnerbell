@@ -6,8 +6,20 @@
 <a href="https://icons8.com/icon/114889/food"></a>
 <a href="https://icons8.com/icon/apsEwjRsibDJ/review"></a>
 <style>
+    body{
+        padding: 111px;
+    }
+    overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #eaf1f0;
+        mix-blend-mode: overlay;
+    }
+
     .header-h {
-        font-size: 35px;
         color: #FFB03B;
         font-size: 46px;
         font-family: 'Satisfy', sans-serif;
@@ -47,14 +59,16 @@
     }
 
     #menu-filters ul li a {
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 30px;
+
         color: #fff;
-        border-radius: 0px;
-        border: 2px solid #BBBBBB;
+        border-radius: 12px;
+        border: 3px solid #0abfc2;
         text-decoration: none;
         cursor: pointer;
-        background-color: #1E4B6D;
+        background-color: #00aba9;
+        align-items: stretch!important;
+        text-align: center;
 
     }
 
@@ -67,21 +81,29 @@
             font-size: 35px;
         }
 
-        .header-p {
-            font-size: 14px;
+        p {
+            font-size: 14px!important;
         }
 
     }
-
-    .nav-tabs {
-        border-bottom: none !important;
+    .card-thumbnail {
+        max-height: 250px;
+        overflow: hidden;
+        justify-content: center;
+        text-align: center;
+        background-color: antiquewhite;
     }
 
-    .nav-tabs .nav-link {
-        border-top-left-radius: .6rem;
-        border-top-right-radius: .6rem;
-        padding-top: 1rem;
-    }
+    /*.nav-link {*/
+    /*    background-color: antiquewhite;*/
+    /*    border-radius: 12px;*/
+    /*}*/
+
+    /*.nav-tabs .nav-link {*/
+    /*    border-top-left-radius: .6rem;*/
+    /*    border-top-right-radius: .6rem;*/
+    /*    padding-top: 1rem;*/
+    /*}*/
 
     .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
         border: none !important;
@@ -104,7 +126,15 @@
         color: #fec82e !important;
     }
 
-
+    .btn-warning{
+        color: #ffffff;
+        background-color: #00aba9;
+        border: #0abfc2;
+        border-radius: 12px;
+    }
+    .section{
+        background-color: #023047;
+    }
 </style>
 
 
@@ -123,8 +153,8 @@
             <div class="col-md-12 text-center" id="menu-filters">
                 <ul>
 
-                    <li><a class="filter " href="/restaurants/exclusives" role="button">Exclusives</a></li>
-                    <li><a class="filter" href="/exclusive-pick" role="button">Quick Pick</a></li>
+                    <li><a class="btn btn-warning btn-lg" style="width:260px;height:100px;" href="/restaurants/exclusives" role="button">Exclusives</a></li>
+                    <li><a class="btn btn-warning btn-lg" style="width:260px;height:100px;" href="/exclusive-pick" role="button">Quick Pick</a></li>
 
                 </ul>
             </div>
@@ -133,47 +163,105 @@
 </div>
 
 
-<main class="mb-5">
+<!--<main class="mb-5">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+
+<!--            <li class="nav-item col-4 col-md-2 px-0" id="Reviews" title="Reviews">-->
+<!--                <a class="nav-link dashtab nav-tab-shadow text-center">-->
+<!--                    <img src="https://img.icons8.com/bubbles/100/000000/review.png"/>-->
+
+<!--                    <div class="reviews" th:each="review : ${userReviews}">-->
+<!--                        <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>-->
+<!--                    </div>-->
+
+
+<!--                    <p class="text-white mb-0 small">Reviews</p>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            &lt;!&ndash;        favorites&ndash;&gt;-->
+<!--            <li class="nav-item col-4 col-md-2 px-0" id="userFavorites" title="Favorites">-->
+<!--                <a class="nav-link dashtab nav-tab-shadow text-center">-->
+<!--                    <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png"/>-->
+<!--                    <div class="favorites" th:each="favorite : ${userFaves}">-->
+<!--                        <a th:href="'/restaurant/details/' + ${favorite.getId()}"-->
+<!--                           th:text="${favorite.getRestaurant_name()}"></a>-->
+<!--                    </div>-->
+
+<!--                    <p class="text-white mb-0 small">Favorites</p>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item col-4 col-md-2 px-0" id="ElderEats" title="Elder Eats">-->
+
+<!--            </li>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
+<section class="section py-4 my-5">
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <h2 class="mb-3 text-danger"></h2>
+            </div>
 
-            <li class="nav-item col-4 col-md-2 px-0" id="Reviews" title="Reviews">
-                <a class="nav-link dashtab nav-tab-shadow text-center">
-                    <img src="https://img.icons8.com/bubbles/100/000000/review.png"/>
+            <div class="col-sm-6 col-md-4">
+                <div class="card my-3">
+                    <div class="card-thumbnail">
+                        <img src= "https://img.icons8.com/bubbles/100/000000/review.png" class="img-fluid" alt="thumbnail">
+                    </div>
+                    <div class="card-body" style="background-color: antiquewhite">
+                        <h3 class="card-title"><a href="#" class="text-secondary">Reviews</a></h3>
+                        <p class="card-text">
+                        <div class="reviews" th:each="review : ${userReviews}">
+                           <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
+                        </div>
+                        </p>
+                        <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="reviews" th:each="review : ${userReviews}">
-                        <a th:href="'/review/update/' + ${review.getId()}" th:text="${review.getContent()}"></a>
+            <div class="col-sm-6 col-md-4">
+                <div class="card my-3">
+                    <div class="card-thumbnail">
+                        <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png" class="img-fluid" alt="thumbnail">
                     </div>
 
-
-                    <p class="text-white mb-0 small">Reviews</p>
-                </a>
-            </li>
-            <!--        favorites-->
-            <li class="nav-item col-4 col-md-2 px-0" id="userFavorites" title="Favorites">
-                <a class="nav-link dashtab nav-tab-shadow text-center">
-                    <img src="https://img.icons8.com/emoji/96/000000/orange-heart.png"/>
-                    <div class="favorites" th:each="favorite : ${userFaves}">
-                        <a th:href="'/restaurant/details/' + ${favorite.getId()}"
-                           th:text="${favorite.getRestaurant_name()}"></a>
+                  <div class="favorites" style="background-color: antiquewhite" th:each="favorite : ${userFaves}">
+                     <a th:href="'/restaurant/details/' + ${favorite.getId()}"
+                        th:text="${favorite.getRestaurant_name()}"></a>
                     </div>
 
-                    <p class="text-white mb-0 small">Favorites</p>
-                </a>
-            </li>
+                    <div class="card-body"style="background-color: antiquewhite">
+                        <h3 class="card-title"><a href="#" class="text-secondary">Favorites</a></h3>
+                        <p class="card-text"></p>
+                        <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
 
-            <li class="nav-item col-4 col-md-2 px-0" id="ElderEats" title="Elder Eats">
-                <a class="nav-link dashtab nav-tab-shadow text-center" href="https://www.ksat.com/food/elder-eats/"
-                   data-toggle="tab">
-                    <img src="https://img.icons8.com/bubbles/100/000000/food.png"/>
-                    <h6> Check out ElderEats as he explores restaurants in Texas!</h6>
-                    <p class="text-white mb-0 small">Elder Eats</p>
-                </a>
-            </li>
+            <div class="col-sm-6 col-md-4">
+                <div class="card my-3">
+                    <div class="card-thumbnail">
+                        <img src="https://img.icons8.com/bubbles/100/000000/food.png" class="img-fluid" alt="thumbnail">
+                    </div>
+                    <div class="card-body"style="background-color: antiquewhite">
+                        <h3 class="card-title"><a href="#" class="text-secondary">Elder Eats</a></h3>
+
+
+                        <a class="nav-link dashtab nav-tab-shadow text-center" href="https://www.ksat.com/food/elder-eats/"
+                           data-toggle="tab"></a>
+
+                        <p class="card-text">Check out ElderEats as he explores restaurants in Texas!</p>
+                        <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</main>
-
+</section>
 
 <th:block th:replace="partials/homeScripts :: homeScripts"/>
 </body>
