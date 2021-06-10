@@ -93,7 +93,7 @@ public class RestaurantController {
     image.setRestaurant(restaurant);
     imageDao.save(image);
 
-    return "redirect:/restaurant/details/" + restaurant.getId();
+    return "redirect:/restaurant";
     }
 
     @GetMapping("/restaurant/details/{id}")
@@ -161,7 +161,7 @@ public class RestaurantController {
   public String deleteUploadedRestaurantImages(@PathVariable("id") long id){
       Image image = imageDao.getOne(id);
       imageDao.deleteById(image.getId());
-    return "redirect:/restaurant/details/" + image.getRestaurant().getId();
+    return "redirect:/restaurant/uploads/show/" + image.getRestaurant().getId();
   }
 
   @GetMapping("/restaurants/exclusives")
