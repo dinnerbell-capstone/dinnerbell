@@ -1,164 +1,136 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:replace="partials/restaurantDashHead :: DashHead('Restaurant Dashboard')">
-  <a href="https://icons8.com/icon/64641/plate"></a>
-  <a href="https://icons8.com/icon/vKp9UpF1MZHK/person-cook"></a>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      lang="en">
+<head th:replace="partials/restaurantDashHead :: DashHead('Restaurant Profile')">
+    <a href="https://icons8.com/icon/64641/plate"></a>
+    <a href="https://icons8.com/icon/vKp9UpF1MZHK/person-cook"></a>
 </head>
+
 <style>
-
-  .flex-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .restaurant-card-text{
-    background-color: #0abfc2;
-  }
-  .align-items-center {
-    align-items: stretch!important;
-  }
-  h5{
-    color: #fff;
-  }
-  .btn-warning{
-    color: #ffffff;
-    background-color: #f68b1e;
-    border: #ea802f;
-    border-radius: 12px;
-    align-items: stretch!important;
-  }
-
-
+    .container {
+        padding: 50px 110px 130px;
+        background-color: #FB8500;
+        color: white;
+    }
+    .btn-warning {
+        color: #ffffff;
+        background-color: #00aba9;
+        border: #0abfc2;
+        border-radius: 12px;
+    }
 
 </style>
 
-
 <body>
-    <nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-        <div id="menu-list" th:if="${user.restaurant == null}">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12 text-center marb-35">
-              <h2 class="header-h">Restaurant Dashboard</h2>
+<!--RESTAURANT OWNER WITH NO ACCOUNT INFORMATION-->
+
+<div id="menu-list" th:if="${user.restaurant == null}">
+    <div class="container">
+        <div class="card" style="background-color: #023047; padding: 0 10px;">
+            <div class="row text-center">
+                <h1 class="display-4 mt-1 p-1" style="color:white">Your Restaurant Profile</h1>
                 <p class="header-p">Let's build your restaurant page.
-                <a role="button" class="nav-link bg-transparent border-0" th:href="@{/restaurant/create}">Enter Restaurant information </a>
-                  <img src="https://img.icons8.com/dusk/64/000000/chef-hat.png"/>
-              </div>
+                    <a role="button" class="nav-link bg-transparent border-0" th:href="@{/restaurant/create}">Enter
+                        Restaurant information </a>
+                    <img src="https://img.icons8.com/dusk/64/000000/chef-hat.png"/>
             </div>
-          </div>
         </div>
-
-    <main class="mb-5">
-
-      <div class="container" th:if="${user.restaurant != null}">
-
-        <div class="nav nav-tabs row align-items-center justify-content-center">
-
-          <h1 class="header-h text-center">Restaurant Dashboard</h1>
-          <div class="nav-item col-12 col-md-5 px-2" id=“Account”>
-            <div class="restaurant-card-text dashtab nav-tab-shadow text-center">
-              <img src="https://img.icons8.com/emoji/96/000000/person-cook.png"/>
-              <br>
-              <h5 class="card-title fw-bolder">Profile</h5>
-              <div class="my-4 text-center">
-                <h5>Username: <span class="span-values fw-bold" th:text="${user.username}"></span></h5>
-                <h5>Email: <span class="span-values fw-bold" th:text="${user.email}"></span></h5><br>
+    </div>
+</div>
 
 
+<!--RESTAURANT OWNER WITH ACCOUNT STATUS CREATED-->
 
-              </div>
+<div class="container" th:if="${user.restaurant != null}">
+    <div class="card" style="background-color: #023047; padding: 0 10px;">
+        <div class="row text-center">
+            <!--HEADING TO WELCOME RESTAURANT OWNER TO DASHBOARD-->
+            <h1>Your Restaurant Profile</h1>
+            <div class="row text-center">
+                <div class="col-12 col-sm">
+                    <!--IMAGE OF SHEET WITH STARS-->
+                    <img src="https://img.icons8.com/clouds/100/000000/plate-1.png"/>
+                    <!--ACCOUNT AND PHOTO EDITING-->
+                    <h4>Manage your account info: </h4>
+                    <a class="btn btn-warning" role="button" th:href="@{/users/edit}">Update Account</a>
+                    <br>
+                    <h4>Manage your restaurant page: </h4>
+                    <a class="btn btn-warning" role="button" th:href="@{/user.restaurant}">View Restaurant</a>
+                    <a role="button" class="btn btn-warning"
+                       th:href="@{'/restaurant/edit/' + ${user.restaurant.id}}">Update Info</a>
+                    <br>
+                    <h4>Manage your photos: </h4>
+                    <a role="button" class="btn btn-warning"
+                       th:href="@{'/restaurant/uploads/show/' + ${user.restaurant.id}}">Edit Photos</a>
+                    <a role="button" class="btn btn-warning"
+                       th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Add more photos</a>
+                    <br>
+<!--                    OWNER WITH NO PICS-->
+                    <section th:unless="${!user.restaurant.images.isEmpty()}">
+                        <div class="card row">
+                            <h5 class="card-header text-center">Welcome, <span
+                                    th:text="${user.username}"></span></h5>
+                            <div class="card-body text-center" width="100">
+                                <h1>Let's build Your Restaurant page</h1>
+                                <h3>Upload your restaurant photo's to display on restaurant page.</h3>
+                                <a role="button" class="btn btn-warning"
+                                   th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Upload
+                                    photos</a>
+                            </div>
+                        </div>
+                    </section>
 
-                <div class="text-center">
-                <a class="btn btn-warning" role="button"  th:href="@{/users/edit}">Update Account</a>
-              </div>
-          </div>
-          </div>
+<!--                    RESTAURANT STATS-->
+                    <img class="img-thumbnail bg-transparent border-0"
+                         src="https://img.icons8.com/bubbles/100/000000/review.png"/>
+                    <h4>Site stats for <span th:text="${user.restaurant.restaurant_name}"></span></h4>
+                    <!--NUMBER OF FAVORITES AND REVIEWS-->
+                    <h5 class="font-weight-bold">Number of favorites: <span
+                            th:text="${user.restaurant.favorites.size()}"></span></h5>
 
-          <div class="nav-item col-12 col-md-5 px-2">
-            <div class="restaurant-card-text dashtab nav-tab-shadow text-center">
-              <img src="https://img.icons8.com/clouds/100/000000/plate-1.png"/>
-              <br>
-              <h5 class="card-title fw-bolder">Restaurant<br> Information</h5>
-              <div class="text-center">
-                <h5>Restaurant name: <span class="span-values fw-bold" th:text="${user.restaurant.restaurant_name}"></span></h5>
-                <h5>Hours: <span class="span-values fw-bold" th:text="${user.restaurant.hours}"></span></h5>
-                <h5 class="fw-bold" th:each="restaurantCategory : ${user.restaurant.categories}" th:selected="${restaurantCategory.id}" th:value="${restaurantCategory.id}">Cuisine Category: <span class="span-values fw-bold" th:text="${restaurantCategory.name}"></span></h5>
-                <h5>Address: <span class="span-values fw-bold" th:text="${user.restaurant.street_address} + ', ' + ${user.restaurant.city} +  ', ' + ${user.restaurant.state} + ', ' + ${user.restaurant.zip_code}"></span></h5>
-                <h5>Phone Number: <span class="span-values fw-bold" th:text="${user.restaurant.phone_number}"></span></h5>
-              </div>
-              <div class="text-center">
-                  <a role="button" class="btn btn-warning" th:href="@{'/restaurant/edit/' + ${user.restaurant.id}}">Update</a>
-              </div>
-              <br>
-              <div class="text-center">
-                  <a role="button" class="btn btn-warning"  th:href="@{'/restaurant/details/' + ${user.restaurant.id}}">View</a>
-              </div>
+                    <h5 class="font-weight-bold">Number of Reviews: <span
+                            th:text="${user.restaurant.reviews.size()}"></span></h5>
+
+                    <a class="btn btn-warning" th:href="@{'/reviews/byRestaurant/' + ${user.restaurant.id}}"
+                       role="button">View Reviews</a>
+
+                    <div class="col-md-4" th:each="review : ${user.restaurant.reviews}">
+                        <div class="text-center" th:each="image : ${review.images}" style="width: 18rem;">
+                        </div>
+
+                        <div class="text-center" th:each="image : ${review.images}" style="width: 18rem;">
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <br>
-          <br>
-          <div class="container my-4">
-          <div class="restaurant-card-text dashtab nav-tab-shadow text-center" data-toggle="tab">
-            <h2 class="header-h">Restaurant statistics</h2>
-            <div class="row">
-              <h4 class="col-6 restaurant-card-text">Number of favorites: <span th:text="${user.restaurant.favorites.size()}"></span></h4>
-              <h4 class="col-6 restaurant-card-text">Number of Reviews: <span th:text="${user.restaurant.reviews.size()}"></span></h4>
-            </div>
-          </div>
         </div>
+    </div>
+</div>
 
+    <!--<h5 th:text="${user.restaurant.restaurant_name}"></h5>-->
 
-              <section th:if="${!user.restaurant.images.isEmpty()}">
+    <!--                    <h5>Hours: </h5>-->
+    <!--                    <h5 th:text="${user.restaurant.hours}"></h5>-->
+    <!--                    <h5>Cuisine Category:</h5>-->
+    <!--                    <h5 th:each="restaurantCategory : ${user.restaurant.categories}"-->
+    <!--                        th:selected="${restaurantCategory.id}" th:value="${restaurantCategory.id}"-->
+    <!--                        th:text="${restaurantCategory.name}"></h5>-->
+    <!--                    <h5>Address:</h5>-->
+    <!--                    <h5 th:text="${user.restaurant.street_address} + ', ' + ${user.restaurant.city} +  ', ' + ${user.restaurant.state} + ', ' + ${user.restaurant.zip_code}"></h5>-->
+    <!--                    <h5>Phone Number: </h5>-->
+    <!--                    <h5 th:text="${user.restaurant.phone_number}"></h5>-->
 
-                  <div class="text-center col-12">
-                    <h2 class="header-h">Restaurant Photo's</h2>
-                    <div th:replace="partials/carouselUser :: carouselUser"></div>
-                    <div class="row">
-                      <a role="button" class="btn btn-warning" th:href="@{'/restaurant/uploads/show/' + ${user.restaurant.id}}">Edit Photos</a>
-                      <a role="button" class="btn btn-warning" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Add more photos</a>
-                    </div>
-                  </div>
+<!--                <div class="col-md-4">-->
+<!--                    <h3 class="text-center" th:text="${review.content}"></h3>-->
+<!--                    <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300"-->
+<!--                         alt="placeholder"/>-->
+<!--                    <img class="img-thumbnail" th:src="${'/upload/' + image.url }"/>-->
+<!--                </div>-->
 
-              </section>
-              <section th:unless="${!user.restaurant.images.isEmpty()}">
-                <div class="card row">
-                  <h5 class="card-header text-center">Welcome, <span th:text="${user.username}"></span></h5>
-                  <div class="card-body text-center"  width="100">
-                    <h1>Let's build Your Restaurant page</h1>
-                    <h3>Upload your restaurant photo's to display on restaurant page.</h3>
-                    <a role="button" class="btn btn-warning" th:href="@{'/restaurant/upload/' + ${user.restaurant.id}}">Upload photos</a>
-                  </div>
-                </div>
-              </section>
-
-
-
-                <h3 class="my-4 header-h text-center"><img class="img-thumbnail bg-transparent border-0" src="https://img.icons8.com/bubbles/100/000000/review.png"/></h3>
-            <div class="my-2 restaurant-card-text justify-content-center row" data-toggle="tab">
-                <div class="col-md-4" th:each="review : ${user.restaurant.reviews}">
-                  <div class="text-center" th:each="image : ${review.images}" style="width: 18rem;">
-                    <div class="col-md-4">
-                      <h3 class="text-center" th:text="${review.content}"></h3>
-                      <img th:if="${image.url == null}" class="img-thumbnail" src="https://placeh old.it/300x300" alt="placeholder" />
-                      <img class="img-thumbnail"  th:src="${'/upload/' + image.url }" />
-                    </div>
-                  </div>
-                </div>
-                    <a class="btn btn-warning" th:href="@{'/reviews/byRestaurant/' + ${user.restaurant.id}}" role="button">View Reviews</a>
-
-      </div>
-
-      </div>
-      </div>
-    </main>
-
-
-
-
-
-<th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
+    <th:block th:replace="partials/homeScripts :: homeScripts"></th:block>
 
 </body>
 </html>
